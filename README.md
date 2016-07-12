@@ -1,1 +1,3 @@
 # Proyecto Seminario UMG 2016
+
+## TECNOLOGIA STACK MEAN
