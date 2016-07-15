@@ -1,6 +1,8 @@
 var express=require('express');
 var mongoose=require('mongoose');
 var bodyParser  = require("body-parser");
+var relationship = require("mongoose-relationship");
+
 var app=express();
 var port =process.env.PORT || 3000; 
 
