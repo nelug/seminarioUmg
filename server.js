@@ -11,6 +11,6 @@ app.use(express.static(__dirname+'/app'));
 app.use(bodyParser.urlencoded({ extended: false }));  
 app.use(bodyParser.json());  
 
-require('./app/js/routes.js')(app);
+require('./server/routes.js')(app);
 app.listen(port);
 console.log('APP MEAN en el puerto: '+port);
