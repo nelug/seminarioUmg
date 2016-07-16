@@ -1,0 +1,28 @@
+{
+  "name": "seminario-umg",
+  "description": "\"Proyecto de seminario para la Universidad Mariano Galvez\"",
+  "main": "gulpfile.js",
+  "authors": [
+    "\"Nelug (Leonel Madrid)"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/nelug/seminarioUmg",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/lib/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-animate": "^1.5.7",
+    "angular-messages": "^1.5.7",
+    "angular-route": "^1.5.7",
+    "angular": "^1.5.7",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.6.3",
+    "angular-resource": "^1.5.7"
+  }
+}

@@ -1,4 +1,4 @@
-angular.module('MainApp', [])
+angular.module('seminarioUmg', [])
 
 function mainController($scope, $http) {
 	$scope.newPersona = {};
