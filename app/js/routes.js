@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('InicialApp').config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+angular.module('seminarioUmg').config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
    $locationProvider.html5Mode({
       enabled: true,
       requireBase: false
