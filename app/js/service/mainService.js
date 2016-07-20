@@ -6,7 +6,7 @@
         titulo: 'Personas',
         icono: 'accessibility',
         estado: true,
-        accion: '/persona'
+        link: '/persona'
       }
     ];
 

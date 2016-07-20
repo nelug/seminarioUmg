@@ -28,7 +28,7 @@
         <md-sidenav  ng-click="toggleMenu()" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" class="md-whiteframe-z2" >
             <md-list>
                 <md-list-item ng-repeat="mn in menu">
-                    <md-button ng-click="">
+                    <md-button ng-click="verLink(mn.link)">
                         <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
                         {{mn.titulo}}
                     </md-button>
