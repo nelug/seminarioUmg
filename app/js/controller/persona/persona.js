@@ -27,7 +27,7 @@ $scope.registrarPersona = function() {
 };
 
 // Función para editar los datos de una persona
-$scope.modificarPersona = function(newPersona) {
+$scope.modificarPersona = function() {
     $http.put('/api/persona/' + $scope.newPersona._id, $scope.newPersona)
     .success(function(data) {
             $scope.newPersona = {}; // Borramos los datos del formulario
@@ -40,7 +40,7 @@ $scope.modificarPersona = function(newPersona) {
 };
 
 // Función que borra un objeto persona conocido su id
-$scope.borrarPersona = function(newPersona) {
+$scope.borrarPersona = function() {
     $http.delete('/api/persona/' + $scope.newPersona._id)
     .success(function(data) {
         $scope.newPersona = {};
