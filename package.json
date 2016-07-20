@@ -1,27 +1,35 @@
 {
-  "name": "seminario-umg",
-  "version": "0.0.1",
-  "description": "\"Proyecto de seminario para la Universidad Mariano Galvez\"",
-  "main": "gulpfile.js",
-  "dependencies": {
+  "name": "material-start",
+  "private": true,
+  "version": "0.0.4",
+  "devDependencies": {
+    "angular-mocks": "^1.4.9",
+    "live-server": "^0.9.1",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "mongoose": "^4.4.11",
-    "mongoose-relationship": "^0.1.5"
+    "mongoose-relationship": "^0.1.5",
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-inject": "^2.2.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-jshint-html-reporter": "^0.1.3",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-minify-html": "^1.0.4",
+    "gulp-ng-template": "^0.2.1",
+    "gulp-uglify": "^1.4.1",
+    "gulp-uncss": "^1.0.3",
+    "gulp-useref": "^1.3.0",
+    "gulp-util": "^3.0.6",
+    "imagemin-jpegtran": "^4.3.0",
+    "imagemin-optipng": "^4.3.0",
+    "imagemin-svgo": "^4.1.2",
+    "jshint-stylish": "^2.0.1",
+    "wiredep": "^2.2.2"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nelug/seminarioUmg.git"
-  },
-  "author": "\"Nelug (Leonel Madrid)",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/nelug/seminarioUmg/issues"
-  },
-  "homepage": "https://github.com/nelug/seminarioUmg#readme"
+    "prestart": "npm update"
+  }
 }

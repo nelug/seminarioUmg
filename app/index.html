@@ -1,69 +1,66 @@
-<!doctype html>
-
-<html ng-app="seminarioUmg">
+<!DOCTYPE html>
+<html lang="en"  ng-app="seminarioUmg" >
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>APP</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-	<script src="js/app.js"></script>
-	
-	<!-- build:css css/style.min.css -->
+    <title>Control de Escuela / Guarderia</title>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1 maximum-scale=1 user-scalable=no" name="viewport" />
+    <meta content="width=device-width height=device-height" name="size">
+    <!-- build:css css/style.min.css -->
     <!-- bower:css -->
-	<!-- endbower -->
+    <link rel="stylesheet" href="lib/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="lib/angular-material-icons/angular-material-icons.css" />
+    <!-- endbower -->
     <!-- inject:css -->
-	<!-- endinject -->
+    <link rel="stylesheet" href="/css/app.css">
+    <!-- endinject -->
     <!-- endbuild -->
 </head>
-<body ng-controller="mainController">
-	<div class="container">
 
-		<div class="jumbotron text-center" ng-prueba>
-			<h1>No. de Registros: <span class="label label-success">{{ personas.length }}</span></h1>
-		</div>
-
-		<div class="row">
-			<div class="col-sm-6 col-sm-offset-1">
-				<table class="table table-striped">
-					<tr class="info">
-						<td>Nombre</td>
-						<td>Apellidos</td>
-						<td>Edad</td>
-					</tr>
-					<tr ng-repeat="persona in personas" ng-click="selectPerson(persona)">
-						<td>{{ persona.nombre }}</td>
-						<td>{{ persona.apellido }}</td>
-						<td>{{ persona.edad }}</td>						
-					</tr>
-				</table>					
-			</div>
-			<div class="col-sm-4 col-sm-offset-1 text-center">
-				<form name="myForm">
-					<div class="form-group">
-						<input type="text" class="form-control input-lg text-center" placeholder="Nombre" ng-model="newPersona.nombre" required>
-						<br>
-						<input type="text" class="form-control input-lg text-center" placeholder="Apellido" ng-model="newPersona.apellido" required>
-						<br>
-						<input type="text" class="form-control input-lg text-center" placeholder="Edad" ng-model="newPersona.edad" required>
-					</div>
-
-					<button type="submit" class="btn btn-success btn-lg" ng-click="registrarPersona()" ng-disabled="myForm.$invalid || selected">Registrar</button>
-					<button type="submit" class="btn btn-warning btn-lg" ng-click="modificarPersona(newPersona)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Modificar</button>
-					<button type="submit" class="btn btn-danger btn-lg" ng-click="borrarPersona(newPersona)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Borrar</button>
-				</form>
-			</div>
-		</div>
-	</div>
-	
-	<!-- build:js js/vendor.min.js -->
+<body layout="column" ng-controller="MainController" ng-cloak>
+    
+    <md-toolbar layout="row">
+        <md-button class="menu" hide-gt-sm ng-click="toggleMenu()" aria-label="Show User List">
+            <md-icon md-svg-icon="menu" ></md-icon>
+        </md-button>
+        <h1 style="margin-left:15px">Control APP</h1>
+    </md-toolbar>
+    <div flex layout="row">
+        <md-sidenav  ng-click="toggleMenu()" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" class="md-whiteframe-z2" >
+            <md-list>
+                <md-list-item ng-repeat="mn in menu">
+                    <md-button ng-click="">
+                        <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
+                        {{mn.titulo}}
+                    </md-button>
+                </md-list-item>
+            </md-list>
+        </md-sidenav>
+        
+        <md-content flex id="content">
+            <div id="form-viewer-wrapper" ng-view layout="column" layout-margin='40px' flex></div>
+        </md-content>
+    </div>
+    <!-- build:js js/vendor.min.js -->
     <!-- bower:js -->
-	<!-- endbower -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-messages/angular-messages.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+    <script src="lib/angular-material-icons/angular-material-icons.min.js"></script>
+    <!-- endbower -->
     <!-- endbuild -->
-
     <!-- build:js js/app.min.js -->
     <!-- inject:js -->
-	<!-- endinject -->
+    <script src="/js/app.js"></script>
+    <script src="/js/route.js"></script>
+    <script src="/js/controller/mainController.js"></script>
+    <script src="/js/service/mainService.js"></script>
+    <script src="/js/controller/persona/persona.js"></script>
+    <script src="/js/service/persona/persona.js"></script>
+    <!-- endinject -->
     <!-- endbuild -->
 </body>
 </html>
