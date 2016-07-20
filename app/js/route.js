@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+angular.module('seminarioUmg')
+.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
    $locationProvider.html5Mode({
       enabled: true,
       requireBase: false
@@ -8,7 +9,7 @@ angular.module('seminarioUmg').config(['$locationProvider', '$routeProvider', fu
 
    $routeProvider
       .when('/persona', {
-         templateUrl: 'html/persona.html',
+         templateUrl: 'view/persona.html',
          controller: 'PersonaCtrl'
       })
       .otherwise({

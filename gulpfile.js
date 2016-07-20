@@ -21,7 +21,7 @@ var gulp = require('gulp'),
 
 //Tarea para buscar estilos y javascript en los archivos del proyecto para inyectarlos en pagina principal
 gulp.task('inyeccion', function() {
-   var sources = gulp.src(['./app/js/**/*.js', './app/css/**/*.css', '!./app/css/creador*.css', './app/lib/**/*.css', '!./app/lib/creador*.css']);
+   var sources = gulp.src(['./app/js/**/*.js', './app/css/**/*.css', '!./app/css/creador*.css']);
    return gulp.src('index.html', {
          cwd: './app'
       })
@@ -76,4 +76,4 @@ gulp.task('comprimir', ['copiar'], function() {
       .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('default', [ 'template', 'inyeccion', 'dependencia', 'analizar']);
+gulp.task('default', ['inyeccion', 'dependencia', 'analizar']);
