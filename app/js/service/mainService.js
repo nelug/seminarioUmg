@@ -7,6 +7,11 @@
         icono: 'accessibility',
         estado: true,
         link: '/persona'
+    },{
+        titulo: 'Personas',
+        icono: 'dns',
+        estado: true,
+        link: '/persona'
       }
     ];
 
