@@ -7,7 +7,7 @@ function( $scope, MainService, $mdSidenav, $rootScope, $location) {
     $scope.menu  = [];
     
     MainService.cargarMenu().then( function( menu ) {
-        $scope.menu = [].concat(menu);
+        $scope.menu = menu.data;
     });
     
     $scope.toggleMenu = function() {

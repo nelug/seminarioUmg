@@ -37,8 +37,7 @@
             </md-list>
         </md-sidenav>
         
-        <md-content flex id="content">
-            <div id="form-viewer-wrapper" ng-view layout="column" layout-margin='40px' flex></div>
+        <md-content id="content" ng-view layout="column" layout-margin='40px' flex>
         </md-content>
     </div>
     <!-- build:js js/vendor.min.js -->
@@ -60,8 +59,8 @@
     <script src="/js/route.js"></script>
     <script src="/js/controller/mainController.js"></script>
     <script src="/js/service/mainService.js"></script>
-    <script src="/js/service/persona/persona.js"></script>
     <script src="/js/controller/persona/persona.js"></script>
+    <script src="/js/service/persona/persona.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 </body>

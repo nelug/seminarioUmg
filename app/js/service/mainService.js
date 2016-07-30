@@ -1,19 +1,9 @@
-  'use strict';
+'use strict';
 
-  angular.module('seminarioUmg').service('MainService', ['$q', function($q){
-    var menu = [
-      {
-        titulo: 'Personas',
-        icono: 'accessibility',
-        estado: true,
-        link: '/persona'
-    },{
-        titulo: 'Personas',
-        icono: 'dns',
-        estado: true,
-        link: '/persona'
-      }
-    ];
+  angular.module('seminarioUmg').service('MainService', ['$q', '$http', function($q, $http){
+    var menu = $http.get('/api/menu').success(function(data) {
+        return data;
+    });
 
     return {
       cargarMenu : function() {
