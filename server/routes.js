@@ -9,7 +9,7 @@ module.exports = function(app) {
 	app.post('/api/persona', personaCtrl.setPersona);
 	app.put('/api/persona/:persona_id', personaCtrl.updatePersona);
 	app.delete('/api/persona/:persona_id', personaCtrl.removePersona);
-	app.get('/', function(req, res) {
+	app.get('/*', function(req, res) {
 		res.sendfile('./app/index.html'); 
 	});
 };

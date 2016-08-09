@@ -17,6 +17,8 @@ var gulp = require('gulp'),
    png = require('imagemin-optipng'),
    jpeg = require('imagemin-jpegtran'),
    gutil = require('gulp-util'),
+   webServer = require('gulp-webserver'),
+   plumber = require('gulp-plumber'),
    jshintfileoutput = require('gulp-jshint-html-reporter');
 
 //Tarea para buscar estilos y javascript en los archivos del proyecto para inyectarlos en pagina principal
@@ -77,3 +79,31 @@ gulp.task('comprimir', ['copiar'], function() {
 });
 
 gulp.task('default', ['inyeccion', 'dependencia', 'analizar']);
+
+gulp.task('server', function () {
+    return gulp.src("app/")
+        .pipe(plumber())
+        .pipe(webServer({
+            host: "127.0.0.1",
+            port: "3590",
+            livereload: {
+                enable: true,
+                filter: filtrar
+            },
+            fallback: 'index.html',
+            proxies: [{
+                source: "/api/v0.1/",
+                target: "http://127.0.0.1:3000/"
+            }],
+            open: true
+        }));
+});
+
+
+var filtrar = function (archivo) {
+    if (!archivo.match(/index.html$/) && archivo.match(/.html$/)) {
+        return false;
+    }
+
+    return true;
+};

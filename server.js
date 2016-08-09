@@ -6,7 +6,7 @@ var relationship = require("mongoose-relationship");
 var app=express();
 var port =process.env.PORT || 3000; 
 
-mongoose.connect('mongodb://localhost/local');
+mongoose.connect('mongodb://localhost/inventario');
 app.use(express.static(__dirname+'/app'));
 app.use(bodyParser.urlencoded({ extended: false }));  
 app.use(bodyParser.json());  
