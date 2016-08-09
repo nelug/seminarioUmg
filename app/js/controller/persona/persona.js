@@ -6,16 +6,10 @@ angular.module('seminarioUmg').controller('PersonaCtrl', ['$scope', '$http', '$t
     $scope.personas = {};
     $scope.tituloEncabezado = 'Personas';
     $scope.selected = false;
-    
-    
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
     
-    $scope.query = {
-        order: 'nombre',
-        limit: 5,
-        page: 1
-    };
+    $scope.query = { order: 'nombre', limit: 5, page: 1 };
   
   
     // Obtenemos todos los datos de la base de datos

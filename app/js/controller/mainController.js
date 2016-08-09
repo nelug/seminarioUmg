@@ -10,6 +10,10 @@ function( $scope, MainService, $mdSidenav, $rootScope, $location) {
         $scope.menu = menu.data;
     });
     
+    $scope.getCatalogos = function () {
+        console.log("catalogos");
+    }
+    
     $scope.toggleMenu = function() {
         $mdSidenav('left').toggle();
     };

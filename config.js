@@ -8,6 +8,6 @@ module.exports = {
 
   mongodb: {
     // TODO edit this connection url to your MongoDB database:
-    url: 'mongodb://localhost:27017/local' 
+    url: 'mongodb://localhost:27017/inventario' 
   }
 };
