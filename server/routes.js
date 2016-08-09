@@ -1,10 +1,12 @@
 
 var personaCtrl = require ('./controller/persona');
 var menuCtrl = require ('./controller/menu');
+var subMenuCtrl = require ('./controller/catalogo');
 
 module.exports = function(app) {
 
 	app.get('/api/menu', menuCtrl.getMenu);
+	app.get('/api/catalogo', subMenuCtrl.getCatalogo);
 	app.get('/api/persona', personaCtrl.getPersona);
 	app.post('/api/persona', personaCtrl.setPersona);
 	app.put('/api/persona/:persona_id', personaCtrl.updatePersona);
