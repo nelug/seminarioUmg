@@ -8,30 +8,40 @@ angular.module('seminarioUmg')
     });
     
     $routeProvider
-      .when('/', {
+    .when('/', {
         templateUrl: 'view/home.html',
         access: {restricted: true}
-      })
-      .when('/login', {
+    })
+    .when('/login', {
         templateUrl: 'view/user/login.html',
         controller: 'loginController',
         access: {restricted: false}
-      })
-      .when('/logout', {
+    })
+    .when('/logout', {
         controller: 'logoutController',
         access: {restricted: true}
-      })
-      .when('/register', {
+    })
+    .when('/register', {
         templateUrl: 'view/user/register.html',
         controller: 'registerController',
         access: {restricted: true}
     })
-      .when('/venta', {
+    .when('/venta', {
         templateUrl: 'view/venta/crear.html',
         controller: 'CrearVentaCtrl',
         access: {restricted: true}
-      })
-      .otherwise({
+    })
+    .when('/compra', {
+        templateUrl: 'view/compra/crear.html',
+        controller: 'CrearCompraCtrl',
+        access: {restricted: true}
+    })
+    .when('/descarga', {
+        templateUrl: 'view/descarga/crear.html',
+        controller: 'CrearDescargaCtrl',
+        access: {restricted: true}
+    })
+    .otherwise({
         redirectTo: '/'
-      });
+    });
 }]);
