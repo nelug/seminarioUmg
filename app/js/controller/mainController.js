@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('seminarioUmg')
-.controller('MainController', ['$scope', 'MainService', '$mdSidenav', '$rootScope', '$location', '$mdBottomSheet',
-function( $scope, MainService, $mdSidenav, $rootScope, $location, $mdBottomSheet) {
+.controller('MainController', ['$scope', 'MainService', '$mdSidenav', '$rootScope', '$location', '$mdBottomSheet', 'AuthService',
+function( $scope, MainService, $mdSidenav, $rootScope, $location, $mdBottomSheet, AuthService) {
     
     $scope.menu  = [];
 
@@ -12,27 +12,27 @@ function( $scope, MainService, $mdSidenav, $rootScope, $location, $mdBottomSheet
     
     $scope.getCatalogos = function () {
         $mdBottomSheet.show({
-            templateUrl: 'view/catalogo.html',
+            templateUrl: 'view/plantillas/catalogo.html',
             controller: 'CatalogoCtrl',
             clickOutsideToClose: true
         });
-    }
+    };
     
     $scope.getConsultas = function () {
         $mdBottomSheet.show({
-            templateUrl: 'view/catalogo.html',
+            templateUrl: 'view/plantillas/catalogo.html',
             controller: 'ConsultasCtrl',
             clickOutsideToClose: true
         });
-    }
+    };
     
     $scope.getGraficas = function () {
         $mdBottomSheet.show({
-            templateUrl: 'view/catalogo.html',
+            templateUrl: 'view/plantillas/catalogo.html',
             controller: 'GraficasCtrl',
             clickOutsideToClose: true
         });
-    }
+    };
     
     $scope.toggleMenu = function() {
         $mdSidenav('left').toggle();
@@ -40,5 +40,13 @@ function( $scope, MainService, $mdSidenav, $rootScope, $location, $mdBottomSheet
     
     $scope.verLink = function(link) {
         $location.path(link);
+    };
+    
+    $scope.logout = function () {
+        AuthService.logout().then(function () {
+            $location.path('/login');
+        });
+        
+        $rootScope.loginAccess = false;
     };
 }]);
