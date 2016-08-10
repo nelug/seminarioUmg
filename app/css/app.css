@@ -6,8 +6,6 @@ html, body {
   padding: 0px;
 }
 
-/* Toolbar area */
-
 .menu {
   background-color: transparent;
   border: none;
@@ -17,28 +15,23 @@ html, body {
 }
 
 
-md-toolbar h3 {
+.menuLateral md-toolbar h3 {
   margin: auto;
   font-weight: 500;
 }
 
-/* Sidenav area */
-
-md-list-item > button {
+.menuLateral md-list-item > button {
   width:100%;
   text-align:left !important;
 }
 
-  md-list .md-button.selected {
+ .menuLateral md-list .md-button.selected {
     color: #03a9f4;
   }
 
-  md-sidenav  md-list {
+ .menuLateral md-sidenav  md-list {
     padding: 0px 0px 8px 0px;
   }
-
-
-/* Primary content area */
 
 #content {
   overflow: hidden;
@@ -71,7 +64,7 @@ md-list-item > button {
   height:36px;
 }
 
-md-button.menuBtn > md-icon {
+.menuLateral md-button.menuBtn > md-icon {
   fill:white;
   width:24px;
   height:24px;
@@ -90,20 +83,15 @@ md-button.menuBtn > md-icon {
   max-width: 500px;
 }
 
-/* Utils */
-
 .content-wrapper {
   position: relative;
 }
-
-/* Typography support coming in 0.8.0 */
 
 md-toolbar h1 {
   font-size: 1.250em;
   font-weight: 400;
 }
-
-.avatar {
+.menuLateral .avatar {
     width: 128px;
     height: 128px;
     border: 1px solid #ddd;
@@ -114,16 +102,31 @@ md-toolbar h1 {
     -moz-transform: scale(0.70);
 }
 
+.menuLateral md-bottom-sheet  md-icon {
+  margin-right:20px;
+}
 
-
-span.name {
+.menuLateral span.name {
   font-weight: bold;
   font-size:1.1em;
   padding-left:5px;
 }
 
-
-.avatar svg {
+.menuLateral .avatar svg {
     width: 100px;
     height: 100px;
+}
+
+.md-grid-item-content svg {
+    width: 50px;
+    height: 50px;
+}
+
+body{
+    overflow: hidden;
+}
+
+ng-md-icon{
+    height: 100%;
+     width: 50px;
 }
