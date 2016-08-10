@@ -10,6 +10,7 @@ angular.module('seminarioUmg')
     $routeProvider
       .when('/', {
         templateUrl: 'view/home.html',
+        controller: 'MainController',
         access: {restricted: true}
       })
       .when('/login', {
