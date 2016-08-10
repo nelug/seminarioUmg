@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('ConsultasCtrl', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
+angular.module('seminarioUmg').controller('ConsultasCtrl', ['$scope', '$http', function($scope, $http) {
     
     $scope.subMenu = [];
     $scope.filtro = 2;

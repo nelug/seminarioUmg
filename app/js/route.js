@@ -10,11 +10,10 @@ angular.module('seminarioUmg')
     $routeProvider
       .when('/', {
         templateUrl: 'view/home.html',
-        controller: 'MainController',
         access: {restricted: true}
       })
       .when('/login', {
-        templateUrl: 'view/login.html',
+        templateUrl: 'view/user/login.html',
         controller: 'loginController',
         access: {restricted: false}
       })
@@ -23,9 +22,14 @@ angular.module('seminarioUmg')
         access: {restricted: true}
       })
       .when('/register', {
-        templateUrl: 'view/register.html',
+        templateUrl: 'view/user/register.html',
         controller: 'registerController',
-        access: {restricted: false}
+        access: {restricted: true}
+    })
+      .when('/venta', {
+        templateUrl: 'view/venta/crear.html',
+        controller: 'CrearVentaCtrl',
+        access: {restricted: true}
       })
       .otherwise({
         redirectTo: '/'
