@@ -19,14 +19,14 @@
 
 <body layout="column" ng-controller="MainController" ng-cloak>
     
-    <md-toolbar layout="row">
+    <md-toolbar ng-if="loginPermiso" layout="row">
         <md-button class="menu" hide-gt-sm ng-click="toggleMenu()" aria-label="Show User List">
             <ng-md-icon icon="reorder"></ng-md-icon>
         </md-button>
         <h1 style="margin-left:15px">Control APP</h1>
     </md-toolbar>
     <div flex layout="row">
-        <md-sidenav  ng-click="toggleMenu()" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" class="md-whiteframe-z2 menuLateral">
+        <md-sidenav  ng-if="loginPermiso" ng-click="toggleMenu()" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" class="md-whiteframe-z2 menuLateral">
             <md-list>
                 <md-list-item ng-repeat="mn in menu">
                     <md-button ng-click="verLink(mn.link)">

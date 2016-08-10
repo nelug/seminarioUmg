@@ -5,7 +5,7 @@ angular.module('seminarioUmg')
 function( $scope, MainService, $mdSidenav, $rootScope, $location, $mdBottomSheet) {
     
     $scope.menu  = [];
-    
+
     MainService.cargarMenu().then( function( menu ) {
         $scope.menu = menu.data;
     });
