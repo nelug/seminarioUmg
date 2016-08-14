@@ -1,17 +1,26 @@
-<hgroup>
-  <h1>Bienvenido Inicie sesion</h1>
-  <h3>Libreria la Parroquia</h3>
 </hgroup>
-<form class="form" ng-submit="login()">
+
+<form layout="column" ng-submit="login()"  layout-align="center center" layout-fill="layout-fill">
   <div class="group">
-    <input type="text" name="username" ng-model="loginForm.username" required><span class="highlight"></span><span class="bar"></span>
-    <label>Nombre</label>
-  </div>
-  <div class="group">
-    <input type="password" name="password" ng-model="loginForm.password" required=""><span class="highlight"></span><span class="bar"></span>
-    <label>Contrasena</label>
-  </div>
-  <button type="submit" class="button buttonBlue"  ng-disabled="disabled">Iniciar sesion
-    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
-  </button>
+
+    <div layout="column" class="loginBox md-whiteframe-z1">
+      <md-toolbar>
+        <h2 class="md-toolbar-tools"><span>Login</span></h2>
+      </md-toolbar>
+      <md-content layout="column" class="md-padding">
+        <md-input-container >
+          <label>Usuario</label>
+          <input type="text" name="username" ng-model="loginForm.username" required=""/>
+        </md-input-container>
+        <md-input-container>
+          <label>Contraseña</label>
+            <input type="password" name="password" ng-model="loginForm.password" required=""/>
+        </md-input-container>
+        <div layout="row" layout-align="center center" style="padding-top:20px;">
+          <md-button type="submit" class="md-raised md-primary" ng-disabled="disabled">Login</md-button>
+          <div flex="flex"></div>
+        <md-button href="" md-no-ink="md-no-ink">recordar mi contraseña</md-button>
+        </div>
+      </md-content>
+    </div>
 </form>
