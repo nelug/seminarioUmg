@@ -4,9 +4,6 @@ angular.module('seminarioUmg').controller('CatalogoCtrl', ['$scope', '$http', fu
     
     $scope.subMenu = [];
     $scope.filtro = 1;
-    $http.get('/api/catalogo').success(function(data) {
-        $scope.subMenu = data;
-    });
 }]);
 
 

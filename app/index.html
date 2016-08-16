@@ -25,26 +25,26 @@
             </div>
         </md-toolbar>
         <md-list>
-            <md-list-item ng-repeat="mn in menu">
+            <md-list-item ng-repeat="mn in menuPrincipal">
                 <md-button ng-click="verLink(mn.link)">
                     <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
                     {{mn.titulo}}
                 </md-button>
             </md-list-item>
             <md-subheader>Administracion</md-subheader>
-            <md-list-item>
+            <md-list-item ng-if="menuCatalogos">
                 <md-button ng-click="getCatalogos()">
                     <ng-md-icon icon="view_compact" class="avatar"></ng-md-icon>
                     Catalogos
                 </md-button>
             </md-list-item>
-            <md-list-item>
-                <md-button ng-click="getConsultas()">
+            <md-list-item ng-if="menuConsultas">
+                <md-button ng-click="getConsultas()" >
                     <ng-md-icon icon="format_list_bulleted" class="avatar"></ng-md-icon>
                     Consultas
                 </md-button>
             </md-list-item>
-            <md-list-item>
+            <md-list-item ng-if="menuGraficas">
                 <md-button ng-click="getGraficas()">
                     <ng-md-icon icon="developer_dashboard" class="avatar"></ng-md-icon>
                     Graficas
@@ -53,7 +53,7 @@
         </md-list>
     </md-sidenav>
     <div layout="column" class="relative" layout-fill role="main">
-        <md-button class="md-fab md-fab-bottom-right" aria-label="Add" >
+        <md-button class="md-fab md-fab-bottom-right" aria-label="Add" ng-if="loginAccess">
             <ng-md-icon icon="add"></ng-md-icon>
         </md-button>
         <md-toolbar ng-if="loginAccess">
@@ -82,6 +82,7 @@
     <script src="lib/angular-material/angular-material.js"></script>
     <script src="lib/angular-material-icons/angular-material-icons.min.js"></script>
     <script src="lib/angular-material-data-table/dist/md-data-table.js"></script>
+    <script src="lib/ng-jsonpath/dist/ng-jsonpath.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js js/app.min.js -->
