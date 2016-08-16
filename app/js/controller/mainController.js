@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('seminarioUmg').controller('MainController', 
-['$scope', 'MainService', '$mdSidenav', '$rootScope', '$location', '$mdBottomSheet', 'AuthService', 'jsonPath',
-function( $scope, MainService, $mdSidenav, $rootScope, $location, $mdBottomSheet, AuthService, jsonPath) {
+['$scope', 'MainService', '$mdSidenav', '$rootScope', '$location', '$mdBottomSheet', 'AuthService', 
+function( $scope, MainService, $mdSidenav, $rootScope, $location, $mdBottomSheet, AuthService) {
     
     $scope.getCatalogos = function () {
         $mdBottomSheet.show({

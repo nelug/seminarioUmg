@@ -12,30 +12,38 @@ angular.module('seminarioUmg')
         templateUrl: 'view/home.html',
         access: {restricted: true}
     })
+    /**
+        Rutas para usuario
+    **/
     .when('/login', {
         templateUrl: 'view/user/login.html',
         controller: 'loginController',
         access: {restricted: false}
-    })
-    .when('/logout', {
-        controller: 'logoutController',
-        access: {restricted: true}
     })
     .when('/register', {
         templateUrl: 'view/user/register.html',
         controller: 'registerController',
         access: {restricted: false}
     })
+    /**
+        Rutas para ventas
+    **/
     .when('/venta', {
         templateUrl: 'view/venta/crear.html',
         controller: 'CrearVentaCtrl',
         access: {restricted: true}
     })
+    /**
+        Rutas para compras
+    **/
     .when('/compra', {
         templateUrl: 'view/compra/crear.html',
         controller: 'CrearCompraCtrl',
         access: {restricted: true}
     })
+    /**
+        Rutas para descargas
+    **/
     .when('/descarga', {
         templateUrl: 'view/descarga/crear.html',
         controller: 'CrearDescargaCtrl',
