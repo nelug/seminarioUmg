@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('GraficasCtrl', ['$scope', '$http', function($scope, $http) {
-    
-    $scope.subMenu = [];
+angular.module('seminarioUmg').controller('GraficasCtrl', ['$scope', function($scope) {
     $scope.filtro = 3;
 }]);
 
