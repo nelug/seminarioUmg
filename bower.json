@@ -10,6 +10,7 @@
     "angular-route": "=1.5.7",
     "angular-material": "=1.0.9",
     "angular-material-icons": "=0.7.0",
-    "angular-material-data-table": "=v0.10.9"
+    "angular-material-data-table": "=v0.10.9",
+    "ng-jsonpath": "=v0.1.3"
   }
 }

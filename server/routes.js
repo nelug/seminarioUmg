@@ -1,9 +1,8 @@
-
-
 var personaCtrl = require ('./controller/persona');
 var menuCtrl = require ('./controller/menu');
 var subMenuCtrl = require ('./controller/catalogo');
 var userCtrl = require ('./controller/user');
+var permisoCtl = require ('./controller/permiso');
 
 module.exports = function(app) {
 	
@@ -17,8 +16,11 @@ module.exports = function(app) {
 	app.post('/api/user/login', userCtrl.logIn);
 	app.get('/api/user/logout', userCtrl.logOut);
 	app.get('/api/user/status', userCtrl.status);
+	app.get('/api/user/status-id', userCtrl.userId);
+	app.post('/api/user/permisos', permisoCtl.getPermisos);
 	
 	app.get('/*', function(req, res) {
 		res.sendfile('./app/index.html'); 
 	});
+	
 };

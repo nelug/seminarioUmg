@@ -1,7 +1,7 @@
 <md-bottom-sheet class="md-grid subMenu" layout="column" ng-cloak>
   <div>
     <md-list flex layout="row" layout-align="center center">
-      <md-list-item ng-repeat="mn in subMenu |filter: {catalogo: filtro}">
+      <md-list-item ng-repeat="mn in ((filtro==1)? menuCatalogos:((filtro==2)? menuConsultas: menuGraficas))">
         <div>
         <md-button class="md-grid-item-content"  ng-click="verLink(mn.link)">
           <ng-md-icon icon="{{mn.icono}}"></ng-md-icon>

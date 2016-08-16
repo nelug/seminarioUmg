@@ -1,14 +1,8 @@
 'use strict';
 
-angular.module('seminarioUmg')
-.controller('MainController', ['$scope', 'MainService', '$mdSidenav', '$rootScope', '$location', '$mdBottomSheet', 'AuthService',
-function( $scope, MainService, $mdSidenav, $rootScope, $location, $mdBottomSheet, AuthService) {
-    
-    $scope.menu  = [];
-
-    MainService.cargarMenu().then( function( menu ) {
-        $scope.menu = menu.data;
-    });
+angular.module('seminarioUmg').controller('MainController', 
+['$scope', 'MainService', '$mdSidenav', '$rootScope', '$location', '$mdBottomSheet', 'AuthService', 'jsonPath',
+function( $scope, MainService, $mdSidenav, $rootScope, $location, $mdBottomSheet, AuthService, jsonPath) {
     
     $scope.getCatalogos = function () {
         $mdBottomSheet.show({

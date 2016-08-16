@@ -24,7 +24,7 @@ angular.module('seminarioUmg')
     .when('/register', {
         templateUrl: 'view/user/register.html',
         controller: 'registerController',
-        access: {restricted: true}
+        access: {restricted: false}
     })
     .when('/venta', {
         templateUrl: 'view/venta/crear.html',
