@@ -1,0 +1,28 @@
+</hgroup>
+<form layout="column" ng-submit="register()"  layout-align="center center" layout-fill="layout-fill">
+ <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+  <div class="group">
+    <div layout="column" class="loginBox md-whiteframe-z1">
+      <md-toolbar>
+        <h2 class="md-toolbar-tools"><span>Registro</span></h2>
+      </md-toolbar>
+      <md-content layout="column" class="md-padding">
+        <md-input-container >
+          <label>Nombre de usuario</label>
+          <input type="text" name="username" ng-model="registerForm.username" required=""/>
+        </md-input-container>
+        <md-input-container >
+          <label>Correo</label>
+          <input type="email" name="username" ng-model="registerForm.username" required=""/>
+        </md-input-container>
+        <md-input-container>
+          <label>Contraseña</label>
+            <input type="password"name="password" ng-model="loginForm.password" required=""/>
+        </md-input-container>
+        <div layout="row" layout-align="center center" style="padding-top:20px;">
+          <md-button type="submit" class="md-raised md-primary" ng-disabled="disabled">Crear</md-button>
+          <div flex="flex"></div>
+        </div>
+      </md-content>
+    </div>
+</form>
