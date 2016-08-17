@@ -6,7 +6,7 @@ angular.module('seminarioUmg')
         enabled: true,
         requireBase: false
     });
-    
+
     $routeProvider
     .when('/', {
         templateUrl: 'view/home.html',
@@ -21,9 +21,14 @@ angular.module('seminarioUmg')
         access: {restricted: false}
     })
     .when('/register', {
-        templateUrl: 'view/user/register.html',
+        templateUrl: 'view/user/crear.html',
         controller: 'registerController',
         access: {restricted: false}
+    })
+    .when('/permisos',{
+       templateUrl:'view/user/permisos.html',
+       controller: 'permisoController',
+       access: {restricted: false}
     })
     /**
         Rutas para ventas
