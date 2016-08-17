@@ -90,6 +90,11 @@ h3 { color: #4a89dc; }
   width: 500px
 }
 
+.loginBox2 {
+  max-width:  50%;
+  width: 60%
+}
+
 .stretch input  {
   width: 100%
 }
