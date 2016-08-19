@@ -17,7 +17,7 @@ module.exports = function(app) {
 	app.get('/api/user/logout', userCtrl.logOut);
 	app.get('/api/user/status', userCtrl.status);
 	app.get('/api/user/status-id', userCtrl.userId);
-	app.post('/api/user/permisos', permisoCtl.getPermisos);
+	app.get('/api/user/permisos', userCtrl.getPermisos);
 	
 	app.get('/*', function(req, res) {
 		res.sendfile('./app/index.html'); 

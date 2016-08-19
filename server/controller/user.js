@@ -1,5 +1,6 @@
 var User = require('../model/user');
 var passport = require('passport');
+var mongoose = require('mongoose');
 
 exports.logIn = function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
@@ -28,6 +29,21 @@ exports.logOut = function(req, res) {
     req.logout();
     res.status(200).json({
         status: 'Bye!'
+    });
+}
+
+exports.getPermisos = function (req, res) {
+    if (!req.isAuthenticated()) {
+        return res.status(200).json({
+            status: false
+        });
+    }
+    
+    User.aggregate([   
+        { $match : { _id : mongoose.Types.ObjectId("57aab9fd820c12ae29486b6f") } },
+        { $project : { permisos : 1 , _id : 0 } }  
+    ], function(err, permiso) {
+        res.json(permiso);		
     });
 }
 
