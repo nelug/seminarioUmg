@@ -41,23 +41,50 @@
                 </md-list-item>
                 <md-subheader>Administracion</md-subheader>
                 <md-list-item ng-if="menuCatalogos">
-                    <md-button ng-click="verLink('/catalogos')" >
+                    <md-button  ng-click="showSubMenu(1)" >
                         <ng-md-icon icon="view_compact" class="avatar"></ng-md-icon>
                         Catalogos
+                        <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
                     </md-button>
                 </md-list-item>
+                <div class="menuCatalogos" ng-if="menuCatalogos" ng-show="subMenu == 1">
+                    <md-list-item ng-repeat="mn in menuCatalogos">
+                        <md-button ng-click="verLink(mn.link)">
+                            <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
+                            {{mn.titulo}}
+                        </md-button>
+                    </md-list-item>
+                </div>
                 <md-list-item ng-if="menuConsultas">
-                    <md-button ng-click="verLink('/consultas')" >
+                    <md-button ng-click="showSubMenu(2)">
                         <ng-md-icon icon="format_list_bulleted" class="avatar"></ng-md-icon>
                         Consultas
+                        <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
                     </md-button>
                 </md-list-item>
+                <div class="menuCatalogos" ng-if="menuConsultas" ng-show="subMenu == 2">
+                    <md-list-item ng-repeat="mn in menuConsultas">
+                        <md-button ng-click="verLink(mn.link)">
+                            <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
+                            {{mn.titulo}}
+                        </md-button>
+                    </md-list-item>
+                </div>
                 <md-list-item ng-if="menuGraficas">
-                    <md-button ng-click="verLink('/graficas')">
+                    <md-button ng-click="showSubMenu(3)">
                         <ng-md-icon icon="developer_dashboard" class="avatar"></ng-md-icon>
                         Graficas
+                        <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
                     </md-button>
                 </md-list-item>
+                <div class="menuCatalogos" ng-if="menuGraficas" ng-show="subMenu == 3">
+                    <md-list-item ng-repeat="mn in menuGraficas">
+                        <md-button ng-click="verLink(mn.link)">
+                            <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
+                            {{mn.titulo}}
+                        </md-button>
+                    </md-list-item>
+                </div>
             </md-list>
         </md-sidenav>
         
