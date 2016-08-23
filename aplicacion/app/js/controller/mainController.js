@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('seminarioUmg').controller('MainController', 
-['$scope', 'MainService', '$mdSidenav', '$rootScope', '$location', '$mdBottomSheet', 'AuthService', 
-function( $scope, MainService, $mdSidenav, $rootScope, $location, $mdBottomSheet, AuthService) {
+['$scope', 'MainService', '$mdSidenav', '$rootScope', '$location', 'AuthService', 
+function( $scope, MainService, $mdSidenav, $rootScope, $location, AuthService) {
     
     $scope.toggleMenu = function() {
         $mdSidenav('left').toggle();
@@ -23,7 +23,6 @@ function( $scope, MainService, $mdSidenav, $rootScope, $location, $mdBottomSheet
         AuthService.logout().then(function () {
             $location.path('/login');
         });
-        
         $rootScope.loginAccess = false;
     };
 }]);
