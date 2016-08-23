@@ -13,21 +13,6 @@ angular.module('seminarioUmg')
         controller: 'loginController',
         access: {restricted: true}
     })
-    .when('/catalogos', {
-        templateUrl: 'view/plantillas/catalogo.html',
-        controller: 'CatalogoCtrl',
-        access: {restricted: true}
-    })
-    .when('/consultas', {
-        templateUrl: 'view/plantillas/catalogo.html',
-        controller: 'ConsultasCtrl',
-        access: {restricted: true}
-    })
-    .when('/graficas', {
-        templateUrl: 'view/plantillas/catalogo.html',
-        controller: 'GraficasCtrl',
-        access: {restricted: true}
-    })
     /**
         Rutas para usuario
     **/
