@@ -1,6 +1,6 @@
 
 # Modulos
-/node_modules
+aplicacion/node_modules
 aplicacion/app/lib
 aplicacion/app/js/templates.js
 aplicacion/analisis
