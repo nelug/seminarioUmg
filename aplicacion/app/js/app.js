@@ -19,12 +19,10 @@ angular.module('seminarioUmg',
                     if(user.status){
                         $http.get('/api/user/permisos').success(function (data) {
                             $rootScope.menus = true;
-                            $rootScope.menuPrincipal = jsonPath(data, '$..permisos[?(@.catalogo==0)]');
-                            $rootScope.menuCatalogos = jsonPath(data, '$..permisos[?(@.catalogo==1)]');
-                            $rootScope.menuConsultas = jsonPath(data, '$..permisos[?(@.catalogo==2)]');
-                            $rootScope.menuGraficas  = jsonPath(data, '$..permisos[?(@.catalogo==3)]');
-                            
-                            console.log();
+                            $rootScope.menuPrincipal = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==0)]');
+                            $rootScope.menuCatalogos = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==1)]');
+                            $rootScope.menuConsultas = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==2)]');
+                            $rootScope.menuGraficas  = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==3)]');
                         });
                     }
                 });

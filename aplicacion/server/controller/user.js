@@ -39,12 +39,12 @@ exports.getPermisos = function (req, res) {
         });
     }
     
-    User.aggregate([   
-        { $match : { _id : mongoose.Types.ObjectId("57aab9fd820c12ae29486b6f") } },
-        { $project : { permisos : 1 , _id : 0 } }  
-    ], function(err, permiso) {
-        res.json(permiso);		
-    });
+    User.find({ _id: mongoose.Types.ObjectId("57aab9fd820c12ae29486b6f") })
+    .populate('permisos.id')
+    .select('permisos')
+    .exec(function(error, users) {
+        res.json(users);
+    })
 }
 
 exports.status = function(req, res) {
@@ -65,9 +65,8 @@ exports.userId = function(req, res) {
         });
     }
     res.status(200).json({
-        status: true,
-        id: res.req.user._id
-    });     
+        status: true
+    });
 }
 
 exports.register = function(req, res) {
