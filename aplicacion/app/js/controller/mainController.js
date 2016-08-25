@@ -13,10 +13,13 @@ function( $scope, MainService, $mdSidenav, $rootScope, $location, AuthService) {
     };
     
     $scope.showSubMenu = function(op) {
-        if($scope.subMenu === op)
+        if($scope.subMenu === op){
             $scope.subMenu = 0;
-        else    
+        }
+        
+        else {
             $scope.subMenu = op;
+        }   
     };
     
     $scope.logout = function () {
