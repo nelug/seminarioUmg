@@ -4,8 +4,8 @@ angular.module('seminarioUmg',
 ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimate', 'ngMdIcons', 'ngMaterial', 'md.data.table', 'ngJSONPath'])
 .config( function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-    .primaryPalette('brown')
-    .accentPalette('blue');
+    .primaryPalette('blue')
+    .accentPalette('brown');
 }).run( function ($rootScope, $location, $route, AuthService, $http, jsonPath) {
     $rootScope.$on('$routeChangeStart', function (event, next) {
         AuthService.getUserStatus().then(function() {

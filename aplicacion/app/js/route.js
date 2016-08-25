@@ -34,7 +34,7 @@ angular.module('seminarioUmg')
    .when('/usuarios',{
       templateUrl:'view/user/tabla.html',
       controller: 'userTablaCtrl',
-      access: {restricted: false}
+      access: {restricted: true}
    })
    /**
    Rutas para ventas
