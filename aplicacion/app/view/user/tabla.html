@@ -1,0 +1,28 @@
+<div class="tablaOpciones">
+   <section layout="row" layout-sm="column" layout-wrap>
+      <md-button class="md-raised">Crear</md-button>
+      <md-button class="md-raised md-primary">Editar</md-button>
+      <md-button class="md-raised md-warn">Eliminar</md-button>
+    </section>
+</div>
+<md-table-container>
+   <table md-table md-row-select="false" multiple="true" ng-model="selected" md-progress="promise">
+      <thead  md-head md-order="query.order" md-on-reorder="">
+         <tr md-row>
+            <th md-column md-order-by="username"><span>Usuario</span></th>
+            <th md-column md-order-by="nombre"><span>Nombre</span></th>
+            <th md-column md-order-by="apellido"><span>Apellido</span></th>
+            <th md-column md-order-by="correo"><span>Correo</span></th>
+         </tr>
+      </thead>
+      <tbody md-body>
+         <tr ng-click="selectUsuario(user)" md-row md-select="user" md-on-select="" md-auto-select="true" ng-repeat="user in usuarios">
+            <td md-cell>{{ user.username }}</td>
+            <td md-cell>{{ user.nombre }}</td>
+            <td md-cell>{{ user.apellido }}</td>
+            <td md-cell>{{ user.correo }}</td>
+         </tr>
+      </tbody>
+   </table>
+</md-table-container>
+<md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{user.count}}" md-page-select="true"  md-on-paginate=""></md-table-pagination>
