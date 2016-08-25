@@ -1,0 +1,134 @@
+/* 1 */
+{
+    "titulo" : "Venta",
+    "icono" : "shopping_cart",
+    "link" : "/venta",
+    "catalogo" : 0,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb76d")
+}
+
+/* 2 */
+{
+    "titulo" : "Compra",
+    "icono" : "shopping_basket",
+    "link" : "/compra",
+    "catalogo" : 0,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb76e")
+}
+
+/* 3 */
+{
+    "titulo" : "Descarga",
+    "icono" : "file_download",
+    "link" : "/descarga",
+    "catalogo" : 0,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb76f")
+}
+
+/* 4 */
+{
+    "titulo" : "Cotizacion",
+    "icono" : "list",
+    "link" : "/cotizacion",
+    "catalogo" : 0,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb770")
+}
+
+/* 5 */
+{
+    "titulo" : "Usuarios",
+    "icono" : "account_box",
+    "link" : "/usuarios",
+    "catalogo" : 1,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb771")
+}
+
+/* 6 */
+{
+    "titulo" : "Clientes",
+    "icono" : "supervisor_account",
+    "link" : "/clientes",
+    "catalogo" : 1,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb772")
+}
+
+/* 7 */
+{
+    "titulo" : "Proveedores",
+    "icono" : "card_travel",
+    "link" : "/proveedores",
+    "catalogo" : 1,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb773")
+}
+
+/* 8 */
+{
+    "titulo" : "Productos",
+    "icono" : "speaker_notes",
+    "link" : "/productos",
+    "catalogo" : 1,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb774")
+}
+
+/* 9 */
+{
+    "titulo" : "Ventas",
+    "icono" : "grid_on",
+    "link" : "/consulta-ventas",
+    "catalogo" : 2,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb775")
+}
+
+/* 10 */
+{
+    "titulo" : "Compras",
+    "icono" : "grid_on",
+    "link" : "/consulta-compras",
+    "catalogo" : 2,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb776")
+}
+
+/* 11 */
+{
+    "titulo" : "Descargas",
+    "icono" : "grid_on",
+    "link" : "/consulta-descargas",
+    "catalogo" : 2,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb777")
+}
+
+/* 12 */
+{
+    "titulo" : "Cotizaciones",
+    "icono" : "grid_on",
+    "link" : "/consulta-cotizaciones",
+    "catalogo" : 2,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb778")
+}
+
+/* 13 */
+{
+    "titulo" : "Ventas",
+    "icono" : "insert_chart",
+    "link" : "/graficas-ventas",
+    "catalogo" : 3,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb779")
+}
+
+/* 14 */
+{
+    "titulo" : "Compras",
+    "icono" : "insert_chart",
+    "link" : "/graficas-compras",
+    "catalogo" : 3,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb77a")
+}
+
+/* 15 */
+{
+    "titulo" : "Descargas",
+    "icono" : "insert_chart",
+    "link" : "/graficas-descargas",
+    "catalogo" : 3,
+    "_id" : ObjectId("57b14512c3302b1f0f2eb77b")
+}
