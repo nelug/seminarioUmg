@@ -6,10 +6,7 @@ var User = new Schema({
   username: String,
   password: String,
   permisos: [{
-        id: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Menu'
-        }
+        id: { type: mongoose.Schema.Types.ObjectId, ref: 'Menu' }
     }]
 });
 

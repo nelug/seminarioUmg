@@ -9,6 +9,7 @@ module.exports = function(app) {
 	app.post('/api/user/login', userCtrl.logIn);
 	app.get('/api/user/logout', userCtrl.logOut);
 	app.get('/api/user/status', userCtrl.status);
+	app.get('/api/user/all', userCtrl.getAll);
 	app.get('/api/user/permisos', userCtrl.getPermisos);
 	
 	app.get('/*', function(req, res) {
