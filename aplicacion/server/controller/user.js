@@ -58,17 +58,6 @@ exports.status = function(req, res) {
     });
 }
 
-exports.userId = function(req, res) {
-    if (!req.isAuthenticated()) {
-        return res.status(200).json({
-            status: false
-        });
-    }
-    res.status(200).json({
-        status: true
-    });
-}
-
 exports.register = function(req, res) {
     User.register(new User({ username: req.body.username }),
     req.body.password, function(err, account) {

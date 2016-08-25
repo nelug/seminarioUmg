@@ -14,19 +14,17 @@ angular.module('seminarioUmg',
                 $route.reload();    
                 $rootScope.menus = false;
             }
-            if (!$rootScope.menus) {
-                $http.get('/api/user/status-id').success(function(user) {
-                    if(user.status){
-                        $http.get('/api/user/permisos').success(function (data) {
-                            $rootScope.menus = true;
-                            $rootScope.menuPrincipal = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==0)]');
-                            $rootScope.menuCatalogos = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==1)]');
-                            $rootScope.menuConsultas = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==2)]');
-                            $rootScope.menuGraficas  = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==3)]');
-                        });
-                    }
+            
+            if(AuthService.isLoggedIn()){
+                $http.get('/api/user/permisos').success(function (data) {
+                    $rootScope.menus = true;
+                    $rootScope.menuPrincipal = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==0)]');
+                    $rootScope.menuCatalogos = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==1)]');
+                    $rootScope.menuConsultas = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==2)]');
+                    $rootScope.menuGraficas  = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==3)]');
                 });
             }
+            
             $rootScope.loginAccess = AuthService.isLoggedIn();
         });
     });

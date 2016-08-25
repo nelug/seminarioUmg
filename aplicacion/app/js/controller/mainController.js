@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('seminarioUmg').controller('MainController', 
-['$scope', 'MainService', '$mdSidenav', '$rootScope', '$location', 'AuthService', 
-function( $scope, MainService, $mdSidenav, $rootScope, $location, AuthService) {
+['$scope', '$mdSidenav', '$rootScope', '$location', 'AuthService', 
+function( $scope, $mdSidenav, $rootScope, $location, AuthService) {
     
     $scope.toggleMenu = function() {
         $mdSidenav('left').toggle();
