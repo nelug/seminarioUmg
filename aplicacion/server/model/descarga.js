@@ -1,16 +1,15 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var ventaSchema = new Schema({
-   fecha: Date.now(),
-   cliente: { type: Schema.ObjectId, ref: "Cliente" },
+var descargaSchema = new Schema({
    usuario: { type: Schema.ObjectId, ref: "User" },
-   detalleVenta: [{
+   nota: String,
+   fecha: Date.now(),
+   detalleDescarga: [{
          cantidad: Number,
          precio :  Number,
-         ganancia: Number,
          producto: { type: Schema.ObjectId, ref: "Producto" }
       }]
 });
 
-module.exports = mongoose.model('Venta', ventaSchema);
+module.exports = mongoose.model('Descarga', descargaSchema);

@@ -2,10 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var clienteSchema = new Schema({
-    cantidad: Number,
-    precio : Number,
-    ganancia: Number,
-    producto: { type: Schema.ObjectId, ref: "producto" }
+    nit: Number,
+    nombre : String,
+    direccion: String,
+    telefono: Number,
+    Usuario: { type: Schema.ObjectId, ref: "User" }
 });
 
 module.exports = mongoose.model('Cliente', clienteSchema);
