@@ -19,7 +19,7 @@
 /* 3 */
 {
     "titulo" : "Descarga",
-    "icono" : "file_download",
+    "icono" : "arrow_downward",
     "link" : "/descarga",
     "catalogo" : 0,
     "_id" : ObjectId("57b14512c3302b1f0f2eb76f")
@@ -28,7 +28,7 @@
 /* 4 */
 {
     "titulo" : "Cotizacion",
-    "icono" : "list",
+    "icono" : "content_paste",
     "link" : "/cotizacion",
     "catalogo" : 0,
     "_id" : ObjectId("57b14512c3302b1f0f2eb770")
@@ -73,7 +73,7 @@
 /* 9 */
 {
     "titulo" : "Ventas",
-    "icono" : "grid_on",
+    "icono" : "attach_money",
     "link" : "/consulta-ventas",
     "catalogo" : 2,
     "_id" : ObjectId("57b14512c3302b1f0f2eb775")
@@ -82,7 +82,7 @@
 /* 10 */
 {
     "titulo" : "Compras",
-    "icono" : "grid_on",
+    "icono" : "indeterminate_check_box",
     "link" : "/consulta-compras",
     "catalogo" : 2,
     "_id" : ObjectId("57b14512c3302b1f0f2eb776")
@@ -91,7 +91,7 @@
 /* 11 */
 {
     "titulo" : "Descargas",
-    "icono" : "grid_on",
+    "icono" : "arrow_downward",
     "link" : "/consulta-descargas",
     "catalogo" : 2,
     "_id" : ObjectId("57b14512c3302b1f0f2eb777")
@@ -100,7 +100,7 @@
 /* 12 */
 {
     "titulo" : "Cotizaciones",
-    "icono" : "grid_on",
+    "icono" : "content_paste",
     "link" : "/consulta-cotizaciones",
     "catalogo" : 2,
     "_id" : ObjectId("57b14512c3302b1f0f2eb778")
