@@ -141,3 +141,14 @@ h3 { color: #4a89dc; }
 .stretch input  {
    width: 100%
 }
+
+
+/*propiedades css para el boton de agregar, editar, eliminar*/
+.md-button.md-warn.md-fab {
+    color: rgb(255,255,255);
+    background-color: rgb(34, 151, 255);
+}
+
+.md-button.md-warn.md-fab:not([disabled]):hover {
+    background-color:rgb(34, 151, 255);
+}
