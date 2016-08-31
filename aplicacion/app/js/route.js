@@ -6,7 +6,7 @@ angular.module('seminarioUmg')
       enabled: true,
       requireBase: false
    });
-   
+
    $routeProvider
    .when('/', {
       templateUrl: 'view/home.html',
@@ -35,6 +35,21 @@ angular.module('seminarioUmg')
       templateUrl:'view/user/tabla.html',
       controller: 'userTablaCtrl',
       access: {restricted: true}
+  })
+   .when('/clientes',{
+       templateUrl: 'view/cliente/tabla.html',
+       controller: 'clienteTablaCtrl',
+       access:{restricted: true}
+   })
+   .when('/proveedores',{
+       templateUrl: 'view/proveedor/tabla.html',
+       controller: 'proveedorTablaCtrl',
+       access: {restricted: true}
+   })
+   .when('/productos',{
+       templateUrl: 'view/producto/tabla.html',
+       controller: 'proveedorTablaCtrl',
+       access: {restricted: true}
    })
    /**
    Rutas para ventas

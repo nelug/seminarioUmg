@@ -1,4 +1,4 @@
-<div class="tablaOpciones" ng-controller= "proveedorTablaCtrl">
+<div class="tablaOpciones" ng-controller= "productoTablaCtrl">
    <section layout="row" layout-sm="column" layout-wrap ng-app='seminarioUmg'>
       <md-content class="md-padding" layout="column">
         <div class="lock-size" layout="row" layout-align="center center">
@@ -29,11 +29,11 @@
    <table md-table md-row-select="false" multiple="true" ng-model="selected" md-progress="promise">
       <thead  md-head md-order="query.order" md-on-reorder="">
          <tr md-row>
-            <th md-column md-order-by="username"><span>Empresa</span></th>
-            <th md-column md-order-by="nombre"><span>Representante</span></th>
-            <th md-column md-order-by="apellido"><span>Nit</span></th>
-            <th md-column md-order-by="correo"><span>Telefono</span></th>
-            <th md-column md-order-by="correo"><span>Direccion</span></th>
+            <th md-column md-order-by="username"><span>Codigo</span></th>
+            <th md-column md-order-by="nombre"><span>Descripcion</span></th>
+            <th md-column md-order-by="apellido"><span>Precio Venta</span></th>
+            <th md-column md-order-by="correo"><span>Precio Costo</span></th>
+            <th md-column md-order-by="correo"><span>Existencia</span></th>
          </tr>
       </thead>
       <tbody md-body>
