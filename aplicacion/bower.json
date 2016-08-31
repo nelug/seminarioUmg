@@ -3,12 +3,12 @@
   "authors": ["Nelug (Leonel Madrid)"],
   "license": "GPL-3.0",
   "dependencies": {
-    "angular": "=1.5.7",
-    "angular-animate": "=1.5.7",
-    "angular-messages": "=1.5.7",
-    "angular-resource": "=1.5.7",
-    "angular-route": "=1.5.7",
-    "angular-material": "=1.0.9",
+    "angular": "=1.5.8",
+    "angular-animate": "=1.5.8",
+    "angular-messages": "=1.5.8",
+    "angular-resource": "=1.5.8",
+    "angular-route": "=1.5.8",
+    "angular-material": "=1.1.0",
     "angular-material-icons": "=0.7.0",
     "angular-material-data-table": "=v0.10.9",
     "ng-jsonpath": "=v0.1.3"
