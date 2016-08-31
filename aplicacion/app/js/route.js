@@ -41,6 +41,11 @@ angular.module('seminarioUmg')
        controller: 'clienteTablaCtrl',
        access:{restricted: true}
    })
+   .when('/proveedores',{
+       templateUrl: 'view/proveedor/tabla.html',
+       controller: 'proveedorTablaCtrl',
+       access: {restricted: true}
+   })
    /**
    Rutas para ventas
    **/
