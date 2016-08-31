@@ -31,6 +31,11 @@ angular.module('seminarioUmg')
       controller: 'permisoController',
       access: {restricted: false}
    })
+   .when('/cotizacion',{
+      templateUrl: 'view/cotizacion/crear.html',
+      controller: 'CrearCotizacionCtrl',
+      access:{restricted :true}
+   })
    .when('/usuarios',{
       templateUrl:'view/user/tabla.html',
       controller: 'userTablaCtrl',

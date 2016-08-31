@@ -1,9 +1,27 @@
-<ui-view layout="column" layout-fill layout-padding class="tabpanel-container">
-    <div layout="row" layout-align="center center">
-        <md-card flex="90">
-            <md-card-content>
-                <h2>Creando Venta</h2>
-            </md-card-content>
-        </md-card>
+<div ng-controller="CrearVentaCtrl" layout="column" style="height:600px" ng-cloak="" class="toolbardemoScrollShrink" ng-app="seminarioUmg">
+
+  <md-toolbar md-scroll-shrink="" ng-if="true">
+    <div class="md-toolbar-tools">
+      <h3>
+        <span>crear venta</span>
+      </h3>
     </div>
-</ui-view>
+  </md-toolbar>
+  <div layout="column">
+    <md-content layout="column" class="md-padding">
+      <md-input-container >
+        <label>Usuario</label>
+        <input type="text" name="username" ng-model="loginForm.username" required=""/>
+      </md-input-container>
+      <md-input-container>
+        <label>Contraseña</label>
+          <input type="password" name="password" ng-model="loginForm.password" required=""/>
+      </md-input-container>
+      <div layout="row" layout-align="center center" style="padding-top:20px;">
+        <md-button type="submit" class="md-raised md-primary" ng-disabled="disabled">Login</md-button>
+        <div flex="flex"></div>
+      <md-button href="" md-no-ink="md-no-ink">recordar mi contraseña</md-button>
+      </div>
+    </md-content>
+  </div>
+</div>
