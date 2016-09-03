@@ -78,9 +78,6 @@ md-card {
    -moz-transform: scale(0.70);
 }
 
-
-
-
 /*---------------------css para content principal-----------------------*/
 
 .contentPrincipal {
@@ -111,6 +108,7 @@ md-card {
    font-size: 1.4em;
    font-weight: 900;
 }
+
 /*-----------------------css para login---------------------------------*/
 
 hgroup {
@@ -138,8 +136,8 @@ h3 { color: #4a89dc; }
    width: 100%
 }
 
-
 /*propiedades css para el boton de agregar, editar, eliminar*/
+
 .md-button.md-warn.md-fab {
     color: rgb(255,255,255);
     background-color: rgb(34, 151, 255);
@@ -150,6 +148,7 @@ h3 { color: #4a89dc; }
 }
 
 /*---------------------------formularios-------------------------*/
+
 .toolbardemoScrollShrink .face {
   width: 48px;
   margin: 16px;
