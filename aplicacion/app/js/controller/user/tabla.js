@@ -11,6 +11,7 @@ function($scope, $http, $timeout, $mdDialog) {
     $scope.availableDirections = ['left', 'right'];
     $scope.selectedDirection = 'right';
     
+    $scope.editEnable = false;
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
     
@@ -25,7 +26,8 @@ function($scope, $http, $timeout, $mdDialog) {
     });
     
     $scope.selectUsuario = function(user) {
-        console.log(user);
+        $scope.selected = user;
+        $scope.editEnable = true;
     }
     
     $scope.dialogCrearUsuario = function(ev) {
