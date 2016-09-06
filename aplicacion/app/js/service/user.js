@@ -64,14 +64,10 @@ function ($q, $timeout, $http) {
         return deferred.promise;
     }
     
-    function register(username, password) {
+    function register(userData) {
         var deferred = $q.defer();
         
-        $http.post('/api/user/register',
-        {
-            username: username, 
-            password: password
-        })
+        $http.post('/api/user/register', userData)
         .success(function (data, status) {
             if(status === 200 && data.status){
                 deferred.resolve();
