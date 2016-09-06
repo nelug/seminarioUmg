@@ -71,7 +71,8 @@ exports.register = function(req, res) {
         new User({ 
             username: req.body.username, 
             nombre:   req.body.nombre, 
-            apellido: req.body.apellido 
+            apellido: req.body.apellido, 
+            correo:   req.body.correo 
         }),
         req.body.password, function(err, account) {
             if (err) {
