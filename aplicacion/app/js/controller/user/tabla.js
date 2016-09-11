@@ -1,15 +1,9 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('userTablaCtrl', ['$scope', '$http', '$timeout', '$mdDialog',
-function($scope, $http, $timeout, $mdDialog) {
+angular.module('seminarioUmg').controller('userTablaCtrl', ['$scope', '$http', '$timeout', '$mdDialog', 'AuthService',
+function($scope, $http, $timeout, $mdDialog, AuthService) {
     
-    $scope.topDirections = ['left'];
-    $scope.bottomDirections = ['right'];
-    $scope.isOpen = false;
-    $scope.availableModes = ['md-fling', 'md-scale'];
-    $scope.selectedMode = 'md-fling';
-    $scope.availableDirections = ['left', 'right'];
-    $scope.selectedDirection = 'right';
+    $scope.opFab = { abrir : false, modo : 'md-fling', direction : 'right'};
     
     $scope.editEnable = false;
     $scope.selected = [];
@@ -21,10 +15,8 @@ function($scope, $http, $timeout, $mdDialog) {
         page: 1
     };
     
-    $http.get('/api/user/all').success(function(data) {
-        $scope.usuarios = data;
-    });
-    
+    AuthService.buscarTodos($scope);
+        
     $scope.selectUsuario = function(user) {
         $scope.selected = user;
         $scope.editEnable = true;
