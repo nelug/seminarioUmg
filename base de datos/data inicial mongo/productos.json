@@ -1,0 +1,45 @@
+
+{
+    "_id" : ObjectId("57ce0af8b36a0af8de2db5b0"),
+    "codigo" : "2321321",
+    "descripcion" : "bolsones",
+    "precioVenta" : 200,
+    "precioCosto" : 150,
+    "existencia" : 20
+}
+
+{
+    "_id" : ObjectId("57ce0b2eb36a0af8de2db5b1"),
+    "codigo" : "899898",
+    "descripcion" : "cuadernos de 100 hojas",
+    "precioVenta" : 10,
+    "precioCosto" : 7,
+    "existencia" : 300
+}
+
+{
+    "_id" : ObjectId("57ce0b50b36a0af8de2db5b2"),
+    "codigo" : "5345435",
+    "descripcion" : "lapiceros pilot",
+    "precioVenta" : 5,
+    "precioCosto" : 2,
+    "existencia" : 200
+}
+
+{
+    "_id" : ObjectId("57ce0b76b36a0af8de2db5b3"),
+    "codigo" : "899898",
+    "descripcion" : "cajas de temperas",
+    "precioVenta" : 20,
+    "precioCosto" : 15,
+    "existencia" : 30
+}
+
+{
+    "_id" : ObjectId("57ce0b9cb36a0af8de2db5b4"),
+    "codigo" : "32434234",
+    "descripcion" : "cuadernos de cuadros",
+    "precioVenta" : 10,
+    "precioCosto" : 7,
+    "existencia" : 300
+}
