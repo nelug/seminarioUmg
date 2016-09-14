@@ -20,22 +20,22 @@ angular.module('seminarioUmg')
         templateUrl: 'view/user/login.html',
         controller: 'loginController',
         access: {
-            restricted: fals
-            e}
+            restricted: false
+        }
     })
     .when('/register', {
         templateUrl: 'view/user/crear.html',
         controller: 'registerController',
         access: {
-            restricted: fals
-            e}
+            restricted: false
+        }
     })
     .when('/permisos',{
         templateUrl:'view/user/permisos.html',
         controller: 'permisoController',
         access: {
-            restricted: fals
-            e}
+            restricted: false
+        }
     })
     /** Rutas para catalogos **/
     .when('/usuarios',{
@@ -59,6 +59,7 @@ angular.module('seminarioUmg')
             restricted: true
         }
     })
+    /** Rutas para productos **/
     .when('/productos',{
         templateUrl: 'view/producto/tabla.html',
         controller: 'proveedorTablaCtrl',

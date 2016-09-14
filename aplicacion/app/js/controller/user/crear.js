@@ -18,7 +18,7 @@ function ($scope, $location, AuthService, $mdDialog) {
         })
         .catch(function () {
             $scope.error = true;
-            $scope.errorMessage = 'hubo un error..!!';
+            $scope.errorMessage = 'hubo un error al intentar almacenar..!!';
             $scope.disabled = false;
             $scope.registerForm = {};
         });

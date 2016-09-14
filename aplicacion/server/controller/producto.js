@@ -9,5 +9,27 @@ exports.getAll = function(req, res) {
 }
 
 exports.crear = function(req, res) {
+    producto.create(req.body, function (err) {
+        if (err) {
+            return res.json({ 
+                resultado: false, 
+                mensaje: error
+            });
+        }
+        
+        else {
+            res.json({
+                resultado: true,
+                mensaje: "Producto almacenado con exito."        
+            });
+        }
+    });
+}
 
+exports.editar = function(req, res) {
+    
+}
+
+exports.eliminar = function(req, res) {
+    
 }

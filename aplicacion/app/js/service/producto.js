@@ -3,8 +3,14 @@
 angular.module('seminarioUmg').factory('ProductoService', ['$q', '$timeout', '$http',
 function ($q, $timeout, $http) {
     
-    function crear(data) {
-    
+    function crear($scope) {
+        http.post('/api/productos/', $scope.formData)
+		.success(function(data) {
+				
+		})
+		.error(function(data) {
+			console.log('Error: ' + data);
+		});
     }
     
     function editar(data) {
@@ -15,8 +21,10 @@ function ($q, $timeout, $http) {
 
     }
     
-    function buscarTodos() {
-        
+    function buscarTodos($scope) {
+        $http.get('/api/productos/all').success(function(data) {
+            $scope.productos = data;
+        });
     }
     
     function buscarId(id) {
@@ -27,6 +35,7 @@ function ($q, $timeout, $http) {
         crear: crear,
         editar: editar,
         eliminar: eliminar,
-        buscar: buscar
+        buscar: buscar,
+        buscarTodos: buscarTodos
     });
 }]);
