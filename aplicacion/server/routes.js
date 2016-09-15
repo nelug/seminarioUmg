@@ -14,9 +14,9 @@ module.exports = function(app) {
 	app.get('/api/user/permisos', userCtrl.getPermisos);
 	
 	/** Rutas de productos **/
-	app.get('/api/productos/all', productoCtrl.getAll);
-	app.post('/api/productos/', productoCtrl.crear);
-	app.put('/api/productos/', productoCtrl.editar);
+	app.get('/api/producto/all', productoCtrl.getAll);
+	app.post('/api/producto/', productoCtrl.crear);
+	app.put('/api/producto/', productoCtrl.editar);
 	
 	app.get('/*', function(req, res) {
 		res.sendfile('./app/index.html'); 
