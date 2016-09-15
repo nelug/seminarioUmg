@@ -9,18 +9,18 @@
               </md-button>
             </md-fab-trigger>
             <md-fab-actions ng-if="(!editEnable)">
-              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogCrearUsuario()"> 
+              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogoCrear()"> 
                    <ng-md-icon icon="add"></ng-md-icon>
               </md-button>
             </md-fab-actions>
             <md-fab-actions ng-if="(editEnable)">
-              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogCrearUsuario()"> 
+              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogoCrear()"> 
                    <ng-md-icon icon="add"></ng-md-icon>
               </md-button>
-              <md-button aria-label="Editar" class="md-fab md-raised md-mini">
+              <md-button aria-label="Editar" class="md-fab md-raised md-mini" ng-click="dialogoEditar()">
                   <ng-md-icon icon="create"></ng-md-icon>
               </md-button>
-              <md-button aria-label="Borrar" class="md-fab md-raised md-mini">
+              <md-button aria-label="Borrar" class="md-fab md-raised md-mini" ng-click="dialogoEliminar()">
                    <ng-md-icon icon="delete"></ng-md-icon>
               </md-button>
             </md-fab-actions>
