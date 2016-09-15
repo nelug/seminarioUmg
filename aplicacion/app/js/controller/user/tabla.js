@@ -1,9 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('userTablaCtrl', ['$scope', '$http', '$timeout', '$mdDialog', 'AuthService',
-function($scope, $http, $timeout, $mdDialog, AuthService) {
-    
-    $scope.opFab = { abrir : false, modo : 'md-fling', direction : 'right'};
+angular.module('seminarioUmg').controller('userTablaCtrl', ['$scope', '$http', '$timeout', '$mdDialog', 'ServiceGenerico',
+function($scope, $http, $timeout, $mdDialog, ServiceGenerico) {
     
     $scope.editEnable = false;
     $scope.selected = [];
@@ -15,7 +13,7 @@ function($scope, $http, $timeout, $mdDialog, AuthService) {
         page: 1
     };
     
-    AuthService.buscarTodos($scope);
+    ServiceGenerico.buscarTodos($scope, 'user');
         
     $scope.selectUsuario = function(user) {
         $scope.selected = user;

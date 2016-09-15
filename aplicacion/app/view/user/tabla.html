@@ -1,34 +1,4 @@
-<div class="tablaOpciones">
-   <section layout="row" layout-sm="column" layout-wrap ng-app='seminarioUmg'>
-      <md-content class="md-padding" layout="column">
-        <div class="lock-size" layout="row" layout-align="center center">
-          <md-fab-speed-dial md-open="opFab.abrir" md-direction="{{opFab.direction}}" ng-class="opFab.modo">
-            <md-fab-trigger>
-              <md-button aria-label="menu" class="md-fab md-warn">
-                  <ng-md-icon icon="menu"></ng-md-icon>
-              </md-button>
-            </md-fab-trigger>
-            <md-fab-actions ng-if="(!editEnable)">
-              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogCrearUsuario()"> 
-                   <ng-md-icon icon="add"></ng-md-icon>
-              </md-button>
-            </md-fab-actions>
-            <md-fab-actions ng-if="(editEnable)">
-              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogCrearUsuario()"> 
-                   <ng-md-icon icon="add"></ng-md-icon>
-              </md-button>
-              <md-button aria-label="Editar" class="md-fab md-raised md-mini">
-                  <ng-md-icon icon="create"></ng-md-icon>
-              </md-button>
-              <md-button aria-label="Borrar" class="md-fab md-raised md-mini">
-                   <ng-md-icon icon="delete"></ng-md-icon>
-              </md-button>
-            </md-fab-actions>
-          </md-fab-speed-dial>
-        </div>
-     </md-content>
-    </section>
-</div>
+<div ng-include src="'view/plantillas/opcionesTabla.html'"></div>
 <md-table-container>
    <table md-table md-row-select="false" multiple="true" ng-model="selected" md-progress="promise">
       <thead  md-head md-order="query.order" md-on-reorder="">
@@ -40,7 +10,7 @@
          </tr>
       </thead>
       <tbody md-body>
-         <tr ng-click="selectUsuario(user)" md-row md-select="user" md-on-select="" md-auto-select="true" ng-repeat="user in usuarios">
+         <tr ng-click="selectUsuario(user)" md-row md-select="user" md-on-select="" md-auto-select="true" ng-repeat="user in dataTabla">
             <td md-cell>{{ user.username }}</td>
             <td md-cell>{{ user.nombre }}</td>
             <td md-cell>{{ user.apellido }}</td>

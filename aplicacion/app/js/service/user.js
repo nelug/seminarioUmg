@@ -82,18 +82,11 @@ function ($q, $timeout, $http) {
         return deferred.promise;
     }
     
-    function buscarTodos($scope) {
-        $http.get('/api/user/all').success(function(data) {
-            $scope.usuarios = data;
-        });
-    }
-    
     return ({
         isLoggedIn: isLoggedIn,
         getUserStatus: getUserStatus,
         login: login,
         logout: logout,
-        register: register,
-        buscarTodos: buscarTodos
+        register: register
     });
 }]);
