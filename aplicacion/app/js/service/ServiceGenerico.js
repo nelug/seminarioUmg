@@ -44,6 +44,12 @@ function ($q, $timeout, $http, $mdDialog) {
         }
     }
     
+    function funcionesDefaultDialog($scope, $mdDialog) {
+        $scope.hide = function() { $mdDialog.hide(); };
+        $scope.cancel = function() { $mdDialog.cancel(); };
+        $scope.answer = function(answer) { $mdDialog.hide(answer); };
+    }
+    
     function buscar(id) {
         
     }
@@ -51,6 +57,7 @@ function ($q, $timeout, $http, $mdDialog) {
     return ({
         buscar: buscar,
         buscarTodos: buscarTodos,
-        instanciarFunciones: instanciarFunciones
+        instanciarFunciones: instanciarFunciones,
+        funcionesDefaultDialog: funcionesDefaultDialog
     });
 }]);
