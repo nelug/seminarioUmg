@@ -23,6 +23,7 @@ angular.module('seminarioUmg',
                     $rootScope.menuConsultas = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==2)]');
                     $rootScope.menuGraficas  = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==3)]');
                 });
+                $rootScope.opFab = { abrir : false, modo : 'md-fling', direction : 'right'};
             }
             
             $rootScope.loginAccess = AuthService.isLoggedIn();

@@ -1,4 +1,3 @@
-/* 1 */
 {
     "titulo" : "Venta",
     "icono" : "shopping_cart",
@@ -7,7 +6,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb76d")
 }
 
-/* 2 */
 {
     "titulo" : "Compra",
     "icono" : "shopping_basket",
@@ -16,7 +14,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb76e")
 }
 
-/* 3 */
 {
     "titulo" : "Descarga",
     "icono" : "arrow_downward",
@@ -25,7 +22,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb76f")
 }
 
-/* 4 */
 {
     "titulo" : "Cotizacion",
     "icono" : "content_paste",
@@ -34,7 +30,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb770")
 }
 
-/* 5 */
 {
     "titulo" : "Usuarios",
     "icono" : "account_box",
@@ -43,7 +38,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb771")
 }
 
-/* 6 */
 {
     "titulo" : "Clientes",
     "icono" : "supervisor_account",
@@ -52,7 +46,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb772")
 }
 
-/* 7 */
 {
     "titulo" : "Proveedores",
     "icono" : "card_travel",
@@ -61,7 +54,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb773")
 }
 
-/* 8 */
 {
     "titulo" : "Productos",
     "icono" : "speaker_notes",
@@ -70,7 +62,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb774")
 }
 
-/* 9 */
 {
     "titulo" : "Ventas",
     "icono" : "attach_money",
@@ -79,7 +70,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb775")
 }
 
-/* 10 */
 {
     "titulo" : "Compras",
     "icono" : "indeterminate_check_box",
@@ -88,7 +78,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb776")
 }
 
-/* 11 */
 {
     "titulo" : "Descargas",
     "icono" : "arrow_downward",
@@ -97,7 +86,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb777")
 }
 
-/* 12 */
 {
     "titulo" : "Cotizaciones",
     "icono" : "content_paste",
@@ -106,7 +94,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb778")
 }
 
-/* 13 */
 {
     "titulo" : "Ventas",
     "icono" : "insert_chart",
@@ -115,7 +102,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb779")
 }
 
-/* 14 */
 {
     "titulo" : "Compras",
     "icono" : "insert_chart",
@@ -124,7 +110,6 @@
     "_id" : ObjectId("57b14512c3302b1f0f2eb77a")
 }
 
-/* 15 */
 {
     "titulo" : "Descargas",
     "icono" : "insert_chart",

@@ -21,13 +21,7 @@ function ($q, $timeout, $http) {
 
     }
     
-    function buscarTodos($scope) {
-        $http.get('/api/productos/all').success(function(data) {
-            $scope.productos = data;
-        });
-    }
-    
-    function buscarId(id) {
+    function buscar(id) {
         
     }
 
@@ -35,7 +29,6 @@ function ($q, $timeout, $http) {
         crear: crear,
         editar: editar,
         eliminar: eliminar,
-        buscar: buscar,
-        buscarTodos: buscarTodos
+        buscar: buscar
     });
 }]);
