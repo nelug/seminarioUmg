@@ -3,6 +3,7 @@ require ('./controller/menu');
 var userCtrl = require ('./controller/user');
 var productoCtrl = require ('./controller/producto');
 var proveedorCtrl= require('./controller/proveedor');
+var clienteCtrl = require('./controller/cliente');
 
 
 module.exports = function(app) {
@@ -23,6 +24,10 @@ module.exports = function(app) {
 	/*rutas para proveedores*/
 	app.get('/api/proveedor/all', proveedorCtrl.getAll);
 	app.post('/api/proveedor/', proveedorCtrl.crear);
+
+	/*rutas para clientes*/
+	app.get('/api/cliente/all', clienteCtrl.getAll);
+	app.post('/api/cliente/', clienteCtrl.crear);
 
 	app.get('/*', function(req, res) {
 		res.sendfile('./app/index.html');
