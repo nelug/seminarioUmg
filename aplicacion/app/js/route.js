@@ -6,7 +6,7 @@ angular.module('seminarioUmg')
         enabled: true,
         requireBase: false
     });
-    
+
     $routeProvider
     .when('/', {
         templateUrl: 'view/home.html',
