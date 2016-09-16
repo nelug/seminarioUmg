@@ -6,7 +6,7 @@ function ($q, $timeout, $http) {
     function crear($scope) {
         http.post('/api/proveedor/', $scope.formData)
 		.success(function(data) {
-				
+
 		})
 		.error(function(data) {
 			console.log('Error: ' + data);
