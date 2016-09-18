@@ -4,6 +4,6 @@ angular.module('seminarioUmg').controller('CrearVentaCtrl', ['$scope', 'toaster'
     $scope.formTitulo = 'Crear Venta';
     
     $scope.notificaion = function() {
-        toaster.pop('success', "Correcto", 'Venta almacenada con exito..');
-    }
+        toaster.pop('success', 'Correcto', 'Venta almacenada con exito..');
+    };
 }]);
