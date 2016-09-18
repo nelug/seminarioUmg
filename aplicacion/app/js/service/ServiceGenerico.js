@@ -5,7 +5,7 @@ function ($q, $timeout, $http, $mdDialog) {
     
     function buscarTodos($scope, entidad) {
         $scope.editEnable = false;
-        $scope.selected = [];
+        $scope.dataSeleccionada = [];
         $scope.opFab = { abrir : false, modo : 'md-fling', direction : 'right'};
         
         $http.get('/api/' + entidad.toLowerCase() + '/all').success(function(data) {
@@ -24,6 +24,7 @@ function ($q, $timeout, $http, $mdDialog) {
         
         $scope.dialogoEditar = function() {
             $mdDialog.show({
+                locals:{ dataEnviada: $scope.dataSeleccionada }, 
                 controller: 'Editar' + entidad + 'Ctrl',
                 templateUrl: 'view/' + entidad.toLowerCase() + '/editar.html',
                 clickOutsideToClose: false
@@ -32,6 +33,7 @@ function ($q, $timeout, $http, $mdDialog) {
         
         $scope.dialogoEliminar = function() {
             $mdDialog.show({
+                locals:{ idEnviado: $scope.dataSeleccionada._id }, 
                 controller: 'Eliminar' + entidad + 'Ctrl',
                 templateUrl: 'view/' + entidad.toLowerCase() + '/eliminar.html',
                 clickOutsideToClose: false
@@ -39,9 +41,9 @@ function ($q, $timeout, $http, $mdDialog) {
         };
         
         $scope.selectDataTabla = function(dataTabla) {
-            $scope.selected = dataTabla;
+            $scope.dataSeleccionada = dataTabla;
             $scope.editEnable = true;
-        }
+        };
     }
     
     function funcionesDefaultDialog($scope, $mdDialog) {
@@ -50,14 +52,25 @@ function ($q, $timeout, $http, $mdDialog) {
         $scope.answer = function(answer) { $mdDialog.hide(answer); };
     }
     
-    function buscar(id) {
-        
+    function funcionesDialogoEditar($scope, $mdDialog, dataEnviada){
+        $scope.hide = function() { $mdDialog.hide(); };
+        $scope.cancel = function() { $mdDialog.cancel(); };
+        $scope.answer = function(answer) { $mdDialog.hide(answer); };
+        $scope.datosForm = dataEnviada;
+    }
+    
+    function funcionesDialogoEliminar($scope, $mdDialog, idEnviado){
+        $scope.hide = function() { $mdDialog.hide(); };
+        $scope.cancel = function() { $mdDialog.cancel(); };
+        $scope.answer = function(answer) { $mdDialog.hide(answer); };
+        $scope.id = idEnviado;
     }
     
     return ({
-        buscar: buscar,
         buscarTodos: buscarTodos,
         instanciarFunciones: instanciarFunciones,
-        funcionesDefaultDialog: funcionesDefaultDialog
+        funcionesDefaultDialog: funcionesDefaultDialog,
+        funcionesDialogoEditar: funcionesDialogoEditar,
+        funcionesDialogoEliminar: funcionesDialogoEliminar
     });
 }]);
