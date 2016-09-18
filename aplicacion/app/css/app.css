@@ -83,34 +83,13 @@ md-card {
 .contentPrincipal {
    padding: 20px;
 }
+/*-----------------------css para tablas ---------------------------------*/
 
-.contentPrincipal table{
-   border: 1px solid #877f77;
-}
-
-.contentPrincipal table tbody tr:hover {
-   background-color: rgba(33, 150, 243, 0.35);
-}
-
-.contentPrincipal table thead{
-   background-color: rgb(33,150,243);
-}
-
-.contentPrincipal table thead tr th{
-   border-bottom: 3px solid #115890;
-}
-
-.contentPrincipal table.md-table thead.md-head > tr.md-row {
-    height: 40px;
-}
-
-.contentPrincipal table  thead  th > span{
-   font-size: 1.4em;
-   font-weight: 900;
+.tablaStyle {
+    width: 100%;
 }
 
 /*-----------------------css para login---------------------------------*/
-
 hgroup {
    text-align:center;
    margin-top: 4em;
@@ -162,3 +141,4 @@ h3 { color: #4a89dc; }
 md-dialog {
     width: 35%;
 }
+
