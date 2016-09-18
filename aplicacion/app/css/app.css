@@ -89,6 +89,9 @@ md-card {
     width: 100%;
 }
 
+div.dataTables_length select  btn-default dropdown-toggle {
+    width: 100px;
+}
 /*-----------------------css para login---------------------------------*/
 hgroup {
    text-align:center;
@@ -141,4 +144,3 @@ h3 { color: #4a89dc; }
 md-dialog {
     width: 35%;
 }
-
