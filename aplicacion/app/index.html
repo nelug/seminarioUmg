@@ -69,8 +69,7 @@
             <div class="menuCatalogos" ng-if="menuConsultas" ng-show="subMenu == 2">
                <md-list-item ng-repeat="mn in menuConsultas">
                   <md-button ng-click="verLink(mn.link)">
-                     <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
-                     {{mn.titulo}}
+                     <ng-mproductostitulo}}
                   </md-button>
                </md-list-item>
             </div>
@@ -129,16 +128,17 @@
    <script src="/js/app.js"></script>
    <script src="/js/route.js"></script>
    <script src="/js/controller/mainController.js"></script>
+   <script src="/js/service/AuthService.js"></script>
    <script src="/js/service/ServiceGenerico.js"></script>
    <script src="/js/service/ServiceGenericoDetalle.js"></script>
    <script src="/js/controller/cliente/crear.js"></script>
    <script src="/js/controller/cliente/tabla.js"></script>
    <script src="/js/controller/compra/crear.js"></script>
    <script src="/js/controller/compra/tabla.js"></script>
-   <script src="/js/controller/cotizacion/crear.js"></script>
-   <script src="/js/controller/cotizacion/tabla.js"></script>
    <script src="/js/controller/descarga/crear.js"></script>
    <script src="/js/controller/descarga/tabla.js"></script>
+   <script src="/js/controller/cotizacion/crear.js"></script>
+   <script src="/js/controller/cotizacion/tabla.js"></script>
    <script src="/js/controller/producto/crear.js"></script>
    <script src="/js/controller/producto/editar.js"></script>
    <script src="/js/controller/producto/eliminar.js"></script>
