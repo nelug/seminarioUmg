@@ -30,7 +30,9 @@ module.exports = function(app) {
 	/*rutas para clientes*/
 	app.get('/api/cliente/all', clienteCtrl.getAll);
 	app.post('/api/cliente/', clienteCtrl.crear);
-	
+	app.put('/api/cliente', clienteCtrl.editar);
+
+
 
 
 	app.get('/*', function(req, res) {

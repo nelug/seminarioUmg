@@ -25,3 +25,11 @@ exports.crear = function(req, res) {
         }
     });
 }
+
+exports.editar = function(req, res) {
+
+}
+
+exports.eliminar = function(req, res) {
+
+}
