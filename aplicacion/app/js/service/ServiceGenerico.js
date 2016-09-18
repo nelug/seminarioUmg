@@ -6,7 +6,7 @@ function ($q, $timeout, $http, $mdDialog) {
     function buscarTodos($scope, entidad) {
         $scope.editEnable = false;
         $scope.selected = [];
-        $scope.limitOptions = [5, 10, 15];
+        $scope.opFab = { abrir : false, modo : 'md-fling', direction : 'right'};
         
         $http.get('/api/' + entidad.toLowerCase() + '/all').success(function(data) {
             $scope.dataTabla = data;

@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('seminarioUmg', 
-['ngRoute', 'ngResource', 'ngMessages', 'ngAnimate', 'ngMdIcons', 'ngMaterial', 'md.data.table', 'ngJSONPath', 'toaster'])
-.config( function($mdThemingProvider) {
+angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimate', 'ngMdIcons', 'ngMaterial', 'ngJSONPath', 'toaster', 'datatables']).config( function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
     .primaryPalette('blue')
     .accentPalette('brown');
@@ -23,7 +21,6 @@ angular.module('seminarioUmg',
                     $rootScope.menuConsultas = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==2)]');
                     $rootScope.menuGraficas  = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==3)]');
                 });
-                $rootScope.opFab = { abrir : false, modo : 'md-fling', direction : 'right'};
             }
             
             $rootScope.loginAccess = AuthService.isLoggedIn();
