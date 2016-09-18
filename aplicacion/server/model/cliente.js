@@ -9,4 +9,4 @@ var clienteSchema = new Schema({
     Usuario: { type: Schema.ObjectId, ref: "User" }
 });
 
-module.exports = mongoose.model('Cliente', clienteSchema);
+module.exports = mongoose.model('Clientes', clienteSchema);

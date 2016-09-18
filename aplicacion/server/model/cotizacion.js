@@ -8,8 +8,8 @@ var cotizacionSchema = new Schema({
    detalleCotizacion: [{
          cantidad: Number,
          precio :  Number,
-         producto: { type: Schema.ObjectId, ref: "Producto" }
+         producto: { type: Schema.ObjectId, ref: "Productos" }
       }]
 });
 
-module.exports = mongoose.model('Cotizacion', cotizacionSchema);
+module.exports = mongoose.model('Cotizaciones', cotizacionSchema);

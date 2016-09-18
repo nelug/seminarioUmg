@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('seminarioUmg').factory('ServiceGenerico', [function () { }]);
+angular.module('seminarioUmg').factory('ServiceGenericoDetalle', [function () { }]);

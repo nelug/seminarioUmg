@@ -2,12 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var proveedorSchema = new Schema({
-   usuario: { type: Schema.ObjectId, ref: "User" },
    nit: Number,
    empresa: String,
    representante: String,
    telefono: Number,
-   direccion: String
+   direccion: String,
+   usuario: { type: Schema.ObjectId, ref: "User" }
 });
 
-module.exports = mongoose.model('Proveedor', proveedorSchema);
+module.exports = mongoose.model('Proveedores', proveedorSchema);

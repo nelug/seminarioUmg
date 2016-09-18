@@ -8,8 +8,8 @@ var descargaSchema = new Schema({
    detalleDescarga: [{
          cantidad: Number,
          precio :  Number,
-         producto: { type: Schema.ObjectId, ref: "Producto" }
+         producto: { type: Schema.ObjectId, ref: "Productos" }
       }]
 });
 
-module.exports = mongoose.model('Descarga', descargaSchema);
+module.exports = mongoose.model('Descargas', descargaSchema);
