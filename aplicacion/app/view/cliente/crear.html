@@ -1,15 +1,34 @@
 <md-dialog>
-    <form layout="column" ng-submit="">
-
+    <form layout="column">
         <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
-
-        <md-dialog-content class="md-whiteframe-5dp" layout="column" layout-align="center center">
-
-        </md-dialog-content>
-
+        <md-dialog-content class="md-whiteframe-5dp">
+                    <form layout="column" ng-submit="()"  layout-align="center center" layout-fill="layout-fill">
+                        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+                        <md-content layout="column" class="md-padding">
+                            <md-input-container >
+                                <label>Nit</label>
+                                <input type="text" name="nit" ng-model="" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Nombre</label>
+                                <input type="text" name="nombre" ng-model="" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>direccion</label>
+                                <input type="text" name="direccion" ng-model="" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Telefono</label>
+                                <input type="email" name="telefono" ng-model="" required="true"/>
+                            </md-input-container>
+                        </md-content>
+                    </form>
+                </md-dialog-content>
         <md-dialog-actions layout="row">
-
+            <div layout="row" layout-align="center center" style="padding-top:20px;">
+                <md-button ng-click= "()" class="md-raised md-primary" ng-disabled="disabled">Crear</md-button>
+                <div flex="flex"></div>
+            </div>
         </md-dialog-actions>
-
     </form>
 </md-dialog>
