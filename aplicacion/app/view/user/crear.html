@@ -1,34 +1,36 @@
 <md-dialog>
-    <form layout="column" ng-submit="register()">
+    <form layout="column">
         <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
-        
-        <md-dialog-content class="md-whiteframe-5dp" layout="column" layout-align="center center">
-            <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-            <md-input-container flex="100">
-                <label>Usuario</label>
-                <input type="text" name="username" ng-model="registerForm.username" required="true"/>
-            </md-input-container>
-            <md-input-container flex="100">
-                <label>Nombre</label>
-                <input type="text" name="nombre" ng-model="registerForm.nombre" required="true"/>
-            </md-input-container>
-            <md-input-container flex="100">
-                <label>Apellido</label>
-                <input type="text" name="apellido" ng-model="registerForm.apellido" required="true"/>
-            </md-input-container>
-            <md-input-container flex="100">
-                <label>Correo</label>
-                <input type="email" name="correo" ng-model="registerForm.correo" required="true"/>
-            </md-input-container>
-            <md-input-container flex="100">
-                <label>Contraseña</label>
-                <input type="password"name="password" ng-model="registerForm.password" required="true"/>
-            </md-input-container>
-        </md-dialog-content>
-        
+        <md-dialog-content class="md-whiteframe-5dp">
+                    <form layout="column" ng-submit="register()"  layout-align="center center" layout-fill="layout-fill">
+                        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+                        <md-content layout="column" class="md-padding">
+                            <md-input-container >
+                                <label>Usuario</label>
+                                <input type="text" name="username" ng-model="registerForm.username" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Nombre</label>
+                                <input type="text" name="nombre" ng-model="registerForm.nombre" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Apellido</label>
+                                <input type="text" name="apellido" ng-model="registerForm.apellido" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Correo</label>
+                                <input type="email" name="correo" ng-model="registerForm.correo" required="true"/>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Contraseña</label>
+                                <input type="password"name="password" ng-model="registerForm.password" required="true"/>
+                            </md-input-container>
+                        </md-content>
+                    </form>
+                </md-dialog-content>
         <md-dialog-actions layout="row">
             <div layout="row" layout-align="center center" style="padding-top:20px;">
-                <md-button type="submit" class="md-raised md-primary" ng-disabled="disabled">Crear</md-button>
+                <md-button ng-click= "register()" class="md-raised md-primary" ng-disabled="disabled">Crear</md-button>
                 <div flex="flex"></div>
             </div>
         </md-dialog-actions>
