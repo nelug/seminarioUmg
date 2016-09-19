@@ -9,7 +9,9 @@ exports.getAll = function(req, res) {
 }
 
 exports.crear = function(req, res) {
-    Producto.create(req.body, function (err) {
+    Producto.create({codigo: req.body.codigo, descripcion: req.body.descripcion, marca: req.body.marca,
+        precioVenta: req.body.precioVenta, precioCosto: req.body.precioCosto, existencia: req.body.existencia},
+        function (err) {
         if (err) {
             return res.json({
                 resultado: false,
