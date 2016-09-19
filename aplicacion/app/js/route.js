@@ -67,6 +67,14 @@ angular.module('seminarioUmg')
             restricted: true
         }
     })
+    /*ruta para crear productos*/
+    .when('/productos/crear',{
+        templateUrl: 'view/producto/tabla.html',
+        controller: 'CrearProductoCtrl',
+        access: {
+            restricted: true
+        }
+    })
     /** Rutas para ventas **/
     .when('/venta', {
         templateUrl: 'view/venta/crear.html',

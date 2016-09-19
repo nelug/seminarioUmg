@@ -18,7 +18,7 @@ module.exports = function(app) {
 
 	/** Rutas de productos **/
 	app.get('/api/producto/all', productoCtrl.getAll);
-	app.post('/api/producto/', productoCtrl.crear);
+	app.post('/api/producto/crear', productoCtrl.crear);
 	app.put('/api/producto/', productoCtrl.editar);
 
 	/*rutas para proveedores*/
