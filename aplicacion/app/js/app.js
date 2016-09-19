@@ -4,15 +4,16 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
     $mdThemingProvider.theme('default')
     .primaryPalette('blue')
     .accentPalette('brown');
-}).run( function ($rootScope, $location, $route, AuthService, $http, jsonPath) {
+}).run( function ($rootScope, $location, $route, AuthService, $http, jsonPath, DTDefaultOptions) {
+    DTDefaultOptions.setLanguageSource('lang/es.json');
     $rootScope.$on('$routeChangeStart', function (event, next) {
         AuthService.getUserStatus().then(function() {
             if (next.access.restricted && !AuthService.isLoggedIn()){
                 $location.path('/login');
-                $route.reload();    
+                $route.reload();
                 $rootScope.menus = false;
             }
-            
+
             if(AuthService.isLoggedIn()){
                 $http.get('/api/user/permisos').success(function (data) {
                     $rootScope.menus = true;
@@ -22,7 +23,7 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
                     $rootScope.menuGraficas  = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==3)]');
                 });
             }
-            
+
             $rootScope.loginAccess = AuthService.isLoggedIn();
         });
     });
