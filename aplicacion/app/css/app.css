@@ -92,6 +92,11 @@ md-card {
 div.dataTables_length select  btn-default dropdown-toggle {
     width: 100px;
 }
+
+.loader-tabla {
+  width: 100%;
+  text-align: center;
+}
 /*-----------------------css para login---------------------------------*/
 hgroup {
    text-align:center;
