@@ -5,7 +5,11 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
     .primaryPalette('blue')
     .accentPalette('brown');
 }).run( function ($rootScope, $location, $route, AuthService, $http, jsonPath, DTDefaultOptions) {
+    //configuracion para datatables
     DTDefaultOptions.setLanguageSource('lang/es.json');
+    DTDefaultOptions.setLoadingTemplate('<div class="loader-tabla"><img src="img/loading.gif"></div>');
+
+    //configuracion para login
     $rootScope.$on('$routeChangeStart', function (event, next) {
         AuthService.getUserStatus().then(function() {
             if (next.access.restricted && !AuthService.isLoggedIn()){
