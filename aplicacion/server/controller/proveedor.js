@@ -8,8 +8,11 @@ exports.getAll = function(req, res) {
     });
 }
 
+
 exports.crear = function(req, res) {
-    Proveedor.create(req.body, function (err) {
+    Proveedor.create({nit: req.body.nit, empresa: req.body.empresa, representante: req.body.representante,
+        telefono: req.body.telefono, direccion: req.body.direccion},
+        function (err) {
         if (err) {
             return res.json({
                 resultado: false,
@@ -20,7 +23,7 @@ exports.crear = function(req, res) {
         else {
             res.json({
                 resultado: true,
-                mensaje: "Proveedor almacenado con exito."
+                mensaje: "proveedor almacenado con exito."
             });
         }
     });

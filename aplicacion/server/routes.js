@@ -23,13 +23,13 @@ module.exports = function(app) {
 
 	/*rutas para proveedores*/
 	app.get('/api/proveedor/all', proveedorCtrl.getAll);
-	app.post('/api/proveedor/', proveedorCtrl.crear);
+	app.post('/api/proveedor/crear', proveedorCtrl.crear);
 	app.put('/api/proveedor', proveedorCtrl.editar);
 
 
 	/*rutas para clientes*/
 	app.get('/api/cliente/all', clienteCtrl.getAll);
-	app.post('/api/cliente/', clienteCtrl.crear);
+	app.post('/api/cliente/crear', clienteCtrl.crear);
 	app.put('/api/cliente', clienteCtrl.editar);
 
 

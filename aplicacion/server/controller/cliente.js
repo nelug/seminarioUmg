@@ -9,7 +9,9 @@ exports.getAll = function(req, res) {
 }
 
 exports.crear = function(req, res) {
-    Cliente.create(req.body, function (err) {
+    Cliente.create({nit: req.body.nit, nombre: req.body.nombre, direccion: req.body.direccion,
+        telefono: req.body.telefono},
+        function (err) {
         if (err) {
             return res.json({
                 resultado: false,

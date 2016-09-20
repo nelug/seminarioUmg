@@ -1,8 +1,8 @@
 <md-dialog>
-    <div layout="column">
+    <form layout="column">
         <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
         <md-dialog-content class="md-whiteframe-5dp">
-                    <form ng-submit="crearRegistro()" layout-fill="layout-fill">
+                    <form layout="column" ng-submit="crearRegistro()"  layout-align="center center" layout-fill="layout-fill">
                         <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
                         <md-content layout="column" class="md-padding">
                             <md-input-container >
@@ -38,5 +38,5 @@
                 <div flex="flex"></div>
             </div>
         </md-dialog-actions>
-    </div>
+    </form>
 </md-dialog>
