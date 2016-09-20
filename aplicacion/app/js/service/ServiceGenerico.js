@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').factory('ServiceGenerico', ['$q', '$timeout', '$http', '$mdDialog', '$route', '$templateCache', 
-function ($q, $timeout, $http, $mdDialog, $route, $templateCache) {
+angular.module('seminarioUmg').factory('ServiceGenerico', ['$q', '$timeout', '$http', '$mdDialog', '$route', '$templateCache', 'toaster',
+function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
     
     function buscarTodos($scope, entidad) {
         $scope.editEnable = false;
@@ -54,9 +54,15 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache) {
         $scope.crearRegistro = function () {
             $http.post('/api/'+ entidad.toLowerCase() + '/crear', $scope.formData)
             .success(function(data) {
-                $scope.formData = {}; 
-                $mdDialog.hide();
-                reloadRoute();
+                if (!data.resultado) 
+                    toaster.warning(data.mensaje.name, data.mensaje.message);
+                    
+                else {
+                    toaster.success('Correcto!', data.mensaje);
+                    $scope.formData = {}; 
+                    $mdDialog.hide();
+                    reloadRoute();
+                }
             })
             .error(function(data) {
                 console.log('Error: ' + data);
