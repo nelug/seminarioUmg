@@ -52,6 +52,14 @@ angular.module('seminarioUmg')
             restricted: true
         }
     })
+   //ruta para crear un cliente
+    .when('/clientes/crear',{
+        templateUrl: 'view/cliente/tabla.html',
+        controller: 'CrearClienteCtrl',
+        access:{
+            restricted: true
+        }
+    })
     //ruta para mostrar proveedores
     .when('/proveedores',{
         templateUrl: 'view/proveedor/tabla.html',
