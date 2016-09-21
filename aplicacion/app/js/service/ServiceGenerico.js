@@ -54,20 +54,21 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
         $scope.crearRegistro = function () {
             $http.post('/api/'+ entidad.toLowerCase() + '/crear', $scope.formData)
             .success(function(data) {
-                if (!data.resultado) 
+                if (!data.resultado) {
                     toaster.warning(data.mensaje.name, data.mensaje.message);
-                    
+                }
                 else {
                     toaster.success('Correcto!', data.mensaje);
                     $scope.formData = {}; 
                     $mdDialog.hide();
-                    reloadRoute();
+                    $templateCache.remove($route.current.templateUrl);
+                    $route.reload();
                 }
             })
             .error(function(data) {
                 console.log('Error: ' + data);
             });
-        }
+        };
     }
     
     function funcionesDialogoEditar($scope, $mdDialog, dataEnviada){
@@ -82,12 +83,6 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
         $scope.cancel = function() { $mdDialog.cancel(); };
         $scope.answer = function(answer) { $mdDialog.hide(answer); };
         $scope.id = idEnviado;
-    }
-    
-    function reloadRoute() {
-        var currentPage = $route.current.templateUrl;
-        $templateCache.remove(currentPage);
-        $route.reload();
     }
     
     return ({

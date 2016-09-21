@@ -39,14 +39,14 @@
       <md-sidenav class="md-sidenav-left md-whiteframe-z2 menuLateral" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" ng-if="loginAccess">
          <md-list>
             <md-list-item ng-repeat="mn in menuPrincipal">
-               <md-button ng-click="verLink(mn.link)">
+               <md-button ng-click="verLink(mn.link)" aria-label="{{mn.titulo}}">
                   <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
                   {{mn.titulo}}
                </md-button>
             </md-list-item>
             <md-subheader>Administracion</md-subheader>
             <md-list-item ng-if="menuCatalogos">
-               <md-button  ng-click="showSubMenu(1)" >
+               <md-button  ng-click="showSubMenu(1)" aria-label="Catalogos">
                   <ng-md-icon icon="view_compact" class="avatar"></ng-md-icon>
                   Catalogos
                   <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
@@ -54,14 +54,14 @@
             </md-list-item>
             <div class="menuCatalogos" ng-if="menuCatalogos" ng-show="subMenu == 1">
                <md-list-item ng-repeat="mn in menuCatalogos">
-                  <md-button ng-click="verLink(mn.link)">
+                  <md-button ng-click="verLink(mn.link)" aria-label="Catalogos">
                      <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
                      {{mn.titulo}}
                   </md-button>
                </md-list-item>
             </div>
             <md-list-item ng-if="menuConsultas">
-               <md-button ng-click="showSubMenu(2)">
+               <md-button ng-click="showSubMenu(2)" aria-label="Consultas">
                   <ng-md-icon icon="format_list_bulleted" class="avatar"></ng-md-icon>
                   Consultas
                   <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
@@ -69,13 +69,14 @@
             </md-list-item>
             <div class="menuCatalogos" ng-if="menuConsultas" ng-show="subMenu == 2">
                <md-list-item ng-repeat="mn in menuConsultas">
-                  <md-button ng-click="verLink(mn.link)">
-                     <ng-mproductostitulo}}
+                  <md-button ng-click="verLink(mn.link)" aria-label="Consultas">
+                    <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
+                    {{mn.titulo}}
                   </md-button>
                </md-list-item>
             </div>
             <md-list-item ng-if="menuGraficas">
-               <md-button ng-click="showSubMenu(3)">
+               <md-button ng-click="showSubMenu(3)" aria-label="Graficas">
                   <ng-md-icon icon="developer_dashboard" class="avatar"></ng-md-icon>
                   Graficas
                   <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
@@ -83,7 +84,7 @@
             </md-list-item>
             <div class="menuCatalogos" ng-if="menuGraficas" ng-show="subMenu == 3">
                <md-list-item ng-repeat="mn in menuGraficas">
-                  <md-button ng-click="verLink(mn.link)">
+                  <md-button ng-click="verLink(mn.link)" aria-label="Graficas">
                      <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
                      {{mn.titulo}}
                   </md-button>
