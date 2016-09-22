@@ -27,9 +27,29 @@ exports.crear = function(req, res) {
     });
 }
 
-exports.editar = function(req, res) {
 
-}
+exports.editar = function(req, res){
+	Cliente.update( {_id : req.body._id},
+					{$set:{nit : req.body.nit, nombre: req.body.nombre, direccion: req.body.direccion, telefono:req.body.telefono}},
+                    function (err) {
+                    if (err) {
+                        return res.json({
+                            resultado: false,
+                            mensaje: err
+                        });
+                    }
+
+                    else {
+                        res.json({
+                            resultado: true,
+                            mensaje: "Cliente actualizado con exito."
+                        });
+                    }
+
+			});
+	}
+
+
 
 exports.eliminar = function(req, res) {
 

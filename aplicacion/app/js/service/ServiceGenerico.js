@@ -2,17 +2,17 @@
 
 angular.module('seminarioUmg').factory('ServiceGenerico', ['$q', '$timeout', '$http', '$mdDialog', '$route', '$templateCache', 'toaster',
 function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
-    
+
     function buscarTodos($scope, entidad) {
         $scope.editEnable = false;
         $scope.dataSeleccionada = [];
         $scope.opFab = { abrir : false, modo : 'md-fling', direction : 'right'};
-        
+
         $http.get('/api/' + entidad.toLowerCase() + '/all').success(function(data) {
             $scope.dataTabla = data;
         });
     }
-    
+
     function instanciarFunciones($scope, entidad) {
         $scope.dialogoCrear = function() {
             $mdDialog.show({
@@ -21,7 +21,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
                 clickOutsideToClose: false
             });
         };
-        
+
         $scope.dialogoEditar = function() {
             $mdDialog.show({
                 locals:{ dataEnviada: $scope.dataSeleccionada },
@@ -30,7 +30,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
                 clickOutsideToClose: false
             });
         };
-        
+
         $scope.dialogoEliminar = function() {
             $mdDialog.show({
                 locals:{ idEnviado: $scope.dataSeleccionada._id },
@@ -39,18 +39,18 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
                 clickOutsideToClose: false
             });
         };
-        
+
         $scope.selectDataTabla = function(dataTabla) {
             $scope.dataSeleccionada = dataTabla;
             $scope.editEnable = true;
         };
     }
-    
+
     function funcionesDefaultDialog($scope, $mdDialog, entidad) {
         $scope.hide = function() { $mdDialog.hide(); };
         $scope.cancel = function() { $mdDialog.cancel(); };
         $scope.answer = function(answer) { $mdDialog.hide(answer); };
-        
+
         $scope.crearRegistro = function () {
             $http.post('/api/'+ entidad.toLowerCase() + '/crear', $scope.formData)
             .success(function(data) {
@@ -59,7 +59,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
                 }
                 else {
                     toaster.success('Correcto!', data.mensaje);
-                    $scope.formData = {}; 
+                    $scope.formData = {};
                     $mdDialog.hide();
                     $templateCache.remove($route.current.templateUrl);
                     $route.reload();
@@ -70,21 +70,42 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
             });
         };
     }
-    
-    function funcionesDialogoEditar($scope, $mdDialog, dataEnviada){
+
+    function funcionesDialogoEditar($scope, $mdDialog, dataEnviada, entidad){
         $scope.hide = function() { $mdDialog.hide(); };
         $scope.cancel = function() { $mdDialog.cancel(); };
         $scope.answer = function(answer) { $mdDialog.hide(answer); };
-        $scope.datosForm = dataEnviada;
+        $scope.formData = dataEnviada;
+
+        // Función para editar un registro
+    	$scope.actualizar = function() {
+    		$http.put('/api/'+ entidad.toLowerCase() + '/editar', $scope.formData)
+    		.success(function(data) {
+                if (!data.resultado) {
+                    toaster.warning(data.mensaje.name, data.mensaje.message);
+                }
+                else {
+                    toaster.success('Correcto!', data.mensaje);
+                    $scope.formData = {};
+                    $mdDialog.hide();
+                    $templateCache.remove($route.current.templateUrl);
+                    $route.reload();
+                }
+    			})
+    		.error(function(data) {
+    			console.log('Error: ' + data);
+    		});
+    	};
+
     }
-    
+
     function funcionesDialogoEliminar($scope, $mdDialog, idEnviado){
         $scope.hide = function() { $mdDialog.hide(); };
         $scope.cancel = function() { $mdDialog.cancel(); };
         $scope.answer = function(answer) { $mdDialog.hide(answer); };
         $scope.id = idEnviado;
     }
-    
+
     return ({
         buscarTodos: buscarTodos,
         instanciarFunciones: instanciarFunciones,
