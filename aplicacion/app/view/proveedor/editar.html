@@ -1,15 +1,38 @@
 <md-dialog>
-    <form layout="column" ng-submit="">
-
+    <form layout="column">
         <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
-
-        <md-dialog-content class="md-whiteframe-5dp" layout="column" layout-align="center center">
-            {{ datosForm | json }}
-        </md-dialog-content>
-
+        <md-dialog-content class="md-whiteframe-5dp">
+                    <form layout="column" ng-submit="actualizar()"  layout-align="center center" layout-fill="layout-fill">
+                        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+                        <md-content layout="column" class="md-padding">
+                            <md-input-container >
+                                <label>Nit</label>
+                                <input type="text" name="nit" ng-model="formData.nit" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Empresa</label>
+                                <input type="text" name="empresa" ng-model="formData.empresa" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Representante</label>
+                                <input type="text" name="representante" ng-model="formData.representante" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Telefono</label>
+                                <input type="text" name="telefono" ng-model="formData.telefono" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Direccion</label>
+                                <input type="text" name="direccion" ng-model="formData.direccion" required="true"/>
+                            </md-input-container>
+                        </md-content>
+                    </form>
+                </md-dialog-content>
         <md-dialog-actions layout="row">
-
+            <div layout="row" layout-align="center center" style="padding-top:20px;">
+                <md-button ng-click= "actualizar()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Crear Proveedor">Crear</md-button>
+                <div flex="flex"></div>
+            </div>
         </md-dialog-actions>
-
     </form>
 </md-dialog>

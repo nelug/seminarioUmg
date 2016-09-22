@@ -24,7 +24,7 @@ module.exports = function(app) {
 	/*rutas para proveedores*/
 	app.get('/api/proveedor/all', proveedorCtrl.getAll);
 	app.post('/api/proveedor/crear', proveedorCtrl.crear);
-	app.put('/api/proveedor', proveedorCtrl.editar);
+	app.put('/api/proveedor/editar', proveedorCtrl.editar);
 
 
 	/*rutas para clientes*/
