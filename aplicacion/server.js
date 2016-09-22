@@ -13,13 +13,13 @@ var localStrategy = require('passport-local' ).Strategy;
 mongoose.connect('mongodb://localhost/inventario');
 var User = require('./server/model/user.js');
 var app=express();
-var port =process.env.PORT || 3000; 
+var port =process.env.PORT || 3000;
 
 app.use(express.static(__dirname+'/app'));
 app.use(logger('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));  
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(bodyParser.json());  
+app.use(bodyParser.json());
 app.use(require('express-session')({
     secret: 'keyboard cat',
     resave: false,

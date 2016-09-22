@@ -29,9 +29,27 @@ exports.crear = function(req, res) {
     });
 }
 
-exports.editar = function(req, res) {
+exports.editar = function(req, res){
+	Proveedor.update( {_id : req.body._id},
+					{$set:{nit : req.body.nit, empresa: req.body.empresa, representante: req.body.representante,
+                           telefono:req.body.telefono, direccion: req.body.direccion}},
+                    function (err) {
+                    if (err) {
+                        return res.json({
+                            resultado: false,
+                            mensaje: err
+                        });
+                    }
 
-}
+                    else {
+                        res.json({
+                            resultado: true,
+                            mensaje: "Proveedor actualizado con exito."
+                        });
+                    }
+
+			});
+	}
 
 exports.eliminar = function(req, res) {
 

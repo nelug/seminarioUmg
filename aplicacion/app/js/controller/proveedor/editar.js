@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('EditarProveedorCtrl', ['$scope', '$mdDialog', 'ServiceGenerico', 'dataEnviada',
-function ($scope, $mdDialog, ServiceGenerico, dataEnviada) {
-    ServiceGenerico.funcionesDialogoEditar($scope, $mdDialog, dataEnviada);
-    $scope.formTitulo = 'Edicion de proveedor';
+angular.module('seminarioUmg').controller('EditarProveedorCtrl', ['$scope', '$mdDialog','$http', 'ServiceGenerico', 'dataEnviada',
+function ($scope, $mdDialog, $http, ServiceGenerico, dataEnviada) {
+    ServiceGenerico.funcionesDialogoEditar($scope, $mdDialog, dataEnviada, 'proveedor');
+    $scope.formTitulo = 'Edicion de Proveedor';
 }]);

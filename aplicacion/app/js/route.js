@@ -60,6 +60,14 @@ angular.module('seminarioUmg')
             restricted: true
         }
     })
+    //ruta para editar un cliente
+    .when('/clientes/editar',{
+        templateUrl: 'view/cliente/tabla.html',
+        controller: 'EditarClienteCtrl',
+        access:{
+            restricted: true
+        }
+    })
     //ruta para mostrar proveedores
     .when('/proveedores',{
         templateUrl: 'view/proveedor/tabla.html',

@@ -19,18 +19,18 @@ module.exports = function(app) {
 	/** Rutas de productos **/
 	app.get('/api/producto/all', productoCtrl.getAll);
 	app.post('/api/producto/crear', productoCtrl.crear);
-	app.put('/api/producto/', productoCtrl.editar);
+	app.put('/api/producto/editar', productoCtrl.editar);
 
 	/*rutas para proveedores*/
 	app.get('/api/proveedor/all', proveedorCtrl.getAll);
 	app.post('/api/proveedor/crear', proveedorCtrl.crear);
-	app.put('/api/proveedor', proveedorCtrl.editar);
+	app.put('/api/proveedor/editar', proveedorCtrl.editar);
 
 
 	/*rutas para clientes*/
 	app.get('/api/cliente/all', clienteCtrl.getAll);
 	app.post('/api/cliente/crear', clienteCtrl.crear);
-	app.put('/api/cliente', clienteCtrl.editar);
+	app.put('/api/cliente/editar', clienteCtrl.editar);
 
 
 

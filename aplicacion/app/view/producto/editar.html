@@ -1,15 +1,42 @@
 <md-dialog>
-    <form layout="column" ng-submit="">
-        
+    <form layout="column">
         <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
-        
-        <md-dialog-content class="md-whiteframe-5dp" layout="column" layout-align="center center">
-            {{ datosForm | json }}
-        </md-dialog-content>
-        
+        <md-dialog-content class="md-whiteframe-5dp">
+                    <form layout="column" ng-submit="actualizar()"  layout-align="center center" layout-fill="layout-fill">
+                        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+                        <md-content layout="column" class="md-padding">
+                            <md-input-container >
+                                <label>Codigo</label>
+                                <input type="text" name="codigo" ng-model="formData.codigo" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Descripcion</label>
+                                <input type="text" name="descripcion" ng-model="formData.descripcion" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Marca</label>
+                                <input type="text" name="marca" ng-model="formData.marca" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Precio Venta</label>
+                                <input type="text" name="precioVenta" ng-model="formData.precioVenta" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Precio Costo</label>
+                                <input type="text" name="precioCosto" ng-model="formData.precioCosto" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Existencia</label>
+                                <input type="text" name="existencia" ng-model="formData.existencia" required="true"/>
+                            </md-input-container>
+                        </md-content>
+                    </form>
+                </md-dialog-content>
         <md-dialog-actions layout="row">
-            
+            <div layout="row" layout-align="center center" style="padding-top:20px;">
+                <md-button ng-click= "actualizar()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Crear Producto">Crear</md-button>
+                <div flex="flex"></div>
+            </div>
         </md-dialog-actions>
-        
     </form>
 </md-dialog>
