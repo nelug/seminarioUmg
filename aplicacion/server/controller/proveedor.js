@@ -51,6 +51,18 @@ exports.editar = function(req, res){
 			});
 	}
 
-exports.eliminar = function(req, res) {
-
-}
+    exports.eliminar = function(req, res){
+        Proveedor.remove( {_id : req.query.id},  function (err) {
+            if (err) {
+                return res.json({
+                    resultado: false,
+                    mensaje: err
+                });
+            } else {
+                res.json({
+                    resultado: true,
+                    mensaje: "Proveedor eliminado con exito."
+                });
+            }
+        });
+    }
