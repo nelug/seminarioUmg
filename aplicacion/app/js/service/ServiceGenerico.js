@@ -104,10 +104,11 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
         $scope.cancel = function() { $mdDialog.cancel(); };
         $scope.answer = function(answer) { $mdDialog.hide(answer); };
         $scope.id = idEnviado;
-
+        
         // Función para editar un registro
     	$scope.eliminar = function() {
-    		$http.delete('/api/' + entidad + '/eliminar', $scope.id)
+            var data = $.param({ id: $scope.id });
+    		$http.delete('/api/' + entidad.toLowerCase() + '/eliminar?'+ data)
     		.success(function(data) {
                 if (!data.resultado) {
                     toaster.warning(data.mensaje.name, data.mensaje.message);
