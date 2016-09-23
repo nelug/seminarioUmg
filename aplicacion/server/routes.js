@@ -31,7 +31,7 @@ module.exports = function(app) {
 	app.get('/api/cliente/all', clienteCtrl.getAll);
 	app.post('/api/cliente/crear', clienteCtrl.crear);
 	app.put('/api/cliente/editar', clienteCtrl.editar);
-
+    app.delete('/api/cliente/eliminar', clienteCtrl.eliminar);
 
 
 

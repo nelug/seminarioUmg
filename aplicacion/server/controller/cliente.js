@@ -49,8 +49,23 @@ exports.editar = function(req, res){
 			});
 	}
 
+    exports.eliminar = function(req, res){
+    	Cliente.remove( {_id : req.body.id},
 
+                        function (err) {
+                        if (err) {
+                            return res.json({
+                                resultado: false,
+                                mensaje: err
+                            });
+                        }
 
-exports.eliminar = function(req, res) {
+                        else {
+                            res.json({
+                                resultado: true,
+                                mensaje: "Cliente eliminado con exito."
+                            });
+                        }
 
-}
+    			});
+    	}
