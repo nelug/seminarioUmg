@@ -9,16 +9,13 @@ exports.getAll = function(req, res) {
 }
 
 exports.crear = function(req, res) {
-    Cliente.create(req.body,
-        function (err) {
+    Cliente.create(req.body, function (err) {
         if (err) {
             return res.json({
                 resultado: false,
                 mensaje: err
             });
-        }
-
-        else {
+        } else {
             res.json({
                 resultado: true,
                 mensaje: "Cliente almacenado con exito."
@@ -29,43 +26,41 @@ exports.crear = function(req, res) {
 
 
 exports.editar = function(req, res){
-	Cliente.update( {_id : req.body._id},
-					{$set:{nit : req.body.nit, nombre: req.body.nombre, direccion: req.body.direccion, telefono:req.body.telefono}},
-                    function (err) {
-                    if (err) {
-                        return res.json({
-                            resultado: false,
-                            mensaje: err
-                        });
-                    }
+    Cliente.update( {_id : req.body._id}, {
+        $set: {
+            nit : req.body.nit, 
+            nombre: req.body.nombre, 
+            direccion: req.body.direccion, 
+            telefono:req.body.telefono
+        }
+    }, function (err) {
+        if (err) {
+            return res.json({
+                resultado: false,
+                mensaje: err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                mensaje: "Cliente actualizado con exito."
+            });
+        }
+        
+    });
+}
 
-                    else {
-                        res.json({
-                            resultado: true,
-                            mensaje: "Cliente actualizado con exito."
-                        });
-                    }
-
-			});
-	}
-
-    exports.eliminar = function(req, res){
-    	Cliente.remove( {_id : req.body.id},
-
-                        function (err) {
-                        if (err) {
-                            return res.json({
-                                resultado: false,
-                                mensaje: err
-                            });
-                        }
-
-                        else {
-                            res.json({
-                                resultado: true,
-                                mensaje: "Cliente eliminado con exito."
-                            });
-                        }
-
-    			});
-    	}
+exports.eliminar = function(req, res){
+    Cliente.remove( {_id : req.query.id},  function (err) {
+        if (err) {
+            return res.json({
+                resultado: false,
+                mensaje: err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                mensaje: "Cliente eliminado con exito."
+            });
+        }
+    });
+}
