@@ -20,6 +20,8 @@ module.exports = function(app) {
 	app.get('/api/producto/all', productoCtrl.getAll);
 	app.post('/api/producto/crear', productoCtrl.crear);
 	app.put('/api/producto/editar', productoCtrl.editar);
+	app.delete('/api/producto/eliminar', productoCtrl.eliminar);
+
 
 	/*rutas para proveedores*/
 	app.get('/api/proveedor/all', proveedorCtrl.getAll);
