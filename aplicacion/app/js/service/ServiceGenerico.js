@@ -99,11 +99,32 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
 
     }
 
-    function funcionesDialogoEliminar($scope, $mdDialog, idEnviado){
+    function funcionesDialogoEliminar($scope, $mdDialog, idEnviado, entidad){
         $scope.hide = function() { $mdDialog.hide(); };
         $scope.cancel = function() { $mdDialog.cancel(); };
         $scope.answer = function(answer) { $mdDialog.hide(answer); };
         $scope.id = idEnviado;
+
+        // Función para editar un registro
+    	$scope.eliminar = function() {
+    		$http.delete('/api/' + entidad + '/eliminar', $scope.id)
+    		.success(function(data) {
+                if (!data.resultado) {
+                    toaster.warning(data.mensaje.name, data.mensaje.message);
+                }
+                else {
+                    toaster.success('Correcto!', data.mensaje);
+                    $scope.formData = {};
+                    $mdDialog.hide();
+                    $templateCache.remove($route.current.templateUrl);
+                    $route.reload();
+                }
+    			})
+    		.error(function(data) {
+    			console.log('Error: ' + data);
+    		});
+    	};
+
     }
 
     return ({

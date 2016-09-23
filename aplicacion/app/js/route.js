@@ -68,6 +68,14 @@ angular.module('seminarioUmg')
             restricted: true
         }
     })
+    //ruta para editar un cliente
+    .when('/clientes/eliminar',{
+        templateUrl: 'view/cliente/tabla.html',
+        controller: 'EliminarClienteCtrl',
+        access:{
+            restricted: true
+        }
+    })
     //ruta para mostrar proveedores
     .when('/proveedores',{
         templateUrl: 'view/proveedor/tabla.html',
