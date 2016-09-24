@@ -38,8 +38,7 @@ exports.getPermisos = function (req, res) {
             status: false
         });
     }
-    
-    User.find({ _id: mongoose.Types.ObjectId("57aab9fd820c12ae29486b6f") })
+    User.find({ _id: req.user._id })
     .populate('permisos.id')
     .select('permisos')
     .exec(function(error, users) {
@@ -53,6 +52,15 @@ exports.getAll = function(req, res) {
     ], function(err, users) {
         res.json(users);		
     });
+}
+
+
+exports.autorizacion = function(req, res) {
+    if (!req.isAuthenticated()) {
+        return false;
+    }
+    
+    return true;
 }
 
 exports.status = function(req, res) {
