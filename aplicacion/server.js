@@ -37,9 +37,10 @@ passport.deserializeUser(User.deserializeUser());
 require('./server/routes.js')(app);
 
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    return res.json({
+        resultado: false,
+        mensaje: "Tiene que tener autenticacion para poder realizar esta accion..!"
+    });
 });
 
 app.listen(port);
