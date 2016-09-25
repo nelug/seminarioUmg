@@ -1,6 +1,7 @@
 exports.crear = function(req, res, model) {
     model.create(req.body, function(err) {
         if (err) {
+            console.log(String (err));
             return res.json({
                 resultado: false,
                 mensaje: err
@@ -18,6 +19,8 @@ exports.editar = function (req, res, model) {
     model.update({ _id: req.body._id }, {
         $set: req.body
     }, function(err) {
+        console.log(String (err));
+        return res.json({
         if (err) {
             return res.json({
                 resultado: false,
@@ -37,6 +40,7 @@ exports.eliminar = function(req, res, model) {
     model.remove({ _id: req.query.id }, function(err) {
         if (err) {
             return res.json({
+
                 resultado: false,
                 mensaje: err
             });

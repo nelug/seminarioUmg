@@ -2,10 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var clienteSchema = new Schema({
-    nit: {type: Number, required: true},
-    nombre : {type: String, required: true},
-    direccion: {type: String, required:  [true, 'direccion no sirve']},
-    telefono:{type: Number, required: true},
+    nit: {type: String, required: 'El nit es requerido'},
+    nombre : {type: String, required: 'El nombre es requerdio', maxlength:[50, 'el nomrbre de usuario es demasiado largo']},
+    direccion: {type: String, required:'Direccion es requerida', maxlength:[30, 'la direccion es demasiado larga']},
+    telefono:{type: Number, required: 'Telefono es requerido y debe ser Numerico'},
     Usuario: { type: Schema.ObjectId, ref: "User" }
 });
 
