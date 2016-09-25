@@ -1,4 +1,5 @@
 var Producto = require('../model/producto');
+var Controlador = require('./ControladorBase');
 
 exports.getAll = function(req, res) {
     Producto.aggregate([

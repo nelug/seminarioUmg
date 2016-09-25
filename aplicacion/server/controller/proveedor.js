@@ -1,4 +1,5 @@
 var Proveedor = require('../model/proveedor');
+var Controlador = require('./ControladorBase');
 
 exports.getAll = function(req, res) {
     Proveedor.aggregate([
