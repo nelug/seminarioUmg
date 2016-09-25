@@ -55,7 +55,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
             $http.post('/api/'+ entidad.toLowerCase() + '/crear', $scope.formData)
             .success(function(data) {
                 if (!data.resultado) {
-                    toaster.warning(data.mensaje.name, data.mensaje.message);
+                    toaster.warning(data.mensaje.name, data.mensaje);
                 }
                 else {
                     toaster.success('Correcto!', data.mensaje);
@@ -82,7 +82,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
     		$http.put('/api/'+ entidad.toLowerCase() + '/editar', $scope.formData)
     		.success(function(data) {
                 if (!data.resultado) {
-                    toaster.warning(data.mensaje.name, data.mensaje.message);
+                    toaster.warning(data.mensaje.name, data.mensaje);
                 }
                 else {
                     toaster.success('Correcto!', data.mensaje);
@@ -104,7 +104,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
         $scope.cancel = function() { $mdDialog.cancel(); };
         $scope.answer = function(answer) { $mdDialog.hide(answer); };
         $scope.id = idEnviado;
-        
+
         // Función para editar un registro
     	$scope.eliminar = function() {
             var data = $.param({ id: $scope.id });
