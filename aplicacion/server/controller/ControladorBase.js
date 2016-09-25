@@ -43,7 +43,7 @@ exports.eliminar = function(req, res, model) {
         } else {
             res.json({
                 resultado: true,
-                mensaje: "Cliente eliminado con exito."
+                mensaje: "Registro eliminado con exito."
             });
         }
     });
