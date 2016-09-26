@@ -4,16 +4,22 @@
         <form layout="column" ng-submit=""  layout-fill="layout-fill">
             <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
             <md-content layout="column" class="md-padding md-block">
-                <div layout="row">
-                    <md-input-container flex="50">
-                        <label>Cliente</label>
-                        <input type="text" ng-model="user.name">
-                    </md-input-container>
-                    <md-input-container flex="50">
-                        <label>Producto</label>
-                        <textarea ng-model="user.description"></textarea>
-                    </md-input-container>
-                </div>
+                    <div flex="50">
+                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente">
+                            <md-item-template>
+                                <span class="item-title">
+                                    <span> {{ item.nombre }} </span>
+                                    <span> <strong>{{item.nit}}</strong>  </span>
+                                    <span> {{ item.direccion }} </span>
+                                </span>
+                            </md-item-template>
+                        </md-autocomplete>
+                    </div>
+                    <div flex="50">
+                        <div flex="100">{{ cliente.nombre + "  Nit:" + cliente.nit }}</div>
+                        <div flex="100">{{ cliente.direccion }}</div>
+                    </div>
+                
                 <div layout="row">
                     <md-input-container flex="50">
                         <label>Cantidad</label>
