@@ -1,15 +1,10 @@
 <md-dialog>
-    <form layout="column" ng-submit="">
-
-        <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
-
-        <md-dialog-content class="md-whiteframe-5dp" layout="column" layout-align="center center">
-            {{ id | json}}
-        </md-dialog-content>
-
+    <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
+    <md-dialog-content class="md-whiteframe-5dp">
         <md-dialog-actions layout="row">
-
+            <div layout="row" layout-align="center center" style="padding-top:20px;">
+                <md-button ng-click= "eliminar()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Borrar User">Eliminar</md-button>
+                <div flex="flex"></div>
+            </div>
         </md-dialog-actions>
-
-    </form>
-</md-dialog>
+    </md-dialog>

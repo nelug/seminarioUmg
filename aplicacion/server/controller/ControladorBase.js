@@ -16,9 +16,8 @@ exports.crear = function(req, res, model) {
 }
 
 exports.editar = function (req, res, model) {
-    model.update({ _id: req.body._id }, {
-        $set: req.body
-    }, function(err) {
+    model.update({ _id: req.body._id }, {$set: req.body},
+     function(err) {
         if (err) {
             console.log(String (err));
             return res.json({
@@ -34,6 +33,7 @@ exports.editar = function (req, res, model) {
 
     });
 }
+
 
 exports.eliminar = function(req, res, model) {
     model.remove({ _id: req.query.id }, function(err) {
