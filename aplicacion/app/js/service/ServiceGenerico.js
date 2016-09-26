@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').factory('ServiceGenerico', ['$q', '$timeout', '$http', '$mdDialog', '$route', '$templateCache', 'toaster',
-function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
+angular.module('seminarioUmg').factory('ServiceGenerico', ['$q', '$timeout', '$http', '$mdDialog', '$route', '$templateCache', 'toaster', 'jsonPath',
+function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonPath) {
 
     function buscarTodos($scope, entidad) {
         $scope.editEnable = false;
@@ -55,7 +55,8 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster) {
             $http.post('/api/'+ entidad.toLowerCase() + '/crear', $scope.formData)
             .success(function(data) {
                 if (!data.resultado) {
-                    toaster.warning(data.mensaje.name, data.mensaje);
+                    var mensaje = jsonPath(data, '$.mensaje[*].message');
+                    toaster.warning("Advertencia.!", mensaje[mensaje.length - 1]);
                 }
                 else {
                     toaster.success('Correcto!', data.mensaje);
