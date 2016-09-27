@@ -2,10 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ventaSchema = new Schema({
-   fecha: Date.now(),
+   fecha: Date,
    cliente: { type: Schema.ObjectId, ref: "Clientes" },
    usuario: { type: Schema.ObjectId, ref: "User" },
-   detalleVenta: [{
+   detalle: [{
          cantidad: Number,
          precio :  Number,
          ganancia: Number,

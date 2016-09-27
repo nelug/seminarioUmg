@@ -4,6 +4,7 @@ var userCtrl = require ('./controller/user');
 var productoCtrl = require ('./controller/producto');
 var proveedorCtrl= require('./controller/proveedor');
 var clienteCtrl = require('./controller/cliente');
+var ventaCtrl = require('./controller/venta');
 
 
 module.exports = function(app) {
@@ -28,16 +29,19 @@ module.exports = function(app) {
 	app.post('/api/proveedor/crear', proveedorCtrl.crear);
 	app.put('/api/proveedor/editar', proveedorCtrl.editar);
 	app.delete('/api/proveedor/eliminar', proveedorCtrl.eliminar);
-
-
+	
 
 	/*rutas para clientes*/
 	app.get('/api/cliente/all', clienteCtrl.getAll);
 	app.post('/api/cliente/crear', clienteCtrl.crear);
 	app.put('/api/cliente/editar', clienteCtrl.editar);
     app.delete('/api/cliente/eliminar', clienteCtrl.eliminar);
-
-
+	
+	/*rutas para ventas*/
+	app.get('/api/venta/all', ventaCtrl.getAll);
+	app.post('/api/venta/crear', ventaCtrl.crear);
+	app.put('/api/venta/editar', ventaCtrl.editar);
+    app.delete('/api/venta/eliminar', ventaCtrl.eliminar);
 
 	app.get('/*', function(req, res) {
 		res.sendfile('./app/index.html');
