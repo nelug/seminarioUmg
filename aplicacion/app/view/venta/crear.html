@@ -4,7 +4,8 @@
         <form layout="column" ng-submit=""  layout-fill="layout-fill">
             <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
             <md-content layout="column" class="md-padding md-block">
-                    <div flex="50">
+                <div layout="row" style="margin-bottom: 25px;">
+                    <div flex="30">
                         <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente">
                             <md-item-template>
                                 <span class="item-title">
@@ -15,20 +16,58 @@
                             </md-item-template>
                         </md-autocomplete>
                     </div>
-                    <div flex="50">
+                    <div flex="5"></div>
+                    <div flex="65" ng-show="cliente">
                         <div flex="100">{{ cliente.nombre + "  Nit:" + cliente.nit }}</div>
                         <div flex="100">{{ cliente.direccion }}</div>
                     </div>
-                
+                </div>
                 <div layout="row">
-                    <md-input-container flex="50">
+                    <div flex="30">
+                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTextoproducto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="0" placeholder="Buscar Codigo">
+                            <md-item-template>
+                                <span class="item-title">
+                                    <span> {{ item.codigo }} </span>
+                                    <span> {{ item.descripcion }} </span>
+                                </span>
+                            </md-item-template>
+                        </md-autocomplete>
+                    </div>
+                    <div flex="5"></div>
+                    <md-input-container flex="20">
                         <label>Cantidad</label>
-                        <input type="text" ng-model="user.name">
+                        <textarea ng-model="dataTemp.cantidad"></textarea>
                     </md-input-container>
-                    <md-input-container flex="50">
-                        <label>Precio</label>
-                        <textarea ng-model="user.description"></textarea>
+                    <div flex="3"></div>
+                    <md-input-container flex="10">
+                        <md-button class="md-raised md-primary" ng-click="agregarDataDetalle()">Agregar</md-button>
                     </md-input-container>
+                    <div flex="34" ng-show="producto">
+                        <div flex="100">{{ producto.descripcion + " [" + producto.marca + "]" }}</div>
+                        <div flex="100">{{ producto.precioVenta }}</div>
+                    </div>
+                </div>
+                
+                <div layout="row" ng-show="detalleTabla">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Cantidad</th>
+                                <th>Descripcion</th>
+                                <th>Precio</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="detalle in detalleTabla">
+                                <td>{{ detalle.cantidad }}</td>
+                                <td>{{ detalle.descripcion }}</td>
+                                <td>{{ detalle.precio }}</td>
+                                <td>{{ detalle.total }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                 </div>
             </md-content>
         </form>
