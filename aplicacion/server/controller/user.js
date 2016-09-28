@@ -47,10 +47,10 @@ exports.getPermisos = function (req, res) {
 }
 
 exports.getAll = function(req, res) {
-    User.aggregate([ 
-        { $project : { _id : 1 , username : 1, nombre: 1, apellido: 1, correo: 1 } } 
+    User.aggregate([
+        { $project : { _id : 1 , username : 1, nombre: 1, apellido: 1, correo: 1 } }
     ], function(err, users) {
-        res.json(users);		
+        res.json(users);
     });
 }
 
@@ -59,7 +59,7 @@ exports.autorizacion = function(req, res) {
     if (!req.isAuthenticated()) {
         return false;
     }
-    
+
     return true;
 }
 
@@ -76,11 +76,11 @@ exports.status = function(req, res) {
 
 exports.register = function(req, res) {
     User.register(
-        new User({ 
-            username: req.body.username, 
-            nombre:   req.body.nombre, 
-            apellido: req.body.apellido, 
-            correo:   req.body.correo 
+        new User({
+            username: req.body.username,
+            nombre:   req.body.nombre,
+            apellido: req.body.apellido,
+            correo:   req.body.correo
         }),
         req.body.password, function(err, account) {
             if (err) {
@@ -95,4 +95,8 @@ exports.register = function(req, res) {
             });
         }
     );
+}
+
+exports.eliminar = function(req, res) {
+    Controlador.eliminar(req, res, User);
 }
