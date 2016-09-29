@@ -1,0 +1,24 @@
+
+.table2 {
+  width: 100%;
+}
+
+.table2:focus {
+  outline: none;
+}
+.table2 td, table th {
+  padding: 0;
+  margin: 0;
+}
+.table2 thead tr {
+    background: #C0C0C0;
+}
+
+.table2 th {
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  position: relative;
+  height: 30px;
+  border-bottom: solid 1px #DDDDDD;
+}
