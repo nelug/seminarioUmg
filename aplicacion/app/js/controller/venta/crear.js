@@ -8,6 +8,7 @@ function($scope, $http, $timeout, $q, $log) {
     $scope.productos = [];
     
     $scope.cliente = [];
+    $scope.detalleTabla = [];
     $scope.formData = {
         fecha: new Date(),
         cliente: [],
@@ -51,7 +52,6 @@ function($scope, $http, $timeout, $q, $log) {
     }
     
     $scope.seleccionarACproducto = function (dato) {
-        dataTemp.producto = producto;
         $scope.producto= dato;
     }
     
@@ -61,8 +61,20 @@ function($scope, $http, $timeout, $q, $log) {
         };
     }
     
-    function agregarDetalle(dataTabla, dataForm) {
+    $scope.agregarDataDetalle = function() {
+        var dataTabla = {
+            cantidad: $scope.dataTemp.cantidad,
+            descripcion: $scope.producto.descripcion,
+            precio: $scope.producto.precioVenta,
+            total:($scope.dataTemp.cantidad * $scope.producto.precioVenta)
+        };
+        
+        var dataForm = {
+            
+        };
+        console.log(dataTabla);
         $scope.detalleTabla.push(dataTabla);
         $scope.formData.detalle.push(dataForm);
-    }
+        console.log($scope.detalleTabla);
+    }    
 }]);
