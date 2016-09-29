@@ -1,11 +1,11 @@
 <div layout="column" style="max-height:600px" ng-cloak="" class="toolbardemoScrollShrink">
     <div ng-include src="'view/plantillas/encabezadoFormulario.html'"></div>
     <md-dialog-content class="md-whiteframe-5dp">
-        <form layout="column" ng-submit=""  layout-fill="layout-fill">
+        <form layout="column" ng-submit=""  layout flex layout-wrap>
             <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
             <md-content layout="column" class="md-padding md-block">
-                <div layout="row"  layout-xs="column" style="margin-bottom: 25px;">
-                    <div flex="85">
+                <div style="margin-bottom: 25px;" layout layout-wrap>
+                    <div flex="100" flex-gt-xs="35">
                         <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente">
                             <md-item-template>
                                 <span class="item-title">
@@ -16,18 +16,15 @@
                             </md-item-template>
                         </md-autocomplete>
                     </div>
-                    <div flex="5"></div>
-                    <div flex="65" ng-show="cliente" >
-                        <div flex="100"> <spam><strong>Nombre: </strong></spam>{{ cliente.nombre}}</div>
-                        <br>
+                    <div flex="0" flex-gt-xs="5"></div>
+                    <div flex="100" flex-gt-xs="20" ng-show="cliente" >
+                        <spam><strong>Nombre: </strong></spam>{{ cliente.nombre}}
                     </div>
-                    <div flex="65" ng-show="cliente" >
-                        <div flex="100" ><spam><strong>Nit: </strong></spam>{{ cliente.nit}}</div>
-                        <br>
+                    <div flex="100" flex-gt-xs="20" ng-show="cliente" >
+                        <spam><strong>Nit: </strong></spam>{{ cliente.nit}}
                     </div>
-                    <div flex="65" ng-show="cliente"  >
-                        <div flex="100" ><spam><strong>Direccion: </strong></spam>{{ cliente.direccion }}</div>
-                        <br>
+                    <div flex="100" flex-gt-xs="20" ng-show="cliente"  >
+                        <spam><strong>Direccion: </strong></spam>{{ cliente.direccion }}
                     </div>
                 </div>
                 <div layout="row" layout-xs="column">
