@@ -17,6 +17,7 @@ module.exports = function(app) {
 	app.get('/api/user/all', userCtrl.getAll);
 	app.get('/api/user/permisos', userCtrl.getPermisos);
 	app.delete('/api/user/eliminar', userCtrl.eliminar);
+	app.put('/api/user/editar', userCtrl.editar);
 
 
 	/** Rutas de productos **/
