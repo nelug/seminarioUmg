@@ -5,6 +5,7 @@ exports.getAll = function(req, res) {
 }
 
 exports.crear = function(req, res) {
+    req.body.usuario = req.user._id;
     Controlador.crear(req, res, Venta);
 }
 

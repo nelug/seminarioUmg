@@ -21,6 +21,7 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
             if(AuthService.isLoggedIn()){
                 $http.get('/api/user/permisos').success(function (data) {
                     $rootScope.menus = true;
+                    $rootScope.userId = data[0]._id;
                     $rootScope.menuPrincipal = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==0)]');
                     $rootScope.menuCatalogos = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==1)]');
                     $rootScope.menuConsultas = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==2)]');
