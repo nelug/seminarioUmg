@@ -83,7 +83,8 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
     		$http.put('/api/'+ entidad.toLowerCase() + '/editar', $scope.formData)
     		.success(function(data) {
                 if (!data.resultado) {
-                    toaster.warning(data.mensaje.name, data.mensaje);
+                    var mensaje = jsonPath(data, '$.mensaje[*].message');
+                    toaster.warning("Advertencia.!", mensaje[mensaje.length - 1]);
                 }
                 else {
                     toaster.success('Correcto!', data.mensaje);

@@ -1,6 +1,7 @@
 var User = require('../model/user');
 var passport = require('passport');
 var mongoose = require('mongoose');
+var Controlador = require('./ControladorBase');
 
 exports.logIn = function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
@@ -99,4 +100,8 @@ exports.register = function(req, res) {
 
 exports.eliminar = function(req, res) {
     Controlador.eliminar(req, res, User);
+}
+
+exports.editar = function(req, res) {
+    Controlador.editar(req, res, User);
 }

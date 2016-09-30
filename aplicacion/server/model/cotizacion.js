@@ -6,7 +6,7 @@ var cotizacionSchema = new Schema({
    cliente: { type: Schema.ObjectId, ref: "Cliente" },
    usuario: { type: Schema.ObjectId, ref: "User" },
    detalleCotizacion: [{
-         cantidad: Number,
+         cantidad: {type: Number, require: 'La cantidad es requerida'},
          precio :  Number,
          producto: { type: Schema.ObjectId, ref: "Productos" }
       }]

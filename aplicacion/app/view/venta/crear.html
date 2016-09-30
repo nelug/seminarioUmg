@@ -9,24 +9,24 @@
                             <md-item-template>
                                 <span class="item-title">
                                     <span> {{ item.nombre }} </span>
-                                    <span> <strong>{{item.nit}}</strong>  </span>
+                                    <span> {{item.nit}}</span>
                                     <span> {{ item.direccion }} </span>
                                 </span>
                             </md-item-template>
                         </md-autocomplete>
                     </div>
                     <div flex="0" flex-gt-xs="5"></div>
-                    <div flex="100" flex-gt-xs="20" ng-show="cliente" >
+                    <div flex="100" flex-gt-xs="20" ng-show="clientes" >
                         <spam><strong>Nombre: </strong></spam>{{ cliente.nombre}}
                     </div>
-                    <div flex="100" flex-gt-xs="20" ng-show="cliente" >
+                    <div flex="100" flex-gt-xs="20" ng-show="clientes" >
                         <spam><strong>Nit: </strong></spam>{{ cliente.nit}}
                     </div>
-                    <div flex="100" flex-gt-xs="20" ng-show="cliente"  >
+                    <div flex="100" flex-gt-xs="20" ng-show="clientes"  >
                         <spam><strong>Direccion: </strong></spam>{{ cliente.direccion }}
                     </div>
                 </div>
-                <div layout layout-wrap>
+                <div layout layout-wrap  style="margin-bottom: 25px;">
                     <div flex="100" flex-gt-xs="30" >
                         <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTextoproducto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="0" placeholder="Buscar Codigo">
                             <md-item-template>
@@ -37,23 +37,27 @@
                             </md-item-template>
                         </md-autocomplete>
                     </div>
+                    <div flex="0" flex-gt-xs="5"></div>
+                    <div flex="100" flex-gt-xs="20" ng-show="productos" >
+                        <spam><strong>Descripcion: </strong></spam>{{ producto.descripcion}}
+                    </div>
+                    <div flex="100" flex-gt-xs="20" ng-show="productos" >
+                        <spam><strong>Marca: </strong></spam>{{ producto.marca}}
+                    </div>
+                    <div flex="100" flex-gt-xs="20" ng-show="productos"  >
+                        <spam><strong>Precio Venta: </strong></spam>{{ producto.precioVenta }}
+                    </div>
                     <div flex="0" flex-gt-xs="5" ></div>
+                </div>
+                <div style="margin-bottom: 25px;" layout layout-wrap>
                     <md-input-container  flex="100" flex-gt-xs="20">
                         <label>Cantidad</label>
                         <input ng-model="dataTemp.cantidad">
                     </md-input-container>
-                    <div flex="0" flex-gt-xs="5"></div>
-                    <div flex="100" flex-gt-xs="40" ng-show="producto">
-                        <div flex="100">{{ producto.descripcion + " [" + producto.marca + "]" }}</div>
-                        <div flex="100">{{ producto.precioVenta }}</div>
-                    </div>
-                </div>
-                <div>
                     <md-input-container flex="15" layout="row" layout-xs="column">
                         <md-button class="md-raised md-primary"  ng-click="agregarDataDetalle()">Agregar</md-button>
                     </md-input-container>
                 </div>
-                
                 <div layout="row" style="max-height: 300px; min-height: 300px; overflow-y: auto;" layout layout-wrap>
                     <table class="table2" ng>
                         <thead>

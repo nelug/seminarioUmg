@@ -22,7 +22,7 @@ exports.editar = function (req, res, model) {
             console.log(String (err));
             return res.json({
                 resultado: false,
-                mensaje: err
+                mensaje: err.errors
             });
         } else {
             res.json({
@@ -39,7 +39,6 @@ exports.eliminar = function(req, res, model) {
     model.remove({ _id: req.query.id }, function(err) {
         if (err) {
             return res.json({
-
                 resultado: false,
                 mensaje: err
             });
