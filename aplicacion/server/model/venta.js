@@ -21,6 +21,7 @@ ventaSchema.post('save', function(doc) {
             Producto.update({ _id: producto[0]._id }, { $set: { existencia:(producto[0].existencia - det.cantidad) } }, function(err) {});
         });
     });
+
 });
 
 module.exports = mongoose.model('Ventas', ventaSchema);
