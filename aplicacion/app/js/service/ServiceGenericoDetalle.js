@@ -13,7 +13,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location) {
         });
         
         $scope.buscarAC = function (query) {
-            var results = query ? $scope.clientes.filter( filtroAutoCliente(query) ) : $scope.clientes, deferred;
+            var results = query ? $scope.clientes.filter( $scope.filtroAutoCliente(query) ) : $scope.clientes, deferred;
             deferred = $q.defer();
             $timeout(function () { deferred.resolve( results ); }, Math.random() * 700, false);
             return deferred.promise;
@@ -24,7 +24,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location) {
             $scope.cliente= dato;
         };
         
-        function filtroAutoCliente(query) {
+        $scope.filtroAutoCliente = function(query) {
             return function filterFn(item) {
                 return (item.value.toLowerCase().indexOf(query.toLowerCase()) >= 0);
             };
@@ -41,7 +41,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location) {
         });
         
         $scope.buscarACproducto = function (query) {
-            var results = query ? $scope.productos.filter( filtroAutoProducto(query) ) : $scope.productos, deferredP;
+            var results = query ? $scope.productos.filter( $scope.filtroAutoProducto(query) ) : $scope.productos, deferredP;
             deferredP = $q.defer();
             $timeout(function () { deferredP.resolve( results ); }, Math.random() * 700, false);
             return deferredP.promise;
@@ -51,7 +51,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location) {
             $scope.producto= dato;
         };
         
-        function filtroAutoProducto(query) {
+        $scope.filtroAutoProducto = function(query) {
             return function filterFn(item) {
                 return (item.value.toLowerCase().indexOf(query.toLowerCase()) >= 0);
             };
@@ -64,7 +64,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location) {
             .success(function(data) {
                 if (!data.resultado) {
                     var mensaje = jsonPath(data, '$.mensaje[*].message');
-                    toaster.warning("Advertencia.!", mensaje[mensaje.length - 1]);
+                    toaster.warning('Advertencia.!', mensaje[mensaje.length - 1]);
                 }
                 else {
                     toaster.success('Correcto!', data.mensaje);
