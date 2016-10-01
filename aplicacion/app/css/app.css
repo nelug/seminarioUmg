@@ -147,5 +147,20 @@ h3 { color: #4a89dc; }
   }
 
 md-dialog {
-    width: 35%;
+    width: 40%;
 }
+
+@media only screen and (max-width: 800px) {
+    md-dialog {
+        width: 75%;
+    }
+    
+    @media only screen and (max-width: 500px) {
+        md-dialog {
+            max-width: 90%;
+            width: 90%;
+        }
+    }
+}
+
+

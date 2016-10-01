@@ -33,5 +33,5 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
         
         $scope.detalleTabla.push(dataTabla);
         $scope.formData.detalle.push(dataForm);
-    }    
+    };
 }]);

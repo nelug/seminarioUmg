@@ -1,34 +1,43 @@
-<md-dialog>
-    <form layout="column">
-        <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
-        <md-dialog-content class="md-whiteframe-5dp">
-                    <form layout="column" ng-submit="crearRegistro()"  layout-align="center center" layout-fill="layout-fill">
-                        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-                        <md-content layout="column" class="md-padding">
-                            <md-input-container >
-                                <label>Nit</label>
-                                <input type="text" title="El campo Nit es requerido" name="nit"  ng-model="formData.nit" required="true"/>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>Nombre</label>
-                                <input type="text" title="El campo Nombre es requerido"  name="nombre" ng-model="formData.nombre" required="true"/>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>direccion</label>
-                                <input type="text"  title="La campo direccion es requerida"  name="direccion" ng-model="formData.direccion" required="true"/>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>Telefono</label>
-                                <input type="text"  title="El campo Telefono es requerido"  name="telefono" ng-model="formData.telefono" required="true"/>
-                            </md-input-container>
-                        </md-content>
-                    </form>
-                </md-dialog-content>
-        <md-dialog-actions layout="row">
-            <div layout="row" layout-align="center center" style="padding-top:20px;">
-                <md-button ng-click= "crearRegistro()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Crar Cliente">Crear</md-button>
-                <div flex="flex"></div>
-            </div>
-        </md-dialog-actions>
-    </form>
+<md-dialog layout="column">
+    <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
+    <md-dialog-content class="md-whiteframe-5dp">
+        <form layout="column" name="form" ng-submit="crearRegistro()"  layout flex layout-wrap>
+            <md-content layout="column" class="md-padding" layout layout-wrap>
+                <md-input-container flex="100">
+                    <label>Nit</label>
+                    <input type="text" title="El campo Nit es requerido" name="nit"  ng-model="formData.nit" required="true"/>
+                    <div ng-messages="form.nit.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="100">
+                    <label>Nombre</label>
+                    <input type="text" title="El campo Nombre es requerido"  name="nombre" ng-model="formData.nombre" required="true"/>
+                    <div ng-messages="form.nombre.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="100">
+                    <label>direccion</label>
+                    <input type="text"  title="La campo direccion es requerida"  name="direccion" ng-model="formData.direccion" required="true"/>
+                    <div ng-messages="form.direccion.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="100">
+                    <label>Telefono</label>
+                    <input type="text"  title="El campo Telefono es requerido"  name="telefono" ng-model="formData.telefono" required="true"/>
+                    <div ng-messages="form.telefono.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+            </md-content>
+            <md-dialog-actions layout="row">
+                <div layout="row" layout-align="center center" style="padding-top:20px;">
+                    <md-button ng-click= "crearRegistro()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Crar Cliente">Crear</md-button>
+                    <div flex="flex"></div>
+                </div>
+            </md-dialog-actions>
+        </form>
+    </md-dialog-content>
 </md-dialog>

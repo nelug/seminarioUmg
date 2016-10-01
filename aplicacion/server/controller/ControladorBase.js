@@ -1,7 +1,6 @@
 exports.crear = function(req, res, model) {
     model.create(req.body, function(err) {
         if (err) {
-            console.log(String (err));
             return res.json({
                 resultado: false,
                 mensaje: err.errors
@@ -19,7 +18,6 @@ exports.editar = function (req, res, model) {
     model.update({ _id: req.body._id }, {$set: req.body},
      function(err) {
         if (err) {
-            console.log(String (err));
             return res.json({
                 resultado: false,
                 mensaje: err.errors

@@ -1,6 +1,5 @@
 var User = require('../model/user');
 var passport = require('passport');
-var mongoose = require('mongoose');
 var Controlador = require('./ControladorBase');
 
 exports.logIn = function(req, res, next) {
