@@ -1,9 +1,9 @@
 var Proveedor = require('../model/proveedor');
 var Controlador = require('./ControladorBase');
-                     
+
 exports.getAll = function(req, res) {
     Proveedor.aggregate([
-        { $project : { _id : 1 , nit : 1, empresa: 1, representante: 1, telefono: 1, direccion: 1 } }
+        { $project : { _id : 1 , nit : 1, empresa: 1, contacto: 1, telefono: 1, telefonoPersoanl: 1, direccion: 1, correo: 1 } }
     ], function(err, proveedor) {
         res.json(proveedor);
     });

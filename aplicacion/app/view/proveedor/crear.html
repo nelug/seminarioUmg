@@ -8,22 +8,51 @@
                             <md-input-container >
                                 <label>Nit</label>
                                 <input type="text" title="El campo nit es requerido" name="nit" ng-model="formData.nit" required="true"/>
+                                <div ng-messages="form.nit.$error" role="alert">
+                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                                </div>
                             </md-input-container>
                             <md-input-container >
                                 <label>Empresa</label>
                                 <input type="text" name="empresa" title="El campo Empresa es requerido" ng-model="formData.empresa" required="true"/>
+                                <div ng-messages="form.empresa.$error" role="alert">
+                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                                </div>
                             </md-input-container>
                             <md-input-container >
-                                <label>Representante</label>
-                                <input type="text" name="representante" title="El campo Representante es requerido" ng-model="formData.representante" required="true"/>
+                                <label>Contacto</label>
+                                <input type="text" name="Contacto" title="El campo Contacto es requerido" ng-model="formData.contacto" required="true"/>
+                                <div ng-messages="form.contacto.$error" role="alert">
+                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                                </div>
                             </md-input-container>
                             <md-input-container >
-                                <label>Telefono</label>
+                                <label>Telefono Empresa</label>
                                 <input type="text" name="telefono" title="El campo nit es Telefono" ng-model="formData.telefono" required="true"/>
+                                <div ng-messages="form.telefono.$error" role="alert">
+                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Telefono personal</label>
+                                <input type="text" name="telefono2" ng-model="formData.telefonoPersonal">
+                                <div ng-messages="form.telefonoPersonal.$error" role="alert">
+                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                                </div>
                             </md-input-container>
                             <md-input-container >
                                 <label>Direccion</label>
                                 <input type="text" name="direccion" title="El campo Direccion es requerido" ng-model="formData.direccion" required="true"/>
+                                <div ng-messages="form.direccion.$error" role="alert">
+                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>correo</label>
+                                <input type="email" name="correo" ng-model="formData.correo">
+                                <div ng-messages="form.correo.$error" role="alert">
+                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                                </div>
                             </md-input-container>
                         </md-content>
                     </form>

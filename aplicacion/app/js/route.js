@@ -140,6 +140,14 @@ angular.module('seminarioUmg')
             restricted :true
         }
     })
+    //ruta para consultar ventas
+    .when('/consulta-ventas',{
+        templateUrl: 'view/consultas/ventas.html',
+        controller: 'consultarVentasCtrl',
+        access:{
+            restricted :true
+        }
+    })
     .otherwise({
         redirectTo: '/'
     });

@@ -7,23 +7,31 @@
                         <md-content layout="column" class="md-padding">
                             <md-input-container >
                                 <label>Nit</label>
-                                <input type="text" name="nit" title="El campo Nit es requerido" ng-model="formData.nit" required="true"/>
+                                <input type="text" title="El campo nit es requerido" name="nit" ng-model="formData.nit" required="true"/>
                             </md-input-container>
                             <md-input-container >
                                 <label>Empresa</label>
                                 <input type="text" name="empresa" title="El campo Empresa es requerido" ng-model="formData.empresa" required="true"/>
                             </md-input-container>
                             <md-input-container >
-                                <label>Representante</label>
-                                <input type="text" name="representante" title="El campo Representante es requerido" ng-model="formData.representante" required="true"/>
+                                <label>Contacto</label>
+                                <input type="text" name="Contacto" title="El campo Contacto es requerido" ng-model="formData.contacto" required="true"/>
                             </md-input-container>
                             <md-input-container >
-                                <label>Telefono</label>
-                                <input type="text" name="telefono" title="El campo Telefono es requerido" ng-model="formData.telefono" required="true"/>
+                                <label>Telefono Empresa</label>
+                                <input type="text" name="telefono" title="El campo nit es Telefono" ng-model="formData.telefono" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>Telefono personal</label>
+                                <input type="text" name="telefono2" ng-model="formData.telefonoPersonal">
                             </md-input-container>
                             <md-input-container >
                                 <label>Direccion</label>
                                 <input type="text" name="direccion" title="El campo Direccion es requerido" ng-model="formData.direccion" required="true"/>
+                            </md-input-container>
+                            <md-input-container >
+                                <label>correo</label>
+                                <input type="email" name="correo" ng-model="formData.correo">
                             </md-input-container>
                         </md-content>
                     </form>

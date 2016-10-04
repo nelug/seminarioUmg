@@ -3,7 +3,7 @@ var Controlador = require('./ControladorBase');
 
 exports.getAll = function(req, res) {
     Cliente.aggregate([
-        { $project: { _id: 1, nit: 1, nombre: 1, direccion: 1, telefono: 1 } }
+        { $project: { _id: 1, nit: 1, nombre: 1, direccion: 1, telefono: 1, correo: 1} }
     ], function(err, cliente) {
         res.json(cliente);
     });

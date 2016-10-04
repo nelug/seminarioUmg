@@ -2,6 +2,22 @@ var Venta = require('../model/venta');
 var Controlador = require('./ControladorBase');
 
 exports.getAll = function(req, res) {
+    Venta.find().
+    populate({
+        path: 'cliente',
+        select: 'nombre'
+    }).
+    populate({
+        path: 'usuario',
+        select: 'nombre'
+    }).
+    populate({
+        path: 'detalle.producto',
+        select: 'descripcion'
+    }).
+    exec(function(error, ventas) {
+        res.json(ventas);
+    });
 }
 
 exports.crear = function(req, res) {
