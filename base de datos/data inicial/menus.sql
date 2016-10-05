@@ -1,0 +1,15 @@
+insert into menus(titulo, icono, link, catalogo) values('Venta', 'shopping_cart', '/venta', 0);
+insert into menus(titulo, icono, link, catalogo) values('Compra', 'shopping_basket', '/compra', 0);
+insert into menus(titulo, icono, link, catalogo) values('Descarga', 'file_download', '/descarga', 0);
+insert into menus(titulo, icono, link, catalogo) values('Cotizacion', 'list', '/cotizacion', 0);
+insert into menus(titulo, icono, link, catalogo) values('Usuarios', 'account_box', '/usuarios', 1);
+insert into menus(titulo, icono, link, catalogo) values('Clientes', 'supervisor_account', '/clientes', 1);
+insert into menus(titulo, icono, link, catalogo) values('Proveedores', 'card_travel', '/proveedores', 1);
+insert into menus(titulo, icono, link, catalogo) values('Productos', 'speaker_notes', '/productos', 1);
+insert into menus(titulo, icono, link, catalogo) values('Ventas', 'grid_on', '/consulta-ventas', 2);
+insert into menus(titulo, icono, link, catalogo) values('Compras', 'grid_on', '/consulta-compras', 2);
+insert into menus(titulo, icono, link, catalogo) values('Descargas', 'grid_on', '/consulta-descargas', 2);
+insert into menus(titulo, icono, link, catalogo) values('Cotizaciones', 'grid_on', '/consulta-cotizaciones', 2);
+insert into menus(titulo, icono, link, catalogo) values('Ventas', 'insert_chart', '/graficas-ventas', 3);
+insert into menus(titulo, icono, link, catalogo) values('Compras', 'insert_chart', '/graficas-compras', 3);
+insert into menus(titulo, icono, link, catalogo) values('Descargas', 'insert_chart', '/graficas-descargas',3);
