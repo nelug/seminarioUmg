@@ -19,13 +19,13 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
             }
 
             if(AuthService.isLoggedIn()){
-                $http.get('/api/user/permisos').success(function (data) {
+                $http.get('/api/v1/user/permisos').success(function (data) {
                     $rootScope.menus = true;
-                    $rootScope.userId = data[0]._id;
-                    $rootScope.menuPrincipal = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==0)]');
-                    $rootScope.menuCatalogos = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==1)]');
-                    $rootScope.menuConsultas = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==2)]');
-                    $rootScope.menuGraficas  = jsonPath(jsonPath(data, '$...id'), '$..[?(@.catalogo==3)]');
+                    //$rootScope.userId = data[0]._id;
+                    $rootScope.menuPrincipal = jsonPath(data, '$.[?(@.catalogo==0)]');
+                    $rootScope.menuCatalogos = jsonPath(data, '$.[?(@.catalogo==1)]');
+                    $rootScope.menuConsultas = jsonPath(data, '$.[?(@.catalogo==2)]');
+                    $rootScope.menuGraficas  = jsonPath(data, '$.[?(@.catalogo==3)]');
                 });
             }
 

@@ -5,11 +5,12 @@ function ($q, $timeout, $http) {
     var user = null;
     
     function isLoggedIn() {
-        if(user) {
+        /*if(user) {
             return true;
         } else {
             return false;
-        }
+        }*/
+        return true;
     }
     
     function getUserStatus() {

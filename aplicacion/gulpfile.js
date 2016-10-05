@@ -92,8 +92,8 @@ gulp.task('server', function () {
             },
             fallback: 'index.html',
             proxies: [{
-                source: "/api/v0.1/",
-                target: "http://127.0.0.1:3000/"
+                source: "/api/v1/",
+                target: "http://127.0.0.1:4000/api/v1/"
             }],
             open: true
         }));
