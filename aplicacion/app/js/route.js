@@ -148,6 +148,13 @@ angular.module('seminarioUmg')
             restricted :true
         }
     })
+    .when('/graficas-ventas',{
+        templateUrl: 'view/graficas/ventas.html',
+        controller: 'graficaVentaCtrl',
+        access:{
+            restricted :true
+        }
+    })
     .otherwise({
         redirectTo: '/'
     });
