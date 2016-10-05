@@ -1,0 +1,9 @@
+#PRUEBA PARA CREAR UN REGISTRO
+POST http://localhost:8000/api/v1/books/
+Content-Type: application/json
+
+{
+    "title": "titulo 3",
+    "author": "juan",
+    "isbn": "0003"
+}
