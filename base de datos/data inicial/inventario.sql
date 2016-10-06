@@ -55,11 +55,12 @@ INSERT INTO `clientes` (`id`, `usuario`, `nit`, `nombre`, `direccion`, `telefono
 
 CREATE TABLE IF NOT EXISTS `compras` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   `proveedor` int(11) NOT NULL,
   `numero_documento` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `fecha_documento` date NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `proveedor` (`proveedor`),
   KEY `usuario` (`usuario`)
@@ -73,9 +74,10 @@ CREATE TABLE IF NOT EXISTS `compras` (
 
 CREATE TABLE IF NOT EXISTS `cotizaciones` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   `cliente` int(11) NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `cliente` (`cliente`),
   KEY `usuario` (`usuario`)
@@ -89,9 +91,10 @@ CREATE TABLE IF NOT EXISTS `cotizaciones` (
 
 CREATE TABLE IF NOT EXISTS `descargas` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   `nota` varchar(500) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci AUTO_INCREMENT=1 ;
@@ -108,6 +111,8 @@ CREATE TABLE IF NOT EXISTS `detalle_compras` (
   `producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio` decimal(10,4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `compra` (`compra`),
   KEY `producto` (`producto`)
@@ -125,6 +130,8 @@ CREATE TABLE IF NOT EXISTS `detalle_cotizaciones` (
   `producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio` decimal(8,2) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `cotizacion` (`cotizacion`),
   KEY `producto` (`producto`)
@@ -142,6 +149,8 @@ CREATE TABLE IF NOT EXISTS `detalle_descargas` (
   `producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio` decimal(10,4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `descarga` (`descarga`),
   KEY `producto` (`producto`)
@@ -160,6 +169,8 @@ CREATE TABLE IF NOT EXISTS `detalle_ventas` (
   `cantidad` int(11) NOT NULL,
   `precio` decimal(8,2) NOT NULL,
   `ganancia` decimal(10,4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `producto` (`producto`),
   KEY `venta` (`venta`)
@@ -185,21 +196,22 @@ CREATE TABLE IF NOT EXISTS `menus` (
 --
 
 INSERT INTO `menus` (`id`, `titulo`, `icono`, `link`, `catalogo`) VALUES
-(1, 'Venta', 'shopping_cart', '/venta', 0),
-(2, 'Compra', 'shopping_basket', '/compra', 0),
-(3, 'Descarga', 'file_download', '/descarga', 0),
-(4, 'Cotizacion', 'list', '/cotizacion', 0),
-(5, 'Usuarios', 'account_box', '/usuarios', 1),
-(6, 'Clientes', 'supervisor_account', '/clientes', 1),
-(7, 'Proveedores', 'card_travel', '/proveedores', 1),
-(8, 'Productos', 'speaker_notes', '/productos', 1),
-(9, 'Ventas', 'grid_on', '/consulta-ventas', 2),
-(10, 'Compras', 'grid_on', '/consulta-compras', 2),
-(11, 'Descargas', 'grid_on', '/consulta-descargas', 2),
-(12, 'Cotizaciones', 'grid_on', '/consulta-cotizaciones', 2),
-(13, 'Ventas', 'insert_chart', '/graficas-ventas', 3),
-(14, 'Compras', 'insert_chart', '/graficas-compras', 3),
-(15, 'Descargas', 'insert_chart', '/graficas-descargas', 3);
+(1, 'Inventario', 'grid_on', '/inventario', 0),
+(2, 'Venta', 'shopping_cart', '/venta', 0),
+(3, 'Compra', 'shopping_basket', '/compra', 0),
+(4, 'Descarga', 'file_download', '/descarga', 0),
+(5, 'Cotizacion', 'list', '/cotizacion', 0),
+(6, 'Usuarios', 'account_box', '/usuarios', 1),
+(7, 'Clientes', 'supervisor_account', '/clientes', 1),
+(8, 'Proveedores', 'card_travel', '/proveedores', 1),
+(9, 'Productos', 'speaker_notes', '/productos', 1),
+(10, 'Ventas', 'grid_on', '/consulta-ventas', 2),
+(11, 'Compras', 'grid_on', '/consulta-compras', 2),
+(12, 'Descargas', 'grid_on', '/consulta-descargas', 2),
+(13, 'Cotizaciones', 'grid_on', '/consulta-cotizaciones', 2),
+(14, 'Ventas', 'insert_chart', '/graficas-ventas', 3),
+(15, 'Compras', 'insert_chart', '/graficas-compras', 3),
+(16, 'Descargas', 'insert_chart', '/graficas-descargas', 3);
 
 -- --------------------------------------------------------
 
@@ -210,7 +222,9 @@ INSERT INTO `menus` (`id`, `titulo`, `icono`, `link`, `catalogo`) VALUES
 CREATE TABLE IF NOT EXISTS `permisos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu` int(11) NOT NULL,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `menu` (`menu`),
   KEY `usuario` (`usuario`)
@@ -235,7 +249,8 @@ INSERT INTO `permisos` (`id`, `menu`, `usuario`) VALUES
 (12, 12, 1),
 (13, 13, 1),
 (14, 14, 1),
-(15, 15, 1);
+(15, 15, 1),
+(16, 16, 1);
 
 -- --------------------------------------------------------
 
@@ -250,6 +265,8 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `precio_venta` decimal(8,2) NOT NULL,
   `precio_costo` decimal(10,4) NOT NULL,
   `existencia` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci AUTO_INCREMENT=1 ;
 
@@ -261,13 +278,15 @@ CREATE TABLE IF NOT EXISTS `productos` (
 
 CREATE TABLE IF NOT EXISTS `proveedores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   `nit` varchar(12) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `empresa` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `representante` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `telefono` varchar(25) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `direccion` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `correo` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci AUTO_INCREMENT=1 ;
@@ -285,6 +304,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nombre` varchar(25) COLLATE utf8mb4_spanish_ci NOT NULL,
   `apellido` varchar(25) COLLATE utf8mb4_spanish_ci NOT NULL,
   `correo` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `usuario` (`usuario`),
   UNIQUE KEY `correo` (`correo`)
@@ -307,7 +328,9 @@ CREATE TABLE IF NOT EXISTS `ventas` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `cliente` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `cliente` (`cliente`),
   KEY `usuario` (`usuario`)
