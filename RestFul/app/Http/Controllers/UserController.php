@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\DB;
  
 class UserController extends Controller{
     
-    public function permisos()
+    public function permisos($id)
     {
-        $permisos = DB::table('permisos')->join('menus', 'menus.id', '=', 'menu')->get();
+        $permisos = DB::table('permisos')->join('menus', 'menus.id', '=', 'menu')->whereUser($id)->get;
         return response()->json($permisos); 
     }
 }

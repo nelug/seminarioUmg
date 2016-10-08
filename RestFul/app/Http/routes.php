@@ -17,8 +17,10 @@ $app->get('/', function() use ($app) {
 
 $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers'], function($app)
 {
-    $app->get('user/permisos', 'UserController@permisos');
+    $app->get('user/permisos/{id}', 'UserController@permisos');
     resource('cliente','ClienteController');
+    resource('producto','ProductoController');
+    resource('proveedor','ProveedorController');
 });
 
 function resource($uri, $controller)

@@ -19,7 +19,7 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
             }
 
             if(AuthService.isLoggedIn()){
-                $http.get('/api/v1/user/permisos').success(function (data) {
+                $http.get('/api/v1/user/permisos/1').success(function (data) {
                     $rootScope.menus = true;
                     //$rootScope.userId = data[0]._id;
                     $rootScope.menuPrincipal = jsonPath(data, '$.[?(@.catalogo==0)]');
