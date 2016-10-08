@@ -4,7 +4,7 @@ angular.module('seminarioUmg').factory('ServiceGenericoDetalle', [ '$http', '$ti
 function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location) {
     
     function obtenerClientesAC($scope){
-        $http.get('/api/cliente/all').success( function(data) {
+        $http.get('/api/v1/cliente/').success( function(data) {
             $scope.clientes = data;
             $scope.clientes.map( function (c) {
                 c.value = c.nombre.toLowerCase() + ' ' + c.nit.toString() + ' ' + c.direccion.toLowerCase();
@@ -32,7 +32,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location) {
     }
     
     function obtenerProductosAC($scope){
-        $http.get('/api/producto/all').success( function(data) {
+        $http.get('/api/v1/producto/').success( function(data) {
             $scope.productos = data;
             $scope.productos.map( function (p) {
                 p.value = p.codigo + ' ' + p.descripcion;
@@ -60,7 +60,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location) {
     
     function funcionesCrear($scope, entidad) {
         $scope.crearRegistro = function () {
-            $http.post('/api/'+ entidad.toLowerCase() + '/crear', $scope.formData)
+            $http.post('/api/v1/'+ entidad.toLowerCase() + '/crear', $scope.formData)
             .success(function(data) {
                 if (!data.resultado) {
                     var mensaje = jsonPath(data, '$.mensaje[*].message');
