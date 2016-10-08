@@ -11,7 +11,8 @@ class UserController extends Controller{
     
     public function permisos($id)
     {
-        $permisos = DB::table('permisos')->join('menus', 'menus.id', '=', 'menu')->whereUser($id)->get;
+        $permisos = DB::table('permisos')->select('link', 'titulo', 'icono', 'catalogo')
+        ->join('menus', 'menus.id', '=', 'menu')->whereUsuario($id)->get();
         return response()->json($permisos); 
     }
 }
