@@ -1,6 +1,10 @@
 
+INSERT INTO `estado` (`id`,`estado`)VALUES(1,'activo');
+
 INSERT INTO `usuarios` (`id`,`usuario`, `password`, `nombre`, `apellido`, `correo`) VALUES
 (1,'admin', 'admin', 'Administrador', 'Sistema', 'admin@gmail.com');
+
+
 
 
 INSERT INTO `menus` (`id`, `titulo`, `icono`, `link`, `catalogo`) VALUES
