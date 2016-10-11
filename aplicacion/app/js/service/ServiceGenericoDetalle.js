@@ -20,7 +20,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location) {
         };
         
         $scope.seleccionarAC = function (dato) {
-            $scope.formData.cliente = dato._id;
+            $scope.formData.cliente = dato.id;
             $scope.cliente= dato;
         };
         
@@ -60,7 +60,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location) {
     
     function funcionesCrear($scope, entidad) {
         $scope.crearRegistro = function () {
-            $http.post('/api/v1/'+ entidad.toLowerCase() + '/crear', $scope.formData)
+            $http.post('/api/v1/'+ entidad.toLowerCase() + '/', $scope.formData)
             .success(function(data) {
                 if (!data.resultado) {
                     var mensaje = jsonPath(data, '$.mensaje[*].message');

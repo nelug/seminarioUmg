@@ -26,16 +26,16 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', functio
         }
     };
     $scope.data = [{
-        key: "Cumulative Return",
+        key: 'Cumulative Return',
         values: [
-            { "label" : "A" , "value" : 10 },
-            { "label" : "B" , "value" : 20 },
-            { "label" : "C" , "value" : 30 },
-            { "label" : "D" , "value" : 25 },
-            { "label" : "E" , "value" : 15 },
-            { "label" : "F" , "value" : 35 },
-            { "label" : "G" , "value" : 50 },
-            { "label" : "H" , "value" : 12 }
+            { 'label' : 'A' , 'value' : 10 },
+            { 'label' : 'B' , 'value' : 20 },
+            { 'label' : 'C' , 'value' : 30 },
+            { 'label' : 'D' , 'value' : 25 },
+            { 'label' : 'E' , 'value' : 15 },
+            { 'label' : 'F' , 'value' : 35 },
+            { 'label' : 'G' , 'value' : 50 },
+            { 'label' : 'H' , 'value' : 12 }
         ]
     }];
 }]);

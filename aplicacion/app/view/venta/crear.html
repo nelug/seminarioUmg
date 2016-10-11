@@ -16,14 +16,11 @@
                         </md-autocomplete>
                     </div>
                     <div flex="0" flex-gt-xs="5"></div>
-                    <div flex="100" flex-gt-xs="20" ng-show="clientes" >
-                        <spam><strong>Nombre: </strong></spam>{{ cliente.nombre}}
+                    <div flex="100" flex-gt-xs="30" ng-show="clientes" >
+                        {{ cliente.nombre}} {{ " [" + cliente.nit + "] " }}
                     </div>
-                    <div flex="100" flex-gt-xs="20" ng-show="clientes" >
-                        <spam><strong>Nit: </strong></spam>{{ cliente.nit}}
-                    </div>
-                    <div flex="100" flex-gt-xs="20" ng-show="clientes"  >
-                        <spam><strong>Direccion: </strong></spam>{{ cliente.direccion }}
+                    <div flex="100" flex-gt-xs="35" ng-show="clientes"  >
+                        <strong>Direccion:</strong>{{ cliente.direccion }}
                     </div>
                 </div>
                 <div layout layout-wrap  style="margin-bottom: 25px;">
@@ -38,16 +35,15 @@
                         </md-autocomplete>
                     </div>
                     <div flex="0" flex-gt-xs="5"></div>
-                    <div flex="100" flex-gt-xs="20" ng-show="productos" >
-                        <spam><strong>Descripcion: </strong></spam>{{ producto.descripcion}}
+                    <div flex="100" flex-gt-xs="30" ng-show="productos" >
+                        {{ producto.descripcion + " [" + producto.marca + "]" }}
+                    </div>
+                    <div flex="100" flex-gt-xs="15" ng-show="productos"  >
+                        <strong>Precio V: </strong>{{ producto.precio_venta }}
                     </div>
                     <div flex="100" flex-gt-xs="20" ng-show="productos" >
-                        <spam><strong>Marca: </strong></spam>{{ producto.marca}}
+                        <strong>Existencia: </strong>{{ producto.existencia }}
                     </div>
-                    <div flex="100" flex-gt-xs="20" ng-show="productos"  >
-                        <spam><strong>Precio Venta: </strong></spam>{{ producto.precioVenta }}
-                    </div>
-                    <div flex="0" flex-gt-xs="5" ></div>
                 </div>
                 <div style="margin-bottom: 25px;" layout layout-wrap>
                     <md-input-container  flex="100" flex-gt-xs="20">
@@ -72,8 +68,8 @@
                             <tr ng-repeat="detalle in detalleTabla">
                                 <td>{{ detalle.cantidad }}</td>
                                 <td>{{ detalle.descripcion }}</td>
-                                <td>{{ detalle.precio }}</td>
-                                <td>{{ detalle.total }}</td>
+                                <td>{{ detalle.precio | currency: 'Q: '}}</td>
+                                <td>{{ detalle.total | currency: 'Q: '}}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -20,15 +20,15 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
         var dataTabla = {
             cantidad: $scope.dataTemp.cantidad,
             descripcion: $scope.producto.descripcion,
-            precio: $scope.producto.precioVenta,
-            total:($scope.dataTemp.cantidad * $scope.producto.precioVenta)
+            precio: $scope.producto.precio_venta,
+            total:($scope.dataTemp.cantidad * $scope.producto.precio_venta)
         };
         
         var dataForm = {
             cantidad: $scope.dataTemp.cantidad,
-            precio: $scope.producto.precioVenta,
-            ganancia:($scope.producto.precioVenta - $scope.producto.precioCosto),
-            producto: $scope.producto._id
+            precio: $scope.producto.precio_venta,
+            ganancia:($scope.producto.precio_venta - $scope.producto.precio_costo),
+            producto: $scope.producto.id
         };
         
         $scope.detalleTabla.push(dataTabla);
