@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-10-2016 a las 18:35:51
+-- Tiempo de generación: 10-10-2016 a las 23:44:28
 -- Versión del servidor: 5.5.52-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.37-1+deprecated+dontuse+deb.sury.org~trusty+1
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `clientes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   `nit` varchar(12) COLLATE utf8mb4_spanish_ci NOT NULL,
   `nombre` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `direccion` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
@@ -46,12 +46,13 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 
 CREATE TABLE IF NOT EXISTS `compras` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   `proveedor` int(11) NOT NULL,
   `estado_proceso` int(11) NOT NULL DEFAULT '1',
   `numero_documento` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `fecha_documento` date NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total` decimal(8,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `estado_proceso` (`estado_proceso`),
   KEY `proveedor` (`proveedor`),
@@ -66,10 +67,11 @@ CREATE TABLE IF NOT EXISTS `compras` (
 
 CREATE TABLE IF NOT EXISTS `cotizaciones` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   `cliente` int(11) NOT NULL,
   `estado_proceso` int(11) NOT NULL DEFAULT '1',
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total` decimal(8,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cliente` (`cliente`),
   KEY `estado_proceso` (`estado_proceso`),
@@ -84,10 +86,11 @@ CREATE TABLE IF NOT EXISTS `cotizaciones` (
 
 CREATE TABLE IF NOT EXISTS `descargas` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   `estado_proceso` int(11) NOT NULL DEFAULT '1',
   `nota` varchar(500) COLLATE utf8mb4_spanish_ci NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total` decimal(8,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `estado_proceso` (`estado_proceso`),
   KEY `usuario` (`usuario`)
@@ -210,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `menus` (
 CREATE TABLE IF NOT EXISTS `permisos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu` int(11) NOT NULL,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `menu` (`menu`),
   KEY `usuario` (`usuario`)
@@ -224,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `permisos` (
 
 CREATE TABLE IF NOT EXISTS `productos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   `estado` int(11) NOT NULL DEFAULT '1',
   `codigo` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `descripcion` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
@@ -246,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
 
 CREATE TABLE IF NOT EXISTS `proveedores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   `nit` varchar(12) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `empresa` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `contacto` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
@@ -266,7 +269,7 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `estado` int(11) NOT NULL DEFAULT '1',
-  `usuario` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `usuario` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT '1',
   `password` varchar(500) COLLATE utf8mb4_spanish_ci NOT NULL,
   `nombre` varchar(25) COLLATE utf8mb4_spanish_ci NOT NULL,
   `apellido` varchar(25) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -287,8 +290,9 @@ CREATE TABLE IF NOT EXISTS `ventas` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `cliente` int(11) NOT NULL,
   `estado_proceso` int(11) NOT NULL DEFAULT '1',
-  `usuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL DEFAULT '1',
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total` decimal(8,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cliente` (`cliente`),
   KEY `estado_proceso` (`estado_proceso`),
