@@ -21,6 +21,8 @@ $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers'], funct
     resource('cliente','ClienteController');
     resource('producto','ProductoController');
     resource('proveedor','ProveedorController');
+    resource('estado','EstadoController');
+    resource('estado-proceso','EstadoProcesoController');
 });
 
 function resource($uri, $controller)

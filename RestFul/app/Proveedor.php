@@ -9,4 +9,9 @@ class Proveedor extends Model
 	protected $guarded = array('id');
     
     protected $fillable = ['nit', 'empresa', 'representante', 'telefono', 'direccion', 'correo'];
+    
+    public function compras()
+    {
+        return $this->hasMany('Compra', 'proveedor', 'id');
+    }
 }
