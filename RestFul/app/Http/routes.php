@@ -19,6 +19,7 @@ $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers'], funct
 {
     $app->get('user/permisos/{id}', 'UserController@permisos');
     resource('cliente','ClienteController');
+    resource('venta','VentaController');
     resource('producto','ProductoController');
     resource('proveedor','ProveedorController');
     resource('estado','EstadoController');

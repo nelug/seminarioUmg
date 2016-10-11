@@ -8,7 +8,7 @@ class Producto extends Model
 
 	protected $guarded = array('id');
     
-    protected $fillable = ['codigo', 'descripcion', 'precio_venta', 'precio_costo', 'existencia'];
+    protected $fillable = ['codigo', 'descripcion', 'precio_venta', 'precio_costo', 'existencia', 'existencia_minima', 'marca'];
     
     public function detalleVenta()
     {
