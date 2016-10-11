@@ -1,11 +1,9 @@
 
-INSERT INTO `estado` (`id`,`estado`)VALUES(1,'activo');
+INSERT INTO `estado` (`id`,`estado`)VALUES(1,'Activo'),(2,'Inactivo');
+INSERT INTO `estado_proceso` (`id`,`estado`)VALUES(1,'En proceso'),(2,'Finalizada'),(3,'Anulada');
 
 INSERT INTO `usuarios` (`id`,`usuario`, `password`, `nombre`, `apellido`, `correo`) VALUES
 (1,'admin', 'admin', 'Administrador', 'Sistema', 'admin@gmail.com');
-
-
-
 
 INSERT INTO `menus` (`id`, `titulo`, `icono`, `link`, `catalogo`) VALUES
 (1, 'Inventario', 'grid_on', '/inventario', 0),
@@ -24,8 +22,6 @@ INSERT INTO `menus` (`id`, `titulo`, `icono`, `link`, `catalogo`) VALUES
 (14, 'Ventas', 'insert_chart', '/graficas-ventas', 3),
 (15, 'Compras', 'insert_chart', '/graficas-compras', 3),
 (16, 'Descargas', 'insert_chart', '/graficas-descargas', 3);
-
-
 
 INSERT INTO `permisos` (`id`, `menu`, `usuario`) VALUES
 (1, 1, 1),
