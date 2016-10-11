@@ -8,7 +8,8 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
     //configuracion para datatables
     DTDefaultOptions.setLanguageSource('lang/es.json');
     DTDefaultOptions.setLoadingTemplate('<div class="loader-tabla"><img src="img/loading.gif"></div>');
-
+    DTDefaultOptions.setDOM('lfrtip');
+    
     //configuracion para login
     $rootScope.$on('$routeChangeStart', function (event, next) {
         AuthService.getUserStatus().then(function() {
