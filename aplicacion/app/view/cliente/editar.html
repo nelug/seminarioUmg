@@ -1,38 +1,50 @@
-<md-dialog>
-    <form layout="column">
-        <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
-        <md-dialog-content class="md-whiteframe-5dp">
-                    <form layout="column" ng-submit="actualizar()"  layout-align="center center" layout-fill="layout-fill">
-                        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-                        <md-content layout="column" class="md-padding">
-                            <md-input-container >
-                                <label>Nit</label>
-                                <input type="text" name="nit" title="El campo Nit es requerido" ng-model="formData.nit" required="true"/>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>Nombre</label>
-                                <input type="text" name="nombre" title="El campo NOmbre es requerido" ng-model="formData.nombre" required="true"/>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>direccion</label>
-                                <input type="text" name="direccion" title="El campo Direccion es requerido" ng-model="formData.direccion" required="true"/>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>Telefono</label>
-                                <input type="text" name="telefono" title="El campo Telefono es requerido" ng-model="formData.telefono" required="true"/>
-                            </md-input-container>
-                            <md-input-container flex="100">
-                                <label>Correo</label>
-                                <input type="email", name="correo" ng-model="formData.correo" required="true"/>
-                            </md-input-container>
-                        </md-content>
-                    </form>
-                </md-dialog-content>
-        <md-dialog-actions layout="row">
-            <div layout="row" layout-align="center center" style="padding-top:20px;">
-                <md-button ng-click= "actualizar()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Editar Cliente">Actualizar</md-button>
-                <div flex="flex"></div>
-            </div>
-        </md-dialog-actions>
-    </form>
+<md-dialog layout="column">
+    <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
+    <md-dialog-content class="md-whiteframe-5dp">
+        <form layout="column" name="form" novalidate layout flex layout-wrap>
+            <md-content layout="column" class="md-padding" layout layout-wrap>
+                <md-input-container flex="100">
+                    <label>Nit</label>
+                    <input type="text" name="nit"  ng-model="formData.nit" ng-required="true"/>
+                    <div ng-messages="form.nit.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="100">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre" ng-model="formData.nombre" ng-required="true"/>
+                    <div ng-messages="form.nombre.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="100">
+                    <label>direccion</label>
+                    <input type="text" name="direccion" ng-model="formData.direccion" ng-required="true"/>
+                    <div ng-messages="form.direccion.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="100">
+                    <label>Telefono</label>
+                    <input type="text" name="telefono" ng-model="formData.telefono" ng-required="true"/>
+                    <div ng-messages="form.telefono.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="100">
+                    <label>Correo</label>
+                    <input type="email", name="correo" ng-model="formData.correo" ng-required="true"/>
+                    <div ng-messages="form.correo.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+            </md-content>
+            <md-dialog-actions layout="row">
+                <div layout="row" layout-align="center center" style="padding-top:20px;">
+                    <md-button ng-click= "actualizar()" class="md-raised md-primary" ng-disabled="form.$invalid" aria-label="Actualizar Cliente">actualizar</md-button>
+                    <div flex="flex"></div>
+                </div>
+            </md-dialog-actions>
+        </form>
+    </md-dialog-content>
 </md-dialog>
