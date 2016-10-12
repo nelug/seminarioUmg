@@ -6,10 +6,10 @@ insert into menus(titulo, icono, link, catalogo) values('Usuarios', 'account_box
 insert into menus(titulo, icono, link, catalogo) values('Clientes', 'supervisor_account', '/clientes', 1);
 insert into menus(titulo, icono, link, catalogo) values('Proveedores', 'card_travel', '/proveedores', 1);
 insert into menus(titulo, icono, link, catalogo) values('Productos', 'speaker_notes', '/productos', 1);
-insert into menus(titulo, icono, link, catalogo) values('Ventas', 'grid_on', '/consulta-ventas', 2);
-insert into menus(titulo, icono, link, catalogo) values('Compras', 'grid_on', '/consulta-compras', 2);
-insert into menus(titulo, icono, link, catalogo) values('Descargas', 'grid_on', '/consulta-descargas', 2);
-insert into menus(titulo, icono, link, catalogo) values('Cotizaciones', 'grid_on', '/consulta-cotizaciones', 2);
+insert into menus(titulo, icono, link, catalogo) values('Ventas', 'attach_money', '/consulta-ventas', 2);
+insert into menus(titulo, icono, link, catalogo) values('Compras', 'local_mall', '/consulta-compras', 2);
+insert into menus(titulo, icono, link, catalogo) values('Descargas', 'archive', '/consulta-descargas', 2);
+insert into menus(titulo, icono, link, catalogo) values('Cotizaciones', 'event_note', '/consulta-cotizaciones', 2);
 insert into menus(titulo, icono, link, catalogo) values('Ventas', 'insert_chart', '/graficas-ventas', 3);
 insert into menus(titulo, icono, link, catalogo) values('Compras', 'insert_chart', '/graficas-compras', 3);
 insert into menus(titulo, icono, link, catalogo) values('Descargas', 'insert_chart', '/graficas-descargas',3);
