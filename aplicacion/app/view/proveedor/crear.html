@@ -28,15 +28,15 @@
                             </md-input-container>
                             <md-input-container >
                                 <label>Telefono Empresa</label>
-                                <input type="text" name="telefono" title="El campo nit es Telefono" ng-model="formData.telefono" required="true"/>
-                                <div ng-messages="form.telefono.$error" role="alert">
+                                <input type="text" name="telefono" title="El campo telefono empresa es requerido" ng-model="formData.telefono_empresa" required="true"/>
+                                <div ng-messages="form.telefono_empresa.$error" role="alert">
                                     <div ng-messages-include="view/plantillas/mensajes.html"></div>
                                 </div>
                             </md-input-container>
                             <md-input-container >
                                 <label>Telefono personal</label>
                                 <input type="text" name="telefono2" ng-model="formData.telefonoPersonal">
-                                <div ng-messages="form.telefonoPersonal.$error" role="alert">
+                                <div ng-messages="form.telefono_personal.$error" role="alert">
                                     <div ng-messages-include="view/plantillas/mensajes.html"></div>
                                 </div>
                             </md-input-container>
