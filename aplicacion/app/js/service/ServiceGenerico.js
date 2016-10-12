@@ -70,7 +70,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         $scope.hide = function() { $mdDialog.hide(); };
         $scope.cancel = function() { $mdDialog.cancel(); };
         $scope.answer = function(answer) { $mdDialog.hide(answer); };
-        $scope.formData = dataEnviada;
+        $scope.formData = angular.copy(dataEnviada);
         
         // Función para editar un registro
         $scope.actualizar = function() {
