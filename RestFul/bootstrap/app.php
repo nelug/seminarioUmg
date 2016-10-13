@@ -67,6 +67,10 @@ $app->singleton(
 
 // ]);
 
+$app->routeMiddleware([
+	'authToken' => App\Http\Middleware\AuthToken::class,
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -78,6 +82,8 @@ $app->singleton(
 |
 */
 
+$app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register('App\Providers\AppServiceProvider');
 
 /*

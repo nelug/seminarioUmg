@@ -1,15 +1,18 @@
-<?php namespace Laravel\Lumen\Console;
+<?php
+
+namespace Laravel\Lumen\Console;
 
 use Exception;
+use Throwable;
 use RuntimeException;
+use Laravel\Lumen\Application;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Console\Application as Artisan;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Console\Kernel as KernelContract;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 class Kernel implements KernelContract
 {
-
     /**
      * The application implementation.
      *
@@ -25,11 +28,11 @@ class Kernel implements KernelContract
     protected $artisan;
 
     /**
-     * Include the default Artisan commands.
+     * The Artisan commands provided by the application.
      *
-     * @var bool
+     * @var array
      */
-    protected $includeDefaultCommands = true;
+    protected $commands = [];
 
     /**
      * Create a new console kernel instance.
@@ -41,9 +44,7 @@ class Kernel implements KernelContract
     {
         $this->app = $app;
 
-        if ($this->includeDefaultCommands) {
-            $this->app->prepareForConsoleCommand();
-        }
+        $this->app->prepareForConsoleCommand();
 
         $this->defineConsoleSchedule();
     }
@@ -79,6 +80,14 @@ class Kernel implements KernelContract
             $this->renderException($output, $e);
 
             return 1;
+        } catch (Throwable $e) {
+            $e = new FatalThrowableError($e);
+
+            $this->reportException($e);
+
+            $this->renderException($output, $e);
+
+            return 1;
         }
     }
 
@@ -100,7 +109,7 @@ class Kernel implements KernelContract
      * @param  array  $parameters
      * @return int
      */
-    public function call($command, array $parameters = array())
+    public function call($command, array $parameters = [])
     {
         return $this->getArtisan()->call($command, $parameters);
     }
@@ -112,9 +121,9 @@ class Kernel implements KernelContract
      * @param  array   $parameters
      * @return void
      */
-    public function queue($command, array $parameters = array())
+    public function queue($command, array $parameters = [])
     {
-        throw new RuntimeException("Queueing Artisan commands is not supported by Lumen.");
+        throw new RuntimeException('Queueing Artisan commands is not supported by Lumen.');
     }
 
     /**
@@ -159,14 +168,9 @@ class Kernel implements KernelContract
      */
     protected function getCommands()
     {
-        if ($this->includeDefaultCommands) {
-            return array_merge($this->commands, [
-                'Illuminate\Console\Scheduling\ScheduleRunCommand',
-                'Laravel\Lumen\Console\Commands\ServeCommand',
-            ]);
-        } else {
-            return $this->commands;
-        }
+        return array_merge($this->commands, [
+            'Illuminate\Console\Scheduling\ScheduleRunCommand',
+        ]);
     }
 
     /**

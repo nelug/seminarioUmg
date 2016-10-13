@@ -28,14 +28,18 @@ return [
 
     'stores' => [
 
+        'apc' => [
+            'driver' => 'apc',
+        ],
+
         'array' => [
-            'driver' => 'array'
+            'driver' => 'array',
         ],
 
         'database' => [
             'driver' => 'database',
             'table'  => env('CACHE_DATABASE_TABLE', 'cache'),
-            'connection' => null,
+            'connection' => env('CACHE_DATABASE_CONNECTION', null),
         ],
 
         'file' => [
@@ -47,14 +51,14 @@ return [
             'driver'  => 'memcached',
             'servers' => [
                 [
-                    'host' => env('MEMCACHED_HOST', '127.0.0.1'), 'port' => env('MEMCACHED_PORT', 11211), 'weight' => 100
+                    'host' => env('MEMCACHED_HOST', '127.0.0.1'), 'port' => env('MEMCACHED_PORT', 11211), 'weight' => 100,
                 ],
             ],
         ],
 
         'redis' => [
             'driver' => 'redis',
-            'connection' => 'default',
+            'connection' => env('CACHE_REDIS_CONNECTION', 'default'),
         ],
 
     ],
@@ -70,6 +74,6 @@ return [
     |
     */
 
-    'prefix' => 'laravel',
+    'prefix' => env('CACHE_PREFIX', 'laravel'),
 
 ];

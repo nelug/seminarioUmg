@@ -15,9 +15,17 @@ $app->get('/', function() use ($app) {
     return "Api Rest Con Lumen";
 });
 
+$app->group(['prefix' => 'users/','namespace' => 'App\Http\Controllers'], function($app)
+{
+    $app->post('login', 'UserController@login');
+});
+
 $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers'], function($app)
 {
     $app->get('user/permisos/{id}', 'UserController@permisos');
+    $app->post('register', 'UserController@register');
+    $app->get('info/{token}','UserController@info');
+    
     resource('cliente','ClienteController');
     resource('venta','VentaController');
     resource('producto','ProductoController');
@@ -28,10 +36,10 @@ $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers'], funct
 
 function resource($uri, $controller)
 {
-	global $app;
+    global $app;
     $app->get($uri,            $controller.'@obtenerTodos');
-	$app->get($uri.'/{id}',    $controller.'@obtenerId');
-	$app->post($uri,           $controller.'@crear');
-	$app->put($uri,            $controller.'@actualizar');
-	$app->delete($uri.'/{id}', $controller.'@eliminar');
+    $app->get($uri.'/{id}',    $controller.'@obtenerId');
+    $app->post($uri,           $controller.'@crear');
+    $app->put($uri,            $controller.'@actualizar');
+    $app->delete($uri.'/{id}', $controller.'@eliminar');
 }
