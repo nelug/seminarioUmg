@@ -26,19 +26,19 @@
                 </md-input-container>
                 <md-input-container flex="100">
                     <label>Telefono</label>
-                    <input type="text"  title="Ingrese el telefono del cliente"  name="telefono" ng-model="formData.telefono"/>
+                    <input type="text" ng-pattern="/^[0-9]{1,11}$/" ng-maxlength="11"  title="Ingrese el telefono del cliente"  name="telefono" ng-model="formData.telefono"/>
                     <div ng-messages="form.telefono.$error" role="alert">
                         <div ng-messages-include="view/plantillas/mensajes.html"></div>
                     </div>
                 </md-input-container>
                 <md-input-container flex="100">
                     <label>Correo</label>
-                    <input type="email",  title="Ingrese el correo del cliente" name="correo" ng-model="formData.correo"/>
+                    <input type="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"  title="Ingrese el correo del cliente" name="correo" ng-model="formData.correo"/>
                 </md-input-container>
             </md-content>
             <md-dialog-actions layout="row">
                 <div layout="row" layout-align="center center" style="padding-top:20px;">
-                    <md-button ng-click= "crearRegistro()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Crar Cliente">Crear</md-button>
+                    <md-button ng-click= "crearRegistro()" class="md-raised md-primary" ng-disabled="form.$invalid"  aria-label="Crar Cliente">Crear</md-button>
                     <div flex="flex"></div>
                 </div>
             </md-dialog-actions>
