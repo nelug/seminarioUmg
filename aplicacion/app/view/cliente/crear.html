@@ -5,35 +5,35 @@
             <md-content layout="column" class="md-padding" layout layout-wrap>
                 <md-input-container flex="100">
                     <label>Nit</label>
-                    <input type="text" title="El campo Nit es requerido" name="nit"  ng-model="formData.nit" required="true"/>
+                    <input type="text" title="Ingrese numero de nit" name="nit"  ng-model="formData.nit"/>
                     <div ng-messages="form.nit.$error" role="alert">
                         <div ng-messages-include="view/plantillas/mensajes.html"></div>
                     </div>
                 </md-input-container>
                 <md-input-container flex="100">
-                    <label>Nombre</label>
-                    <input type="text" title="El campo Nombre es requerido"  name="nombre" ng-model="formData.nombre" required="true"/>
+                    <label>Nombres y Apellidos</label>
+                    <input type="text" title="Ingrese el nombre del cliente"  name="nombre" ng-model="formData.nombre" required="true"/>
                     <div ng-messages="form.nombre.$error" role="alert">
                         <div ng-messages-include="view/plantillas/mensajes.html"></div>
                     </div>
                 </md-input-container>
                 <md-input-container flex="100">
-                    <label>direccion</label>
-                    <input type="text"  title="La campo direccion es requerida"  name="direccion" ng-model="formData.direccion" required="true"/>
+                    <label>Direccion</label>
+                    <input type="text"  title="Ingrese la direccion del cliente"  name="direccion" ng-model="formData.direccion" required="true"/>
                     <div ng-messages="form.direccion.$error" role="alert">
                         <div ng-messages-include="view/plantillas/mensajes.html"></div>
                     </div>
                 </md-input-container>
                 <md-input-container flex="100">
                     <label>Telefono</label>
-                    <input type="text"  title="El campo Telefono es requerido"  name="telefono" ng-model="formData.telefono" required="true"/>
+                    <input type="text"  title="Ingrese el telefono del cliente"  name="telefono" ng-model="formData.telefono"/>
                     <div ng-messages="form.telefono.$error" role="alert">
                         <div ng-messages-include="view/plantillas/mensajes.html"></div>
                     </div>
                 </md-input-container>
                 <md-input-container flex="100">
                     <label>Correo</label>
-                    <input type="email", name="correo" ng-model="formData.correo" required="true"/>
+                    <input type="email",  title="Ingrese el correo del cliente" name="correo" ng-model="formData.correo"/>
                 </md-input-container>
             </md-content>
             <md-dialog-actions layout="row">

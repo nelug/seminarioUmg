@@ -4,7 +4,6 @@
         <tr>
             <th>Nit</th>
             <th>Empresa</th>
-            <th>Contacto</th>
             <th>Telefono</th>
             <th>Direccion</th>
             <th>Correo</th>
@@ -15,8 +14,7 @@
         <tr ng-click="selectDataTabla(proveedor)" ng-repeat="proveedor in dataTabla">
             <td>{{ proveedor.nit }}</td>
             <td>{{ proveedor.empresa }}</td>
-            <td>{{ proveedor.contacto }}</td>
-            <td>{{ proveedor.telefono }}</td>
+            <td>{{ proveedor.telefono_empresa}}</td>
             <td>{{ proveedor.direccion }}</td>
             <td>{{ proveedor.correo }}</td>
         </tr>

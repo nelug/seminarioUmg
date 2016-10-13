@@ -1,67 +1,64 @@
-<md-dialog>
-    <form layout="column">
+<md-dialog layout="column">
         <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
         <md-dialog-content class="md-whiteframe-5dp">
-                    <form layout="column" ng-submit="crearRegistro()"  layout-align="center center" layout-fill="layout-fill">
-                        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-                        <md-content layout="column" class="md-padding">
-                            <md-input-container >
+            <form layout="column" name="form" ng-submit="crearRegistro()"  layout flex layout-wrap>
+                <md-content layout "column" class="md-padding" layout layout-wrap>
+                            <md-input-container flex="100">
                                 <label>Nit</label>
-                                <input type="text" title="El campo nit es requerido" name="nit" ng-model="formData.nit" required="true"/>
+                                <input type="text" title="Ingrese el numero de Nit" name="nit" ng-model="formData.nit" required="true"/>
                                 <div ng-messages="form.nit.$error" role="alert">
                                     <div ng-messages-include="view/plantillas/mensajes.html"></div>
                                 </div>
-                            </md-input-container>
-                            <md-input-container >
+                            </md-input-container >
+                            <md-input-container flex="100">
                                 <label>Empresa</label>
-                                <input type="text" name="empresa" title="El campo Empresa es requerido" ng-model="formData.empresa" required="true"/>
+                                <input type="text" name="empresa" title="Ingrese el nombre de la empresa" ng-model="formData.empresa" required="true"/>
                                 <div ng-messages="form.empresa.$error" role="alert">
                                     <div ng-messages-include="view/plantillas/mensajes.html"></div>
                                 </div>
                             </md-input-container>
-                            <md-input-container >
-                                <label>Contacto</label>
-                                <input type="text" name="Contacto" title="El campo Contacto es requerido" ng-model="formData.contacto" required="true"/>
-                                <div ng-messages="form.contacto.$error" role="alert">
-                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
-                                </div>
-                            </md-input-container>
-                            <md-input-container >
+                            <md-input-container flex="100">
                                 <label>Telefono Empresa</label>
-                                <input type="text" name="telefono" title="El campo telefono empresa es requerido" ng-model="formData.telefono_empresa" required="true"/>
+                                <input type="text" name="telefono" title="ingrese el telefono de la empresa" ng-model="formData.telefono_empresa" required="true"/>
                                 <div ng-messages="form.telefono_empresa.$error" role="alert">
                                     <div ng-messages-include="view/plantillas/mensajes.html"></div>
                                 </div>
                             </md-input-container>
-                            <md-input-container >
-                                <label>Telefono personal</label>
-                                <input type="text" name="telefono2" ng-model="formData.telefonoPersonal">
+                            <md-input-container flex="100">
+                                <label>Contacto</label>
+                                <input type="text" name="contacto" title="Ingrese el nombre del contacto" ng-model="formData.contacto"/>
+                                <div ng-messages="form.contacto.$error" role="alert">
+                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container flex="100">
+                                <label>Telefono Contacto</label>
+                                <input type="text" name="telefono2" title="Ingrese el telefono del contacto" ng-model="formData.telefono_personal">
                                 <div ng-messages="form.telefono_personal.$error" role="alert">
                                     <div ng-messages-include="view/plantillas/mensajes.html"></div>
                                 </div>
                             </md-input-container>
-                            <md-input-container >
+                            <md-input-container flex="100">
                                 <label>Direccion</label>
-                                <input type="text" name="direccion" title="El campo Direccion es requerido" ng-model="formData.direccion" required="true"/>
+                                <input type="text" name="direccion" title="Ingrese la direccion" ng-model="formData.direccion" required="true"/>
                                 <div ng-messages="form.direccion.$error" role="alert">
                                     <div ng-messages-include="view/plantillas/mensajes.html"></div>
                                 </div>
                             </md-input-container>
-                            <md-input-container >
+                            <md-input-container flex="100">
                                 <label>correo</label>
-                                <input type="email" name="correo" ng-model="formData.correo">
+                                <input type="email" name="correo" title="Ingrese el correo Electronico" ng-model="formData.correo">
                                 <div ng-messages="form.correo.$error" role="alert">
                                     <div ng-messages-include="view/plantillas/mensajes.html"></div>
                                 </div>
                             </md-input-container>
                         </md-content>
+                        <md-dialog-actions layout="row">
+                            <div layout="row" layout-align="center center" style="padding-top:20px;">
+                                <md-button ng-click= "crearRegistro()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Crear Proveedor">Crear</md-button>
+                                <div flex="flex"></div>
+                            </div>
+                        </md-dialog-actions>
                     </form>
-                </md-dialog-content>
-        <md-dialog-actions layout="row">
-            <div layout="row" layout-align="center center" style="padding-top:20px;">
-                <md-button ng-click= "crearRegistro()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Crear Proveedor">Crear</md-button>
-                <div flex="flex"></div>
-            </div>
-        </md-dialog-actions>
-    </form>
+            </md-dialog-content>
 </md-dialog>

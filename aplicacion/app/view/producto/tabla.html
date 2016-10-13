@@ -4,8 +4,8 @@
         <tr>
             <th>Codigo</th>
             <th>Descripcion</th>
+            <th>Marca</th>
             <th>Precio Venta</th>
-            <th>Precio Costo</th>
             <th>Existencia Minima</th>
         </tr>
     </thead>
@@ -13,8 +13,8 @@
         <tr ng-click="selectDataTabla(producto)" ng-repeat="producto in dataTabla">
             <td>{{ producto.codigo }}</td>
             <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.marca }}</td>
             <td>{{ producto.precio_venta }}</td>
-            <td>{{ producto.precio_costo }}</td>
             <td>{{ producto.existencia_minima }}</td>
         </tr>
     </tbody>
