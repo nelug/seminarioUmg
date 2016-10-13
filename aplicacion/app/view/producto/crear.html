@@ -3,48 +3,48 @@
     <md-dialog-content class="md-whiteframe-5dp">
         <form layout="column" name="form" ng-submit="crearRegistro()"  layout flex layout-wrap>
             <md-content layout="column" class="md-padding" layout layout-wrap>
-                            <md-input-container >
-                                <label>Codigo</label>
-                                <input type="text" title="Ingrese el codigo"  name="nombre" ng-model="formData.codigo" required="true"/>
-                                <div ng-messages="form.codigo.$error" role="alert">
-                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
-                                </div>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>Descripcion</label>
-                                <input type="text" title="Ingrese la descripcion"  name="descripcion" ng-model="formData.descripcion" required="true"/>
-                                <div ng-messages="form.descripcion.$error" role="alert">
-                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
-                                </div>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>Marca</label>
-                                <input type="text" title="Ingrese la marca"  name="marca" ng-model="formData.marca"/>
-                                <div ng-messages="form.marca.$error" role="alert">
-                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
-                                </div>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>Precio Venta</label>
-                                <input type="text" title="Ingrese el precio de venta"  name="precio_venta" ng-model="formData.precio_venta" required="true"/>
-                                <div ng-messages="form.precio_venta.$error" role="alert">
-                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
-                                </div>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>Existencia Minima</label>
-                                <input type="text" title="Ingrese la existencia minima"  name="existencia_minima" ng-model="formData.existencia_minima" required="true"/>
-                                <div ng-messages="form.existencia_minima.$error" role="alert">
-                                    <div ng-messages-include="view/plantillas/mensajes.html"></div>
-                                </div>
-                            </md-input-container>
-                        </md-content>
-                        <md-dialog-actions layout="row">
-                            <div layout="row" layout-align="center center" style="padding-top:20px;">
-                                <md-button ng-click= "crearRegistro()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Crear Producto">Crear</md-button>
-                                <div flex="flex"></div>
-                            </div>
-                        </md-dialog-actions>
-                    </form>
-        </md-dialog-content>
+                <md-input-container >
+                    <label>Codigo</label>
+                    <input type="text" title="Ingrese el codigo"  name="nombre" ng-model="formData.codigo" required="true"/>
+                    <div ng-messages="form.codigo.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container >
+                    <label>Descripcion</label>
+                    <input type="text" title="Ingrese la descripcion"  name="descripcion" ng-model="formData.descripcion" required="true"/>
+                    <div ng-messages="form.descripcion.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container >
+                    <label>Marca</label>
+                    <input type="text" title="Ingrese la marca"  name="marca" ng-model="formData.marca"/>
+                    <div ng-messages="form.marca.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container >
+                    <label>Precio Venta</label>
+                    <input type="text" title="Ingrese el precio de venta"  name="precio_venta" ng-model="formData.precio_venta" required="true"/>
+                    <div ng-messages="form.precio_venta.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container >
+                    <label>Existencia Minima</label>
+                    <input type="text" title="Ingrese la existencia minima"  name="existencia_minima" ng-model="formData.existencia_minima" required="true"/>
+                    <div ng-messages="form.existencia_minima.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+            </md-content>
+            <md-dialog-actions layout="row">
+                <div layout="row" layout-align="center center" style="padding-top:20px;">
+                    <md-button ng-click= "crearRegistro()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Crear Producto">Crear</md-button>
+                    <div flex="flex"></div>
+                </div>
+            </md-dialog-actions>
+        </form>
+    </md-dialog-content>
 </md-dialog>
