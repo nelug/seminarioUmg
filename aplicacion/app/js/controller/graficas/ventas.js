@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', function ($scope) {
+angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
     $scope.options = {
         chart: {
             type: 'discreteBarChart',
@@ -17,10 +17,10 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', functio
             showValues: true,
             transitionDuration: 500,
             xAxis: {
-                axisLabel: 'X Axis'
+                axisLabel: 'Años'
             },
             yAxis: {
-                axisLabel: 'Y Axis',
+                axisLabel: 'Ventas',
                 axisLabelDistance: -10
             }
         }
@@ -35,7 +35,18 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', functio
             { 'label' : 'E' , 'value' : 15 },
             { 'label' : 'F' , 'value' : 35 },
             { 'label' : 'G' , 'value' : 50 },
-            { 'label' : 'H' , 'value' : 12 }
+            { 'label' : 'H' , 'value' : 12 },
+            { 'label' : 'I' , 'value' : 15 },
+            { 'label' : 'J' , 'value' : 44 },
+            { 'label' : 'K' , 'value' : 56 },
+            { 'label' : 'L' , 'value' : 30 }
         ]
     }];
+
+    var redimensionar = function() {
+        $scope.options.chart.width = 0;
+        $scope.options.chart.height = 0;
+    }
+
+    $timeout(redimensionar, 50);
 }]);
