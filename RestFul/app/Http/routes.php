@@ -15,9 +15,18 @@ $app->get('/', function() use ($app) {
     return "Api Rest Con Lumen";
 });
 
+
 $app->group(['prefix' => 'users/','namespace' => 'App\Http\Controllers'], function($app)
 {
-    $app->post('login', 'UserController@login');
+    $app->post('auth', 'UserController@postLogin');
+    $app->post('login', 'UserController@login2');
+    $app->get('info','UserController@infoUser');
+    // para hacer la prueba del token generado http://localhost:4000/users/test?token=
+    // excluir $input = $request->except(['credit_card']);
+    $app->post('test', ['middleware' => 'jwt.auth', function () {
+        return "hola";
+    }]);
+    
 });
 
 $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers'], function($app)
