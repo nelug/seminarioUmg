@@ -4,15 +4,48 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Tymon\JWTAuth\JWTAuth;
 use App\User;
 use Auth;
 
 class UserController extends Controller{
     private $salt;
-    
-    public function __construct()
+
+    protected $jwt;
+
+    public function __construct(JWTAuth $jwt)
     {
-        $this->salt="userloginregister";
+        $this->jwt = $jwt;
+    }
+    
+    public function postLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email'    => 'required|email|max:255',
+            'password' => 'required',
+        ]);
+
+        try {
+
+            if (! $token = $this->jwt->attempt($request->only('email', 'password'))) {
+                return response()->json(['user_not_found'], 404);
+            }
+
+        } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return response()->json(['token_expired'], 500);
+
+        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return response()->json(['token_invalid'], 500);
+
+        } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
+
+            return response()->json(['token_absent' => $e->getMessage()], 500);
+
+        }
+
+        return response()->json($token);
     }
     
     public function permisos($id)
@@ -20,6 +53,22 @@ class UserController extends Controller{
         $permisos = DB::table('permisos')->select('link', 'titulo', 'icono', 'catalogo')
         ->join('menus', 'menus.id', '=', 'menu')->whereUsuario($id)->get();
         return response()->json($permisos); 
+    }
+    
+    public function login2(Request $request)
+    {
+        $this->validate($request, [
+            'email'    => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials, $request->has('remember'))) {
+            return ['result' => 'ok'];
+        }
+
+        return ['result' => 'not ok'];
     }
     
     public function login(Request $request){
@@ -59,5 +108,10 @@ class UserController extends Controller{
     
     public function info($token){
         return User::whereApiToken($token)->get();
+    }
+    
+    public function infoUser(){
+        $user = Auth::user();
+        return $user;
     }
 }
