@@ -4,6 +4,6 @@ aplicacion/node_modules
 aplicacion/app/lib
 aplicacion/app/js/templates.js
 aplicacion/analisis
-Restful/vendor
-Restful/node_modules
-Restful/Homestead.yaml
+RestFul/node_modules
+RestFul/Homestead.yaml
+RestFul/vendor
