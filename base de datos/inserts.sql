@@ -2,8 +2,8 @@
 INSERT INTO `estado` (`id`,`estado`)VALUES(1,'Activo'),(2,'Inactivo');
 INSERT INTO `estado_proceso` (`id`,`estado`)VALUES(1,'En proceso'),(2,'Finalizada'),(3,'Anulada');
 
-INSERT INTO `usuarios` (`id`,`usuario`, `password`, `nombre`, `apellido`, `correo`) VALUES
-(1,'admin', 'admin', 'Administrador', 'Sistema', 'admin@gmail.com');
+INSERT INTO `users` (`id`,`username`, `password`, `nombre`, `apellido`, `email`) VALUES
+(1,'admin', '$2y$10$hPmOb6EyyUvzNZNgjp./6OzfaWYeVRzmQnBSLmqBygC9q4NmXIhcG', 'Administrador', 'Sistema', 'admin@gmail.com');
 
 INSERT INTO `menus` (`id`, `titulo`, `icono`, `link`, `catalogo`) VALUES
 (1, 'Inventario', 'grid_on', '/inventario', 0),

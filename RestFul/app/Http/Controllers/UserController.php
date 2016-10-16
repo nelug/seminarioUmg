@@ -45,7 +45,10 @@ class UserController extends Controller{
 
         }
 
-        return response()->json($token);
+        return response()->json(array(
+            'status' => true,
+            'token' => $token
+        )); 
     }
     
     public function permisos($id)
@@ -53,40 +56,6 @@ class UserController extends Controller{
         $permisos = DB::table('permisos')->select('link', 'titulo', 'icono', 'catalogo')
         ->join('menus', 'menus.id', '=', 'menu')->whereUsuario($id)->get();
         return response()->json($permisos); 
-    }
-    
-    public function login2(Request $request)
-    {
-        $this->validate($request, [
-            'email'    => 'required|email',
-            'password' => 'required',
-        ]);
-
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials, $request->has('remember'))) {
-            return ['result' => 'ok'];
-        }
-
-        return ['result' => 'not ok'];
-    }
-    
-    public function login(Request $request){
-        if ($request->has('username') && $request->has('password')) {
-            $user = User:: where("username", "=", $request->input('username'))
-            ->where("password", "=", sha1($this->salt.$request->input('password')))
-            ->first();
-            if ($user) {
-                $token=str_random(60);
-                $user->api_token=$token;
-                $user->save();
-                return $user->api_token;
-            } else {
-                return "Error al intentar iniciar session..！";
-            }
-        } else {
-            return "El username o password no pueden estar vacios..！";
-        }
     }
     
     public function register(Request $request){
@@ -110,8 +79,19 @@ class UserController extends Controller{
         return User::whereApiToken($token)->get();
     }
     
-    public function infoUser(){
+    public function statusUser(){
         $user = Auth::user();
-        return $user;
+        
+        if ($user) {
+            return response()->json(array(
+                'status' => true,
+                'usuario' => $user
+            )); 
+        }
+        
+        return response()->json(array(
+            'status' => false,
+            'usuario' => $user
+        )); 
     }
 }
