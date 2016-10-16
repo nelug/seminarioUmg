@@ -16,11 +16,10 @@ $app->get('/', function() use ($app) {
 });
 
 
-$app->group(['prefix' => 'users/','namespace' => 'App\Http\Controllers'], function($app)
+$app->group(['prefix' => 'user/','namespace' => 'App\Http\Controllers'], function($app)
 {
-    $app->post('auth', 'UserController@postLogin');
-    $app->post('login', 'UserController@login2');
-    $app->get('info','UserController@infoUser');
+    
+    
     // para hacer la prueba del token generado http://localhost:4000/users/test?token=
     // excluir $input = $request->except(['credit_card']);
     $app->post('test', ['middleware' => 'jwt.auth', function () {
@@ -29,7 +28,14 @@ $app->group(['prefix' => 'users/','namespace' => 'App\Http\Controllers'], functi
     
 });
 
-$app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers'], function($app)
+
+$app->group(['prefix' => 'api/v1/user/','namespace' => 'App\Http\Controllers'], function($app)
+{
+    $app->post('login', 'UserController@postLogin');
+    $app->get('status','UserController@statusUser');
+});
+
+$app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers', 'middleware' => 'jwt.auth'], function($app)
 {
     $app->get('user/permisos/{id}', 'UserController@permisos');
     $app->post('register', 'UserController@register');

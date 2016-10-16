@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('seminarioUmg').factory('ServiceGenerico', ['$q', '$timeout', '$http', '$mdDialog', '$route', '$templateCache', 'toaster', 'jsonPath',
-function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonPath) {
+angular.module('seminarioUmg').factory('ServiceGenerico', ['$q', '$timeout', '$http', '$mdDialog', '$route', '$templateCache', 'toaster', 'jsonPath', '$localStorage',
+function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonPath, $localStorage) {
     
     function buscarTodos($scope, entidad) {
         $scope.editEnable = false;
         $scope.dataSeleccionada = [];
         $scope.opFab = { abrir : false, modo : 'md-fling', direction : 'right'};
         
-        $http.get('/api/v1/' + entidad.toLowerCase() + '/').success(function(data) {
+        $http.get('/api/v1/' + entidad.toLowerCase() + '?token='+$localStorage.token).success(function(data) {
             $scope.dataTabla = data;
         });
     }
@@ -52,7 +52,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         $scope.answer = function(answer) { $mdDialog.hide(answer); };
         
         $scope.crearRegistro = function () {
-            $http.post('/api/v1/'+ entidad.toLowerCase() + '/', $scope.formData)
+            $http.post('/api/v1/'+ entidad.toLowerCase() + '/', $scope.form)
             .success(function(data) {
                 toaster.success('Correcto!', data.mensaje);
                 $scope.formData = {};
@@ -74,7 +74,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         
         // Función para editar un registro
         $scope.actualizar = function() {
-            $http.put('/api/v1/'+ entidad.toLowerCase() + '/', $scope.formData)
+            $http.put('/api/v1/'+ entidad.toLowerCase() + '/', $scope.form)
             .success(function(data) {
                 toaster.success('Correcto!', data.mensaje);
                 $scope.formData = {};
@@ -97,7 +97,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         
         // Función para editar un registro
         $scope.eliminar = function() {
-            $http.delete('/api/v1/' + entidad.toLowerCase() + '/'+$scope.id)
+            $http.delete('/api/v1/' + entidad.toLowerCase() + '/'+$scope.id+'?token='+$localStorage.token)
             .success(function(data) {
                 toaster.success('Correcto!', data.mensaje);
                 $scope.formData = {};

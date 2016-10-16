@@ -1,20 +1,19 @@
 'use strict';
 
-angular.module('seminarioUmg').factory('AuthService', ['$q', '$timeout', '$http',
-function ($q, $timeout, $http) {
+angular.module('seminarioUmg').factory('AuthService', ['$q', '$timeout', '$http', '$rootScope', '$localStorage',
+function ($q, $timeout, $http, $rootScope, $localStorage) {
     var user = null;
     
     function isLoggedIn() {
-        /*if(user) {
+        if(user) {
             return true;
         } else {
             return false;
-        }*/
-        return true;
+        }
     }
     
     function getUserStatus() {
-        return $http.get('/api/user/status')
+        return $http.get('api/v1/user/status?token='+$localStorage.token)
         .success(function (data) {
             if(data.status){
                 user = true;
@@ -27,13 +26,17 @@ function ($q, $timeout, $http) {
         });
     }
     
-    function login(username, password) {
+    function login(email, password) {
         var deferred = $q.defer();
         
-        $http.post('/api/user/login',
-        {username: username, password: password})
+        $http.post('api/v1/user/login',
+        { 
+            email: email, 
+            password: password
+        })
         .success(function (data, status) {
             if(status === 200 && data.status){
+                $localStorage.token = data.token;
                 user = true;
                 deferred.resolve();
             } else {
@@ -51,17 +54,8 @@ function ($q, $timeout, $http) {
     
     function logout() {
         var deferred = $q.defer();
-        
-        $http.get('/api/user/logout')
-        .success(function () {
             user = false;
             deferred.resolve();
-        })
-        .error(function () {
-            user = false;
-            deferred.reject();
-        });
-        
         return deferred.promise;
     }
     
