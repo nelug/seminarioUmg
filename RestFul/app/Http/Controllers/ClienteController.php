@@ -28,7 +28,9 @@ class ClienteController extends Controller {
             'direccion' => 'required'
         ]);
 
-        $data = Cliente::create($request->all());
+        $inputs = $request->except('token');
+
+        $data = Cliente::create($inputs);
 
         return response()->json(array(
             'success' => true,
