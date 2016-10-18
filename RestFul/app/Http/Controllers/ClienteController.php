@@ -28,7 +28,9 @@ class ClienteController extends Controller {
             'direccion' => 'required'
         ]);
 
-        $data = Cliente::create($request->all());
+        $inputs = $request->except('token');
+
+        $data = Cliente::create($inputs);
 
         return response()->json(array(
             'success' => true,
@@ -59,13 +61,9 @@ class ClienteController extends Controller {
             'nombre' => 'required',
             'direccion' => 'required'
         ]);
-        Cliente::whereId($request->id)->update($request->all());
-        /*if (!$data) {
-            return response()->json(array(
-                'success' => false,
-                'mensaje' => 'Error'
-            ));
-        }*/
+        $inputs = $request->except('token');
+        
+        Cliente::whereId($request->id)->update($inputs);
 
         return response()->json(array(
             'success' => true,
