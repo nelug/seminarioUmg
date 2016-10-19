@@ -17,7 +17,7 @@ class UserController extends Controller{
     {
         $this->jwt = $jwt;
     }
-    
+
     public function postLogin(Request $request)
     {
         $this->validate($request, [
@@ -48,16 +48,16 @@ class UserController extends Controller{
         return response()->json(array(
             'status' => true,
             'token' => $token
-        )); 
+        ));
     }
-    
+
     public function permisos($id)
     {
         $permisos = DB::table('permisos')->select('link', 'titulo', 'icono', 'catalogo')
         ->join('menus', 'menus.id', '=', 'menu')->whereUsuario($id)->get();
-        return response()->json($permisos); 
+        return response()->json($permisos);
     }
-    
+
     public function register(Request $request){
         if ($request->has('username') && $request->has('password') && $request->has('email')) {
             $user = new User;
@@ -74,24 +74,24 @@ class UserController extends Controller{
             return "datos requeridos..";
         }
     }
-    
-    public function info($token){
-        return User::whereApiToken($token)->get();
+
+    public static function getId($token){
+        return  Auth::user()->id;
     }
-    
+
     public function statusUser(){
         $user = Auth::user();
-        
+
         if ($user) {
             return response()->json(array(
                 'status' => true,
                 'usuario' => $user
-            )); 
+            ));
         }
-        
+
         return response()->json(array(
             'status' => false,
             'usuario' => $user
-        )); 
+        ));
     }
 }
