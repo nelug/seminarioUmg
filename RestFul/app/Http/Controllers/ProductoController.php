@@ -29,9 +29,9 @@ class ProductoController extends Controller {
             'precio_venta' => 'required',
             'existencia_minima' => 'required'
         ]);
+        $inputs = $request->except('token');
 
-        $data = Producto::create($request->all());
-
+        $data = Producto::create($inputs);
         return response()->json(array(
             'success' => true,
             'mensaje' => 'Producto almacenado con exito..'
@@ -55,7 +55,6 @@ class ProductoController extends Controller {
     }
 
     public function actualizar(Request $request){
-        $data = Producto::whereId($request->id)->update($request->all());
 
         $validar = $this->validate($request, [
             'codigo' => 'required',
@@ -64,12 +63,9 @@ class ProductoController extends Controller {
             'existencia_minima' => 'required'
         ]);
 
-        if (!$data) {
-            return response()->json(array(
-                'success' => false,
-                'mensaje' => 'Error'
-            ));
-        }
+        $inputs = $request->except('token');
+
+        Producto::whereId($request->id)->update($inputs);
 
         return response()->json(array(
             'success' => true,

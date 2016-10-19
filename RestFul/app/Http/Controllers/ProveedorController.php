@@ -30,7 +30,9 @@ class ProveedorController extends Controller {
             'direccion' => 'required'
         ]);
 
-        $data = Proveedor::create($request->all());
+        $inputs = $request->except('token');
+
+        $data = Proveedor::create($inputs);
 
         return response()->json(array(
             'success' => true,
@@ -55,7 +57,6 @@ class ProveedorController extends Controller {
     }
 
     public function actualizar(Request $request){
-        $data = Proveedor::whereId($request->id)->update($request->all());
 
         $validar = $this->validate($request, [
             'nit' => 'required',
@@ -64,12 +65,9 @@ class ProveedorController extends Controller {
             'direccion' => 'required'
         ]);
 
-        if (!$data) {
-            return response()->json(array(
-                'success' => false,
-                'mensaje' => 'Error'
-            ));
-        }
+        $inputs = $request->except('token');
+
+        Proveedor::whereId($request->id)->update($inputs);
 
         return response()->json(array(
             'success' => true,
