@@ -15,13 +15,14 @@ $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers', 'middl
     $app->get('user/permisos/{id}', 'UserController@permisos');
     $app->post('register'    ,'UserController@register');
     $app->get('info/{token}' ,'UserController@info');
-    
+
     resource('cliente'       ,'ClienteController');
     resource('venta'         ,'VentaController');
     resource('producto'      ,'ProductoController');
     resource('proveedor'     ,'ProveedorController');
     resource('estado'        ,'EstadoController');
     resource('estado-proceso','EstadoProcesoController');
+    resource('cotizacion'    ,'CotizacionController');   
 });
 
 function resource($uri, $controller)
