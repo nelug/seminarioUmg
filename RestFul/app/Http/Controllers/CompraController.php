@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Venta;
-use App\DetalleVenta;
+use App\Compra;
+use App\DetalleCompra;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,27 +11,29 @@ use Tymon\JWTAuth\JWTAuth;
 use Auth;
 
 
-class VentaController extends Controller {
+class CompraController extends Controller {
 
     public function obtenerTodos()
     {
-        $data = Venta::with('detalle', 'cliente', 'estado')->get();
+        $data = Compra::with('detalle', 'cliente', 'estado')->get();
         return response()->json($data);
     }
 
     public function obtenerId($id){
-        $data = Venta::find($id);
+        $data = Compra::find($id);
         return response()->json($data);
     }
 
     public function crear(Request $request){
 
         $ventaData = array(
-            'cliente' => $request->input('cliente'),
+            'proveedor' => $request->input('proveedor'),
+            'numero_documento' => $request->input('numero_documento'),
+            'fecha_documento'  => $request->input('fecha_documento'),
             'usuario' => Auth::user()->id
         );
 
-        $venta = Venta::create($ventaData);
+        $venta = Compra::create($ventaData);
 
         if ($venta) {
             foreach ($request->input('detalle') as $key => $dt) {
@@ -40,17 +42,16 @@ class VentaController extends Controller {
                     'venta'    => $venta->id,
                     'producto' => $dt['producto'],
                     'cantidad' => $dt['cantidad'],
-                    'precio'   => $dt['precio'],
-                    'ganancia' => $dt['ganancia']
+                    'precio'   => $dt['precio']
                 );
 
-                DetalleVenta::create($detalleData);
+                DetalleCompra::create($detalleData);
             }
         }
 
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Venta almacenado con exito..'
+            'mensaje' => 'Compra almacenado con exito..'
         ));
     }
 
