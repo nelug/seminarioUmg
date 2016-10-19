@@ -148,6 +148,31 @@ angular.module('seminarioUmg')
             restricted :true
         }
     })
+    //ruta para consultar compras
+    .when('/consulta-compras',{
+        templateUrl: 'view/consultas/compras.html',
+        controller: 'consultarCompraCtrl',
+        access:{
+            restricted :true
+        }
+    })
+    //ruta para consultar cotizaciones
+    .when('/consulta-cotizaciones',{
+        templateUrl: 'view/consultas/cotizaciones.html',
+        controller: 'consultarCotizacionCtrl',
+        access:{
+            restricted :true
+        }
+    })
+    //ruta para consultar descargas
+    .when('/consulta-descargas',{
+        templateUrl: 'view/consultas/descargas.html',
+        controller: 'consultarDescargaCtrl',
+        access:{
+            restricted :true
+        }
+    })
+    //ruta para consultar graficas de ventas
     .when('/graficas-ventas',{
         templateUrl: 'view/graficas/ventas.html',
         controller: 'graficaVentaCtrl',
