@@ -1,6 +1,7 @@
 <table datatable="ng" dt-options="dtOptions" class="table table-bordered table table-hover table-responsive">
     <thead>
         <tr>
+            <th>Codigo</th>
             <th>Fecha</th>
             <th>Cliente</th>
             <th>Usuario</th>
@@ -9,9 +10,10 @@
     </thead>
     <tbody>
         <tr ng-click="selectDataTabla(venta)" ng-repeat="venta in dataTabla">
-            <td>{{ venta.fecha }}</td>
+            <td>{{ venta.id }}</td>
             <td>{{ venta.cliente.nombre }}</td>
-            <td>{{ venta.usuario.nombre }}</td>
+            <td>{{ venta.created_at }}</td>
+            <td>{{ venta.usuario }}</td>
             <td>{{ venta.total }}</td>
         </tr>
     </tbody>
