@@ -1,18 +1,20 @@
 <table datatable="ng" dt-options="dtOptions" class="table table-bordered table table-hover table-responsive">
     <thead>
         <tr>
-            <th>Fecha</th>
+            <th>codigo</th>
             <th>Cliente</th>
+            <th>Fecha</th>
             <th>Usuario</th>
             <th>Total</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-click="selectDataTabla(venta)" ng-repeat="venta in dataTabla">
-            <td>{{ venta.fecha }}</td>
-            <td>{{ venta.cliente.nombre }}</td>
-            <td>{{ venta.usuario.nombre }}</td>
-            <td>{{ venta.total }}</td>
+        <tr ng-click="selectDataTabla(cotizacion)" ng-repeat="cotizacion in dataTabla">
+            <td>{{ cotizacion.id }}</td>
+            <td>{{ cotizacion.cliente.nombre }}</td>
+            <td>{{ cotizacion.created_at }}</td>
+            <td>{{ cotizacion.usuario }}</td>
+            <td>{{ cotizacion.total }}</td>
         </tr>
     </tbody>
 </table>
