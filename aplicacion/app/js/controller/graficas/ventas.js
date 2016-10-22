@@ -1,6 +1,8 @@
 'use strict';
 
 angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+
+
     $scope.options = {
         chart: {
             type: 'discreteBarChart',
@@ -22,9 +24,35 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
             yAxis: {
                 axisLabel: 'Ventas',
                 axisLabelDistance: -10
+            },
+            discretebar: {
+                dispatch: {
+                    elementClick: function (t,u){
+                        $scope.api.updateWithData($scope.dataUpdate);
+                        $scope.api.refresh();
+                    }
+                }
             }
+
         }
     };
+
+    $scope.regresarGrafica = function () {
+        $scope.api.updateWithData($scope.data);
+        $scope.api.refresh();
+    };
+
+    $scope.dataUpdate = [{
+        key: 'Cumulative Return',
+        values: [
+            { 'label' : 'A' , 'value' : 110 },
+            { 'label' : 'B' , 'value' : 220 },
+            { 'label' : 'C' , 'value' : 330 },
+            { 'label' : 'D' , 'value' : 205 },
+            { 'label' : 'E' , 'value' : 105 },
+        ]
+    }];
+
     $scope.data = [{
         key: 'Cumulative Return',
         values: [
@@ -43,6 +71,7 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
         ]
     }];
 
+    //capturar el tama;o del contedor y usar el 100% del ancho y el 90% del alto
     var redimensionar = function() {
         $scope.options.chart.width = 0;
         $scope.options.chart.height = 0;
