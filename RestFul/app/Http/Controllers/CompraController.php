@@ -26,20 +26,20 @@ class CompraController extends Controller {
 
     public function crear(Request $request){
 
-        $ventaData = array(
+        $compraData = array(
             'proveedor' => $request->input('proveedor'),
             'numero_documento' => $request->input('numero_documento'),
             'fecha_documento'  => $request->input('fecha_documento'),
             'usuario' => Auth::user()->id
         );
 
-        $venta = Compra::create($ventaData);
+        $compra = Compra::create($compraData);
 
-        if ($venta) {
+        if ($compra) {
             foreach ($request->input('detalle') as $key => $dt) {
 
                 $detalleData = array(
-                    'venta'    => $venta->id,
+                    'venta'    => $compra->id,
                     'producto' => $dt['producto'],
                     'cantidad' => $dt['cantidad'],
                     'precio'   => $dt['precio']
