@@ -15,14 +15,14 @@ class Venta extends Model
         return $this->hasMany('App\DetalleVenta', 'venta', 'id');
     }
 
-    public function estado()
+    public function estado_proceso()
     {
         return $this->belongsTo('App\EstadoProceso', 'estado_proceso', 'id');
     }
 
     public function usuario()
     {
-        return $this->belongsTo('App\Usuario', 'usuario', 'id');
+        return $this->belongsTo('App\User', 'usuario', 'id');
     }
 
     public function cliente()
