@@ -6,7 +6,7 @@ INSERT INTO `users` (`id`,`username`, `password`, `nombre`, `apellido`, `email`)
 (1,'admin', '$2y$10$hPmOb6EyyUvzNZNgjp./6OzfaWYeVRzmQnBSLmqBygC9q4NmXIhcG', 'Administrador', 'Sistema', 'admin@gmail.com');
 
 INSERT INTO `menus` (`id`, `titulo`, `icono`, `link`, `catalogo`) VALUES
-(1, 'Inventario', 'grid_on', '/inventario', 0),
+(1, 'Inventario', 'assignment_turned_in', '/inventario', 0),
 (2, 'Venta', 'shopping_cart', '/venta', 0),
 (3, 'Compra', 'shopping_basket', '/compra', 0),
 (4, 'Descarga', 'file_download', '/descarga', 0),
@@ -20,8 +20,8 @@ INSERT INTO `menus` (`id`, `titulo`, `icono`, `link`, `catalogo`) VALUES
 (12, 'Descargas', 'archive', '/consulta-descargas', 2),
 (13, 'Cotizaciones', 'event_note', '/consulta-cotizaciones', 2),
 (14, 'Ventas', 'insert_chart', '/graficas-ventas', 3),
-(15, 'Compras', 'insert_chart', '/graficas-compras', 3),
-(16, 'Descargas', 'insert_chart', '/graficas-descargas', 3);
+(15, 'Compras', 'insert_chart', '/graficas-compras', 3);
+
 
 INSERT INTO `permisos` (`id`, `menu`, `usuario`) VALUES
 (1, 1, 1),
@@ -38,5 +38,4 @@ INSERT INTO `permisos` (`id`, `menu`, `usuario`) VALUES
 (12, 12, 1),
 (13, 13, 1),
 (14, 14, 1),
-(15, 15, 1),
-(16, 16, 1);
+(15, 15, 1);
