@@ -28,7 +28,6 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
                 dispatch: {
                     elementClick: function (t,u){
                         $scope.api.updateWithData($scope.dataUpdate);
-                        $scope.bandera = 1;
                         $scope.api.refresh();
                     }
                 }
@@ -38,7 +37,6 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
     };
 
     $scope.regresarGrafica = function () {
-        $scope.bandera = 0;
         $scope.api.updateWithData($scope.data);
         $scope.api.refresh();
     };
@@ -72,7 +70,7 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
         ]
     }];
 
-    //capturar el tama;o del contedor y usar el 100% del ancho y el 90% del alto
+
     var redimensionar = function() {
         $scope.options.chart.width = 0;
         $scope.options.chart.height = 0;
