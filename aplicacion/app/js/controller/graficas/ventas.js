@@ -2,12 +2,6 @@
 
 angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
 
-<<<<<<< HEAD
-=======
-    $scope.$on('elementMouseover.tooltip.directive', function(angularEvent, event){
-    }
->>>>>>> agregando consultas en ventas y cotizaciones
-
     $scope.options = {
         chart: {
             type: 'discreteBarChart',
@@ -34,6 +28,7 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
                 dispatch: {
                     elementClick: function (t,u){
                         $scope.api.updateWithData($scope.dataUpdate);
+                        $scope.bandera = 1;
                         $scope.api.refresh();
                     }
                 }
@@ -42,8 +37,8 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
         }
     };
 
-<<<<<<< HEAD
     $scope.regresarGrafica = function () {
+        $scope.bandera = 0;
         $scope.api.updateWithData($scope.data);
         $scope.api.refresh();
     };
@@ -59,8 +54,6 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
         ]
     }];
 
-=======
->>>>>>> agregando consultas en ventas y cotizaciones
     $scope.data = [{
         key: 'Cumulative Return',
         values: [
@@ -79,23 +72,7 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
         ]
     }];
 
-<<<<<<< HEAD
     //capturar el tama;o del contedor y usar el 100% del ancho y el 90% del alto
-=======
-
-    $scope.config = {
-    visible: true, // default: true
-    extended: false, // default: false
-    disabled: false, // default: false
-    refreshDataOnly: true, // default: true
-    deepWatchOptions: true, // default: true
-    deepWatchData: true, // default: true
-    deepWatchDataDepth: 2, // default: 2
-    debounce: 10 // default: 10
-};
-
-
->>>>>>> agregando consultas en ventas y cotizaciones
     var redimensionar = function() {
         $scope.options.chart.width = 0;
         $scope.options.chart.height = 0;
