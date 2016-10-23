@@ -3,6 +3,10 @@
     <md-dialog-content class="md-whiteframe-5dp">
         <form layout="column" ng-submit=""  layout flex layout-wrap>
             <md-content class="md-padding md-block">
+                <md-input-container class="md-block">
+                    <label>Razon de la descarga</label>
+                    <textarea rows="2" md-select-on-focus=""></textarea>
+                </md-input-container>
                 <div layout layout-wrap  style="margin-bottom: 25px;">
                     <div flex="100" flex-gt-xs="30" >
                         <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTextoproducto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="0" placeholder="Buscar Codigo">
@@ -26,10 +30,6 @@
                     </div>
                 </div>
                 <div layout layout-wrap>
-                    <md-input-container flex="100">
-                        <label>Razon de la descarga</label>
-                        <input flex="100" type="text"/>
-                    </md-input-container>
                     <md-input-container  flex="100" flex-gt-xs="20">
                         <label>Cantidad</label>
                         <input ng-model="dataTemp.cantidad">
@@ -62,5 +62,4 @@
         </form>
         <div ng-include src="'view/plantillas/pieFormulario.html'"></div>
     </md-dialog-content>
-
 </div>

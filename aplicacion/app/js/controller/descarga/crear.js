@@ -7,27 +7,25 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
     $scope.detalleTabla = [];
     $scope.formData = {
         fecha: new Date(),
-        cliente: [],
         usuario: [],
         detalle: []
     };
 
     ServiceGenericoDetalle.obtenerClientesAC($scope);
     ServiceGenericoDetalle.obtenerProductosAC($scope);
-    ServiceGenericoDetalle.funcionesCrear($scope, 'Venta');
+    ServiceGenericoDetalle.funcionesCrear($scope, 'Descarga');
 
     $scope.agregarDataDetalle = function() {
         var dataTabla = {
             cantidad: $scope.dataTemp.cantidad,
             descripcion: $scope.producto.descripcion,
-            precio: $scope.producto.precio_venta,
-            total:($scope.dataTemp.cantidad * $scope.producto.precio_venta)
+            precio: $scope.producto.precio_costo,
+            total:($scope.dataTemp.cantidad * $scope.producto.precio_costo)
         };
 
         var dataForm = {
             cantidad: $scope.dataTemp.cantidad,
-            precio: $scope.producto.precio_venta,
-            ganancia:($scope.producto.precio_venta - $scope.producto.precio_costo),
+            precio: $scope.producto.precio_costo,
             producto: $scope.producto.id
         };
 
