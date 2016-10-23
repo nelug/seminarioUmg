@@ -2,7 +2,6 @@
 
 angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
 
-
     $scope.options = {
         chart: {
             type: 'discreteBarChart',
@@ -29,6 +28,7 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
                 dispatch: {
                     elementClick: function (t,u){
                         $scope.api.updateWithData($scope.dataUpdate);
+                        $scope.bandera = 1;
                         $scope.api.refresh();
                     }
                 }
@@ -38,6 +38,7 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
     };
 
     $scope.regresarGrafica = function () {
+        $scope.bandera = 0;
         $scope.api.updateWithData($scope.data);
         $scope.api.refresh();
     };
