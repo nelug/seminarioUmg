@@ -101,7 +101,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
                 $route.reload();
             })
             .error(function(data) {
-                toaster.warning('Advertencia.!', data);
+                toaster.warning('Advertencia.!', jsonPath(data, '$.[0]')[0]);
             });
         };
     }
