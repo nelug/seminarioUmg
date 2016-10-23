@@ -13,16 +13,16 @@ $app->group(['prefix' => 'api/v1/user/','namespace' => 'App\Http\Controllers'], 
 $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers', 'middleware' => 'jwt.auth'], function($app)
 {
     $app->get('user/permisos/{id}', 'UserController@permisos');
-    $app->post('register'    ,'UserController@register');
     $app->get('info/{token}' ,'UserController@info');
 
     resource('cliente'       ,'ClienteController');
+    resource('user'          ,'UserController');
     resource('venta'         ,'VentaController');
     resource('producto'      ,'ProductoController');
     resource('proveedor'     ,'ProveedorController');
     resource('estado'        ,'EstadoController');
     resource('estado-proceso','EstadoProcesoController');
-    resource('cotizacion'    ,'CotizacionController');   
+    resource('cotizacion'    ,'CotizacionController');
 });
 
 function resource($uri, $controller)
