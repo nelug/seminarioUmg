@@ -180,6 +180,14 @@ angular.module('seminarioUmg')
             restricted :true
         }
     })
+    //ruta para consultar graficas de compras
+    .when('/graficas-compras',{
+        templateUrl: 'view/graficas/compra.html',
+        controller: 'graficaCompraCtrl',
+        access:{
+            restricted :true
+        }
+    })
     //ruta para el listado de inventario
     .when('/inventario',{
         templateUrl: 'view/inventario/tabla.html',

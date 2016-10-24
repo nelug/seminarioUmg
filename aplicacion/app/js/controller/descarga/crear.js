@@ -16,20 +16,17 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
     ServiceGenericoDetalle.funcionesCrear($scope, 'Descarga');
 
     $scope.agregarDataDetalle = function() {
-        var dataTabla = {
+        var dataForm = {
             cantidad: $scope.dataTemp.cantidad,
+            nota: $scope.nota,
             descripcion: $scope.producto.descripcion,
             precio: $scope.producto.precio_costo,
-            total:($scope.dataTemp.cantidad * $scope.producto.precio_costo)
-        };
-
-        var dataForm = {
+            total:($scope.dataTemp.cantidad * $scope.producto.precio_costo),
             cantidad: $scope.dataTemp.cantidad,
             precio: $scope.producto.precio_costo,
             producto: $scope.producto.id
-        };
+        }
 
-        $scope.detalleTabla.push(dataTabla);
         $scope.formData.detalle.push(dataForm);
     };
 }]);
