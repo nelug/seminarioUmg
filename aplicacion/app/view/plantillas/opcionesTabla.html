@@ -1,5 +1,5 @@
 <div class="tablaOpciones">
-   <section layout="row" layout-sm="column" layout-wrap ng-app='seminarioUmg'>
+   <section layout="row" flex="100" flex-gt-xs="20" layout-wrap ng-app='seminarioUmg'>
       <md-content class="" layout="column" >
         <div class="lock-size" layout="row" layout-align="center center">
           <md-fab-speed-dial md-open="opFab.abrir" md-direction="{{opFab.direction}}" ng-class="opFab.modo">
@@ -9,12 +9,12 @@
               </md-button>
             </md-fab-trigger>
             <md-fab-actions ng-if="(!editEnable)">
-              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogoCrear()"> 
+              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogoCrear()">
                    <ng-md-icon icon="add"></ng-md-icon>
               </md-button>
             </md-fab-actions>
             <md-fab-actions ng-if="(editEnable)">
-              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogoCrear()"> 
+              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogoCrear()">
                    <ng-md-icon icon="add"></ng-md-icon>
               </md-button>
               <md-button aria-label="Editar" class="md-fab md-raised md-mini" ng-click="dialogoEditar()">
