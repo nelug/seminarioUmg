@@ -5,7 +5,7 @@
             <md-content class="md-padding md-block">
                 <md-input-container class="md-block">
                     <label>Razon de la descarga</label>
-                    <textarea rows="2" md-select-on-focus=""></textarea>
+                    <textarea rows="2" md-select-on-focus="" ng-model="nota"></textarea>
                 </md-input-container>
                 <div layout layout-wrap  style="margin-bottom: 25px;">
                     <div flex="100" flex-gt-xs="30" >
@@ -43,14 +43,16 @@
                         <thead>
                             <tr>
                                 <th>Cantidad</th>
+                                <th>Nota</th>
                                 <th>Descripcion</th>
                                 <th>Precio Unitario</th>
                                 <th>Total</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="detalle in detalleTabla">
+                            <tr ng-repeat="detalle in formData.detalle">
                                 <td>{{ detalle.cantidad }}</td>
+                                <td>{{ detalle.nota }}</td>
                                 <td>{{ detalle.descripcion }}</td>
                                 <td>{{ detalle.precio | currency: 'Q: '}}</td>
                                 <td>{{ detalle.total | currency: 'Q: '}}</td>

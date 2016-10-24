@@ -8,8 +8,8 @@
                         <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente">
                             <md-item-template>
                                 <span class="item-title">
-                                    <span> {{ item.nombre }} </span>
                                     <span> {{item.nit}}</span>
+                                    <span> {{ item.nombre }} </span>
                                     <span> {{ item.direccion }} </span>
                                 </span>
                             </md-item-template>
@@ -60,7 +60,7 @@
                             <tr>
                                 <th>Cantidad</th>
                                 <th>Descripcion</th>
-                                <th>Precio</th>
+                                <th>Precio Unitario</th>
                                 <th>Total</th>
                             </tr>
                         </thead>
