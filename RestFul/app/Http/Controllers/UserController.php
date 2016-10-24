@@ -130,7 +130,6 @@ class UserController extends Controller{
     public function actualizar(Request $request){
 
         $validar = $this->validate($request, [
-            'username' => 'required',
             'nombre'   => 'required',
             'apellido' => 'required',
             'email'    => 'required|email|unique:users,email,'.$request->id,
