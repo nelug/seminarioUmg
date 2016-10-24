@@ -180,6 +180,14 @@ angular.module('seminarioUmg')
             restricted :true
         }
     })
+    //ruta para el listado de inventario
+    .when('/inventario',{
+        templateUrl: 'view/inventario/tabla.html',
+        controller: 'productoTablaCtrl',
+        access:{
+            restricted :true
+        }
+    })
     .otherwise({
         redirectTo: '/'
     });
