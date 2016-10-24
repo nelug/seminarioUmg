@@ -175,3 +175,7 @@ svg.nvd3-svg{
     width: 100%;
     height: 88%;
 }
+/*colores de los encabezados de las tablas*/
+h3 {
+    color: rgb(250,250,250);
+}
