@@ -20,7 +20,8 @@ INSERT INTO `menus` (`id`, `titulo`, `icono`, `link`, `catalogo`) VALUES
 (12, 'Descargas', 'archive', '/consulta-descargas', 2),
 (13, 'Cotizaciones', 'event_note', '/consulta-cotizaciones', 2),
 (14, 'Ventas', 'insert_chart', '/graficas-ventas', 3),
-(15, 'Compras', 'insert_chart', '/graficas-compras', 3);
+(15, 'Compras', 'insert_chart', '/graficas-compras', 3),
+(16, 'Productos Agotados', 'warning', '/productos-agotados', 0);
 
 
 INSERT INTO `permisos` (`id`, `menu`, `usuario`) VALUES
@@ -38,4 +39,5 @@ INSERT INTO `permisos` (`id`, `menu`, `usuario`) VALUES
 (12, 12, 1),
 (13, 13, 1),
 (14, 14, 1),
-(15, 15, 1);
+(15, 15, 1),
+(16, 16, 1);

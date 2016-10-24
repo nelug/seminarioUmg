@@ -188,6 +188,14 @@ angular.module('seminarioUmg')
             restricted :true
         }
     })
+    //ruta para el listado de productos agotados
+    .when('/productos-agotados',{
+        templateUrl: 'view/productos-agotados/tabla.html',
+        controller: 'productoTablaCtrl',
+        access:{
+            restricted :true
+        }
+    })
     .otherwise({
         redirectTo: '/'
     });
