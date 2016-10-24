@@ -31,8 +31,8 @@ CREATE TABLE clientes
 	direccion varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
 	telefono varchar(25) CHARACTER SET utf8 COLLATE utf8_spanish_ci,
 	correo varchar(50),
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 
@@ -46,8 +46,8 @@ CREATE TABLE compras
 	numero_documento varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
 	fecha_documento date NOT NULL,
 	total decimal(8,2) NOT NULL,
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 
@@ -59,8 +59,8 @@ CREATE TABLE cotizaciones
 	cliente int NOT NULL,
 	estado_proceso int DEFAULT 1 NOT NULL,
 	total decimal(8,2) NOT NULL,
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 
@@ -72,8 +72,8 @@ CREATE TABLE descargas
 	estado_proceso int DEFAULT 1 NOT NULL,
 	nota varchar(500) NOT NULL,
 	total decimal(8,2) NOT NULL,
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 
@@ -85,8 +85,8 @@ CREATE TABLE detalle_compras
 	producto int NOT NULL,
 	cantidad int NOT NULL,
 	precio decimal(10,4) NOT NULL,
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 
@@ -98,8 +98,8 @@ CREATE TABLE detalle_cotizaciones
 	producto int NOT NULL,
 	cantidad int NOT NULL,
 	precio decimal(8,2) NOT NULL,
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 
@@ -111,8 +111,8 @@ CREATE TABLE detalle_descargas
 	producto int NOT NULL,
 	cantidad int NOT NULL,
 	precio decimal(10,4) NOT NULL,
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 
@@ -125,8 +125,8 @@ CREATE TABLE detalle_ventas
 	cantidad int NOT NULL,
 	precio decimal(8,2) NOT NULL,
 	ganancia decimal(10,4) NOT NULL,
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 
@@ -163,8 +163,8 @@ CREATE TABLE permisos
 	id int NOT NULL AUTO_INCREMENT,
 	menu int NOT NULL,
 	usuario int DEFAULT 1 NOT NULL,
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 
@@ -181,8 +181,8 @@ CREATE TABLE productos
 	precio_venta decimal(8,2) NOT NULL,
 	existencia int DEFAULT 0 NOT NULL,
 	existencia_minima int DEFAULT 0 NOT NULL,
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id),
 	UNIQUE (codigo)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
@@ -199,8 +199,8 @@ CREATE TABLE proveedores
 	telefono_empresa varchar(25) NOT NULL,
 	telefono_personal varchar(25),
 	correo varchar(50),
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 
@@ -215,8 +215,8 @@ CREATE TABLE users
 	nombre varchar(25) NOT NULL,
 	apellido varchar(25) NOT NULL,
 	api_token varchar(60),
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id),
 	UNIQUE (username),
 	UNIQUE (email)
@@ -230,8 +230,8 @@ CREATE TABLE ventas
 	estado_proceso int DEFAULT 1 NOT NULL,
 	usuario int DEFAULT 1 NOT NULL,
 	total decimal(8,2) NOT NULL,
-	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
 	PRIMARY KEY (id)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 

@@ -1,33 +1,43 @@
-<md-dialog>
-    <form layout="column">
-        <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
-        <md-dialog-content class="md-whiteframe-5dp">
-                    <form layout="column" ng-submit="register()"  layout-align="center center" layout-fill="layout-fill">
-                        <md-content layout="column" class="md-padding">
-                            <md-input-container >
-                                <label>Nombre</label>
-                                <input type="text" name="nombre" ng-model="formData.nombre" required="true"/>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>Apellido</label>
-                                <input type="text" name="apellido" ng-model="formData.apellido" required="true"/>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>Correo</label>
-                                <input type="email" name="email" ng-model="formData.email" required="true"/>
-                            </md-input-container>
-                            <md-input-container>
-                                <label>Contraseña</label>
-                                <input type="password"name="password" ng-model="formData.password" required="true"/>
-                            </md-input-container>
-                        </md-content>
-                    </form>
-                </md-dialog-content>
+<md-dialog layout="column">
+    <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
+    <md-dialog-content class="md-whiteframe-5dp">
+        <form layout="column" name="form" ng-submit="crearRegistro()"  layout flex layout-wrap>
+            <md-content layout="column" class="md-padding" layout layout-wrap>
+                <md-input-container >
+                    <label>Nombre</label>
+                    <input type="text" title="Ingrese el nombre" name="nombre" ng-model="formData.nombre" required="true"/>
+                    <div ng-messages="form.nombre.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container >
+                    <label>Apellido</label>
+                    <input type="text" title="Ingrese los apellidos" name="apellido" ng-model="formData.apellido" required="true"/>
+                    <div ng-messages="form.apellido.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container >
+                    <label>Correo</label>
+                    <input type="email"  title= "Ingrese el correo electronico"  ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"  name="email" ng-model="formData.email" required="true"/>
+                    <div ng-messages="form.email.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Contraseña</label>
+                    <input type="password" name="password" title= "Ingrese la contraseña" ng-model="formData.password" required="true"/>
+                    <div ng-messages="form.password.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
+                </md-input-container>
+            </md-content>
         <md-dialog-actions layout="row">
             <div layout="row" layout-align="center center" style="padding-top:20px;">
-                <md-button ng-click= "crearRegistro()" class="md-raised md-primary" ng-disabled="disabled" aria-label="Crear Usuario">Crear</md-button>
+                <md-button ng-click= "crearRegistro()" class="md-raised md-primary"  ng-disabled="form.$invalid"  aria-label="Crear Usuario">Crear</md-button>
                 <div flex="flex"></div>
             </div>
         </md-dialog-actions>
-    </form>
+        </form>
+    </md-dialog-content>
 </md-dialog>
