@@ -1,18 +1,97 @@
-<div ng-controller="CrearCompraCtrl" layout="column" style="height:600px" ng-cloak="" class="toolbardemoScrollShrink" ng-app="seminarioUmg">
-
-  <md-toolbar md-scroll-shrink="" ng-if="true" >
-    <div class="md-toolbar-tools">
-      <h3>
-        <span>Crear compra</span>
-      </h3>
-    </div>
-  </md-toolbar>
-  <md-dialog-content class="md-whiteframe-5dp">
-      <form layout="column" ng-submit=""  layout-align="center center" layout-fill="layout-fill">
-          <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-          <md-content layout="column" class="md-padding">
-
-          </md-content>
-      </form>
-  </md-dialog-content>
+<div layout="column" style="max-height:600px" ng-cloak="" class="toolbardemoScrollShrink">
+    <div ng-include src="'view/plantillas/encabezadoFormulario.html'"></div>
+    <md-dialog-content class="md-whiteframe-5dp">
+        <form layout="column" ng-submit=""  layout flex layout-wrap>
+            <md-content class="md-padding md-block">
+                <div style="margin-bottom: 25px;" layout layout-wrap>
+                    <div flex="100" flex-gt-xs="30">
+                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.empresa" md-min-length="0" placeholder="Buscar proveedor">
+                            <md-item-template>
+                                <span class="item-title">
+                                    <span> {{item.nit}}</span>
+                                    <span> {{ item.empresa }} </span>
+                                    <span> {{ item.direccion }} </span>
+                                </span>
+                            </md-item-template>
+                        </md-autocomplete>
+                    </div>
+                    <div flex="0" flex-gt-xs="5"></div>
+                    <div flex="100" flex-gt-xs="20" ng-show="proveedores" >
+                        <strong>Nit: </strong>{{proveedor.nit}}
+                    </div>
+                    <div flex="100" flex-gt-xs="35" ng-show="proveedores"  >
+                        <strong>Direccion: </strong>{{ proveedor.direccion }}
+                    </div>
+                </div>
+                <div layout layout-wrap>
+                    <md-input-container  flex="100" flex-gt-xs="45">
+                        <label>Numero de Documento</label>
+                        <input ng-model="formData.numero_documento">
+                    </md-input-container>
+                    <div flex="0" flex-gt-xs="5"></div>
+                    <md-input-container flex="100" flex-gt-xs="45">
+                        <label>Fecha</label>
+                        <input type="date" name="fecha_documento" ng-model="formData.fecha_documento" ng-required="true">
+                    </md-input-container>
+                </div>
+                <div layout layout-wrap  style="margin-bottom: 25px;">
+                    <div flex="100" flex-gt-xs="30" >
+                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTextoproducto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="0" placeholder="Buscar Codigo">
+                            <md-item-template>
+                                <span class="item-title">
+                                    <span> {{ item.codigo }} </span>
+                                    <span> {{ item.descripcion }} </span>
+                                </span>
+                            </md-item-template>
+                        </md-autocomplete>
+                    </div>
+                    <div flex="0" flex-gt-xs="5"></div>
+                    <div flex="100" flex-gt-xs="20" ng-show="productos" >
+                        <strong>Marca: </strong>{{producto.marca}}
+                    </div>
+                    <div flex="100" flex-gt-xs="25" ng-show="productos"  >
+                        <strong>Precio: </strong>{{ producto.precio_venta }}
+                    </div>
+                    <div flex="100" flex-gt-xs="20" ng-show="productos" >
+                        <strong>Existencia: </strong>{{ producto.existencia }}
+                    </div>
+                </div>
+                <div layout layout-wrap>
+                    <md-input-container  flex="100" flex-gt-xs="33">
+                        <label>Cantidad</label>
+                        <input ng-model="dataTemp.cantidad">
+                    </md-input-container>
+                    <div flex="0" flex-gt-xs="5"></div>
+                    <md-input-container  flex="100" flex-gt-xs="33">
+                        <label>Precio</label>
+                        <input ng-model="dataTemp.precio">
+                    </md-input-container>
+                    <md-input-container flex="15" layout="row" layout-xs="column">
+                        <md-button class="md-raised md-primary"  ng-click="agregarDataDetalle()">Agregar</md-button>
+                    </md-input-container>
+                </div>
+                <div layout="row" style="max-height: 200px; min-height: 200px; overflow-y: auto;" layout layout-wrap>
+                    <table class="table2" ng>
+                        <thead>
+                            <tr>
+                                <th>Cantidad</th>
+                                <th>Descripcion</th>
+                                <th>Precio Unitario</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="detalle in formData.detalle">
+                                <td>{{ detalle.cantidad }}</td>
+                                <td>{{ detalle.descripcion }}</td>
+                                <td>{{ detalle.precio | currency: 'Q: '}}</td>
+                                <td>{{ detalle.total | currency: 'Q: '}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </md-content>
+        </form>
+        <div ng-include src="'view/plantillas/pieFormulario.html'"></div>
+    </md-dialog-content>
 </div>

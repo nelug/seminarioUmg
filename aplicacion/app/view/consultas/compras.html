@@ -2,17 +2,17 @@
     <thead>
         <tr>
             <th>Fecha</th>
-            <th>Cliente</th>
+            <th>proveedor</th>
             <th>Usuario</th>
             <th>Total</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-click="selectDataTabla(venta)" ng-repeat="venta in dataTabla">
-            <td>{{ venta.fecha }}</td>
-            <td>{{ venta.cliente.nombre }}</td>
-            <td>{{ venta.usuario.nombre }}</td>
-            <td>{{ venta.total }}</td>
+        <tr ng-click="selectDataTabla(compra)" ng-repeat="compra in dataTabla">
+            <td>{{ compra.fecha_documento }}</td>
+            <td>{{ compra.proveedor.empresa }}</td>
+            <td>{{ compra.usuario.nombre }}</td>
+            <td class="right">{{ compra.total }}</td>
         </tr>
     </tbody>
 </table>

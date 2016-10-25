@@ -25,6 +25,7 @@ class VentaController extends Controller {
             'detalle.*.precio'   => 'required',
             'detalle.*.ganancia' => 'required'
         ]);
+
         if (!$request->input('detalle')) {
             return response()->json([
                 'message' => array("Ingrese detalle para poder almacenar..")

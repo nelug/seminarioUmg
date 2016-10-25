@@ -15,7 +15,7 @@ class CompraController extends Controller {
 
     public function obtenerTodos()
     {
-        $data = Compra::with('detalle', 'cliente', 'estado')->get();
+        $data = Compra::with('detalle', 'proveedor', 'estado_proceso', 'usuario')->get();
         return response()->json($data);
     }
 
@@ -25,6 +25,20 @@ class CompraController extends Controller {
     }
 
     public function crear(Request $request){
+        $validar = $this->validate($request, [
+            'proveedor'    => 'required',
+            'numero_documento'   => 'required',
+            'fecha_documento'    => 'required',
+            'detalle.*.producto' => 'required',
+            'detalle.*.cantidad' => 'required',
+            'detalle.*.precio'   => 'required'
+        ]);
+
+        if (!$request->input('detalle')) {
+            return response()->json([
+                'message' => array("Ingrese detalle para poder almacenar..")
+            ], 422);
+        }
 
         $compraData = array(
             'proveedor' => $request->input('proveedor'),
@@ -39,7 +53,7 @@ class CompraController extends Controller {
             foreach ($request->input('detalle') as $key => $dt) {
 
                 $detalleData = array(
-                    'venta'    => $compra->id,
+                    'compra'    => $compra->id,
                     'producto' => $dt['producto'],
                     'cantidad' => $dt['cantidad'],
                     'precio'   => $dt['precio']
@@ -51,7 +65,7 @@ class CompraController extends Controller {
 
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Compra almacenado con exito..'
+            'mensaje' => 'Compra almacenada con exito..'
         ));
     }
 

@@ -111,6 +111,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
     return ({
         funcionesCrear: funcionesCrear,
         obtenerProductosAC: obtenerProductosAC,
-        obtenerClientesAC: obtenerClientesAC
+        obtenerClientesAC: obtenerClientesAC,
+        obtenerProveedoresAC: obtenerProveedoresAC
     });
 }]);

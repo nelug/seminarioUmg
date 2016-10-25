@@ -26,6 +26,7 @@ $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers', 'middl
     resource('estado-proceso','EstadoProcesoController');
     resource('cotizacion'    ,'CotizacionController');
     resource('descarga'      ,'DescargaController');
+    resource('compra'        ,'CompraController');
 
 });
 
