@@ -192,3 +192,8 @@ h3 {
 .center {
     text-align: center;
 }
+
+.delete {
+    color:red;
+    cursor:pointer;
+}
