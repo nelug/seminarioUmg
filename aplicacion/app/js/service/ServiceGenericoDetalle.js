@@ -58,28 +58,28 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
         };
     }
 
-    function obtenerClientesAC($scope){
-        $http.get('/api/v1/cliente?token='+$localStorage.token).success( function(data) {
-            $scope.clientes = data;
-            $scope.clientes.map( function (c) {
-                c.value = c.nombre.toLowerCase() + ' ' + c.nit.toString() + ' ' + c.direccion.toLowerCase();
+    function obtenerProveedoresAC($scope){
+        $http.get('/api/v1/proveedor?token='+$localStorage.token).success( function(data) {
+            $scope.proveedores = data;
+            $scope.proveedores.map( function (c) {
+                c.value = c.empresa.toLowerCase() + ' ' + c.nit.toString() + ' ' + c.direccion.toLowerCase();
                 return c;
             });
         });
 
         $scope.buscarAC = function (query) {
-            var results = query ? $scope.clientes.filter( $scope.filtroAutoCliente(query) ) : $scope.clientes, deferred;
+            var results = query ? $scope.proveedores.filter( $scope.filtroAutoProveedor(query) ) : $scope.proveedores, deferred;
             deferred = $q.defer();
             $timeout(function () { deferred.resolve( results ); }, Math.random() * 700, false);
             return deferred.promise;
         };
 
         $scope.seleccionarAC = function (dato) {
-            $scope.formData.cliente = dato.id;
-            $scope.cliente= dato;
+            $scope.formData.proveedor  = dato.id;
+            $scope.proveedor = dato;
         };
 
-        $scope.filtroAutoCliente = function(query) {
+        $scope.filtroAutoProveedor = function(query) {
             return function filterFn(item) {
                 return (item.value.toLowerCase().indexOf(query.toLowerCase()) >= 0);
             };
@@ -92,8 +92,9 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
             $scope.formData.token = $localStorage.token;
             $http.post('/api/v1/'+ entidad.toLowerCase() + '/', $scope.formData)
             .success(function(data) {
-                if (!data.success)
+                if (!data.success){
                     return toaster.warning('Advertencia!', data);
+                }
 
                 toaster.success('Correcto!', data.mensaje);
                 $scope.formData = {};
