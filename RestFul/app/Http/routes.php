@@ -14,6 +14,8 @@ $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers', 'middl
 {
     $app->get('user/permisos/{id}', 'UserController@permisos');
     $app->get('info/{token}' ,'UserController@info');
+    $app->get('inventario'   ,'ProductoController@inventario');
+    $app->get('existencia'   ,'ProductoController@existencia');
 
     resource('cliente'       ,'ClienteController');
     resource('user'          ,'UserController');
