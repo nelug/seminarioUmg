@@ -191,7 +191,7 @@ angular.module('seminarioUmg')
     //ruta para el listado de inventario
     .when('/inventario',{
         templateUrl: 'view/inventario/tabla.html',
-        controller: 'productoTablaCtrl',
+        controller: 'inventarioTablaCtrl',
         access:{
             restricted :true
         }
@@ -199,7 +199,7 @@ angular.module('seminarioUmg')
     //ruta para el listado de productos agotados
     .when('/productos-agotados',{
         templateUrl: 'view/productos-agotados/tabla.html',
-        controller: 'productoTablaCtrl',
+        controller: 'existenciaTablaCtrl',
         access:{
             restricted :true
         }

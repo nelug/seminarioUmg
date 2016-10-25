@@ -179,3 +179,21 @@ svg.nvd3-svg{
 h3 {
     color: rgb(250,250,250);
 }
+
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.delete {
+    color:red;
+    cursor:pointer;
+}

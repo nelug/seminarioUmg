@@ -17,7 +17,7 @@
                     </div>
                     <div flex="0" flex-gt-xs="5"></div>
                     <div flex="100" flex-gt-xs="20" ng-show="clientes" >
-                     <strong>Nit: </strong>{{cliente.nit}}
+                        <strong>Nit: </strong>{{cliente.nit}}
                     </div>
                     <div flex="100" flex-gt-xs="35" ng-show="clientes"  >
                         <strong>Direccion: </strong>{{ cliente.direccion }}
@@ -62,6 +62,7 @@
                                 <th>Descripcion</th>
                                 <th>Precio Unitario</th>
                                 <th>Total</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,6 +71,9 @@
                                 <td>{{ detalle.descripcion }}</td>
                                 <td>{{ detalle.precio | currency: 'Q: '}}</td>
                                 <td>{{ detalle.total | currency: 'Q: '}}</td>
+                                <td>
+                                    <ng-md-icon icon="delete_forever" class="delete" ng-click="eliminarDetalle(detalle)"></ng-md-icon>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

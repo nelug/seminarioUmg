@@ -105,12 +105,18 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
                 toaster.warning('Advertencia.!', jsonPath(data, '$.[0]')[0]);
             });
         };
+
+        $scope.eliminarDetalle = function(item){
+            var index = $scope.formData.detalle.indexOf(item)
+            $scope.formData.detalle.splice(index,1);
+        }
     }
 
 
     return ({
         funcionesCrear: funcionesCrear,
         obtenerProductosAC: obtenerProductosAC,
-        obtenerClientesAC: obtenerClientesAC
+        obtenerClientesAC: obtenerClientesAC,
+        obtenerProveedoresAC: obtenerProveedoresAC
     });
 }]);

@@ -6,7 +6,8 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
 
     $scope.detalleTabla = [];
     $scope.formData = {
-        fecha: new Date(),
+        fecha_documento: '',
+        numero_documento: '',
         proveedor: [],
         usuario: [],
         detalle: []
@@ -22,7 +23,7 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
             descripcion: $scope.producto.descripcion,
             precio:  $scope.dataTemp.precio,
             producto: $scope.producto.id,
-            total:($scope.dataTemp.cantidad * $scope.producto.precio_venta)
+            total:($scope.dataTemp.cantidad * $scope.dataTemp.precio)
         };
         $scope.formData.detalle.push(dataForm);
     };

@@ -16,6 +16,19 @@ class ProductoController extends Controller {
         return response()->json($producto);
     }
 
+    public function inventario()
+    {
+        $producto = Producto::select('codigo', 'descripcion', 'marca', 'precio_venta', 'existencia')->get();
+        return response()->json($producto);
+    }
+
+    public function existencia()
+    {
+        $producto = Producto::select('codigo', 'descripcion', 'marca', 'precio_venta', 'existencia', 'existencia_minima')
+        ->where('existencia_minima', '>', 'existencia')->where('existencia', '!=', 0)->get();
+        return response()->json($producto);
+    }
+
     public function obtenerId($id){
         $data = Producto::find($id);
         return response()->json($data);
