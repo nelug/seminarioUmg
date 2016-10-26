@@ -17,20 +17,13 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
     ServiceGenericoDetalle.funcionesCrear($scope, 'Cotizacion');
 
     $scope.agregarDataDetalle = function() {
-        var dataTabla = {
+        var dataForm = {
             cantidad: $scope.dataTemp.cantidad,
             descripcion: $scope.producto.descripcion,
             precio: $scope.producto.precio_venta,
-            total:($scope.dataTemp.cantidad * $scope.producto.precio_venta)
-        };
-
-        var dataForm = {
-            cantidad: $scope.dataTemp.cantidad,
-            precio: $scope.producto.precio_venta,
+            total:($scope.dataTemp.cantidad * $scope.producto.precio_venta),
             producto: $scope.producto.id
         };
-
-        $scope.detalleTabla.push(dataTabla);
-        $scope.formData.detalle.push(dataForm);
+            $scope.formData.detalle.push(dataForm);
     };
 }]);
