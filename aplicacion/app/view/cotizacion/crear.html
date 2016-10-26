@@ -62,14 +62,18 @@
                                 <th>Descripcion</th>
                                 <th>Precio</th>
                                 <th>Total</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="detalle in detalleTabla">
+                            <tr ng-repeat="detalle in  formData.detalle">
                                 <td>{{ detalle.cantidad }}</td>
                                 <td>{{ detalle.descripcion }}</td>
                                 <td>{{ detalle.precio | currency: 'Q: '}}</td>
                                 <td>{{ detalle.total | currency: 'Q: '}}</td>
+                                <td>
+                                    <ng-md-icon icon="delete_forever" class="delete" ng-click="eliminarDetalle(detalle)"></ng-md-icon>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
