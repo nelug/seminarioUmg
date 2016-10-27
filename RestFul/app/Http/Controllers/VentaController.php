@@ -13,10 +13,12 @@ class VentaController extends Controller {
         $data = Venta::with('detalle', 'cliente', 'estado_proceso', 'usuario')->get();
         return response()->json($data);
     }
+
     public function obtenerId($id){
         $data = Venta::find($id);
         return response()->json($data);
     }
+
     public function crear(Request $request){
         $validar = $this->validate($request, [
             'cliente'    => 'required',
@@ -37,7 +39,9 @@ class VentaController extends Controller {
             'usuario' => Auth::user()->id,
             'estado_proceso' => 2,
         );
+
         $venta = Venta::create($ventaData);
+
         if ($venta) {
             foreach ($request->input('detalle') as $key => $dt) {
                 $detalleData = array(
@@ -55,8 +59,11 @@ class VentaController extends Controller {
             'mensaje' => 'Venta almacenado con exito..'
         ));
     }
-    public function eliminar($id){
+
+    public function detalle($id){
+        return DetalleVenta::with('producto')->whereVenta($id)->get();
     }
+
     public function actualizar(Request $request){
     }
 }
