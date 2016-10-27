@@ -13,6 +13,13 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         });
     }
 
+    function buscarId($scope, entidad) {
+        $http.get('/api/v1/' + entidad.toLowerCase() + '/' + $scope.data.id +'?token='+$localStorage.token).success(function(data) {
+            $scope.detalle = data;
+        });
+    }
+
+
     function instanciarFunciones($scope, entidad) {
         $scope.dialogoCrear = function() {
             $mdDialog.show({
@@ -36,6 +43,15 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
                 locals:{ idEnviado: $scope.dataSeleccionada.id },
                 controller: 'Eliminar' + entidad + 'Ctrl',
                 templateUrl: 'view/' + entidad.toLowerCase() + '/eliminar.html',
+                clickOutsideToClose: false
+            });
+        };
+
+        $scope.dialogoVerDetalle = function(dataEnviar) {
+            $mdDialog.show({
+                locals:{ data: dataEnviar},
+                controller: entidad.toLowerCase() + 'DetalleCtrl',
+                templateUrl: 'view/' + entidad.toLowerCase() + '/detalle.html',
                 clickOutsideToClose: false
             });
         };
@@ -119,6 +135,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         instanciarFunciones: instanciarFunciones,
         funcionesDefaultDialog: funcionesDefaultDialog,
         funcionesDialogoEditar: funcionesDialogoEditar,
-        funcionesDialogoEliminar: funcionesDialogoEliminar
+        funcionesDialogoEliminar: funcionesDialogoEliminar,
+        buscarId: buscarId
     });
 }]);

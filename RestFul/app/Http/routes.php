@@ -33,9 +33,10 @@ $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers', 'middl
 function resource($uri, $controller)
 {
     global $app;
-    $app->get($uri,            $controller.'@obtenerTodos');
-    $app->get($uri.'/{id}',    $controller.'@obtenerId');
-    $app->post($uri,           $controller.'@crear');
-    $app->put($uri,            $controller.'@actualizar');
-    $app->delete($uri.'/{id}', $controller.'@eliminar');
+    $app->get($uri,                    $controller.'@obtenerTodos');
+    $app->get($uri.'/{id}',            $controller.'@obtenerId');
+    $app->get('detalle-'.$uri.'/{id}', $controller.'@detalle');
+    $app->post($uri,                   $controller.'@crear');
+    $app->put($uri,                    $controller.'@actualizar');
+    $app->delete($uri.'/{id}',         $controller.'@eliminar');
 }
