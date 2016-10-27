@@ -17,6 +17,7 @@
             <td>{{ venta.usuario.nombre }}</td>
             <td>{{ venta.total | currency: 'Q ' }}</td>
             <td> <ng-md-icon icon="pageview" class="info" ng-click="dialogoVerDetalle(venta)"></ng-md-icon> </td>
+            <td class="right">{{ venta.total | currency: 'Q ' }}</td>
         </tr>
     </tbody>
 </table>

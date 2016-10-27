@@ -14,7 +14,7 @@
             <td>{{ cotizacion.cliente.nombre }}</td>
             <td>{{ cotizacion.created_at }}</td>
             <td>{{ cotizacion.usuario }}</td>
-            <td>{{ cotizacion.total }}</td>
+            <td class="right">{{ cotizacion.total | currency: 'Q '}}</td>
         </tr>
     </tbody>
 </table>

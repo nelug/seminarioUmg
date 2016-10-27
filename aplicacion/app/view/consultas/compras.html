@@ -12,7 +12,7 @@
             <td>{{ compra.fecha_documento }}</td>
             <td>{{ compra.proveedor.empresa }}</td>
             <td>{{ compra.usuario.nombre }}</td>
-            <td class="right">{{ compra.total }}</td>
+            <td class="right">{{ compra.total | currency: 'Q '}}</td>
         </tr>
     </tbody>
 </table>

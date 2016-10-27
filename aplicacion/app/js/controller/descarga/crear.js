@@ -7,6 +7,7 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
     $scope.detalleTabla = [];
     $scope.formData = {
         fecha: new Date(),
+        nota: '',
         usuario: [],
         detalle: []
     };
