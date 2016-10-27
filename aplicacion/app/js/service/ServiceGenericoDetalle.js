@@ -3,6 +3,10 @@
 angular.module('seminarioUmg').factory('ServiceGenericoDetalle', [ '$http', '$timeout', '$q', '$log', '$route', 'toaster', 'jsonPath', '$location', '$localStorage',
 function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $localStorage) {
 
+    function mensajeAlerta(mensaje){
+        toaster.warning('Advertencia.!', mensaje);
+    }
+
     function obtenerClientesAC($scope){
         $http.get('/api/v1/cliente?token='+$localStorage.token).success( function(data) {
             $scope.clientes = data;
@@ -107,9 +111,9 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
         };
 
         $scope.eliminarDetalle = function(item){
-            var index = $scope.formData.detalle.indexOf(item)
+            var index = $scope.formData.detalle.indexOf(item);
             $scope.formData.detalle.splice(index,1);
-        }
+        };
     }
 
 
@@ -117,6 +121,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
         funcionesCrear: funcionesCrear,
         obtenerProductosAC: obtenerProductosAC,
         obtenerClientesAC: obtenerClientesAC,
-        obtenerProveedoresAC: obtenerProveedoresAC
+        obtenerProveedoresAC: obtenerProveedoresAC,
+        mensajeAlerta: mensajeAlerta
     });
 }]);
