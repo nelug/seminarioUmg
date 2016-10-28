@@ -90,4 +90,11 @@ class VentaController extends Controller {
 
     public function actualizar(Request $request){
     }
+
+    public function grafica()
+    {
+        return DB::table('detalle_ventas')
+        ->select(DB::raw("DATE_FORMAT(created_at, '%Y') as label, sum(cantidad * precio) as value, sum(cantidad * ganancia) as ganancia"))
+        ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y')"))->get();
+    }
 }
