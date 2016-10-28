@@ -40,8 +40,8 @@ class ProductoController extends Controller {
         $validar = $this->validate($request, [
             'codigo' => 'required',
             'descripcion' => 'required',
-            'precio_venta' => 'required',
-            'existencia_minima' => 'required'
+            'precio_venta' => 'required|numeric',
+            'existencia_minima' => 'required|numeric'
         ]);
         $inputs = $request->except('token');
 

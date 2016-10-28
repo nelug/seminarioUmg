@@ -26,10 +26,10 @@ class VentaController extends Controller {
     public function crear(Request $request){
         $validar = $this->validate($request, [
             'cliente'    => 'required',
-            'detalle.*.producto' => 'required',
-            'detalle.*.cantidad' => 'required',
-            'detalle.*.precio'   => 'required',
-            'detalle.*.ganancia' => 'required'
+            'detalle.*.producto' => 'required|numeric',
+            'detalle.*.cantidad' => 'required|numeric',
+            'detalle.*.precio'   => 'required|numeric',
+            'detalle.*.ganancia' => 'required|numeric'
         ]);
 
         if (!$request->input('detalle')) {

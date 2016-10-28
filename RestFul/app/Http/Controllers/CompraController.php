@@ -29,10 +29,10 @@ class CompraController extends Controller {
         $validar = $this->validate($request, [
             'proveedor'    => 'required',
             'numero_documento'   => 'required',
-            'fecha_documento'    => 'required',
-            'detalle.*.producto' => 'required',
-            'detalle.*.cantidad' => 'required',
-            'detalle.*.precio'   => 'required'
+            'fecha_documento'    => 'required|date',
+            'detalle.*.producto' => 'required|numeric',
+            'detalle.*.cantidad' => 'required|numeric',
+            'detalle.*.precio'   => 'required|numeric'
         ]);
 
         if (!$request->input('detalle')) {

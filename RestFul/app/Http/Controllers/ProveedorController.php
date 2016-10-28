@@ -24,10 +24,10 @@ class ProveedorController extends Controller {
     public function crear(Request $request){
 
         $validar = $this->validate($request, [
-            'nit' => 'required',
-            'empresa' => 'required',
-            'telefono_empresa' => 'required',
-            'direccion' => 'required'
+            'nit' => 'required|alpha_num',
+            'empresa' => 'required|string',
+            'telefono_empresa' => 'required|numeric',
+            'direccion' => 'required|string'
         ]);
 
         $inputs = $request->except('token');
