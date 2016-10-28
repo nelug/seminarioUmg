@@ -84,6 +84,10 @@ class CompraController extends Controller {
         ));
     }
 
+    public function detalle($id){
+        return DetalleCompra::with('producto')->whereCompra($id)->get();
+    }
+
     public function eliminar($id){
 
     }

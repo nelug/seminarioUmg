@@ -5,6 +5,7 @@
             <th>proveedor</th>
             <th>Usuario</th>
             <th>Total</th>
+            <th>Detalle</th>
         </tr>
     </thead>
     <tbody>
@@ -13,6 +14,7 @@
             <td>{{ compra.proveedor.empresa }}</td>
             <td>{{ compra.usuario.nombre }}</td>
             <td class="right">{{ compra.total | currency: 'Q '}}</td>
+            <td> <ng-md-icon icon="pageview" class="info" ng-click="dialogoVerDetalle(compra)"></ng-md-icon> </td>
         </tr>
     </tbody>
 </table>
