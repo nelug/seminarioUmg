@@ -1,13 +1,17 @@
 <?php
 namespace App\Http\Controllers;
+
 use App\Venta;
 use App\DetalleVenta;
+use App\Producto;
 use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\JWTAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+
 class VentaController extends Controller {
+
     public function obtenerTodos()
     {
         $data = Venta::with('detalle', 'cliente', 'estado_proceso', 'usuario')->get();
@@ -34,6 +38,15 @@ class VentaController extends Controller {
             ], 422);
         }
 
+        foreach ($request->input('detalle') as $key => $dt) {
+            $pr = Producto::find($dt['producto']);
+            if ($pr->existencia < $dt['cantidad']) {
+                return response()->json([
+                    'message' => array("El producto | " . $pr->descripcion . ' | no cuenta con la cantidas solicitada la existencia es de => '. $pr->existencia )
+                ], 422);
+            }
+        }
+
         $ventaData = array(
             'cliente' => $request->input('cliente'),
             'usuario' => Auth::user()->id,
@@ -41,6 +54,7 @@ class VentaController extends Controller {
         );
 
         $venta = Venta::create($ventaData);
+        $total = 0;
 
         if ($venta) {
             foreach ($request->input('detalle') as $key => $dt) {
@@ -51,8 +65,18 @@ class VentaController extends Controller {
                     'precio'   => $dt['precio'],
                     'ganancia' => $dt['ganancia']
                 );
-                DetalleVenta::create($detalleData);
+
+                $producto = Producto::find($dt['producto']);
+                $total += ($dt['cantidad'] * $dt['precio']);
+
+                if ($producto) {
+                    DetalleVenta::create($detalleData);
+                    $producto->existencia -= $dt['cantidad'];
+                    $producto->save();
+                }
+
             }
+            DB::table('ventas')->whereId($venta->id)->update(['total' => $total]);
         }
         return response()->json(array(
             'success' => true,
