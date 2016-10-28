@@ -1,15 +1,18 @@
 <div layout="column" style="max-height:600px" ng-cloak="" class="toolbardemoScrollShrink">
     <div ng-include src="'view/plantillas/encabezadoFormulario.html'"></div>
     <md-dialog-content class="md-whiteframe-5dp">
-        <form layout="column" ng-submit=""  layout flex layout-wrap>
+        <form layout="column" name="form"  layout flex layout-wrap>
             <md-content class="md-padding md-block">
                 <md-input-container class="md-block">
                     <label>Razon de la descarga</label>
-                    <textarea rows="2" md-select-on-focus="" ng-model="formData.nota" ng-required= "true"></textarea>
+                    <textarea rows="2" md-select-on-focus="" name="nota" ng-model="formData.nota" ng-required= "true"></textarea>
+                    <div ng-messages="form.nota.$error" role="alert">
+                        <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                    </div>
                 </md-input-container>
                 <div layout layout-wrap  style="margin-bottom: 25px;">
                     <div flex="100" flex-gt-xs="30" >
-                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTextoproducto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="0" placeholder="Buscar Codigo">
+                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTextoproducto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="0" placeholder="Buscar Codigo" ng-required="true">
                             <md-item-template>
                                 <span class="item-title">
                                     <span> {{ item.codigo }} </span>
@@ -32,10 +35,13 @@
                 <div layout layout-wrap>
                     <md-input-container  flex="100" flex-gt-xs="20">
                         <label>Cantidad</label>
-                        <input ng-model="dataTemp.cantidad">
+                        <input type="number" name="cantidad" ng-model="dataTemp.cantidad" ng-pattern="/^[0-9]{1,11}$/" ng-required="true">
+                        <div ng-messages="form.cantidad.$error" role="alert">
+                            <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                        </div>
                     </md-input-container>
                     <md-input-container flex="15" layout="row" layout-xs="column">
-                        <md-button class="md-raised md-primary"  ng-click="agregarDataDetalle()">Agregar</md-button>
+                        <md-button class="md-raised md-primary"  ng-disabled="form.$invalid" ng-click="agregarDataDetalle()">Agregar</md-button>
                     </md-input-container>
                 </div>
                 <div layout="row" style="max-height: 200px; min-height: 200px; overflow-y: auto;" layout layout-wrap>
@@ -59,7 +65,7 @@
                                 <td>{{ detalle.precio | currency: 'Q: '}}</td>
                                 <td>{{ detalle.total | currency: 'Q: '}}</td>
                                 <td>
-                                    <ng-md-icon icon="delete_forever" class="delete" ng-click="eliminarDetalle(detalle)"></ng-md-icon>
+                                    <ng-md-icon icon="delete_forever"  class="delete" ng-click="eliminarDetalle(detalle)"></ng-md-icon>
                                 </td>
                             </tr>
                         </tbody>
