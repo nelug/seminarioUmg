@@ -2,19 +2,21 @@
     <thead>
         <tr>
             <th>codigo</th>
-            <th>Cliente</th>
             <th>Fecha</th>
+            <th>Cliente</th>
             <th>Usuario</th>
             <th>Total</th>
+            <th>Detalle</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-click="selectDataTabla(cotizacion)" ng-repeat="cotizacion in dataTabla">
             <td>{{ cotizacion.id }}</td>
-            <td>{{ cotizacion.cliente.nombre }}</td>
             <td>{{ cotizacion.created_at }}</td>
+            <td>{{ cotizacion.cliente.nombre }}</td>
             <td>{{ cotizacion.usuario }}</td>
-            <td>{{ cotizacion.total }}</td>
+            <td class="right">{{ cotizacion.total | currency: 'Q '}}</td>
+            <td> <ng-md-icon icon="pageview" class="info" ng-click="dialogoVerDetalle(cotizacion)"></ng-md-icon> </td>
         </tr>
     </tbody>
 </table>

@@ -12,11 +12,11 @@ class DetalleDescarga extends Model
 
     public function descarga()
     {
-        return $this->belongsTo('Descarga', 'descarga', 'id');
+        return $this->belongsTo('App\Descarga', 'descarga', 'id');
     }
 
     public function producto()
     {
-        return $this->belongsTo('Producto', 'producto', 'id');
+        return $this->belongsTo('App\Producto', 'producto', 'id');
     }
 }

@@ -53,6 +53,10 @@ class CotizacionController extends Controller {
         ));
     }
 
+    public function detalle($id){
+        return DetalleCotizacion::with('producto')->whereCotizacion($id)->get();
+    }
+
     public function eliminar($id){
 
     }

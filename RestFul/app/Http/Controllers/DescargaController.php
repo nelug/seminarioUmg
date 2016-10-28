@@ -50,6 +50,11 @@ class DescargaController extends Controller {
             'mensaje' => 'Descarga Realizada con exito..'
         ));
     }
+
+    public function detalle($id){
+        return DetalleDescarga::with('producto')->whereDescarga($id)->get();
+    }
+
     public function eliminar($id){
     }
     public function actualizar(Request $request){

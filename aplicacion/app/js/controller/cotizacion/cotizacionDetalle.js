@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('ventaDetalleCtrl', ['$scope', 'ServiceGenerico', 'data', '$mdDialog',
+angular.module('seminarioUmg').controller('cotizacionDetalleCtrl', ['$scope', 'ServiceGenerico', 'data', '$mdDialog',
 function($scope, ServiceGenerico, data, $mdDialog) {
     $scope.data = data;
-    $scope.formTitulo = 'Detalle de la Venta';
+    $scope.formTitulo = 'Detalle De La Cotizacion';
     ServiceGenerico.buscarId($scope, 'detalle-venta');
     $scope.cancel = function() { $mdDialog.cancel(); };
 }]);
