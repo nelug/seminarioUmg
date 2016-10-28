@@ -12,11 +12,11 @@ class DetalleCotizacion extends Model
 
     public function cotizacion()
     {
-        return $this->belongsTo('Cotizacion', 'cotizacion', 'id');
+        return $this->belongsTo('App\Cotizacion', 'cotizacion', 'id');
     }
 
     public function producto()
     {
-        return $this->belongsTo('Producto', 'producto', 'id');
+        return $this->belongsTo('App\Producto', 'producto', 'id');
     }
 }

@@ -22,7 +22,7 @@ class Cotizacion extends Model
 
     public function usuario()
     {
-        return $this->belongsTo('App\Usuario', 'usuario', 'id');
+        return $this->belongsTo('App\User', 'usuario', 'id');
     }
 
     public function cliente()
