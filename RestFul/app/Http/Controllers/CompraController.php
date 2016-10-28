@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Compra;
 use App\DetalleCompra;
+use App\Producto;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -48,7 +49,7 @@ class CompraController extends Controller {
         );
 
         $compra = Compra::create($compraData);
-
+        $total = 0;
         if ($compra) {
             foreach ($request->input('detalle') as $key => $dt) {
 
@@ -59,8 +60,22 @@ class CompraController extends Controller {
                     'precio'   => $dt['precio']
                 );
 
-                DetalleCompra::create($detalleData);
+                $producto = Producto::find($dt['producto']);
+                $total += ($dt['cantidad'] * $dt['precio']);
+
+                if ($producto) {
+                    DetalleCompra::create($detalleData);
+
+                    $data = $this->calcularPrecioCosto($producto->precio_costo, $producto->existencia, $dt['precio'], $dt['cantidad']);
+
+                    $producto->precio_costo = $data['precio_costo'];
+                    $producto->existencia = $data['existencia'];
+                    $producto->save();
+                }
+
             }
+
+            DB::table('compras')->whereId($compra->id)->update(['total' => $total]);
         }
 
         return response()->json(array(
@@ -75,5 +90,19 @@ class CompraController extends Controller {
 
     public function actualizar(Request $request){
 
+    }
+
+    public function calcularPrecioCosto($precioActual, $existenciaActual, $precioCompra, $cantidadCompra)
+    {
+        $totalActual = $existenciaActual * $precioActual;
+        $totalCompra = $cantidadCompra * $precioCompra;
+
+        $existencia = $existenciaActual + $cantidadCompra;
+        $precioCosto = ($totalActual + $totalCompra) / $existencia;
+
+        return array(
+            'existencia' => $existencia,
+            'precio_costo' => $precioCosto
+        );
     }
 }
