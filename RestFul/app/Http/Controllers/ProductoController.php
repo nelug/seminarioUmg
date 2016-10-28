@@ -25,7 +25,8 @@ class ProductoController extends Controller {
     public function existencia()
     {
         $producto = Producto::select('codigo', 'descripcion', 'marca', 'precio_venta', 'existencia', 'existencia_minima')
-        ->where('existencia_minima', '>', 'existencia')->where('existencia', '!=', 0)->get();
+        ->whereRaw('existencia_minima > existencia')->where('existencia', '!=', 0)->get();
+
         return response()->json($producto);
     }
 

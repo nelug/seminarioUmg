@@ -5,8 +5,9 @@
             <th>Codigo</th>
             <th>Descripcion</th>
             <th>Marca</th>
-            <th>Precio Venta</th>
-            <th>Existencia Minima</th>
+            <th>P.Venta</th>
+            <th>P.Costo</th>
+            <th>Exist.</th>
         </tr>
     </thead>
     <tbody>
@@ -14,8 +15,9 @@
             <td>{{ producto.codigo }}</td>
             <td>{{ producto.descripcion }}</td>
             <td>{{ producto.marca }}</td>
-            <td>{{ producto.precio_venta }}</td>
-            <td>{{ producto.existencia_minima }}</td>
+            <td class="right">{{ producto.precio_venta }}</td>
+            <td class="right">{{ producto.precio_costo }}</td>
+            <td class="right">{{ producto.existencia }}</td>
         </tr>
     </tbody>
 </table>

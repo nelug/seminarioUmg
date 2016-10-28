@@ -105,3 +105,8 @@ div.dataTables_info {
     font-size: 14px;
     color: gray;
 }
+
+table td {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}
