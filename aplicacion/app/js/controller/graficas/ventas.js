@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeout', '$http', '$localStorage',
+function ($scope, $timeout, $http, $localStorage) {
+
+
 
     $scope.options = {
         chart: {
@@ -29,7 +32,15 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
                     elementClick: function (t,u){
                         $scope.api.updateWithData($scope.dataUpdate);
                         $scope.api.refresh();
+                    },
+                    elementMouseover: function (t,u){
+                        $scope.showGanancia = t.data.ganancia;
                     }
+                }
+            },
+            tooltip: {
+                valueFormatter: function (d) {
+                    return 'Ganancia:' + $scope.showGanancia;
                 }
             }
 
@@ -42,34 +53,18 @@ angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeo
     };
 
     $scope.dataUpdate = [{
-        key: 'Cumulative Return',
-        values: [
-            { 'label' : 'A' , 'value' : 110 },
-            { 'label' : 'B' , 'value' : 220 },
-            { 'label' : 'C' , 'value' : 330 },
-            { 'label' : 'D' , 'value' : 205 },
-            { 'label' : 'E' , 'value' : 105 },
-        ]
+        key: 'Grafica Mensual',
+        values: []
     }];
 
-    $scope.data = [{
-        key: 'Cumulative Return',
-        values: [
-            { 'label' : 'A' , 'value' : 10 },
-            { 'label' : 'B' , 'value' : 20 },
-            { 'label' : 'C' , 'value' : 30 },
-            { 'label' : 'D' , 'value' : 25 },
-            { 'label' : 'E' , 'value' : 15 },
-            { 'label' : 'F' , 'value' : 35 },
-            { 'label' : 'G' , 'value' : 50 },
-            { 'label' : 'H' , 'value' : 12 },
-            { 'label' : 'I' , 'value' : 15 },
-            { 'label' : 'J' , 'value' : 44 },
-            { 'label' : 'K' , 'value' : 56 },
-            { 'label' : 'L' , 'value' : 30 }
-        ]
-    }];
-
+    $http.get('/api/v1/grafica-ventas?token='+$localStorage.token).success(function(data) {
+        $scope.data = [{
+            key: 'Ventas Anuales',
+            values: data
+        }];
+        $scope.api.updateWithData($scope.data);
+        $scope.api.refresh();
+    });
 
     var redimensionar = function() {
         $scope.options.chart.width = 0;
