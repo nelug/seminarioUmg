@@ -24,8 +24,8 @@ class ClienteController extends Controller {
     public function crear(Request $request){
 
         $validar = $this->validate($request, [
-            'nombre' => 'required',
-            'direccion' => 'required'
+            'nombre' => 'required|string',
+            'direccion' => 'required|string'
         ]);
 
         $inputs = $request->except('token');
@@ -62,7 +62,7 @@ class ClienteController extends Controller {
             'direccion' => 'required'
         ]);
         $inputs = $request->except('token');
-        
+
         Cliente::whereId($request->id)->update($inputs);
 
         return response()->json(array(
