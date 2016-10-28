@@ -5,7 +5,7 @@
             <md-content class="md-padding md-block">
                 <div style="margin-bottom: 25px;" layout layout-wrap>
                     <div flex="100" flex-gt-xs="30">
-                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente">
+                        <md-autocomplete ng-disabled="false"  ng-required="true" md-no-cache="true" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente" >
                             <md-item-template>
                                 <span class="item-title">
                                     <span> {{ item.nit }} </span>
@@ -49,7 +49,7 @@
                 <div layout layout-wrap>
                     <md-input-container  flex="100" flex-gt-xs="20">
                         <label>Cantidad</label>
-                        <input type="text" name="cantidad" ng-model="dataTemp.cantidad" ng-required="true">
+                        <input type="number" name="cantidad" ng-model="dataTemp.cantidad" ng-pattern="/^[0-9]{1,11}$/" ng-required="true">
                         <div ng-messages="form.cantidad.$error" role="alert">
                             <div ng-messages-include="view/plantillas/mensajes.html"></div>
                         </div>
