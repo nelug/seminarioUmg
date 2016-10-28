@@ -4,13 +4,7 @@
         <br>
         <div layout layout-wrap>
             <div flex="100">
-                <strong>Cliente:</strong> {{ data.cliente.nombre }}
-            </div>
-            <div flex="100">
-                <strong>Nit:</strong> {{ data.cliente.nit }}
-            </div>
-            <div flex="100">
-                <strong>Direccion:</strong> {{ data.cliente.direccion }}
+                <strong >Usuario:</strong> {{ data.usuario.nombre}}
             </div>
         </div>
         <br>
@@ -19,6 +13,7 @@
                 <thead>
                     <tr>
                         <th>Cantidad</th>
+                        <th>Nota</th>
                         <th>Descripcion</th>
                         <th>Precio Unitario</th>
                         <th>Total</th>
@@ -27,6 +22,7 @@
                 <tbody>
                     <tr ng-repeat="dt in detalle">
                         <td>{{ dt.cantidad }}</td>
+                        <td>{{ dt.nota }}</td>
                         <td>{{ dt.producto.descripcion }}</td>
                         <td>{{ dt.precio | currency: 'Q: '}}</td>
                         <td>{{ (dt.cantidad * dt.precio) | currency: 'Q: '}}</td>
