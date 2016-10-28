@@ -1,7 +1,7 @@
 <div layout="column" style="max-height:600px" ng-cloak="" class="toolbardemoScrollShrink">
     <div ng-include src="'view/plantillas/encabezadoFormulario.html'"></div>
     <md-dialog-content class="md-whiteframe-5dp">
-        <form layout="column" ng-submit=""  layout flex layout-wrap>
+        <form layout="column" name="form" layout flex layout-wrap>
             <md-content class="md-padding md-block">
                 <div style="margin-bottom: 25px;" layout layout-wrap>
                     <div flex="100" flex-gt-xs="30">
@@ -26,12 +26,18 @@
                 <div layout layout-wrap>
                     <md-input-container  flex="100" flex-gt-xs="45">
                         <label>Numero de Documento</label>
-                        <input ng-model="formData.numero_documento">
+                        <input type="number" name="numero_documento"  ng-pattern="/^[0-9]{1,11}$/" ng-model="formData.numero_documento" ng-required= "true">
+                        <div ng-messages="form.numero_documento.$error" role="alert">
+                            <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                        </div>
                     </md-input-container>
                     <div flex="0" flex-gt-xs="5"></div>
                     <md-input-container flex="100" flex-gt-xs="45">
                         <label>Fecha</label>
                         <input type="date" name="fecha_documento" ng-model="formData.fecha_documento" ng-required="true">
+                        <div ng-messages="form.fecha_documento.$error" role="alert">
+                            <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                        </div>
                     </md-input-container>
                 </div>
                 <div layout layout-wrap  style="margin-bottom: 25px;">
@@ -59,15 +65,21 @@
                 <div layout layout-wrap>
                     <md-input-container  flex="100" flex-gt-xs="33">
                         <label>Cantidad</label>
-                        <input ng-model="dataTemp.cantidad">
+                        <input type="number" ng-model="dataTemp.cantidad" name="cantidad" ng-pattern="/^[0-9]{1,11}$/" ng-required="true">
+                        <div ng-messages="form.cantidad.$error" role="alert">
+                            <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                        </div>
                     </md-input-container>
                     <div flex="0" flex-gt-xs="5"></div>
                     <md-input-container  flex="100" flex-gt-xs="33">
                         <label>Precio</label>
-                        <input ng-model="dataTemp.precio">
+                        <input type="number" ng-model="formData.precio" name="precio" ng-pattern="/^[0-9]{1,11}$/" ng-required= "true">
+                        <div ng-messages="form.precio.$error" role="alert">
+                            <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                        </div>
                     </md-input-container>
                     <md-input-container flex="15" layout="row" layout-xs="column">
-                        <md-button class="md-raised md-primary"  ng-click="agregarDataDetalle()">Agregar</md-button>
+                        <md-button class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="agregarDataDetalle()">Agregar</md-button>
                     </md-input-container>
                 </div>
                 <div layout="row" style="max-height: 200px; min-height: 200px; overflow-y: auto;" layout layout-wrap>
