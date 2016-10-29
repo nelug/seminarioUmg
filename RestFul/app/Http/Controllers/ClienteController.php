@@ -24,6 +24,7 @@ class ClienteController extends Controller {
     public function crear(Request $request){
 
         $validar = $this->validate($request, [
+            'nit' => 'unique:clientes,nit',
             'nombre' => 'required|string',
             'direccion' => 'required|string'
         ]);

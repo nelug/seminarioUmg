@@ -38,7 +38,7 @@ class ProductoController extends Controller {
     public function crear(Request $request){
 
         $validar = $this->validate($request, [
-            'codigo' => 'required',
+            'codigo' => 'required|unique:productos,codigo',
             'descripcion' => 'required',
             'precio_venta' => 'required|numeric',
             'existencia_minima' => 'required|numeric'
