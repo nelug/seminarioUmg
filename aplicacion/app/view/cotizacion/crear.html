@@ -48,7 +48,7 @@
                 <div style="margin-bottom: 25px;" layout layout-wrap>
                     <md-input-container  flex="100" flex-gt-xs="20">
                         <label>Cantidad</label>
-                        <input type="number" name="cantidad" ng-model="dataTemp.cantidad" ng-pattern="/^[0-9]{1,11}$/" ng-required="true">
+                        <input name="cantidad" ng-model="dataTemp.cantidad" ng-pattern="/^[0-9]{1,11}$/" ng-required="true">
                         <div ng-messages="form.cantidad.$error" role="alert">
                             <div ng-messages-include="view/plantillas/mensajes.html"></div>
                         </div>

@@ -19,9 +19,9 @@ class DescargaController extends Controller {
     }
     public function crear(Request $request){
         $validar = $this->validate($request, [
-            'detalle.*.producto' => 'required',
-            'detalle.*.cantidad' => 'required',
-            'detalle.*.precio'   => 'required'
+            'detalle.*.producto' => 'required|numeric',
+            'detalle.*.cantidad' => 'required|numeric',
+            'detalle.*.precio'   => 'required|numeric'
         ]);
         if (!$request->input('detalle')) {
             return response()->json([
