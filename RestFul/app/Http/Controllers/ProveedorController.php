@@ -24,7 +24,7 @@ class ProveedorController extends Controller {
     public function crear(Request $request){
 
         $validar = $this->validate($request, [
-            'nit' => 'required|alpha_num',
+            'nit' => 'required|alpha_num|unique:proveedores,nit',
             'empresa' => 'required|string',
             'telefono_empresa' => 'required|numeric',
             'direccion' => 'required|string'
