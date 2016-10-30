@@ -3,8 +3,6 @@
 angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeout', '$http', '$localStorage',
 function ($scope, $timeout, $http, $localStorage) {
 
-
-
     $scope.options = {
         chart: {
             type: 'discreteBarChart',
