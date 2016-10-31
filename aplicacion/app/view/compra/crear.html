@@ -26,7 +26,7 @@
                 <div layout layout-wrap>
                     <md-input-container  flex="100" flex-gt-xs="45">
                         <label>Numero de Documento</label>
-                        <input type="number" name="numero_documento"  ng-pattern="/^[0-9]{1,11}$/" ng-model="formData.numero_documento" ng-required= "true">
+                        <input name="numero_documento" ng-maxlength= "50" ng-model="formData.numero_documento" ng-required= "true">
                         <div ng-messages="form.numero_documento.$error" role="alert">
                             <div ng-messages-include="view/plantillas/mensajes.html"></div>
                         </div>
@@ -65,7 +65,7 @@
                 <div layout layout-wrap>
                     <md-input-container  flex="100" flex-gt-xs="33">
                         <label>Cantidad</label>
-                        <input type="number" ng-model="dataTemp.cantidad" name="cantidad" ng-pattern="/^[0-9]{1,11}$/" ng-required="true">
+                        <input ng-model="dataTemp.cantidad" title="completa este campo" ng-pattern="/^[0-9]{1,11}$/" name="cantidad" ng-required="true">
                         <div ng-messages="form.cantidad.$error" role="alert">
                             <div ng-messages-include="view/plantillas/mensajes.html"></div>
                         </div>
@@ -73,7 +73,7 @@
                     <div flex="0" flex-gt-xs="5"></div>
                     <md-input-container  flex="100" flex-gt-xs="33">
                         <label>Precio</label>
-                        <input type="number" ng-model="formData.precio" name="precio" ng-pattern="/^[0-9]{1,11}$/" ng-required= "true">
+                        <input ng-model="formData.precio" name="precio" ng-required= "true">
                         <div ng-messages="form.precio.$error" role="alert">
                             <div ng-messages-include="view/plantillas/mensajes.html"></div>
                         </div>
