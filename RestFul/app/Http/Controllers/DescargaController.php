@@ -30,12 +30,22 @@ class DescargaController extends Controller {
                 'message' => array("Ingrese detalle para poder descontar..")
             ], 422);
         }
+        foreach ($request->input('detalle') as $key => $dt) {
+            $pr = Producto::find($dt['producto']);
+            if ($pr->existencia < $dt['cantidad']) {
+                return response()->json([
+                    'message' => array("El producto | " . $pr->descripcion . ' | no cuenta con la cantidad solicitada la existencia es de => '. $pr->existencia )
+                ], 422);
+            }
+        }
 
         $descargaData = array(
             'usuario' => Auth::user()->id,
             'estado_proceso' => 2,
         );
+
         $descarga = Descarga::create($descargaData);
+        $total = 0;
         if ($descarga) {
             foreach ($request->input('detalle') as $key => $dt) {
                 $detalleData = array(
@@ -44,8 +54,15 @@ class DescargaController extends Controller {
                     'cantidad' => $dt['cantidad'],
                     'precio'   => $dt['precio']
                 );
-                DetalleDescarga::create($detalleData);
+                $producto = Producto::find($dt['producto']);
+                $total += ($dt['cantidad'] * $dt['precio']);
+                if ($producto) {
+                    DetalleDescarga::create($detalleData);
+                    $producto->existencia -= $dt['cantidad'];
+                    $producto->save();
+                }
             }
+            DB::table('descargas')->whereId($descarga->id)->update(['total' => $total]);
         }
         return response()->json(array(
             'success' => true,
