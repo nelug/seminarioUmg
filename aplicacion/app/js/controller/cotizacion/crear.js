@@ -25,5 +25,7 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
             producto: $scope.producto.id
         };
             $scope.formData.detalle.push(dataForm);
+            $scope.buscarTextoproducto = '';
+            $scope.dataTemp = [];
     };
 }]);
