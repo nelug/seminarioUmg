@@ -78,7 +78,18 @@ class VentaController extends Controller {
     public function grafica()
     {
         return DB::table('detalle_ventas')
-        ->select(DB::raw("DATE_FORMAT(created_at, '%Y') as label, sum(cantidad * precio) as value, sum(cantidad * precio) as ganancia"))
+        ->select(DB::raw("DATE_FORMAT(created_at, '%Y') as label, sum(cantidad * precio) as value, sum(cantidad * ganancia) as ganancia"))
         ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y')"))->get();
+    }
+
+    public function graficaMeses($year)
+    {
+
+        DB::statement("SET lc_time_names = 'es_ES'");
+
+        return DB::table('detalle_ventas')
+        ->select(DB::raw("DATE_FORMAT(created_at, '%M') as label, sum(cantidad * precio) as value, sum(cantidad * ganancia) as ganancia"))
+        ->whereRaw("YEAR(created_at)=".$year)
+        ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m')"))->get();
     }
 }
