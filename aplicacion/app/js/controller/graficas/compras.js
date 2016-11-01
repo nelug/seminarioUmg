@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('seminarioUmg').controller('graficaCompraCtrl', ['$scope', '$timeout','$http', '$localStorage',
- function ($scope, $timeout, $http, $localStorage) {
+function ($scope, $timeout, $http, $localStorage) {
+
+    $scope.meses = false;
+    $scope.dataMain = [];
 
     $scope.options = {
         chart: {
@@ -28,17 +31,27 @@ angular.module('seminarioUmg').controller('graficaCompraCtrl', ['$scope', '$time
             discretebar: {
                 dispatch: {
                     elementClick: function (t,u){
-                        $scope.api.updateWithData($scope.dataUpdate);
-                        $scope.api.refresh();
+                        if (!$scope.meses) {
+                            $http.get('/api/v1/grafica-compras/'+t.data.label+'?token='+$localStorage.token).success(function(data) {
+                                $scope.dataUpdate = [{
+                                    key: 'Ventas Mensuales',
+                                    values: data
+                                }];
+                                $scope.options.chart.xAxis.axisLabel = 'Meses';
+                                $scope.api.updateWithData($scope.dataUpdate);
+                                $scope.api.refresh();
+                                $scope.meses = true;
+                            });
+                        }
                     },
                     elementMouseover: function (t,u){
-                        $scope.showGanancia = t.data.ganancia;
+                        $scope.showInversion = t.data.value;
                     }
                 }
             },
             tooltip: {
                 valueFormatter: function (d) {
-                    return 'Gastos:' + $scope.showGanancia;
+                    return 'Inversion:' + $scope.showInversion;
                 }
             }
 
@@ -46,7 +59,9 @@ angular.module('seminarioUmg').controller('graficaCompraCtrl', ['$scope', '$time
     };
 
     $scope.regresarGrafica = function () {
-        $scope.api.updateWithData($scope.data);
+        $scope.meses = false;
+        $scope.options.chart.xAxis.axisLabel = 'Años';
+        $scope.api.updateWithData($scope.dataMain);
         $scope.api.refresh();
     };
 
@@ -62,6 +77,7 @@ angular.module('seminarioUmg').controller('graficaCompraCtrl', ['$scope', '$time
         }];
         $scope.api.updateWithData($scope.data);
         $scope.api.refresh();
+        $scope.dataMain = $scope.data;
     });
 
 
