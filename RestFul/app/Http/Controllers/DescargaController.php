@@ -42,6 +42,7 @@ class DescargaController extends Controller {
         $descargaData = array(
             'usuario' => Auth::user()->id,
             'estado_proceso' => 2,
+            'nota' => $request->input('nota')
         );
 
         $descarga = Descarga::create($descargaData);
