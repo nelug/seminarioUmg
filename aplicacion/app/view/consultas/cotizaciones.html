@@ -15,7 +15,7 @@
             <td>{{ cotizacion.id }}</td>
             <td>{{ cotizacion.created_at }}</td>
             <td>{{ cotizacion.cliente.nombre }}</td>
-            <td>{{ cotizacion.usuario }}</td>
+            <td>{{ cotizacion.usuario.nombre }}</td>
             <td class="right">{{ cotizacion.total | currency: 'Q '}}</td>
             <td> <ng-md-icon icon="pageview" class="info" ng-click="dialogoVerDetalle(cotizacion)"></ng-md-icon> </td>
             <td> <ng-md-icon icon="picture_as_pdf" class="colorpdf center" ng-click=></ng-md-icon> </td>
