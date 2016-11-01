@@ -20,6 +20,9 @@
               <md-button aria-label="Editar" class="md-fab md-raised md-mini" ng-click="dialogoEditar()">
                   <ng-md-icon icon="create"></ng-md-icon>
               </md-button>
+              <md-button aria-label="Permisos" class="md-fab md-raised md-mini" ng-if="(isUsuario)" ng-click="dialogoPermisos()">
+                  <ng-md-icon icon="lock_outline"></ng-md-icon>
+              </md-button>
               <md-button aria-label="Borrar" class="md-fab md-raised md-mini" ng-click="dialogoEliminar()">
                    <ng-md-icon icon="delete"></ng-md-icon>
               </md-button>
