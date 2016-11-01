@@ -35,5 +35,6 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
         $scope.formData.detalle.push(dataForm);
         $scope.buscarTextoproducto = '';
         $scope.dataTemp = [];
+
     };
 }]);
