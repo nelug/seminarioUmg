@@ -24,7 +24,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
         };
 
         $scope.seleccionarAC = function (dato) {
-            $scope.formData.cliente = dato.id;
+            $scope.formData.cliente = (angular.isUndefined(dato))? '': dato.id;
             $scope.cliente= dato;
         };
 
@@ -79,7 +79,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
         };
 
         $scope.seleccionarAC = function (dato) {
-            $scope.formData.proveedor  = dato.id;
+            $scope.formData.proveedor = (angular.isUndefined(dato))? '': dato.id;
             $scope.proveedor = dato;
         };
 
@@ -116,12 +116,23 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
         };
     }
 
+    function validarProductoDuplicado($scope) {
+        for (var i = 0; i < $scope.formData.detalle.length; i++) {
+            if ($scope.formData.detalle[i].producto == $scope.producto.id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
     return ({
         funcionesCrear: funcionesCrear,
         obtenerProductosAC: obtenerProductosAC,
         obtenerClientesAC: obtenerClientesAC,
         obtenerProveedoresAC: obtenerProveedoresAC,
-        mensajeAlerta: mensajeAlerta
+        mensajeAlerta: mensajeAlerta,
+        validarProductoDuplicado: validarProductoDuplicado,
     });
 }]);
