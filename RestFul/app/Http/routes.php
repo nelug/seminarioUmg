@@ -17,7 +17,10 @@ $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers', 'middl
     $app->get('inventario'   ,'ProductoController@inventario');
     $app->get('existencia'   ,'ProductoController@existencia');
     $app->get('grafica-ventas','VentaController@grafica');
+    $app->get('grafica-ventas/{year}','VentaController@graficaMeses');
+
     $app->get('grafica-compras','CompraController@grafica');
+    $app->get('grafica-compras/{year}','CompraController@graficaMeses');
 
     resource('cliente'       ,'ClienteController');
     resource('user'          ,'UserController');

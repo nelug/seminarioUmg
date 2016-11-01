@@ -3,6 +3,9 @@
 angular.module('seminarioUmg').controller('graficaVentaCtrl', ['$scope', '$timeout', '$http', '$localStorage',
 function ($scope, $timeout, $http, $localStorage) {
 
+    $scope.meses = false;
+    $scope.dataMain = [];
+
     $scope.options = {
         chart: {
             type: 'discreteBarChart',
@@ -28,8 +31,18 @@ function ($scope, $timeout, $http, $localStorage) {
             discretebar: {
                 dispatch: {
                     elementClick: function (t,u){
-                        $scope.api.updateWithData($scope.dataUpdate);
-                        $scope.api.refresh();
+                        if (!$scope.meses) {
+                            $http.get('/api/v1/grafica-ventas/'+t.data.label+'?token='+$localStorage.token).success(function(data) {
+                                $scope.dataUpdate = [{
+                                    key: 'Ventas Mensuales',
+                                    values: data
+                                }];
+                                $scope.options.chart.xAxis.axisLabel = 'Meses';
+                                $scope.api.updateWithData($scope.dataUpdate);
+                                $scope.api.refresh();
+                                $scope.meses = true;
+                            });
+                        }
                     },
                     elementMouseover: function (t,u){
                         $scope.showGanancia = t.data.ganancia;
@@ -46,22 +59,21 @@ function ($scope, $timeout, $http, $localStorage) {
     };
 
     $scope.regresarGrafica = function () {
-        $scope.api.updateWithData($scope.data);
+        $scope.meses = false;
+        $scope.options.chart.xAxis.axisLabel = 'Años';
+        $scope.api.updateWithData($scope.dataMain);
         $scope.api.refresh();
     };
-
-    $scope.dataUpdate = [{
-        key: 'Grafica Mensual',
-        values: []
-    }];
 
     $http.get('/api/v1/grafica-ventas?token='+$localStorage.token).success(function(data) {
         $scope.data = [{
             key: 'Ventas Anuales',
             values: data
         }];
+
         $scope.api.updateWithData($scope.data);
         $scope.api.refresh();
+        $scope.dataMain = $scope.data;
     });
 
     var redimensionar = function() {
