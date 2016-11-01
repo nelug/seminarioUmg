@@ -1,15 +1,17 @@
 <div layout="column" style="max-height:600px" ng-cloak="" class="toolbardemoScrollShrink">
     <div ng-include src="'view/plantillas/encabezadoFormulario.html'"></div>
     <md-dialog-content class="md-whiteframe-5dp">
+      <md-content class="md-padding md-block">
         <form layout="column" name="form"  layout flex layout-wrap>
-            <md-content class="md-padding md-block">
                 <md-input-container class="md-block">
                     <label>Razon de la descarga</label>
-                    <textarea rows="2" ng-model="nota" title= "Completa este campo" md-select-on-focus="" name="nota" ng-model="formData.nota" ng-required= "true"></textarea>
+                    <textarea rows="2" ng-model="formData.nota" title= "Completa este campo" md-select-on-focus="" name="nota" ng-model="formData.nota" ng-required= "true"></textarea>
                     <div ng-messages="form.nota.$error" role="alert">
                         <div ng-messages-include="view/plantillas/mensajes.html"></div>
                     </div>
                 </md-input-container>
+        </form>
+            <form name="detalle">
                 <div layout layout-wrap  style="margin-bottom: 25px;">
                     <div flex="100" flex-gt-xs="30" >
                         <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTextoproducto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="0" placeholder="Buscar Codigo" ng-required="true">
@@ -36,20 +38,20 @@
                     <md-input-container  flex="100" flex-gt-xs="20">
                         <label>Cantidad</label>
                         <input name="cantidad" ng-model="dataTemp.cantidad" ng-pattern="/^[0-9]{1,11}$/" ng-required="true">
-                        <div ng-messages="form.cantidad.$error" role="alert">
+                        <div ng-messages="detalle.cantidad.$error" role="alert">
                             <div ng-messages-include="view/plantillas/mensajes.html"></div>
                         </div>
                     </md-input-container>
                     <md-input-container flex="15" layout="row" layout-xs="column">
-                        <md-button class="md-raised md-primary"  ng-disabled="form.$invalid" ng-click="agregarDataDetalle()">Agregar</md-button>
+                        <md-button class="md-raised md-primary"  ng-disabled="detalle.$invalid" ng-click="agregarDataDetalle()">Agregar</md-button>
                     </md-input-container>
                 </div>
+            </form>
                 <div layout="row" style="max-height: 200px; min-height: 200px; overflow-y: auto;" layout layout-wrap>
                     <table class="table2" ng>
                         <thead>
                             <tr>
                                 <th>Cantidad</th>
-                                <th>Nota</th>
                                 <th>Descripcion</th>
                                 <th>Precio Unitario</th>
                                 <th>Total</th>
@@ -60,7 +62,6 @@
                         <tbody>
                             <tr ng-repeat="detalle in formData.detalle">
                                 <td>{{ detalle.cantidad }}</td>
-                                <td>{{ detalle.nota }}</td>
                                 <td>{{ detalle.descripcion }}</td>
                                 <td>{{ detalle.precio | currency: 'Q: '}}</td>
                                 <td>{{ detalle.total | currency: 'Q: '}}</td>
@@ -72,7 +73,6 @@
                     </table>
                 </div>
             </md-content>
-        </form>
         <div ng-include src="'view/plantillas/pieFormulario.html'"></div>
     </md-dialog-content>
 </div>
