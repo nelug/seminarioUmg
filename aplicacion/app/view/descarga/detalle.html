@@ -22,7 +22,7 @@
                 <tbody>
                     <tr ng-repeat="dt in detalle">
                         <td>{{ dt.cantidad }}</td>
-                        <td>{{ dt.nota }}</td>
+                        <td>{{ data.nota }}</td>
                         <td>{{ dt.producto.descripcion }}</td>
                         <td>{{ dt.precio | currency: 'Q: '}}</td>
                         <td>{{ (dt.cantidad * dt.precio) | currency: 'Q: '}}</td>
