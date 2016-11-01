@@ -28,7 +28,7 @@ class CompraController extends Controller {
     public function crear(Request $request){
         $validar = $this->validate($request, [
             'proveedor'    => 'required',
-            'numero_documento'   => 'required|max:50',
+            'numero_documento'   => 'required|max:50|unique:compras',
             'fecha_documento'    => 'required|date',
             'detalle.*.producto' => 'required|numeric',
             'detalle.*.cantidad' => 'required|numeric',
@@ -112,8 +112,8 @@ class CompraController extends Controller {
 
     public function grafica()
     {
-        return DB::table('detalle_ventas')
-        ->select(DB::raw("DATE_FORMAT(created_at, '%Y') as label, sum(cantidad * precio) as value, sum(cantidad * ganancia) as ganancia"))
+        return DB::table('detalle_compras')
+        ->select(DB::raw("DATE_FORMAT(created_at, '%Y') as label, sum(cantidad * precio) as value, sum(cantidad * precio) as ganancia"))
         ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y')"))->get();
     }
 }

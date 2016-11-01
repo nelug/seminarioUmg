@@ -17,7 +17,7 @@ function($scope, ServiceGenericoDetalle) {
     ServiceGenericoDetalle.funcionesCrear($scope, 'Venta');
 
     $scope.agregarDataDetalle = function() {
-        if ($scope.dataTemp.cantidad > $scope.producto.existencia) {
+        if (parseInt($scope.dataTemp.cantidad) > parseInt($scope.producto.existencia)) {
             ServiceGenericoDetalle.mensajeAlerta('La cantidad no puede ser mayor ala existencia.');
             return false;
         }

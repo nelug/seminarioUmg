@@ -16,7 +16,6 @@ $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers', 'middl
     $app->get('info/{token}' ,'UserController@info');
     $app->get('inventario'   ,'ProductoController@inventario');
     $app->get('existencia'   ,'ProductoController@existencia');
-
     $app->get('grafica-ventas','VentaController@grafica');
     $app->get('grafica-compras','CompraController@grafica');
 

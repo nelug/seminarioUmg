@@ -202,3 +202,8 @@ h3 {
     color:#4094e0;
     cursor:pointer;
 }
+
+/*color para icono de pdf*/
+.colorpdf{
+    color: red;
+}
