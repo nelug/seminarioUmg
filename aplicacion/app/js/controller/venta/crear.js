@@ -17,6 +17,12 @@ function($scope, ServiceGenericoDetalle) {
     ServiceGenericoDetalle.funcionesCrear($scope, 'Venta');
 
     $scope.agregarDataDetalle = function() {
+
+        if (ServiceGenericoDetalle.validarProductoDuplicado($scope)) {
+            ServiceGenericoDetalle.mensajeAlerta('El producto que intenta vender ya ha sido ingresado..');
+            return false;
+        }
+
         if (parseInt($scope.dataTemp.cantidad) > parseInt($scope.producto.existencia)) {
             ServiceGenericoDetalle.mensajeAlerta('La cantidad no puede ser mayor ala existencia.');
             return false;
