@@ -28,7 +28,7 @@ class CompraController extends Controller {
     public function crear(Request $request){
         $validar = $this->validate($request, [
             'proveedor'    => 'required',
-            'numero_documento'   => 'required|max:50',
+            'numero_documento'   => 'required|max:50|unique:compras',
             'fecha_documento'    => 'required|date',
             'detalle.*.producto' => 'required|numeric',
             'detalle.*.cantidad' => 'required|numeric',

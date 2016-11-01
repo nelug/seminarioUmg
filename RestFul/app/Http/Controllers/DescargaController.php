@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Descarga;
 use App\DetalleDescarga;
+use App\Producto;
 use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\JWTAuth;
 use App\Http\Controllers\Controller;
@@ -19,6 +20,7 @@ class DescargaController extends Controller {
     }
     public function crear(Request $request){
         $validar = $this->validate($request, [
+            'nota' => 'required',
             'detalle.*.producto' => 'required|numeric',
             'detalle.*.cantidad' => 'required|numeric',
             'detalle.*.precio'   => 'required|numeric'

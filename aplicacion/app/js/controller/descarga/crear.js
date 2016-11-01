@@ -18,7 +18,6 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
 
     $scope.agregarDataDetalle = function() {
         var dataForm = {
-            nota: $scope.nota,
             descripcion: $scope.producto.descripcion,
             precio: $scope.producto.precio_costo,
             total:($scope.dataTemp.cantidad * $scope.producto.precio_costo),

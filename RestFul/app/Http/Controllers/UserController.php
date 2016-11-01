@@ -75,7 +75,8 @@ class UserController extends Controller{
         $validar = $this->validate($request, [
             'nombre'   => 'required',
             'apellido' => 'required',
-            'email'    => 'required|email|unique:users'
+            'email'    => 'required|email|unique:users',
+            'password' => 'required'
         ]);
 
         $user = new User;
