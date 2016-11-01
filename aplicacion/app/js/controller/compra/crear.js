@@ -18,6 +18,12 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
     ServiceGenericoDetalle.funcionesCrear($scope, 'Compra');
 
     $scope.agregarDataDetalle = function() {
+
+        if (ServiceGenericoDetalle.validarProductoDuplicado($scope)) {
+            ServiceGenericoDetalle.mensajeAlerta('El producto que intenta comprar ya ha sido ingresado..');
+            return false;
+        }
+
         var dataForm = {
             cantidad: $scope.dataTemp.cantidad,
             descripcion: $scope.producto.descripcion,

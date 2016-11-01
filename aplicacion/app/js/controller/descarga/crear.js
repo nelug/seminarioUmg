@@ -17,6 +17,12 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
     ServiceGenericoDetalle.funcionesCrear($scope, 'Descarga');
 
     $scope.agregarDataDetalle = function() {
+
+        if (ServiceGenericoDetalle.validarProductoDuplicado($scope)) {
+            ServiceGenericoDetalle.mensajeAlerta('El producto que intenta descargar ya ha sido ingresado..');
+            return false;
+        }
+
         var dataForm = {
             descripcion: $scope.producto.descripcion,
             precio: $scope.producto.precio_costo,
