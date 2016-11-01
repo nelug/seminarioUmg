@@ -34,6 +34,9 @@
                                     <span> {{ item.descripcion }} </span>
                                 </span>
                             </md-item-template>
+                            <div ng-messages="detalle.producto.$error" role="alert">
+                                <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                            </div>
                         </md-autocomplete>
                     </div>
                     <div flex="0" flex-gt-xs="5"></div>
@@ -77,15 +80,12 @@
                                 <td>{{ detalle.descripcion }}</td>
                                 <td>{{ detalle.precio | currency: 'Q: '}}</td>
                                 <td>{{ detalle.total | currency: 'Q: '}}</td>
-                                <td>
-                                    <ng-md-icon icon="delete_forever" class="delete" ng-click="eliminarDetalle(detalle)"></ng-md-icon>
-                                </td>
+                                <td><ng-md-icon icon="delete_forever" class="delete" ng-click="eliminarDetalle(detalle)"></ng-md-icon></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </md-content>
-
         <div ng-include src="'view/plantillas/pieFormulario.html'"></div>
     </md-dialog-content>
 </div>
