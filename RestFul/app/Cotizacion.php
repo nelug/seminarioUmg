@@ -15,7 +15,7 @@ class Cotizacion extends Model
         return $this->hasMany('App\DetalleCotizacion', 'cotizacion', 'id');
     }
 
-    public function estado()
+    public function estado_proceso()
     {
         return $this->belongsTo('App\EstadoProceso', 'estado_proceso', 'id');
     }
