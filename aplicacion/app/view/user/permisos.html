@@ -1,0 +1,54 @@
+<md-dialog layout="column">
+    <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
+    <md-dialog-content class="md-whiteframe-5dp">
+        <form layout="column" name="form" ng-submit="actualizar()"  layout flex layout-wrap>
+            <md-content layout="column" class="md-padding" layout layout-wrap>
+                <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tab label="General">
+                        <md-content class="md-padding">
+                            <md-subheader class="md-no-sticky">General</md-subheader>
+                            <md-list-item ng-repeat="mn in formData.principal">
+                                <p> {{ mn.titulo }} </p>
+                                <md-checkbox ng-true-value="1" ng-false-value="0" class="md-secondary" ng-model="mn.estado"></md-checkbox>
+                            </md-list-item>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="Catalogos">
+                        <md-content class="md-padding">
+                            <md-subheader class="md-no-sticky">Catalogos</md-subheader>
+                            <md-list-item ng-repeat="mn in formData.catalogos">
+                                <p> {{ mn.titulo }} </p>
+                                <md-checkbox ng-true-value="1" ng-false-value="0" class="md-secondary" ng-model="mn.estado"></md-checkbox>
+                            </md-list-item>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="Consultas">
+                        <md-content class="md-padding">
+                            <md-subheader class="md-no-sticky">Consultas</md-subheader>
+                            <md-list-item ng-repeat="mn in formData.consultas">
+                                <p> {{ mn.titulo }} </p>
+                                <md-checkbox ng-true-value="1" ng-false-value="0" class="md-secondary" ng-model="mn.estado"></md-checkbox>
+                            </md-list-item>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="Graficas">
+                        <md-content class="md-padding">
+                            <md-subheader class="md-no-sticky">Graficas</md-subheader>
+                            <md-list-item ng-repeat="mn in formData.graficas">
+                                <p> {{ mn.titulo }} </p>
+                                <md-checkbox ng-true-value="1" ng-false-value="0" class="md-secondary" ng-model="mn.estado"></md-checkbox>
+                            </md-list-item>
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+            </md-content>
+            <md-dialog-actions layout="row">
+                <div layout="row" layout-align="center center" style="padding-top:20px;">
+                    <md-button ng-click= "actualizar()" class="md-raised md-primary"  ng-disabled="form.$invalid"  aria-label="Editar Usuario">Actualizar</md-button>
+                    <md-button ng-click= "cancel()"  class="md-raised md-warn"  ng-disabled="disabled" aria-label="cancelar">Cancelar</md-button>
+                    <div flex="flex"></div>
+                </div>
+            </md-dialog-actions>
+        </form>
+    </md-dialog-content>
+</md-dialog>
