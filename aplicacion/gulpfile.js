@@ -56,7 +56,7 @@ gulp.task('analizar', function() {
 
 //Task para convertir las plantillas en templates
 gulp.task('template', function() {
-   return gulp.src('./app/html/**/*.html')
+   return gulp.src('./app/view/**/*.html')
       .pipe(minhtml())
       .pipe(cache({
          prefix: 'html/',
