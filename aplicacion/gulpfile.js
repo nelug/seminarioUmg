@@ -123,23 +123,13 @@ gulp.task('limpiar', function() {
 });
 //Tarea para comprimmir los archivos js y css, para luego copiarlos a la carpeta dist
 gulp.task('comprimir', ['copiar'], function() {
-     gulp.src('./app/index.html')
+    return gulp.src('./app/index.html')
     .pipe(useref.assets())
     .pipe(gulpif('*.js', concat('js/app.min.js')).on('error', gutil.log))
     .pipe(gulpif('*.css', minify()))
     .pipe(gulp.dest('./dist'));
 
-    return gulp.src('dist/js/*.js')
-      .pipe(uglify())
-      .pipe(gulp.dest('dist/js/app.min.js'));
 });
-
-gulp.task('minificar', function() {
-    return gulp.src('dist/js/*.js')
-      .pipe(uglify())
-      .pipe(gulp.dest('dist/js/app.min.js'));
-});
-
 //Tarea para copiar index.html a la carpeta dist
 gulp.task('copiar', ['limpiar'], function() {
     gulp.src('./app/img/*.svg')
