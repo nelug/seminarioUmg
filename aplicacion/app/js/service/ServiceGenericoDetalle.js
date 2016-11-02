@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').factory('ServiceGenericoDetalle', [ '$http', '$timeout', '$q', '$log', '$route', 'toaster', 'jsonPath', '$location', '$localStorage',
-function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $localStorage) {
+angular.module('seminarioUmg').factory('ServiceGenericoDetalle', [ '$http', '$timeout', '$q', '$log', '$route', 'toaster', 'jsonPath', '$location', '$localStorage', '$mdDialog',
+function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $localStorage, $mdDialog) {
 
     function mensajeAlerta(mensaje){
         toaster.warning('Advertencia.!', mensaje);
@@ -92,7 +92,21 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
 
 
     function funcionesCrear($scope, entidad) {
+
         $scope.crearRegistro = function () {
+            var confirm = $mdDialog.confirm()
+            .title('Esta seguro que desea hacer esta transaccion')
+            .textContent('verifique bien la informacion antes de guardarla.')
+            .ariaLabel('Confirmar')
+            .ok('Guardar!')
+            .cancel('Cancelar');
+
+            $mdDialog.show(confirm).then(function() {
+                $scope.fnEnviarData();
+            });
+        };
+
+        $scope.fnEnviarData = function () {
             $scope.formData.token = $localStorage.token;
             $http.post('/api/v1/'+ entidad.toLowerCase() + '/', $scope.formData)
             .success(function(data) {
@@ -109,7 +123,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
             .error(function(data) {
                 toaster.warning('Advertencia.!', jsonPath(data, '$.[0]')[0]);
             });
-        };
+        }
 
         $scope.eliminarDetalle = function(item){
             var index = $scope.formData.detalle.indexOf(item);
