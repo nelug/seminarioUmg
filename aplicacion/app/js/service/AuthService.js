@@ -3,7 +3,7 @@
 angular.module('seminarioUmg').factory('AuthService', ['$q', '$timeout', '$http', '$rootScope', '$localStorage',
 function ($q, $timeout, $http, $rootScope, $localStorage) {
     var user = null;
-    
+
     function isLoggedIn() {
         if(user) {
             return true;
@@ -11,27 +11,29 @@ function ($q, $timeout, $http, $rootScope, $localStorage) {
             return false;
         }
     }
-    
+
     function getUserStatus() {
         return $http.get('api/v1/user/status?token='+$localStorage.token)
         .success(function (data) {
             if(data.status){
                 user = true;
+                $rootScope.userNow = data.usuario;
             } else {
                 user = false;
+                $rootScope.userNow = [];
             }
         })
         .error(function () {
             user = false;
         });
     }
-    
+
     function login(email, password) {
         var deferred = $q.defer();
-        
+
         $http.post('api/v1/user/login',
-        { 
-            email: email, 
+        {
+            email: email,
             password: password
         })
         .success(function (data, status) {
@@ -48,20 +50,20 @@ function ($q, $timeout, $http, $rootScope, $localStorage) {
             user = false;
             deferred.reject();
         });
-        
+
         return deferred.promise;
     }
-    
+
     function logout() {
         var deferred = $q.defer();
             user = false;
             deferred.resolve();
         return deferred.promise;
     }
-    
+
     function register(userData) {
         var deferred = $q.defer();
-        
+
         $http.post('/api/user/register', userData)
         .success(function (data, status) {
             if(status === 200 && data.status){
@@ -73,10 +75,10 @@ function ($q, $timeout, $http, $rootScope, $localStorage) {
         .error(function () {
             deferred.reject();
         });
-        
+
         return deferred.promise;
     }
-    
+
     return ({
         isLoggedIn: isLoggedIn,
         getUserStatus: getUserStatus,
