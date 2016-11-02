@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').factory('AuthService', ['$q', '$timeout', '$http', '$rootScope', '$localStorage',
-function ($q, $timeout, $http, $rootScope, $localStorage) {
+angular.module('seminarioUmg').factory('AuthService', ['$q', '$timeout', '$http', '$rootScope', '$localStorage', 'toaster',
+function ($q, $timeout, $http, $rootScope, $localStorage, toaster) {
     var user = null;
 
     function isLoggedIn() {
@@ -46,8 +46,9 @@ function ($q, $timeout, $http, $rootScope, $localStorage) {
                 deferred.reject();
             }
         })
-        .error(function () {
+        .error(function (data) {
             user = false;
+            toaster.warning('Advertencia.!', data.message);
             deferred.reject();
         });
 

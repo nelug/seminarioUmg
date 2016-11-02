@@ -6,9 +6,15 @@ use App\Producto;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Tymon\JWTAuth\JWTAuth;
 
 class ProductoController extends Controller {
+    protected $jwt;
+
+    public function __construct(JWTAuth $jwt)
+    {
+        $this->jwt = $jwt;
+    }
 
     public function obtenerTodos()
     {
@@ -43,12 +49,16 @@ class ProductoController extends Controller {
             'precio_venta' => 'required|numeric',
             'existencia_minima' => 'required|numeric'
         ]);
+
         $inputs = $request->except('token');
 
         $data = Producto::create($inputs);
+
+        $token = $this->jwt->refresh($request->token);
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Producto almacenado con exito..'
+            'mensaje' => 'Producto almacenado con exito..',
+            'token' => $token
         ));
     }
 
@@ -81,9 +91,11 @@ class ProductoController extends Controller {
 
         Producto::whereId($request->id)->update($inputs);
 
+        $token = $this->jwt->refresh($request->token);
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Producto actualizado con exito..'
+            'mensaje' => 'Producto actualizado con exito..',
+            'token' => $token
         ));
     }
 }

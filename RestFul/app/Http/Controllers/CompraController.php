@@ -13,6 +13,12 @@ use Auth;
 
 
 class CompraController extends Controller {
+    protected $jwt;
+
+    public function __construct(JWTAuth $jwt)
+    {
+        $this->jwt = $jwt;
+    }
 
     public function obtenerTodos()
     {
@@ -78,9 +84,12 @@ class CompraController extends Controller {
             DB::table('compras')->whereId($compra->id)->update(['total' => $total]);
         }
 
+        $token = $this->jwt->refresh($request->token);
+
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Compra almacenada con exito..'
+            'mensaje' => 'Compra almacenada con exito..',
+            'token'   => $token
         ));
     }
 
@@ -119,7 +128,6 @@ class CompraController extends Controller {
 
     public function graficaMeses($year)
     {
-
         DB::statement("SET lc_time_names = 'es_ES'");
 
         return DB::table('detalle_compras')

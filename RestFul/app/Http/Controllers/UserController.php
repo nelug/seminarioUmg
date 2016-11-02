@@ -40,20 +40,32 @@ class UserController extends Controller{
         try {
 
             if (! $token = $this->jwt->attempt($request->only('email', 'password'))) {
-                return response()->json(['user_not_found'], 404);
+                return response()->json([
+                    'success' => false,
+                    'message' => "El nombre de usuario o password es invalido."
+                ], 422);
             }
 
         } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
-            return response()->json(['token_expired'], 500);
+            return response()->json([
+                'success' => false,
+                'message' => "token expirado."
+            ], 422);
 
         } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
 
-            return response()->json(['token_invalid'], 500);
+            return response()->json([
+                'success' => false,
+                'message' => "Session invalida."
+            ], 422);
 
         } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
 
-            return response()->json(['token_absent' => $e->getMessage()], 500);
+            return response()->json([
+                'success' => false,
+                'message' => "Session invalida."
+            ], 422);
 
         }
 
@@ -94,7 +106,6 @@ class UserController extends Controller{
 
     public function actualizarPermisos(Request $request)
     {
-
         foreach ($request->principal as $key => $p) {
             DB::table('permisos')->whereId($p['id'])->update(['estado' => $p['estado']]);
         }
@@ -115,9 +126,6 @@ class UserController extends Controller{
             'success' => true,
             'mensaje' => 'Permisos Actualizados con exito..'
         ));
-
-
-
     }
 
     public function crear(Request $request){
@@ -137,76 +145,81 @@ class UserController extends Controller{
         $user->save();
 
         $menus = DB::table('menus')->select('id')->get();
+
         foreach ($menus as $key => $mn) {
-            DB::table('permisos')->insert(
-            ['usuario' => $user->id, 'menu' => $mn->id]
-        );
+            DB::table('permisos')->insert([
+                'usuario' => $user->id, 'menu' => $mn->id
+            ]);
+        }
+
+        $token = $this->jwt->refresh($request->token);
+        return response()->json(array(
+            'success' => true,
+            'mensaje' => 'Usuario almacenado con exito..',
+            'token' => $token
+        ));
     }
 
-    return response()->json(array(
-        'success' => true,
-        'mensaje' => 'Usuario almacenado con exito..'
-    ));
-}
+    public static function getId($token){
+        return  Auth::user()->id;
+    }
 
-public static function getId($token){
-    return  Auth::user()->id;
-}
+    public function statusUser(){
+        $user = Auth::user();
 
-public function statusUser(){
-    $user = Auth::user();
+        if ($user) {
+            return response()->json(array(
+                'status' => true,
+                'usuario' => $user
+            ));
+        }
 
-    if ($user) {
         return response()->json(array(
-            'status' => true,
+            'status' => false,
             'usuario' => $user
         ));
     }
 
-    return response()->json(array(
-        'status' => false,
-        'usuario' => $user
-    ));
-}
+    public function eliminar($id){
+        $data = User::whereId($id)->delete();
 
-public function eliminar($id){
-    $data = User::whereId($id)->delete();
+        if (!$data) {
+            return response()->json(array(
+                'success' => false,
+                'mensaje' => 'Error'
+            ));
+        }
 
-    if (!$data) {
         return response()->json(array(
-            'success' => false,
-            'mensaje' => 'Error'
+            'success' => true,
+            'mensaje' => 'Usuario eliminado con exito..'
         ));
     }
 
-    return response()->json(array(
-        'success' => true,
-        'mensaje' => 'Usuario eliminado con exito..'
-    ));
-}
+    public function actualizar(Request $request){
 
-public function actualizar(Request $request){
+        $validar = $this->validate($request, [
+            'nombre'   => 'required',
+            'apellido' => 'required',
+            'email'    => 'required|email|unique:users,email,'.$request->id,
+            'estado'   => 'required'
+        ]);
 
-    $validar = $this->validate($request, [
-        'nombre'   => 'required',
-        'apellido' => 'required',
-        'email'    => 'required|email|unique:users,email,'.$request->id,
-        'estado'   => 'required'
-    ]);
+        $user = User::find($request->id);
+        $user->nombre = $request->nombre;
+        $user->apellido = $request->apellido;
+        $user->email = $request->email;
 
-    $user = User::find($request->id);
-    $user->nombre = $request->nombre;
-    $user->apellido = $request->apellido;
-    $user->email = $request->email;
+        if ($request->password)
+        $user->password = (new BcryptHasher)->make($request->password);
 
-    if ($request->password)
-    $user->password = (new BcryptHasher)->make($request->password);
+        $user->save();
 
-    $user->save();
-
-    return response()->json(array(
-        'success' => true,
-        'mensaje' => 'Usuario actualizado con exito..'
-    ));
-}
+        $token = $this->jwt->refresh($request->token);
+        return response()->json(array(
+            'success' => true,
+            'mensaje' => 'Usuario actualizado con exito..',
+            'token' => $token
+        ));
+    }
 }

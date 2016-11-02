@@ -6,9 +6,15 @@ use App\Proveedor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Tymon\JWTAuth\JWTAuth;
 
 class ProveedorController extends Controller {
+    protected $jwt;
+
+    public function __construct(JWTAuth $jwt)
+    {
+        $this->jwt = $jwt;
+    }
 
     public function obtenerTodos()
     {
@@ -32,11 +38,13 @@ class ProveedorController extends Controller {
 
         $inputs = $request->except('token');
 
-        $data = Proveedor::create($inputs);
+        Proveedor::create($inputs);
 
+        $token = $this->jwt->refresh($request->token);
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Proveedor almacenado con exito..'
+            'mensaje' => 'Proveedor almacenado con exito..',
+            'token' => $token
         ));
     }
 
@@ -69,9 +77,11 @@ class ProveedorController extends Controller {
 
         Proveedor::whereId($request->id)->update($inputs);
 
+        $token = $this->jwt->refresh($request->token);
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Proveedor actualizado con exito..'
+            'mensaje' => 'Proveedor actualizado con exito..',
+            'token' => $token
         ));
     }
 }

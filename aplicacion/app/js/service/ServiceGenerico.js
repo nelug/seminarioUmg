@@ -71,6 +71,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
             $scope.formData.token = $localStorage.token;
             $http.post('/api/v1/'+ entidad.toLowerCase() + '/', $scope.formData)
             .success(function(data) {
+                $localStorage.token = data.token;
                 toaster.success('Correcto!', data.mensaje);
                 $scope.formData = {};
                 $mdDialog.hide();
@@ -94,6 +95,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         $scope.actualizar = function() {
             $http.put('/api/v1/'+ entidad.toLowerCase() + '?token=' + $localStorage.token, $scope.formData)
             .success(function(data) {
+                $localStorage.token = data.token;
                 toaster.success('Correcto!', data.mensaje);
                 $scope.formData = {};
                 $mdDialog.hide();

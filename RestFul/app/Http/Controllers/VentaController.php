@@ -8,17 +8,28 @@ use Tymon\JWTAuth\JWTAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+
 class VentaController extends Controller {
+    protected $jwt;
+
+    public function __construct(JWTAuth $jwt)
+    {
+        $this->jwt = $jwt;
+    }
+
     public function obtenerTodos()
     {
         $data = Venta::with('detalle', 'cliente', 'estado_proceso', 'usuario')->get();
         return response()->json($data);
     }
+
     public function obtenerId($id){
         $data = Venta::find($id);
         return response()->json($data);
     }
+
     public function crear(Request $request){
+
         $validar = $this->validate($request, [
             'cliente'    => 'required',
             'detalle.*.producto' => 'required|numeric',
@@ -26,11 +37,13 @@ class VentaController extends Controller {
             'detalle.*.precio'   => 'required|numeric',
             'detalle.*.ganancia' => 'required|numeric'
         ]);
+
         if (!$request->input('detalle')) {
             return response()->json([
                 'message' => array("Ingrese detalle para poder almacenar..")
             ], 422);
         }
+
         foreach ($request->input('detalle') as $key => $dt) {
             $pr = Producto::find($dt['producto']);
             if ($pr->existencia < $dt['cantidad']) {
@@ -39,13 +52,16 @@ class VentaController extends Controller {
                 ], 422);
             }
         }
+
         $ventaData = array(
             'cliente' => $request->input('cliente'),
             'usuario' => Auth::user()->id,
             'estado_proceso' => 2,
         );
+
         $venta = Venta::create($ventaData);
         $total = 0;
+
         if ($venta) {
             foreach ($request->input('detalle') as $key => $dt) {
                 $detalleData = array(
@@ -55,26 +71,35 @@ class VentaController extends Controller {
                     'precio'   => $dt['precio'],
                     'ganancia' => $dt['ganancia']
                 );
+
                 $producto = Producto::find($dt['producto']);
                 $total += ($dt['cantidad'] * $dt['precio']);
+
                 if ($producto) {
                     DetalleVenta::create($detalleData);
                     $producto->existencia -= $dt['cantidad'];
                     $producto->save();
                 }
             }
+
             DB::table('ventas')->whereId($venta->id)->update(['total' => $total]);
         }
+
+        $token = $this->jwt->refresh($request->token);
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Venta almacenado con exito..'
+            'mensaje' => 'Venta almacenado con exito..',
+            'token' => $token
         ));
     }
+
     public function detalle($id){
         return DetalleVenta::with('producto')->whereVenta($id)->get();
     }
+
     public function actualizar(Request $request){
     }
+
     public function grafica()
     {
         return DB::table('detalle_ventas')
@@ -84,7 +109,6 @@ class VentaController extends Controller {
 
     public function graficaMeses($year)
     {
-
         DB::statement("SET lc_time_names = 'es_ES'");
 
         return DB::table('detalle_ventas')

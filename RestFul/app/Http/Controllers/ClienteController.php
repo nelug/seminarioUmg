@@ -6,9 +6,16 @@ use App\Cliente;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Tymon\JWTAuth\JWTAuth;
 
 class ClienteController extends Controller {
+
+    protected $jwt;
+
+    public function __construct(JWTAuth $jwt)
+    {
+        $this->jwt = $jwt;
+    }
 
     public function obtenerTodos()
     {
@@ -33,9 +40,12 @@ class ClienteController extends Controller {
 
         $data = Cliente::create($inputs);
 
+        $token = $this->jwt->refresh($request->token);
+
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Cliente almacenado con exito..'
+            'mensaje' => 'Cliente almacenado con exito..',
+            'token' => $token
         ));
     }
 
@@ -56,8 +66,6 @@ class ClienteController extends Controller {
     }
 
     public function actualizar(Request $request){
-
-
         $validar = $this->validate($request, [
             'nombre' => 'required',
             'direccion' => 'required'
@@ -66,9 +74,11 @@ class ClienteController extends Controller {
 
         Cliente::whereId($request->id)->update($inputs);
 
+        $token = $this->jwt->refresh($request->token);
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Cliente actualizado con exito..'
+            'mensaje' => 'Cliente actualizado con exito..',
+            'token' => $token
         ));
     }
 }

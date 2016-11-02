@@ -100,6 +100,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
                     return toaster.warning('Advertencia!', data);
                 }
 
+                $localStorage.token = data.token;
                 toaster.success('Correcto!', data.mensaje);
                 $scope.formData = {};
                 $location.path('/');
