@@ -66,8 +66,58 @@ class UserController extends Controller{
     public function permisos($id)
     {
         $permisos = DB::table('permisos')->select('link', 'titulo', 'icono', 'catalogo')
-        ->join('menus', 'menus.id', '=', 'menu')->whereUsuario($id)->get();
+        ->join('menus', 'menus.id', '=', 'menu')->whereUsuario($id)->whereEstado(1)->get();
         return response()->json($permisos);
+    }
+
+    public function permisosUsuario($id)
+    {
+        $principal = DB::table('permisos')->select('permisos.id', 'titulo', 'estado')
+        ->join('menus', 'menus.id', '=', 'menu')->whereUsuario($id)->whereCatalogo(0)->get();
+
+        $catalogos = DB::table('permisos')->select('permisos.id', 'titulo', 'estado')
+        ->join('menus', 'menus.id', '=', 'menu')->whereUsuario($id)->whereCatalogo(1)->get();
+
+        $consultas = DB::table('permisos')->select('permisos.id', 'titulo', 'estado')
+        ->join('menus', 'menus.id', '=', 'menu')->whereUsuario($id)->whereCatalogo(2)->get();
+
+        $graficas = DB::table('permisos')->select('permisos.id', 'titulo', 'estado')
+        ->join('menus', 'menus.id', '=', 'menu')->whereUsuario($id)->whereCatalogo(3)->get();
+
+        return response()->json([
+            'principal' => $principal,
+            'catalogos' => $catalogos,
+            'consultas' => $consultas,
+            'graficas'  => $graficas
+        ]);
+    }
+
+    public function actualizarPermisos(Request $request)
+    {
+
+        foreach ($request->principal as $key => $p) {
+            DB::table('permisos')->whereId($p['id'])->update(['estado' => $p['estado']]);
+        }
+
+        foreach ($request->catalogos as $key => $p) {
+            DB::table('permisos')->whereId($p['id'])->update(['estado' => $p['estado']]);
+        }
+
+        foreach ($request->consultas as $key => $p) {
+            DB::table('permisos')->whereId($p['id'])->update(['estado' => $p['estado']]);
+        }
+
+        foreach ($request->graficas as $key => $p) {
+            DB::table('permisos')->whereId($p['id'])->update(['estado' => $p['estado']]);
+        }
+
+        return response()->json(array(
+            'success' => true,
+            'mensaje' => 'Permisos Actualizados con exito..'
+        ));
+
+
+
     }
 
     public function crear(Request $request){
@@ -86,70 +136,77 @@ class UserController extends Controller{
         $user->password = sha1($request->input('password'));
         $user->save();
 
-        return response()->json(array(
-            'success' => true,
-            'mensaje' => 'Usuario almacenado con exito..'
-        ));
+        $menus = DB::table('menus')->select('id')->get();
+        foreach ($menus as $key => $mn) {
+            DB::table('permisos')->insert(
+            ['usuario' => $user->id, 'menu' => $mn->id]
+        );
     }
 
-    public static function getId($token){
-        return  Auth::user()->id;
-    }
+    return response()->json(array(
+        'success' => true,
+        'mensaje' => 'Usuario almacenado con exito..'
+    ));
+}
 
-    public function statusUser(){
-        $user = Auth::user();
+public static function getId($token){
+    return  Auth::user()->id;
+}
 
-        if ($user) {
-            return response()->json(array(
-                'status' => true,
-                'usuario' => $user
-            ));
-        }
+public function statusUser(){
+    $user = Auth::user();
 
+    if ($user) {
         return response()->json(array(
-            'status' => false,
+            'status' => true,
             'usuario' => $user
         ));
     }
 
-    public function eliminar($id){
-        $data = User::whereId($id)->delete();
+    return response()->json(array(
+        'status' => false,
+        'usuario' => $user
+    ));
+}
 
-        if (!$data) {
-            return response()->json(array(
-                'success' => false,
-                'mensaje' => 'Error'
-            ));
-        }
+public function eliminar($id){
+    $data = User::whereId($id)->delete();
 
+    if (!$data) {
         return response()->json(array(
-            'success' => true,
-            'mensaje' => 'Usuario eliminado con exito..'
+            'success' => false,
+            'mensaje' => 'Error'
         ));
     }
 
-    public function actualizar(Request $request){
+    return response()->json(array(
+        'success' => true,
+        'mensaje' => 'Usuario eliminado con exito..'
+    ));
+}
 
-        $validar = $this->validate($request, [
-            'nombre'   => 'required',
-            'apellido' => 'required',
-            'email'    => 'required|email|unique:users,email,'.$request->id,
-            'estado'   => 'required'
-        ]);
+public function actualizar(Request $request){
 
-        $user = User::find($request->id);
-        $user->nombre = $request->nombre;
-        $user->apellido = $request->apellido;
-        $user->email = $request->email;
+    $validar = $this->validate($request, [
+        'nombre'   => 'required',
+        'apellido' => 'required',
+        'email'    => 'required|email|unique:users,email,'.$request->id,
+        'estado'   => 'required'
+    ]);
 
-        if ($request->password)
-            $user->password = (new BcryptHasher)->make($request->password);
+    $user = User::find($request->id);
+    $user->nombre = $request->nombre;
+    $user->apellido = $request->apellido;
+    $user->email = $request->email;
 
-        $user->save();
+    if ($request->password)
+    $user->password = (new BcryptHasher)->make($request->password);
 
-        return response()->json(array(
-            'success' => true,
-            'mensaje' => 'Usuario actualizado con exito..'
-        ));
-    }
+    $user->save();
+
+    return response()->json(array(
+        'success' => true,
+        'mensaje' => 'Usuario actualizado con exito..'
+    ));
+}
 }

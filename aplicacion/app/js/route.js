@@ -30,13 +30,6 @@ angular.module('seminarioUmg')
             restricted: false
         }
     })
-    .when('/permisos',{
-        templateUrl:'view/user/permisos.html',
-        controller: 'permisoController',
-        access: {
-            restricted: false
-        }
-    })
     /** Rutas para catalogos **/
     .when('/usuarios',{
         templateUrl:'view/user/tabla.html',
