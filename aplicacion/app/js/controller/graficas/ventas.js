@@ -30,7 +30,7 @@ function ($scope, $timeout, $http, $localStorage) {
             },
             discretebar: {
                 dispatch: {
-                    elementClick: function (t,u){
+                    elementClick: function (t){
                         if (!$scope.meses) {
                             $http.get('/api/v1/grafica-ventas/'+t.data.label+'?token='+$localStorage.token).success(function(data) {
                                 $scope.dataUpdate = [{
@@ -44,13 +44,13 @@ function ($scope, $timeout, $http, $localStorage) {
                             });
                         }
                     },
-                    elementMouseover: function (t,u){
+                    elementMouseover: function (t){
                         $scope.showGanancia = t.data.ganancia;
                     }
                 }
             },
             tooltip: {
-                valueFormatter: function (d) {
+                valueFormatter: function () {
                     return 'Ganancia:' + $scope.showGanancia;
                 }
             }
@@ -79,7 +79,7 @@ function ($scope, $timeout, $http, $localStorage) {
     var redimensionar = function() {
         $scope.options.chart.width = 0;
         $scope.options.chart.height = 0;
-    }
+    };
 
     $timeout(redimensionar, 50);
 }]);

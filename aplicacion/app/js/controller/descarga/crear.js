@@ -25,12 +25,11 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
 
         var dataForm = {
             descripcion: $scope.producto.descripcion,
-            precio: $scope.producto.precio_costo,
             total:($scope.dataTemp.cantidad * $scope.producto.precio_costo),
             cantidad: $scope.dataTemp.cantidad,
             precio: $scope.producto.precio_costo,
             producto: $scope.producto.id
-        }
+        };
 
         $scope.formData.detalle.push(dataForm);
         $scope.buscarTextoproducto = '';

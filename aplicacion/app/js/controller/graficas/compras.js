@@ -30,7 +30,7 @@ function ($scope, $timeout, $http, $localStorage) {
             },
             discretebar: {
                 dispatch: {
-                    elementClick: function (t,u){
+                    elementClick: function (t){
                         if (!$scope.meses) {
                             $http.get('/api/v1/grafica-compras/'+t.data.label+'?token='+$localStorage.token).success(function(data) {
                                 $scope.dataUpdate = [{
@@ -44,13 +44,13 @@ function ($scope, $timeout, $http, $localStorage) {
                             });
                         }
                     },
-                    elementMouseover: function (t,u){
+                    elementMouseover: function (t){
                         $scope.showInversion = t.data.value;
                     }
                 }
             },
             tooltip: {
-                valueFormatter: function (d) {
+                valueFormatter: function () {
                     return 'Inversion:' + $scope.showInversion;
                 }
             }
@@ -80,11 +80,10 @@ function ($scope, $timeout, $http, $localStorage) {
         $scope.dataMain = $scope.data;
     });
 
-
     var redimensionar = function() {
         $scope.options.chart.width = 0;
         $scope.options.chart.height = 0;
-    }
+    };
 
     $timeout(redimensionar, 50);
 }]);
