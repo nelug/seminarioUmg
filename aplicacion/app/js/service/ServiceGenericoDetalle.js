@@ -119,7 +119,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
 
     function validarProductoDuplicado($scope) {
         for (var i = 0; i < $scope.formData.detalle.length; i++) {
-            if ($scope.formData.detalle[i].producto == $scope.producto.id) {
+            if ($scope.formData.detalle[i].producto === $scope.producto.id) {
                 return true;
             }
         }
