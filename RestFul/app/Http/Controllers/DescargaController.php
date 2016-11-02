@@ -8,7 +8,15 @@ use Tymon\JWTAuth\JWTAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+
 class DescargaController extends Controller {
+    protected $jwt;
+
+    public function __construct(JWTAuth $jwt)
+    {
+        $this->jwt = $jwt;
+    }
+
     public function obtenerTodos()
     {
         $data = Descarga::with('detalle','estado_proceso','usuario')->get();
@@ -25,11 +33,13 @@ class DescargaController extends Controller {
             'detalle.*.cantidad' => 'required|numeric',
             'detalle.*.precio'   => 'required|numeric'
         ]);
+
         if (!$request->input('detalle')) {
             return response()->json([
                 'message' => array("Ingrese detalle para poder descontar..")
             ], 422);
         }
+
         foreach ($request->input('detalle') as $key => $dt) {
             $pr = Producto::find($dt['producto']);
             if ($pr->existencia < $dt['cantidad']) {
@@ -47,6 +57,7 @@ class DescargaController extends Controller {
 
         $descarga = Descarga::create($descargaData);
         $total = 0;
+
         if ($descarga) {
             foreach ($request->input('detalle') as $key => $dt) {
                 $detalleData = array(
@@ -55,19 +66,25 @@ class DescargaController extends Controller {
                     'cantidad' => $dt['cantidad'],
                     'precio'   => $dt['precio']
                 );
+
                 $producto = Producto::find($dt['producto']);
                 $total += ($dt['cantidad'] * $dt['precio']);
+
                 if ($producto) {
                     DetalleDescarga::create($detalleData);
                     $producto->existencia -= $dt['cantidad'];
                     $producto->save();
                 }
             }
+
             DB::table('descargas')->whereId($descarga->id)->update(['total' => $total]);
         }
+
+        $token = $this->jwt->refresh($request->token);
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Descarga Realizada con exito..'
+            'mensaje' => 'Descarga Realizada con exito..',
+            'token' => $token
         ));
     }
 

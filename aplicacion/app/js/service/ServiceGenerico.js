@@ -71,6 +71,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
             $scope.formData.token = $localStorage.token;
             $http.post('/api/v1/'+ entidad.toLowerCase() + '/', $scope.formData)
             .success(function(data) {
+                $localStorage.token = data.token;
                 toaster.success('Correcto!', data.mensaje);
                 $scope.formData = {};
                 $mdDialog.hide();
@@ -90,10 +91,11 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         $scope.formData = angular.copy(dataEnviada);
 
         // Función para editar un registro
-        $scope.formData.token = $localStorage.token;
+
         $scope.actualizar = function() {
-            $http.put('/api/v1/'+ entidad.toLowerCase() + '/', $scope.formData)
+            $http.put('/api/v1/'+ entidad.toLowerCase() + '?token=' + $localStorage.token, $scope.formData)
             .success(function(data) {
+                $localStorage.token = data.token;
                 toaster.success('Correcto!', data.mensaje);
                 $scope.formData = {};
                 $mdDialog.hide();
@@ -130,12 +132,31 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
 
     }
 
+    function fnPermisosUsuario($scope) {
+        $scope.dialogoPermisos = function() {
+            $mdDialog.show({
+                locals:{ dataEnviada: $scope.dataSeleccionada },
+                controller: 'PermisosCtrl',
+                templateUrl: 'view/user/permisos.html',
+                clickOutsideToClose: false
+            });
+        };
+    }
+
+    function permisosUsuario($scope) {
+        $http.get('/api/v1/user/permisosUsuario/'+$scope.formData.id+'?token='+$localStorage.token).success(function (data) {
+            $scope.formData = data;
+        });
+    }
+
     return ({
         buscarTodos: buscarTodos,
         instanciarFunciones: instanciarFunciones,
         funcionesDefaultDialog: funcionesDefaultDialog,
         funcionesDialogoEditar: funcionesDialogoEditar,
         funcionesDialogoEliminar: funcionesDialogoEliminar,
-        buscarId: buscarId
+        buscarId: buscarId,
+        fnPermisosUsuario: fnPermisosUsuario,
+        permisosUsuario: permisosUsuario
     });
 }]);

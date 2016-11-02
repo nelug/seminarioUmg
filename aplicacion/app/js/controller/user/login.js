@@ -2,11 +2,11 @@
 
 angular.module('seminarioUmg').controller('loginController', ['$scope', '$location', 'AuthService',
 function ($scope, $location, AuthService) {
-    
+
     $scope.login = function () {
         $scope.error = false;
         $scope.disabled = true;
-        
+
         AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         .then(function () {
             $location.path('/');
@@ -19,6 +19,5 @@ function ($scope, $location, AuthService) {
             $scope.disabled = false;
             $scope.loginForm = {};
         });
-        
     };
 }]);

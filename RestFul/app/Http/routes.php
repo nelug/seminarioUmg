@@ -13,6 +13,9 @@ $app->group(['prefix' => 'api/v1/user/','namespace' => 'App\Http\Controllers'], 
 $app->group(['prefix' => 'api/v1/','namespace' => 'App\Http\Controllers', 'middleware' => 'jwt.auth'], function($app)
 {
     $app->get('user/permisos/{id}', 'UserController@permisos');
+    $app->get('user/permisosUsuario/{id}', 'UserController@permisosUsuario');
+    $app->put('permisos', 'UserController@actualizarPermisos');
+
     $app->get('info/{token}' ,'UserController@info');
     $app->get('inventario'   ,'ProductoController@inventario');
     $app->get('existencia'   ,'ProductoController@existencia');

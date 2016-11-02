@@ -9,7 +9,7 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
     DTDefaultOptions.setLanguageSource('lang/es.json');
     DTDefaultOptions.setLoadingTemplate('<div class="loader-tabla"><img src="img/loading.gif"></div>');
     DTDefaultOptions.setDOM('lfrtip');
-    
+
     //configuracion para login
     $rootScope.$on('$routeChangeStart', function (event, next) {
         AuthService.getUserStatus().then(function() {
@@ -20,7 +20,7 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
             }
 
             if(AuthService.isLoggedIn()){
-                $http.get('/api/v1/user/permisos/1?token='+$localStorage.token).success(function (data) {
+                $http.get('/api/v1/user/permisos/'+$rootScope.userNow.id+'?token='+$localStorage.token).success(function (data) {
                     $rootScope.menus = true;
                     $rootScope.menuPrincipal = jsonPath(data, '$.[?(@.catalogo==0)]');
                     $rootScope.menuCatalogos = jsonPath(data, '$.[?(@.catalogo==1)]');
