@@ -121,10 +121,12 @@ class UserController extends Controller{
         foreach ($request->graficas as $key => $p) {
             DB::table('permisos')->whereId($p['id'])->update(['estado' => $p['estado']]);
         }
-
+        
+        $token = $this->jwt->refresh($request->token);
         return response()->json(array(
             'success' => true,
-            'mensaje' => 'Permisos Actualizados con exito..'
+            'mensaje' => 'Permisos Actualizados con exito..',
+            'token' => $token
         ));
     }
 
