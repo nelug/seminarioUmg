@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').factory('AuthService', ['$q', '$timeout', '$http', '$rootScope', '$localStorage', 'toaster',
-function ($q, $timeout, $http, $rootScope, $localStorage, toaster) {
+angular.module('seminarioUmg').factory('AuthService', ['$q', '$timeout', '$http', '$rootScope', '$localStorage', 'toaster', 'md5',
+function ($q, $timeout, $http, $rootScope, $localStorage, toaster, md5) {
     var user = null;
 
     function isLoggedIn() {
@@ -34,7 +34,7 @@ function ($q, $timeout, $http, $rootScope, $localStorage, toaster) {
         $http.post('api/v1/user/login',
         {
             email: email,
-            password: password
+            password: md5.createHash(password)
         })
         .success(function (data, status) {
             if(status === 200 && data.status){

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').factory('ServiceGenerico', ['$q', '$timeout', '$http', '$mdDialog', '$route', '$templateCache', 'toaster', 'jsonPath', '$localStorage',
-function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonPath, $localStorage) {
+angular.module('seminarioUmg').factory('ServiceGenerico', ['$q', '$timeout', '$http', '$mdDialog', '$route', '$templateCache', 'toaster', 'jsonPath', '$localStorage', 'md5',
+function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonPath, $localStorage, md5) {
 
     function buscarTodos($scope, entidad) {
         $scope.editEnable = false;
@@ -68,6 +68,10 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         $scope.answer = function(answer) { $mdDialog.hide(answer); };
 
         $scope.crearRegistro = function () {
+            if ($scope.encriptPassw) {
+                $scope.formData.password = md5.createHash($scope.formData.password);
+            }
+
             $scope.formData.token = $localStorage.token;
             $http.post('/api/v1/'+ entidad.toLowerCase() + '/', $scope.formData)
             .success(function(data) {
@@ -93,6 +97,10 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         // Función para editar un registro
 
         $scope.actualizar = function() {
+            if ($scope.encriptPassw) {
+                $scope.formData.password = md5.createHash($scope.formData.password);
+            }
+            
             $http.put('/api/v1/'+ entidad.toLowerCase() + '?token=' + $localStorage.token, $scope.formData)
             .success(function(data) {
                 $localStorage.token = data.token;

@@ -121,7 +121,7 @@ class UserController extends Controller{
         foreach ($request->graficas as $key => $p) {
             DB::table('permisos')->whereId($p['id'])->update(['estado' => $p['estado']]);
         }
-        
+
         $token = $this->jwt->refresh($request->token);
         return response()->json(array(
             'success' => true,
@@ -143,7 +143,7 @@ class UserController extends Controller{
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
         $user->email = $request->email;
-        $user->password = sha1($request->input('password'));
+        $user->password = (new BcryptHasher)->make($request->input('password'));
         $user->save();
 
         $menus = DB::table('menus')->select('id')->get();
