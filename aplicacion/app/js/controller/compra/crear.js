@@ -23,6 +23,15 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
             ServiceGenericoDetalle.mensajeAlerta('El producto que intenta comprar ya ha sido ingresado..');
             return false;
         }
+        if(parseInt($scope.dataTemp.cantidad) <= 0){
+            ServiceGenericoDetalle.mensajeAlerta('La cantidad no puede ser menor o igual a 0');
+            return false;
+        }
+        if(parseInt($scope.dataTemp.precio) <= 0){
+            ServiceGenericoDetalle.mensajeAlerta('El precio no puede ser menor o igual a 0');
+            return false;
+        }
+
 
         var dataForm = {
             cantidad: $scope.dataTemp.cantidad,

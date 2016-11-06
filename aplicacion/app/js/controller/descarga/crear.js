@@ -23,6 +23,12 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
             return false;
         }
 
+        if(parseInt($scope.dataTemp.cantidad) <= 0){
+            ServiceGenericoDetalle.mensajeAlerta('La cantidad no puede ser menor o igual a 0');
+            return false;
+        }
+
+
         var dataForm = {
             descripcion: $scope.producto.descripcion,
             total:($scope.dataTemp.cantidad * $scope.producto.precio_costo),
