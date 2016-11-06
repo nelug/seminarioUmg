@@ -27,6 +27,10 @@ function($scope, ServiceGenericoDetalle) {
             ServiceGenericoDetalle.mensajeAlerta('La cantidad no puede ser mayor ala existencia.');
             return false;
         }
+        if(parseInt($scope.dataTemp.cantidad) <= 0){
+            ServiceGenericoDetalle.mensajeAlerta('La cantidad no puede ser menor o igual a 0');
+            return false;
+        }
 
         var dataForm = {
             cantidad: $scope.dataTemp.cantidad,
