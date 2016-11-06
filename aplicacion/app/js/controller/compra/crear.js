@@ -41,5 +41,7 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
             total:($scope.dataTemp.cantidad * $scope.dataTemp.precio)
         };
         $scope.formData.detalle.push(dataForm);
+        $scope.buscarTextoproducto = '';
+        $scope.dataTemp = [];
     };
 }]);
