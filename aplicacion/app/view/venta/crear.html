@@ -5,7 +5,7 @@
             <form layout="column" name="form" layout flex layout-wrap>
               <div style="margin-bottom: 25px;" layout layout-wrap>
                 <div flex="100" flex-gt-xs="30">
-                    <md-autocomplete ng-disabled="false"  ng-required="true" md-no-cache="true" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente" >
+                    <md-autocomplete md-autofocus ng-disabled="false" ng-required="true" md-no-cache="true" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente" >
                         <md-item-template>
                             <span class="item-title">
                                 <span> {{ item.nit }} </span>

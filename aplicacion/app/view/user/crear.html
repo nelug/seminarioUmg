@@ -5,7 +5,7 @@
             <md-content layout="column" class="md-padding" layout layout-wrap>
                 <md-input-container >
                     <label>Nombre</label>
-                    <input type="text" title="Ingrese el nombre" name="nombre" ng-model="formData.nombre" required="true"/>
+                    <input md-autofocus type="text" title="Ingrese el nombre" name="nombre" ng-model="formData.nombre" required="true"/>
                     <div ng-messages="form.nombre.$error" role="alert">
                         <div ng-messages-include="view/plantillas/mensajes.html"></div>
                     </div>
