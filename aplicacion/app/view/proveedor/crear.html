@@ -5,7 +5,7 @@
                 <md-content layout "column" class="md-padding" layout layout-wrap>
                             <md-input-container flex="100">
                                 <label>Nit</label>
-                                <input type="text" title="Ingrese el numero de Nit" name="nit" ng-model="formData.nit" required="true"/>
+                                <input md-autofocus type="text" title="Ingrese el numero de Nit" name="nit" ng-model="formData.nit" required="true"/>
                                 <div ng-messages="form.nit.$error" role="alert">
                                     <div ng-messages-include="view/plantillas/mensajes.html"></div>
                                 </div>

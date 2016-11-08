@@ -1,14 +1,14 @@
 <div layout="column" style="max-height:600px" ng-cloak="" class="toolbardemoScrollShrink">
     <div ng-include src="'view/plantillas/encabezadoFormulario.html'"></div>
     <md-dialog-content class="md-whiteframe-5dp">
-        <form layout="column" name="form" layout flex layout-wrap>
-            <md-content class="md-padding md-block">
+        <md-content class="md-padding md-block">
+            <form layout="column" name="form" layout flex layout-wrap>
                 <div style="margin-bottom: 25px;" layout layout-wrap>
                     <div flex="100" flex-gt-xs="30">
                         <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.empresa" md-min-length="0" placeholder="Buscar proveedor">
                             <md-item-template>
                                 <span class="item-title">
-                                    <span> {{item.nit}}</span>
+                                    <span> {{ item.nit}}</span>
                                     <span> {{ item.empresa }} </span>
                                     <span> {{ item.direccion }} </span>
                                 </span>
@@ -40,9 +40,11 @@
                         </div>
                     </md-input-container>
                 </div>
+            </form>
+            <form name="detalle">
                 <div layout layout-wrap  style="margin-bottom: 25px;">
                     <div flex="100" flex-gt-xs="30" >
-                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTextoproducto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="0" placeholder="Buscar Codigo">
+                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTextoproducto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="0" placeholder="Buscar Producto">
                             <md-item-template>
                                 <span class="item-title">
                                     <span> {{ item.codigo }} </span>
@@ -66,7 +68,7 @@
                     <md-input-container  flex="100" flex-gt-xs="33">
                         <label>Cantidad</label>
                         <input ng-model="dataTemp.cantidad" title="completa este campo" ng-pattern="/^[0-9]{1,11}$/" name="cantidad" ng-required="true">
-                        <div ng-messages="form.cantidad.$error" role="alert">
+                        <div ng-messages="detalle.cantidad.$error" role="alert">
                             <div ng-messages-include="view/plantillas/mensajes.html"></div>
                         </div>
                     </md-input-container>
@@ -74,14 +76,15 @@
                     <md-input-container  flex="100" flex-gt-xs="33">
                         <label>Precio</label>
                         <input type="number" ng-model="dataTemp.precio" name="precio" ng-required= "true">
-                        <div ng-messages="form.precio.$error" role="alert">
+                        <div ng-messages="detalle.precio.$error" role="alert">
                             <div ng-messages-include="view/plantillas/mensajes.html"></div>
                         </div>
                     </md-input-container>
                     <md-input-container flex="15" layout="row" layout-xs="column">
-                        <md-button class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="agregarDataDetalle()">Agregar</md-button>
+                        <md-button class="md-raised md-primary" ng-disabled="detalle.$invalid" ng-click="agregarDataDetalle()">Agregar</md-button>
                     </md-input-container>
                 </div>
+            </form>
                 <div layout="row" style="max-height: 200px; min-height: 200px; overflow-y: auto;" layout layout-wrap>
                     <table class="table2" ng>
                         <thead>
@@ -90,7 +93,7 @@
                                 <th>Descripcion</th>
                                 <th>Precio Unitario</th>
                                 <th>Total</th>
-                                <th>borrar</th>
+                                <th>Borrar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -105,7 +108,7 @@
                     </table>
                 </div>
             </md-content>
-        </form>
+
         <div ng-include src="'view/plantillas/pieFormulario.html'"></div>
     </md-dialog-content>
 </div>

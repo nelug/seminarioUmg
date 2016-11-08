@@ -207,3 +207,7 @@ h3 {
 .colorpdf{
     color: red;
 }
+
+.margenDetalle {
+    padding-left: 20px;
+}
