@@ -74,8 +74,8 @@
                     </md-input-container>
                     <div flex="0" flex-gt-xs="5"></div>
                     <md-input-container  flex="100" flex-gt-xs="33">
-                        <label>Precio</label>
-                        <input type="number" ng-model="dataTemp.precio" name="precio" ng-required= "true">
+                        <label>Precio Unitario</label>
+                        <input type="number" ng-model="dataTemp.precio" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" name="precio" ng-required= "true">
                         <div ng-messages="detalle.precio.$error" role="alert">
                             <div ng-messages-include="view/plantillas/mensajes.html"></div>
                         </div>
