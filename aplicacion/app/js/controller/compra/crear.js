@@ -24,15 +24,10 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
             return false;
         }
         if(parseInt($scope.dataTemp.cantidad) <= 0){
-            ServiceGenericoDetalle.mensajeAlerta('La cantidad no puede ser menor o igual a 0');
+            ServiceGenericoDetalle.mensajeAlerta('La cantidad no puede ser menor o igual a cero');
             return false;
         }
-        if(parseInt($scope.dataTemp.precio) <= 0){
-            ServiceGenericoDetalle.mensajeAlerta('El precio no puede ser menor o igual a 0');
-            return false;
-        }
-
-
+    
         var dataForm = {
             cantidad: $scope.dataTemp.cantidad,
             descripcion: $scope.producto.descripcion,
