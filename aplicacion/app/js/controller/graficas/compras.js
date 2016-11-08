@@ -25,7 +25,7 @@ function ($scope, $timeout, $http, $localStorage) {
                 axisLabel: 'Años'
             },
             yAxis: {
-                axisLabel: 'Ventas',
+                axisLabel: 'Compras',
                 axisLabelDistance: -10
             },
             discretebar: {
