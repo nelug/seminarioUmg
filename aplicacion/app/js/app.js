@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimate', 'ngMdIcons', 'ngMaterial', 'ngJSONPath', 'toaster', 'datatables', 'nvd3', 'ngStorage', 'angular-md5', 'templates']).config( function($mdThemingProvider) {
+angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimate', 'ngMdIcons', 'ngMaterial', 'ngJSONPath', 'toaster', 'datatables', 'nvd3', 'ngStorage', 'angular-md5', 'focus-if'/*, 'templates'*/]).config( function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
     .primaryPalette('blue')
     .accentPalette('brown');
@@ -28,7 +28,7 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
                     $rootScope.menuGraficas  = jsonPath(data, '$.[?(@.catalogo==3)]');
                 });
             }
-
+            $rootScope.focusTiempo = 500;
             $rootScope.loginAccess = AuthService.isLoggedIn();
         });
     });

@@ -3,30 +3,31 @@
     <md-dialog-content class="md-whiteframe-5dp">
         <md-content class="md-padding md-block">
             <form layout="column" name="form" layout flex layout-wrap>
-              <div style="margin-bottom: 25px;" layout layout-wrap>
-                <div flex="100" flex-gt-xs="30">
-                    <md-autocomplete md-autofocus ng-disabled="false" ng-required="true" md-no-cache="true" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente" >
+                <div style="margin-bottom: 25px;" layout layout-wrap>
+                    <md-autocomplete flex="100"  md-floating-label="Buscar Cliente" flex-gt-xs="30" ng-disabled="false" ng-required="true" md-no-cache="true" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente" md-autoselect="false">
                         <md-item-template>
                             <span class="item-title">
                                 <span> {{ item.nit }} </span>
                                 <span> {{ item.nombre }} </span>
                                 <span> {{ item.direccion }} </span>
-                                </span>
-                            </md-item-template>
+                            </span>
+                        </md-item-template>
+                        <div ng-messages="detalle.producto.$error" role="alert">
+                            <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                        </div>
                     </md-autocomplete>
-                </div>
-                <div flex="0" flex-gt-xs="5"></div>
-                <div flex="100" flex-gt-xs="20" ng-show="clientes" >
-                    <strong>Nit: </strong> {{ cliente.nit }}
-                </div>
-                <div flex="100" flex-gt-xs="35" ng-show="clientes"  >
-                    <strong>Direccion: </strong> {{ cliente.direccion }}
-                </div>
+                    <div flex="0" flex-gt-xs="5"></div>
+                    <div flex="100" flex-gt-xs="20" ng-show="clientes" >
+                        <strong>Nit: </strong> {{ cliente.nit }}
+                    </div>
+                    <div flex="100" flex-gt-xs="35" ng-show="clientes"  >
+                        <strong>Direccion: </strong> {{ cliente.direccion }}
+                    </div>
                 </div>
             </form>
             <form name="detalle">
                 <div layout layout-wrap  style="margin-bottom: 25px;">
-                    <md-autocomplete flex="100" flex-gt-xs="30" ng-required="true" md-no-cache="true" md-search-text="buscarTextoproducto" md-input-name="producto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="1" placeholder="Buscar Producto" md-require-match>
+                    <md-autocomplete flex="100" flex-gt-xs="30" ng-required="true" md-no-cache="true" md-search-text="buscarTextoproducto" md-input-name="producto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="1" md-floating-label="Buscar Producto" md-require-match>
                         <md-item-template>
                             <span md-highlight-text="buscarTextoproducto">
                                 {{ item.codigo }}  {{ item.descripcion }}
@@ -59,30 +60,30 @@
                         <md-button class="md-raised md-primary" ng-disabled="detalle.$invalid" ng-click="agregarDataDetalle()">Agregar</md-button>
                     </md-input-container>
                 </div>
-                </form>
-                <div layout="row" style="max-height: 200px; min-height: 200px; overflow-y: auto;" layout layout-wrap>
-                    <table class="table2" ng>
-                        <thead>
-                            <tr>
-                                <th>Cantidad</th>
-                                <th>Descripcion</th>
-                                <th>Precio Unitario</th>
-                                <th>Total</th>
-                                <th>Borrar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="detalle in formData.detalle">
-                                <td>{{ detalle.cantidad }}</td>
-                                <td>{{ detalle.descripcion }}</td>
-                                <td>{{ detalle.precio | currency: 'Q: '}}</td>
-                                <td>{{ detalle.total | currency: 'Q: '}}</td>
-                                <td><ng-md-icon icon="delete_forever" class="delete" ng-click="eliminarDetalle(detalle)"></ng-md-icon></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </md-content>
+            </form>
+            <div layout="row" style="max-height: 200px; min-height: 200px; overflow-y: auto;" layout layout-wrap>
+                <table class="table2" ng>
+                    <thead>
+                        <tr>
+                            <th>Cantidad</th>
+                            <th>Descripcion</th>
+                            <th>Precio Unitario</th>
+                            <th>Total</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="detalle in formData.detalle">
+                            <td>{{ detalle.cantidad }}</td>
+                            <td>{{ detalle.descripcion }}</td>
+                            <td>{{ detalle.precio | currency: 'Q: '}}</td>
+                            <td>{{ detalle.total | currency: 'Q: '}}</td>
+                            <td><ng-md-icon icon="delete_forever" class="delete" ng-click="eliminarDetalle(detalle)"></ng-md-icon></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </md-content>
         <div ng-include src="'view/plantillas/pieFormulario.html'"></div>
     </md-dialog-content>
 </div>

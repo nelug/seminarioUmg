@@ -15,6 +15,7 @@
     "angular-datatables": "=0.5.5",
     "angular-nvd3": "=1.0.9",
     "ngstorage": "=0.3.11",
-    "angular-md5": "=0.1.10"
+    "angular-md5": "=0.1.10",
+    "ng-focus-if": "=1.0.7"
   }
 }
