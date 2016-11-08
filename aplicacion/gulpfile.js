@@ -70,7 +70,7 @@ gulp.task('template', function() {
 
 gulp.task('default', ['inyeccion', 'dependencia', 'analizar']);
 
-gulp.task('server', function () {
+gulp.task('server', ['template'], function () {
     return gulp.src("app/")
     .pipe(plumber())
     .pipe(webServer({
