@@ -27,7 +27,7 @@
     </toaster-container>
 
     <md-toolbar ng-if="loginAccess"  layout="row" class="md-toolbar-tools">
-        <md-button ng-click="toggleMenu()" aria-label="Menu">
+        <md-button ng-click="toggleMenu()" aria-label="Menu" ng-hide="bloquearMenu()">
             <ng-md-icon icon="menu"></ng-md-icon>
         </md-button>
         <h2> Libreria San Pedro </h2>

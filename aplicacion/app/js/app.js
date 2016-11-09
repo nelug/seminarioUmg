@@ -17,6 +17,7 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
                 $location.path('/login');
                 $route.reload();
                 $rootScope.menus = false;
+                $rootScope.ocultarMenu = false;
             }
 
             if(AuthService.isLoggedIn()){
@@ -28,7 +29,7 @@ angular.module('seminarioUmg', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimat
                     $rootScope.menuGraficas  = jsonPath(data, '$.[?(@.catalogo==3)]');
                 });
             }
-            $rootScope.ocultarMenu = false;
+
             $rootScope.loginAccess = AuthService.isLoggedIn();
         });
     });
