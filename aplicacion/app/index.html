@@ -35,7 +35,7 @@
         <md-menu>
             <md-button aria-label="Perfil"  ng-click="openMenu($mdOpenMenu, $event)">
                 <ng-md-icon icon="account_circle"></ng-md-icon>
-                perfil
+                {{ userNow.nombre }} {{ userNow.apellido }}
             </md-button>
             <md-menu-content width="4" style="margin-top: 60px;">
                 <md-menu-item>
@@ -48,7 +48,7 @@
                 <md-menu-item>
                     <md-button aria-label="Salir" ng-click="logout()">
                         <ng-md-icon icon="logout"></ng-md-icon>
-                        logout
+                        Cerrar Session
                     </md-button>
                 </md-menu-item>
             </md-menu-content>
