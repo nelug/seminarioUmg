@@ -4,6 +4,16 @@ angular.module('seminarioUmg').controller('MainController',
 ['$scope', '$mdSidenav', '$mdMedia', '$rootScope', '$location', 'AuthService', '$localStorage',
 function( $scope, $mdSidenav, $mdMedia, $rootScope, $location, AuthService, $localStorage) {
 
+    $scope.showSubMenu = function(op) {
+        if($scope.subMenu === op){
+            $scope.subMenu = 0;
+        }
+
+        else {
+            $scope.subMenu = op;
+        }
+    };
+
     $scope.verLink = function(link) {
         $scope.toggleMenu();
         $location.path(link);
@@ -30,15 +40,15 @@ function( $scope, $mdSidenav, $mdMedia, $rootScope, $location, AuthService, $loc
         $rootScope.loginAccess = false;
     };
 
-   $scope.openMenu = function($mdOpenMenu, ev) {
-     $mdOpenMenu(ev);
-   };
+    $scope.openMenu = function($mdOpenMenu, ev) {
+        $mdOpenMenu(ev);
+    };
 
-   $scope.ocultarMenu = function() {
-       if ($rootScope.ocultarMenu === true) {
-           $rootScope.ocultarMenu = false;
-       } else {
-           $rootScope.ocultarMenu = true;
-       }
-   };
+    $scope.ocultarMenu = function() {
+        if ($rootScope.ocultarMenu === true) {
+            $rootScope.ocultarMenu = false;
+        } else {
+            $rootScope.ocultarMenu = true;
+        }
+    };
 }]);
