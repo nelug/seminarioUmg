@@ -28,7 +28,7 @@ function($scope, ServiceGenericoDetalle) {
             return false;
         }
         if(parseInt($scope.dataTemp.cantidad) <= 0){
-            ServiceGenericoDetalle.mensajeAlerta('La cantidad no puede ser menor o igual a 0');
+            ServiceGenericoDetalle.mensajeAlerta('La cantidad no puede ser menor o igual a cero.');
             return false;
         }
 

@@ -4,18 +4,17 @@
         <md-content class="md-padding md-block">
             <form layout="column" name="form" layout flex layout-wrap>
                 <div style="margin-bottom: 25px;" layout layout-wrap>
-                    <md-autocomplete flex="100"  md-floating-label="Buscar Cliente" flex-gt-xs="30" ng-disabled="false" ng-required="true" md-no-cache="true" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente" md-autoselect="false">
-                        <md-item-template>
-                            <span class="item-title">
-                                <span> {{ item.nit }} </span>
-                                <span> {{ item.nombre }} </span>
-                                <span> {{ item.direccion }} </span>
-                            </span>
-                        </md-item-template>
-                        <div ng-messages="detalle.producto.$error" role="alert">
-                            <div ng-messages-include="view/plantillas/mensajes.html"></div>
-                        </div>
-                    </md-autocomplete>
+                    <div flex="100" flex-gt-xs="30">
+                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.nombre" md-min-length="0" placeholder="Buscar Cliente" ng-required= "true">
+                            <md-item-template>
+                                <span class="item-title">
+                                    <span> {{ item.nombre }} </span>
+                                    <span> {{item.nit}}</span>
+                                    <span> {{ item.direccion }} </span>
+                                </span>
+                            </md-item-template>
+                        </md-autocomplete>
+                    </div>
                     <div flex="0" flex-gt-xs="5"></div>
                     <div flex="100" flex-gt-xs="20" ng-show="clientes" >
                         <strong>Nit: </strong> {{ cliente.nit }}
@@ -27,16 +26,19 @@
             </form>
             <form name="detalle">
                 <div layout layout-wrap  style="margin-bottom: 25px;">
-                    <md-autocomplete flex="100" flex-gt-xs="30" ng-required="true" md-no-cache="true" md-search-text="buscarTextoproducto" md-input-name="producto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="1" md-floating-label="Buscar Producto" md-require-match>
-                        <md-item-template>
-                            <span md-highlight-text="buscarTextoproducto">
-                                {{ item.codigo }}  {{ item.descripcion }}
-                            </span>
-                        </md-item-template>
-                        <div ng-messages="detalle.producto.$error" role="alert">
+                    <div flex="100" flex-gt-xs="30" >
+                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTextoproducto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="0" placeholder="Buscar Producto" ng-required="true">
+                            <md-item-template>
+                                <span class="item-title">
+                                    <span> {{ item.codigo }} </span>
+                                    <span> {{ item.descripcion }} </span>
+                                </span>
+                            </md-item-template>
+                            <div ng-messages="detalle.producto.$error" role="alert">
                             <div ng-messages-include="view/plantillas/mensajes.html"></div>
-                        </div>
-                    </md-autocomplete>
+                            </div>
+                        </md-autocomplete>
+                    </div>
                     <div flex="0" flex-gt-xs="5"></div>
                     <div flex="100" flex-gt-xs="20" ng-show="productos" >
                         <strong>Marca: </strong>{{producto.marca}}
