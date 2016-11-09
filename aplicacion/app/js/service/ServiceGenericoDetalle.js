@@ -133,7 +133,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
         $scope.cancelarTransaccion = function() {
             $location.path('/');
             $route.reload();
-        }
+        };
     }
 
     function validarProductoDuplicado($scope) {
