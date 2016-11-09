@@ -129,6 +129,11 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
             var index = $scope.formData.detalle.indexOf(item);
             $scope.formData.detalle.splice(index,1);
         };
+
+        $scope.cancelarTransaccion = function() {
+            $location.path('/');
+            $route.reload();
+        }
     }
 
     function validarProductoDuplicado($scope) {
