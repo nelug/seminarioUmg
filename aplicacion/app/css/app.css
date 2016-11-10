@@ -211,3 +211,27 @@ h3 {
 .margenDetalle {
     padding-left: 20px;
 }
+
+
+/*ccs para boton de agregar en formularios principales*/
+
+.Dialogs{
+
+
+    padding-bottom: 0px;
+    padding-right: 0px;
+    width: 36px;
+    height: 30px;
+    margin-bottom: 0px;
+    padding-left: -5;
+    padding-left: 0px;
+    padding-top: 0px;
+    border-left-width: 19px;
+    margin-left: -10;
+    margin-left: -10;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+
+
+}
