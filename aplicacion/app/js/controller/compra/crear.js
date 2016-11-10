@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('CrearCompraCtrl', ['$scope', '$rootScope', 'ServiceGenericoDetalle',
-function($scope, $rootScope, ServiceGenericoDetalle) {
+angular.module('seminarioUmg').controller('CrearCompraCtrl', ['$scope', '$rootScope', 'ServiceGenericoDetalle','$mdDialog', 'ServiceGenerico',
+function($scope, $rootScope, ServiceGenericoDetalle, $mdDialog, ServiceGenerico) {
     $scope.formTitulo = 'Crear Compra';
 
     $scope.detalleTabla = [];
@@ -13,6 +13,8 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
         detalle: []
     };
 
+    ServiceGenerico.instanciarFunciones($scope, 'Proveedor');  
+    ServiceGenerico.funcionesDefaultDialog($scope, $mdDialog, 'proveedor');
     ServiceGenericoDetalle.obtenerProveedoresAC($scope);
     ServiceGenericoDetalle.obtenerProductosAC($scope);
     ServiceGenericoDetalle.funcionesCrear($scope, 'Compra');
@@ -27,7 +29,7 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
             ServiceGenericoDetalle.mensajeAlerta('La cantidad no puede ser menor o igual a cero');
             return false;
         }
-    
+
         var dataForm = {
             cantidad: $scope.dataTemp.cantidad,
             descripcion: $scope.producto.descripcion,

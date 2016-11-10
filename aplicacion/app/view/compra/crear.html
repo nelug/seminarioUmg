@@ -15,6 +15,9 @@
                             </md-item-template>
                         </md-autocomplete>
                     </div>
+                    <md-button aria-label="Crear" title="Agregar un proveedor nuevo" class="Dialogs" ng-click="dialogoCrear()">
+                         <ng-md-icon icon="person_add"></ng-md-icon>
+                    </md-button>
                     <div flex="0" flex-gt-xs="5"></div>
                     <div flex="100" flex-gt-xs="20" ng-show="proveedores" >
                         <strong>Nit: </strong>{{proveedor.nit}}
