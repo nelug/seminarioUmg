@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('CrearCotizacionCtrl', ['$scope', '$rootScope', 'ServiceGenericoDetalle',
-function($scope, $rootScope, ServiceGenericoDetalle) {
+angular.module('seminarioUmg').controller('CrearCotizacionCtrl', ['$scope', '$rootScope', 'ServiceGenericoDetalle','ServiceGenerico', '$mdDialog',
+function($scope, $rootScope, ServiceGenericoDetalle, ServiceGenerico, $mdDialog) {
     $scope.formTitulo = 'Crear Cotizacion';
 
     $scope.detalleTabla = [];
@@ -11,7 +11,8 @@ function($scope, $rootScope, ServiceGenericoDetalle) {
         usuario: [],
         detalle: []
     };
-
+    ServiceGenerico.instanciarFunciones($scope, 'Cliente');
+    ServiceGenerico.funcionesDefaultDialog($scope, $mdDialog, 'cliente');
     ServiceGenericoDetalle.obtenerClientesAC($scope);
     ServiceGenericoDetalle.obtenerProductosAC($scope);
     ServiceGenericoDetalle.funcionesCrear($scope, 'Cotizacion');
