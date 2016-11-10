@@ -36,13 +36,9 @@
         <md-menu>
             <md-button aria-label="Perfil"  ng-click="openMenu($mdOpenMenu, $event)">
                 <ng-md-icon icon="account_circle"></ng-md-icon>
+                {{ userNow.nombre }} {{ userNow.apellido }}
             </md-button>
             <md-menu-content width="4" style="margin-top: 60px;">
-                <md-menu-item>
-                    <md-button>
-                     {{ userNow.nombre }} {{ userNow.apellido }}
-                    </md-button>
-                </md-menu-item>
                 <md-menu-item>
                     <md-button ng-click="ocultarMenu()">
                         <ng-md-icon icon="settings_ethernet"></ng-md-icon>
