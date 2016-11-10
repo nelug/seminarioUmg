@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').factory('ServiceGenerico', ['$q', '$timeout', '$http', '$mdDialog', '$route', '$templateCache', 'toaster', 'jsonPath', '$localStorage', 'md5',
-function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonPath, $localStorage, md5) {
+angular.module('seminarioUmg').factory('ServiceGenerico', ['$q', '$rootScope', '$timeout', '$http', '$mdDialog', '$route', '$templateCache', 'toaster', 'jsonPath', '$localStorage', 'md5',
+function ($q, $rootScope, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonPath, $localStorage, md5) {
 
     function buscarTodos($scope, entidad) {
         $scope.editEnable = false;
@@ -19,6 +19,11 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         });
     }
 
+    function buscarIdCotizacion(scope, entidad) {
+        $http.get('/api/v1/' + entidad.toLowerCase() + '/' + scope.cotizacion.id +'?token='+$localStorage.token).success(function(data) {
+            $rootScope.imprimir.detalle = data;
+        });
+    }
 
     function instanciarFunciones($scope, entidad) {
         $scope.dialogoCrear = function() {
@@ -100,7 +105,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
             if ($scope.encriptPassw) {
                 $scope.formData.password = md5.createHash($scope.formData.password);
             }
-            
+
             $http.put('/api/v1/'+ entidad.toLowerCase() + '?token=' + $localStorage.token, $scope.formData)
             .success(function(data) {
                 $localStorage.token = data.token;
@@ -165,6 +170,7 @@ function ($q, $timeout, $http, $mdDialog, $route, $templateCache, toaster, jsonP
         funcionesDialogoEliminar: funcionesDialogoEliminar,
         buscarId: buscarId,
         fnPermisosUsuario: fnPermisosUsuario,
-        permisosUsuario: permisosUsuario
+        permisosUsuario: permisosUsuario,
+        buscarIdCotizacion: buscarIdCotizacion
     });
 }]);

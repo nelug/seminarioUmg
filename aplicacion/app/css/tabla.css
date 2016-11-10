@@ -110,3 +110,47 @@ table td {
     padding-right: 10px !important;
     padding-left: 10px !important;
 }
+
+.imprimirCotizacion table thead tr {
+    background: #e3e4e4;
+}
+.imprimirCotizacion h1, .imprimirCotizacion h2 , .imprimirCotizacion h4{
+    line-height: 30%;
+}
+
+.imprimirCotizacion table th {
+  font-size: 12px;
+  font-weight: 500;
+  color: black;
+  white-space: nowrap;
+  position: relative;
+  height: 50px;
+  border-bottom: solid 1px #DDDDDD;
+}
+
+.imprimirCotizacion table th.clickable {
+  cursor: pointer;
+}
+.imprimirCotizacion table th[disabled] {
+  cursor: auto;
+}
+.imprimirCotizacion table th:focus {
+  outline: none;
+}
+
+.imprimirCotizacion table tr td {
+  padding: 0;
+  height: 30px;
+  font-size: 13px;
+  color: gray;
+}
+.imprimirCotizacion table td:first-child, table th:first-child {
+  padding: 0 0 0 24px;
+}
+.imprimirCotizacion table td:last-child, table th:last-child {
+  padding-right: 15px;
+}
+
+.imprimirCotizacion  table tr td {
+  border-bottom: solid 1px #DDDDDD;
+}

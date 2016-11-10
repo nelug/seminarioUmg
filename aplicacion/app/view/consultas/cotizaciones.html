@@ -18,7 +18,7 @@
             <td>{{ cotizacion.usuario.nombre }}</td>
             <td class="right">{{ cotizacion.total | currency: 'Q '}}</td>
             <td> <ng-md-icon icon="pageview" class="info" ng-click="dialogoVerDetalle(cotizacion)"></ng-md-icon> </td>
-            <td> <ng-md-icon icon="print" class="colorImpresion center" ng-click=></ng-md-icon> </td>
+            <td><ng-md-icon icon="print" ng-click="imprimirCotizacion(cotizacion)" print-btn></ng-md-icon>
         </tr>
     </tbody>
 </table>

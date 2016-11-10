@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('consultarCotizacionCtrl', ['$scope','$http','$timeout', 'ServiceGenerico',
-function($scope, $http, $timeout, ServiceGenerico) {
+angular.module('seminarioUmg').controller('consultarCotizacionCtrl', ['$scope', '$rootScope','$http','$timeout', 'ServiceGenerico',
+function($scope, $rootScope, $http, $timeout, ServiceGenerico) {
     ServiceGenerico.buscarTodos($scope, 'cotizacion');
     ServiceGenerico.instanciarFunciones($scope, 'cotizacion');
 }]);
