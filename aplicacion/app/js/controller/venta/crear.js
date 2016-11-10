@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('seminarioUmg').controller('CrearVentaCtrl', ['$scope', 'ServiceGenericoDetalle','ServiceGenerico', '$mdDialog',
-function($scope, ServiceGenericoDetalle, ServiceGenerico, $mdDialog) {
+angular.module('seminarioUmg').controller('CrearVentaCtrl', ['$scope', 'ServiceGenericoDetalle', '$mdDialog',
+function($scope, ServiceGenericoDetalle, $mdDialog) {
 
 
     $scope.formTitulo = 'Crear Venta';
@@ -13,8 +13,10 @@ function($scope, ServiceGenericoDetalle, ServiceGenerico, $mdDialog) {
         usuario: [],
         detalle: []
     };
-    ServiceGenerico.instanciarFunciones($scope, 'Cliente');
-    ServiceGenerico.funcionesDefaultDialog($scope, $mdDialog, 'cliente');
+
+
+    ServiceGenericoDetalle.dialogCliente($scope,'Cliente');
+    ServiceGenericoDetalle.crearNuevoCliente($scope, $mdDialog,'cliente');
     ServiceGenericoDetalle.obtenerClientesAC($scope);
     ServiceGenericoDetalle.obtenerProductosAC($scope);
     ServiceGenericoDetalle.funcionesCrear($scope, 'Venta');

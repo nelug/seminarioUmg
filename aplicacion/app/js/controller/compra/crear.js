@@ -13,8 +13,8 @@ function($scope, $rootScope, ServiceGenericoDetalle, $mdDialog, ServiceGenerico)
         detalle: []
     };
 
-    ServiceGenerico.instanciarFunciones($scope, 'Proveedor');  
-    ServiceGenerico.funcionesDefaultDialog($scope, $mdDialog, 'proveedor');
+    ServiceGenericoDetalle.dialogCliente($scope,'Proveedor');
+    ServiceGenericoDetalle.crearNuevoCliente($scope, $mdDialog,'proveedor');
     ServiceGenericoDetalle.obtenerProveedoresAC($scope);
     ServiceGenericoDetalle.obtenerProductosAC($scope);
     ServiceGenericoDetalle.funcionesCrear($scope, 'Compra');

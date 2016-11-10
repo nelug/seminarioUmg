@@ -33,6 +33,7 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
                 return (item.value.toLowerCase().indexOf(query.toLowerCase()) >= 0);
             };
         };
+
     }
 
     function obtenerProductosAC($scope){
@@ -88,7 +89,45 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
                 return (item.value.toLowerCase().indexOf(query.toLowerCase()) >= 0);
             };
         };
+
     }
+
+
+    function dialogCliente($scope, entidad) {
+        $scope.crearDialogCliente = function() {
+            $mdDialog.show({
+                controller: 'Crear' + entidad + 'Ctrl',
+                templateUrl: 'view/' + entidad.toLowerCase() + '/crear.html',
+                clickOutsideToClose: false
+            });
+        };
+    }
+
+    function crearNuevoCliente($scope, $mdDialog, entidad) {
+        $scope.hide = function() { $mdDialog.hide(); };
+        $scope.cancel = function() { $mdDialog.cancel(); };
+        $scope.answer = function(answer) { $mdDialog.hide(answer); };
+
+        $scope.crearCliente = function () {
+            if ($scope.encriptPassw) {
+                $scope.formData.password = md5.createHash($scope.formData.password);
+            }
+
+            $scope.formData.token = $localStorage.token;
+            $http.post('/api/v1/'+ entidad.toLowerCase() + '/', $scope.formData)
+            .success(function(data) {
+                $localStorage.token = data.token;
+                toaster.success('Correcto!', data.mensaje);
+                $mdDialog.hide();
+
+            })
+            .error(function(data) {
+                toaster.warning('Advertencia.!', jsonPath(data, '$.[0]')[0]);
+            });
+        };
+    }
+
+
 
 
     function funcionesCrear($scope, entidad) {
@@ -148,6 +187,8 @@ function ($http, $timeout, $q, $log, $route, toaster, jsonPath, $location, $loca
 
 
     return ({
+        crearNuevoCliente:crearNuevoCliente,
+        dialogCliente:dialogCliente,
         funcionesCrear: funcionesCrear,
         obtenerProductosAC: obtenerProductosAC,
         obtenerClientesAC: obtenerClientesAC,
