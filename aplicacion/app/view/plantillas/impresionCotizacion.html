@@ -1,0 +1,43 @@
+<div width="100%" print-section print-only class="imprimirCotizacion">
+    <div style="margin: 20px;">
+        <div class="center" width="750">
+            <h1>Cotizacion De Utiles Libreria San Pedro</h1>
+            <h4>4a. calle 10-31 Zona 1 Barrio La Parroquia Zacapa Zacapa</h4>
+            <h4>NiT: 2420571-0   Telefono: 7941-0537</h4>
+            <h4>Telefax: 7941-1111</h4>
+        </div>
+        <br>
+        <div class="rigth">
+            <h4>Fecha: {{ imprimir.created_at }}</h4>
+            <h4>Cliente: {{ imprimir.cliente.nombre }}</h4>
+            <h4>Direccion: {{ imprimir.usuario.nombre}}</h4>
+        </div>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Cantidad</th>
+                    <th>Descripcion</th>
+                    <th>Precio Unitario</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="dt in imprimir.detalle">
+                    <td>{{ dt.cantidad }}</td>
+                    <td>{{ dt.producto.descripcion }}</td>
+                    <td>{{ dt.precio | currency: 'Q: '}}</td>
+                    <td>{{ (dt.cantidad * dt.precio) | currency: 'Q: '}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <strong>Total:</strong> {{ data.total | currency: 'Q: ' }}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <br>
+        <footer>Libreria San Pedro al servicio de la comunidad</footer>
+    </div>
+</div>

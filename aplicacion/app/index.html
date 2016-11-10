@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="lib/nvd3/build/nv.d3.css" />
     <!-- endbower -->
     <!-- inject:css -->
+    <link rel="stylesheet" href="/css/angularPrint.css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/tabla.css">
     <link rel="stylesheet" href="/css/tablaprincipal.css">
@@ -22,7 +23,7 @@
 </head>
 
 <body layout="column" ng-controller="MainController" ng-cloak>
-
+    <div ng-include src="'view/plantillas/impresionCotizacion.html'"></div>
     <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}">
     </toaster-container>
 
@@ -164,6 +165,7 @@
     <script src="/js/service/AuthService.js"></script>
     <script src="/js/service/ServiceGenerico.js"></script>
     <script src="/js/service/ServiceGenericoDetalle.js"></script>
+    <script src="/js/service/print.js"></script>
     <script src="/js/controller/cliente/crear.js"></script>
     <script src="/js/controller/cliente/editar.js"></script>
     <script src="/js/controller/cliente/eliminar.js"></script>
@@ -174,11 +176,11 @@
     <script src="/js/controller/cotizacion/cotizacionDetalle.js"></script>
     <script src="/js/controller/cotizacion/crear.js"></script>
     <script src="/js/controller/cotizacion/tabla.js"></script>
-    <script src="/js/controller/graficas/compras.js"></script>
-    <script src="/js/controller/graficas/ventas.js"></script>
     <script src="/js/controller/descarga/crear.js"></script>
     <script src="/js/controller/descarga/descargaDetalle.js"></script>
     <script src="/js/controller/descarga/tabla.js"></script>
+    <script src="/js/controller/graficas/compras.js"></script>
+    <script src="/js/controller/graficas/ventas.js"></script>
     <script src="/js/controller/inventario/tabla.js"></script>
     <script src="/js/controller/producto/crear.js"></script>
     <script src="/js/controller/producto/editar.js"></script>
