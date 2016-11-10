@@ -4,9 +4,9 @@
     function toBoolean(value) {
       if (typeof value === 'function') {
         value = true;
-      } else if (value && value.length !== 0) {
+    } else if (value && value.length !== 0) {
         var v = lowercase('' + value);
-        value = !(v == 'f' || v == '0' || v == 'false' || v == 'no' || v == 'n' || v == '[]');
+        value = !(v === 'f' || v === '0' || v === 'false' || v === 'no' || v === 'n' || v === '[]');
       } else {
         value = false;
       }
@@ -100,7 +100,10 @@
         return function(scope, element, attr) {
             scope.$watch(attr.printTable, function makeTable(value){
                 setTimeout(function(){
-                    if(value == null) return;
+                    if(value === null){
+                        return;
+                    }
+
                     var elem = element[0];
                     elem.classList.add('printSection');
                     elem.id = 'print-table';
