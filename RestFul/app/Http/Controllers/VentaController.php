@@ -109,7 +109,8 @@ class VentaController extends Controller {
         foreach ($grafica as $key => $value) {
             $grafica[$key] = [
                 "label" => (double) $value->label,
-                "value" => (double) $value->value
+                "value" => (double) $value->value,
+                "ganancia" => (double) $value->ganancia
             ];
         }
 
@@ -128,7 +129,8 @@ class VentaController extends Controller {
         foreach ($grafica as $key => $value) {
             $grafica[$key] = [
                 "label" => $value->label,
-                "value" => (double) $value->value
+                "value" => (double) $value->value,
+                "ganancia" => (double) $value->ganancia
             ];
         }
 
