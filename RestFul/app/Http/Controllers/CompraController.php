@@ -121,20 +121,38 @@ class CompraController extends Controller {
 
     public function grafica()
     {
-        return DB::table('compras')
-        ->select(DB::raw("DATE_FORMAT(fecha_documento, '%Y') as label, sum(cantidad * precio) as value"))
+        $grafica = DB::table('compras')
+        ->select(DB::raw("DATE_FORMAT(fecha_documento, '%Y') as label, CAST(sum(cantidad * precio) AS DECIMAL(12,2)) as value"))
         ->join('detalle_compras', 'compra', '=', 'compras.id')
         ->groupBy(DB::raw("DATE_FORMAT(fecha_documento, '%Y')"))->get();
+
+        foreach ($grafica as $key => $value) {
+            $grafica[$key] = [
+                "label" => (double) $value->label,
+                "value" => (double) $value->value
+            ];
+        }
+
+        return response()->json($grafica);
     }
 
     public function graficaMeses($year)
     {
         DB::statement("SET lc_time_names = 'es_ES'");
 
-        return DB::table('compras')
+        $grafica = DB::table('compras')
         ->select(DB::raw("DATE_FORMAT(fecha_documento, '%M') as label, sum(cantidad * precio) as value"))
         ->join('detalle_compras', 'compra', '=', 'compras.id')
         ->whereRaw("YEAR(fecha_documento) = ".$year)
         ->groupBy(DB::raw("DATE_FORMAT(fecha_documento, '%Y-%m')"))->get();
+
+        foreach ($grafica as $key => $value) {
+            $grafica[$key] = [
+                "label" => $value->label,
+                "value" => (double) $value->value
+            ];
+        }
+
+        return response()->json($grafica);
     }
 }
