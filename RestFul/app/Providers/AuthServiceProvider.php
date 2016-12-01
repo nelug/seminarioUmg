@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Providers;
+
+use App\User;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+    * Register any application services.
+    *
+    * @return void
+    */
+    public function register()
+    {
+        $this->app->alias('auth', 'Illuminate\Auth\AuthManager');
+    }
+    
+    /**
+    * Boot the authentication services for the application.
+    *
+    * @return void
+    */
+    public function boot()
+    {
+    /*    $this->app['auth']->viaRequest('api', function ($request)
+        {
+            return \App\User::where('email', $request->input('email'))->first();
+        });
+    */
+    }
+}

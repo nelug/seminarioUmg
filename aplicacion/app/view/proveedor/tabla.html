@@ -1,0 +1,22 @@
+<div ng-include src="'view/plantillas/opcionesTabla.html'"></div>
+<table datatable="ng" class="table table-bordered table table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Nit</th>
+            <th>Empresa</th>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th>Correo</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-click="selectDataTabla(proveedor)" ng-repeat="proveedor in dataTabla">
+            <td>{{ proveedor.nit }}</td>
+            <td>{{ proveedor.empresa }}</td>
+            <td>{{ proveedor.telefono_empresa}}</td>
+            <td>{{ proveedor.direccion }}</td>
+            <td>{{ proveedor.correo }}</td>
+        </tr>
+    </tbody>
+</table>

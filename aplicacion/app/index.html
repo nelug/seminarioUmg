@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="seminarioUmg" >
+<head>
+    <title>Libreria San Pedro</title>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1 maximum-scale=1 user-scalable=no" name="viewport" />
+    <meta content="width=device-width height=device-height" name="size">
+    <!-- build:css css/style.min.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="lib/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="lib/angular-material-icons/angular-material-icons.css" />
+    <link rel="stylesheet" href="lib/angularjs-toaster/toaster.css" />
+    <link rel="stylesheet" href="lib/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/nvd3/build/nv.d3.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/angularPrint.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/tabla.css">
+    <link rel="stylesheet" href="/css/tablaprincipal.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+
+<body layout="column" ng-controller="MainController" ng-cloak>
+    <div ng-include src="'view/plantillas/impresionCotizacion.html'"></div>
+    <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}">
+    </toaster-container>
+
+    <md-toolbar ng-if="loginAccess"  layout="row" class="md-toolbar-tools">
+        <md-button ng-click="toggleMenu()" aria-label="Menu" ng-hide="bloquearMenu()">
+            <ng-md-icon icon="menu"></ng-md-icon>
+        </md-button>
+        <h2> Libreria San Pedro </h2>
+        <span flex></span>
+        <md-menu>
+            <md-button aria-label="Perfil"  ng-click="openMenu($mdOpenMenu, $event)">
+                <ng-md-icon icon="account_circle"></ng-md-icon>
+                <span ng-show="bloquearMenu()"> {{ userNow.nombre }} {{ userNow.apellido }} </span>
+            </md-button>
+            <md-menu-content width="4" style="margin-top: 60px;">
+                <md-menu-item>
+                    <md-button ng-click="ocultarMenu()">
+                        <ng-md-icon icon="settings_ethernet"></ng-md-icon>
+                        Ocultar Menu
+                    </md-button>
+                </md-menu-item>
+                <md-menu-divider></md-menu-divider>
+                <md-menu-item>
+                    <md-button aria-label="Salir" ng-click="logout()">
+                        <ng-md-icon icon="logout"></ng-md-icon>
+                        Cerrar Session
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </md-toolbar>
+
+    <div flex layout="row">
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2 menuLateral" md-component-id="menu" ng-if="loginAccess" md-is-locked-open="bloquearMenu()">
+            <md-list>
+                <md-list-item ng-repeat="mn in menuPrincipal">
+                    <md-button ng-click="verLink(mn.link)" aria-label="{{mn.titulo}}">
+                        <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
+                        {{mn.titulo}}
+                    </md-button>
+                </md-list-item>
+                <md-subheader>Administracion</md-subheader>
+                <md-list-item ng-if="menuCatalogos">
+                    <md-button  ng-click="showSubMenu(1)" aria-label="Catalogos">
+                        <ng-md-icon icon="view_compact" class="avatar"></ng-md-icon>
+                        Catalogos
+                        <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
+                    </md-button>
+                </md-list-item>
+                <div class="menuCatalogos" ng-if="menuCatalogos" ng-show="subMenu == 1">
+                    <md-list-item ng-repeat="mn in menuCatalogos">
+                        <md-button ng-click="verLink(mn.link)" aria-label="Catalogos">
+                            <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
+                            {{mn.titulo}}
+                        </md-button>
+                    </md-list-item>
+                </div>
+                <md-list-item ng-if="menuConsultas">
+                    <md-button ng-click="showSubMenu(2)" aria-label="Consultas">
+                        <ng-md-icon icon="format_list_bulleted" class="avatar"></ng-md-icon>
+                        Consultas
+                        <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
+                    </md-button>
+                </md-list-item>
+                <div class="menuCatalogos" ng-if="menuConsultas" ng-show="subMenu == 2">
+                    <md-list-item ng-repeat="mn in menuConsultas">
+                        <md-button ng-click="verLink(mn.link)" aria-label="Consultas">
+                            <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
+                            {{mn.titulo}}
+                        </md-button>
+                    </md-list-item>
+                </div>
+                <md-list-item ng-if="menuGraficas">
+                    <md-button ng-click="showSubMenu(3)" aria-label="Graficas">
+                        <ng-md-icon icon="developer_dashboard" class="avatar"></ng-md-icon>
+                        Graficas
+                        <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
+                    </md-button>
+                </md-list-item>
+                <div class="menuCatalogos" ng-if="menuGraficas" ng-show="subMenu == 3">
+                    <md-list-item ng-repeat="mn in menuGraficas">
+                        <md-button ng-click="verLink(mn.link)" aria-label="Graficas">
+                            <ng-md-icon icon="{{mn.icono}}" class="avatar"></ng-md-icon>
+                            {{mn.titulo}}
+                        </md-button>
+                    </md-list-item>
+                </div>
+            </md-list>
+        </md-sidenav>
+
+        <md-content flex md-scroll-y ng-view class="contentPrincipal" id="contentPrincipal">
+        </md-content>
+    </div>
+
+    <!-- build:js js/vendor.min.js -->
+    <!-- bower:js -->
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-messages/angular-messages.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+    <script src="lib/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="lib/ng-jsonpath/dist/ng-jsonpath.js"></script>
+    <script src="lib/angularjs-toaster/toaster.js"></script>
+    <script src="lib/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="lib/angular-datatables/dist/angular-datatables.js"></script>
+    <script src="lib/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
+    <script src="lib/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js"></script>
+    <script src="lib/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
+    <script src="lib/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.js"></script>
+    <script src="lib/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js"></script>
+    <script src="lib/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
+    <script src="lib/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js"></script>
+    <script src="lib/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js"></script>
+    <script src="lib/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
+    <script src="lib/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js"></script>
+    <script src="lib/angular-datatables/dist/plugins/select/angular-datatables.select.js"></script>
+    <script src="lib/d3/d3.js"></script>
+    <script src="lib/nvd3/build/nv.d3.js"></script>
+    <script src="lib/angular-nvd3/dist/angular-nvd3.js"></script>
+    <script src="lib/ngstorage/ngStorage.js"></script>
+    <script src="lib/angular-md5/angular-md5.js"></script>
+    <script src="lib/ng-focus-if/focusIf.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js js/app.min.js -->
+    <!-- inject:js -->
+    <script src="/js/app.js"></script>
+    <script src="/js/route.js"></script>
+    <script src="/js/templates.js"></script>
+    <script src="/js/controller/mainController.js"></script>
+    <script src="/js/service/AuthService.js"></script>
+    <script src="/js/service/ServiceGenerico.js"></script>
+    <script src="/js/service/ServiceGenericoDetalle.js"></script>
+    <script src="/js/service/print.js"></script>
+    <script src="/js/controller/cliente/crear.js"></script>
+    <script src="/js/controller/cliente/editar.js"></script>
+    <script src="/js/controller/cliente/eliminar.js"></script>
+    <script src="/js/controller/cliente/tabla.js"></script>
+    <script src="/js/controller/compra/compraDetalle.js"></script>
+    <script src="/js/controller/compra/crear.js"></script>
+    <script src="/js/controller/compra/tabla.js"></script>
+    <script src="/js/controller/cotizacion/cotizacionDetalle.js"></script>
+    <script src="/js/controller/cotizacion/crear.js"></script>
+    <script src="/js/controller/cotizacion/tabla.js"></script>
+    <script src="/js/controller/descarga/crear.js"></script>
+    <script src="/js/controller/descarga/descargaDetalle.js"></script>
+    <script src="/js/controller/descarga/tabla.js"></script>
+    <script src="/js/controller/graficas/compras.js"></script>
+    <script src="/js/controller/graficas/ventas.js"></script>
+    <script src="/js/controller/inventario/tabla.js"></script>
+    <script src="/js/controller/producto/crear.js"></script>
+    <script src="/js/controller/producto/editar.js"></script>
+    <script src="/js/controller/producto/eliminar.js"></script>
+    <script src="/js/controller/producto/tabla.js"></script>
+    <script src="/js/controller/productos-agotados/tabla.js"></script>
+    <script src="/js/controller/proveedor/crear.js"></script>
+    <script src="/js/controller/proveedor/editar.js"></script>
+    <script src="/js/controller/proveedor/eliminar.js"></script>
+    <script src="/js/controller/proveedor/tabla.js"></script>
+    <script src="/js/controller/user/crear.js"></script>
+    <script src="/js/controller/user/editar.js"></script>
+    <script src="/js/controller/user/eliminar.js"></script>
+    <script src="/js/controller/user/login.js"></script>
+    <script src="/js/controller/user/permisos.js"></script>
+    <script src="/js/controller/user/tabla.js"></script>
+    <script src="/js/controller/venta/crear.js"></script>
+    <script src="/js/controller/venta/tabla.js"></script>
+    <script src="/js/controller/venta/ventaDetalle.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+</body>
+</html>

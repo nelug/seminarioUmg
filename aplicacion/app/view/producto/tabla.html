@@ -1,0 +1,23 @@
+<div ng-include src="'view/plantillas/opcionesTabla.html'"></div>
+<table datatable="ng" dt-options="dtOptions" class="table table-bordered table table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th>Marca</th>
+            <th>P.Venta</th>
+            <th>P.Costo</th>
+            <th>Exist.</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-click="selectDataTabla(producto)" ng-repeat="producto in dataTabla">
+            <td>{{ producto.codigo }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.marca }}</td>
+            <td class="right">{{ producto.precio_venta }}</td>
+            <td class="right">{{ producto.precio_costo }}</td>
+            <td class="right">{{ producto.existencia }}</td>
+        </tr>
+    </tbody>
+</table>

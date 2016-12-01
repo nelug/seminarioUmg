@@ -1,0 +1,117 @@
+<div layout="column" style="max-height:600px" ng-cloak="" class="toolbardemoScrollShrink">
+    <div ng-include src="'view/plantillas/encabezadoFormulario.html'"></div>
+    <md-dialog-content class="md-whiteframe-5dp">
+        <md-content class="md-padding md-block">
+            <form layout="column" name="form" layout flex layout-wrap>
+                <div style="margin-bottom: 25px;" layout layout-wrap>
+                    <div flex="100" flex-gt-xs="30">
+                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTexto" md-selected-item-change="seleccionarAC(item)" md-items="item in buscarAC(buscarTexto)" md-item-text="item.empresa" md-min-length="0" placeholder="Buscar proveedor">
+                            <md-item-template>
+                                <span class="item-title">
+                                    <span> {{ item.nit}}</span>
+                                    <span> {{ item.empresa }} </span>
+                                    <span> {{ item.direccion }} </span>
+                                </span>
+                            </md-item-template>
+                        </md-autocomplete>
+                    </div>
+                    <md-button aria-label="Crear" title="Agregar un proveedor nuevo" class="Dialogs" ng-click="crearDialogCliente()">
+                         <ng-md-icon icon="person_add"></ng-md-icon>
+                    </md-button>
+                    <div flex="0" flex-gt-xs="5"></div>
+                    <div flex="100" flex-gt-xs="20" ng-show="proveedores" >
+                        <strong>Nit: </strong>{{proveedor.nit}}
+                    </div>
+                    <div flex="100" flex-gt-xs="35" ng-show="proveedores"  >
+                        <strong>Direccion: </strong>{{ proveedor.direccion }}
+                    </div>
+                </div>
+                <div layout layout-wrap>
+                    <md-input-container  flex="100" flex-gt-xs="45">
+                        <label>Numero de Documento</label>
+                        <input name="numero_documento" ng-maxlength= "50" ng-model="formData.numero_documento" ng-required= "true">
+                        <div ng-messages="form.numero_documento.$error" role="alert">
+                            <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                        </div>
+                    </md-input-container>
+                    <div flex="0" flex-gt-xs="5"></div>
+                    <md-input-container flex="100" flex-gt-xs="45">
+                        <label>Fecha</label>
+                        <input type="date" name="fecha_documento" ng-model="formData.fecha_documento" ng-required="true">
+                        <div ng-messages="form.fecha_documento.$error" role="alert">
+                            <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </form>
+            <form name="detalle">
+                <div layout layout-wrap  style="margin-bottom: 25px;">
+                    <div flex="100" flex-gt-xs="30" >
+                        <md-autocomplete ng-disabled="false" md-no-cache="noCache" md-search-text="buscarTextoproducto" md-selected-item-change="seleccionarACproducto(item)" md-items="item in buscarACproducto(buscarTextoproducto)" md-item-text="item.descripcion" md-min-length="0" placeholder="Buscar Producto">
+                            <md-item-template>
+                                <span class="item-title">
+                                    <span> {{ item.codigo }} </span>
+                                    <span> {{ item.descripcion }} </span>
+                                </span>
+                            </md-item-template>
+                        </md-autocomplete>
+                    </div>
+                    <div flex="0" flex-gt-xs="5"></div>
+                    <div flex="100" flex-gt-xs="20" ng-show="productos" >
+                        <strong>Marca: </strong>{{producto.marca}}
+                    </div>
+                    <div flex="100" flex-gt-xs="25" ng-show="productos"  >
+                        <strong>Precio: </strong>{{ producto.precio_costo }}
+                    </div>
+                    <div flex="100" flex-gt-xs="20" ng-show="productos" >
+                        <strong>Existencia: </strong>{{ producto.existencia }}
+                    </div>
+                </div>
+                <div layout layout-wrap>
+                    <md-input-container  flex="100" flex-gt-xs="33">
+                        <label>Cantidad</label>
+                        <input ng-model="dataTemp.cantidad" title="completa este campo" ng-pattern="/^[0-9]{1,11}$/" name="cantidad" ng-required="true">
+                        <div ng-messages="detalle.cantidad.$error" role="alert">
+                            <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                        </div>
+                    </md-input-container>
+                    <div flex="0" flex-gt-xs="5"></div>
+                    <md-input-container  flex="100" flex-gt-xs="33">
+                        <label>Precio Unitario</label>
+                        <input type="number" ng-model="dataTemp.precio" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" name="precio" ng-required= "true">
+                        <div ng-messages="detalle.precio.$error" role="alert">
+                            <div ng-messages-include="view/plantillas/mensajes.html"></div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex="15" layout="row" layout-xs="column">
+                        <md-button class="md-raised md-primary" ng-disabled="detalle.$invalid" ng-click="agregarDataDetalle()">Agregar</md-button>
+                    </md-input-container>
+                </div>
+            </form>
+                <div layout="row" style="max-height: 200px; min-height: 200px; overflow-y: auto;" layout layout-wrap>
+                    <table class="table2" ng>
+                        <thead>
+                            <tr>
+                                <th>Cantidad</th>
+                                <th>Descripcion</th>
+                                <th>Precio Unitario</th>
+                                <th>Total</th>
+                                <th>Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="detalle in formData.detalle">
+                                <td>{{ detalle.cantidad }}</td>
+                                <td>{{ detalle.descripcion }}</td>
+                                <td>{{ detalle.precio | currency: 'Q: '}}</td>
+                                <td>{{ detalle.total | currency: 'Q: '}}</td>
+                                <td><ng-md-icon icon="delete_forever" class="delete" ng-click="eliminarDetalle(detalle)"></ng-md-icon></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </md-content>
+
+        <div ng-include src="'view/plantillas/pieFormulario.html'"></div>
+    </md-dialog-content>
+</div>

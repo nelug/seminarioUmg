@@ -1,0 +1,24 @@
+<table datatable="ng" dt-options="dtOptions" class="table table-bordered table table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>codigo</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Usuario</th>
+            <th>Total</th>
+            <th>Detalle</th>
+            <th>Generar PDF</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-click="selectDataTabla(cotizacion)" ng-repeat="cotizacion in dataTabla">
+            <td>{{ cotizacion.id }}</td>
+            <td>{{ cotizacion.created_at }}</td>
+            <td>{{ cotizacion.cliente.nombre }}</td>
+            <td>{{ cotizacion.usuario.nombre }}</td>
+            <td class="right">{{ cotizacion.total | currency: 'Q '}}</td>
+            <td> <ng-md-icon icon="pageview" class="info" ng-click="dialogoVerDetalle(cotizacion)"></ng-md-icon> </td>
+            <td><ng-md-icon icon="print" ng-click="imprimirCotizacion(cotizacion)" print-btn></ng-md-icon>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,20 @@
+<table datatable="ng" dt-options="dtOptions">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th>Marca</th>
+            <th>Precio</th>
+            <th>existencia</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-click="selectDataTabla(producto)" ng-repeat="producto in dataTabla">
+            <td>{{ producto.codigo }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.marca }}</td>
+            <td class="right">{{ producto.precio_venta }}</td>
+            <td class="right">{{ producto.existencia }}</td>
+        </tr>
+    </tbody>
+</table>

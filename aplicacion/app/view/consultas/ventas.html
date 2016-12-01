@@ -1,0 +1,22 @@
+<table datatable="ng" dt-options="dtOptions" class="table table-bordered table table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Usuario</th>
+            <th>Total</th>
+            <th>Detalle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-click="selectDataTabla(venta)" ng-repeat="venta in dataTabla">
+            <td>{{ venta.id }}</td>
+            <td>{{ venta.created_at }}</td>
+            <td>{{ venta.cliente.nombre }}</td>
+            <td>{{ venta.usuario.nombre }}</td>
+            <td class="right">{{ venta.total | currency: 'Q ' }}</td>
+            <td> <ng-md-icon icon="pageview" class="info" ng-click="dialogoVerDetalle(venta)"></ng-md-icon> </td>
+        </tr>
+    </tbody>
+</table>

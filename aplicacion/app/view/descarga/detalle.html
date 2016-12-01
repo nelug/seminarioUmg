@@ -1,0 +1,42 @@
+<md-dialog layout="column">
+    <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
+    <md-dialog-content class="md-whiteframe-5dp">
+        <br>
+        <div layout layout-wrap>
+            <div flex="100">
+                <strong class="margenDetalle" >Usuario:</strong> {{ data.usuario.nombre}}
+            </div>
+        </div>
+        <br>
+        <div layout="row" style="max-height: 250px; min-height: 250px; overflow-y: auto;" layout layout-wrap>
+            <table class="table2" ng>
+                <thead>
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>Nota</th>
+                        <th>Descripcion</th>
+                        <th>Precio Unitario</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dt in detalle">
+                        <td>{{ dt.cantidad }}</td>
+                        <td>{{ data.nota }}</td>
+                        <td>{{ dt.producto.descripcion }}</td>
+                        <td>{{ dt.precio | currency: 'Q: '}}</td>
+                        <td>{{ (dt.cantidad * dt.precio) | currency: 'Q: '}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <strong>Total:</strong> {{ data.total | currency: 'Q: ' }}
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+    </md-dialog-content>
+</md-dialog>

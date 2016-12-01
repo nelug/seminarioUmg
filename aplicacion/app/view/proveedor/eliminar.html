@@ -1,0 +1,11 @@
+<md-dialog>
+    <div ng-include src="'view/plantillas/encabezadoDialogo.html'"></div>
+    <md-dialog-content class="md-whiteframe-5dp">
+        <md-dialog-actions layout="row" layout-sm="column" layout-align="center center" layout-wrap=""  >
+            <div layout="colum" layout-sm="row" layout-align="center center" layout-wrap="" style="padding-top:20px; ">
+                      <md-button ng-click= "cancel()" class="md-raised md-primary" ng-disabled="disabled" aria-label="cancelar">Cancelar</md-button>
+                      <md-button ng-click= "eliminar()" class="md-raised md-warn" ng-disabled="disabled" aria-label="Borrar Proveedor">Eliminar</md-button>
+                <div flex="flex"></div>
+            </div>
+        </md-dialog-actions>
+    </md-dialog>

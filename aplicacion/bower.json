@@ -1,0 +1,21 @@
+{
+  "name": "seminario-umg",
+  "authors": ["Nelug (Leonel Madrid)"],
+  "license": "GPL-3.0",
+  "dependencies": {
+    "angular": "=1.5.8",
+    "angular-animate": "=1.5.8",
+    "angular-messages": "=1.5.8",
+    "angular-resource": "=1.5.8",
+    "angular-route": "=1.5.8",
+    "angular-material": "=1.1.0",
+    "angular-material-icons": "=0.7.0",
+    "ng-jsonpath": "=v0.1.3",
+    "angularjs-toaster": "=2.0.0",
+    "angular-datatables": "=0.5.5",
+    "angular-nvd3": "=1.0.9",
+    "ngstorage": "=0.3.11",
+    "angular-md5": "=0.1.10",
+    "ng-focus-if": "=1.0.7"
+  }
+}

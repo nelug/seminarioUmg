@@ -1,0 +1,24 @@
+POST  http://localhost:3000/api/venta/crear
+Content-Type: application/json
+
+{
+    "fecha":"2016-10-01T04:31:29.734Z",
+    "cliente":"57ce07ebb36a0af8de2db5a6",
+    "usuario":[],
+    "detalle":[
+        {
+            "cantidad":"100",
+            "precio":10,
+            "ganancia":3,
+            "producto":"57ce0b2eb36a0af8de2db5b1"
+        },
+        {
+            "cantidad":"10",
+            "precio":20,
+            "ganancia":5,
+            "producto":
+            "57ce0b76b36a0af8de2db5b3"
+        }
+    ]
+}
+

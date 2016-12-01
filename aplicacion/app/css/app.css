@@ -1,0 +1,237 @@
+.menuLateral md-list-item > button {
+    width:100%;
+    text-align:left !important;
+}
+
+.menuLateral md-list .md-button.selected {
+    color: #03a9f4;
+}
+
+.menuLateral md-sidenav  md-list {
+    padding: 0px 0px 8px 0px;
+}
+
+.menuLateral md-button.menuBtn > md-icon {
+    fill:white;
+    width:24px;
+    height:24px;
+}
+
+.menuLateral .avatar {
+    width: 128px;
+    height: 128px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    zoom: 0.50;
+    transform: translateZ(0);
+    -webkit-transform: scale(0.70);
+    -moz-transform: scale(0.70);
+}
+
+.menuLateral md-bottom-sheet  md-icon {
+    margin-right:20px;
+}
+
+.menuLateral .avatar svg {
+    width: 100px;
+    height: 100px;
+}
+
+.md-grid-item-content svg {
+    width: 50px;
+    height: 50px;
+}
+
+body{
+    overflow: hidden;
+}
+
+ng-md-icon{
+    vertical-align: middle;
+}
+
+.subMenu ng-md-icon{
+    height: 100%;
+    width: 50px;
+}
+
+.menuLateral {
+    box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+md-card {
+    box-shadow: 0 5px 25px 0 rgba(0,0,0,.26);
+}
+
+.menuCatalogos {
+    margin-left: 25px;
+}
+
+.menuCatalogos .avatar {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    zoom: 0.40;
+    transform: translateZ(0);
+    -webkit-transform: scale(0.70);
+    -moz-transform: scale(0.70);
+}
+
+/*---------------------css para content principal-----------------------*/
+
+.contentPrincipal {
+    padding: 20px;
+}
+/*-----------------------css para tablas ---------------------------------*/
+
+.tablaStyle {
+    width: 100%;
+}
+
+div.dataTables_length select  btn-default dropdown-toggle {
+    width: 100px;
+}
+
+.loader-tabla {
+    width: 100%;
+    text-align: center;
+}
+/*-----------------------css para login---------------------------------*/
+hgroup {
+    text-align:center;
+    margin-top: 4em;
+}
+
+h1, h3 { font-weight: 300; }
+
+h1 { color: #636363; }
+
+h3 { color: #4a89dc; }
+
+.loginBox {
+    max-width:  90%;
+    width: 500px
+}
+
+.loginBox2 {
+    max-width:  50%;
+    width: 60%
+}
+
+.stretch input  {
+    width: 100%
+}
+
+/*propiedades css para el boton de agregar, editar, eliminar*/
+
+.md-button.md-warn.md-fab {
+    color: rgb(255,255,255);
+    background-color: rgb(34, 151, 255);
+}
+
+.md-button.md-warn.md-fab:not([disabled]):hover {
+    background-color:rgb(34, 151, 255);
+}
+
+/*---------------------------formularios-------------------------*/
+
+.toolbardemoScrollShrink .face {
+    width: 48px;
+    margin: 16px;
+    border-radius: 48px;
+    border: 1px solid #ddd;
+}
+
+h3 {
+    color: rgba(0,0,0,0.87);
+}
+
+md-dialog {
+    width: 40%;
+}
+
+@media only screen and (max-width: 800px) {
+    md-dialog {
+        width: 75%;
+    }
+
+    @media only screen and (max-width: 500px) {
+        md-dialog {
+            max-width: 90%;
+            width: 90%;
+        }
+    }
+}
+
+/*---funcion para css de tablas-*/
+.tablaOpciones {
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+
+/*adaptando el tamano de la grafica */
+svg.nvd3-svg{
+    width: 100%;
+    height: 88%;
+}
+/*colores de los encabezados de las tablas*/
+h3 {
+    color: rgb(250,250,250);
+}
+
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.delete {
+    color:red;
+    cursor:pointer;
+}
+
+.info {
+    color:#4094e0;
+    cursor:pointer;
+}
+
+/*color para icono de pdf*/
+.colorImpresion{
+    color: green;
+}
+
+.margenDetalle {
+    padding-left: 20px;
+}
+
+
+/*ccs para boton de agregar en formularios principales*/
+
+.Dialogs{
+
+
+    padding-bottom: 0px;
+    padding-right: 0px;
+    width: 36px;
+    height: 30px;
+    margin-bottom: 0px;
+    padding-left: -5;
+    padding-left: 0px;
+    padding-top: 0px;
+    border-left-width: 19px;
+    margin-left: -10;
+    margin-left: -10;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+
+
+}

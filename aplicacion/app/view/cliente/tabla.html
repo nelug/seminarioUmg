@@ -1,0 +1,21 @@
+<div ng-include src="'view/plantillas/opcionesTabla.html'"></div>
+<table datatable="ng" class="table table-bordered table table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Nit</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Correo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-click="selectDataTabla(cliente)" ng-repeat="cliente in dataTabla">
+            <td>{{ cliente.nit }}</td>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.direccion }}</td>
+            <td>{{ cliente.telefono }}</td>
+            <td>{{ cliente.correo }}</td>
+        </tr>
+    </tbody>
+</table>

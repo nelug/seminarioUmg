@@ -1,0 +1,20 @@
+<table datatable="ng" dt-options="dtOptions" class="table table-bordered table table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Total</th>
+            <th>Detalle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-click="selectDataTabla(descarga)" ng-repeat="descarga in dataTabla">
+            <td>{{ descarga.id }}</td>
+            <td>{{ descarga.created_at }}</td>
+            <td>{{ descarga.usuario.nombre }}</td>
+            <td>{{ descarga.total | currency: 'Q ' }}</td>
+            <td> <ng-md-icon icon="pageview" class="info" ng-click="dialogoVerDetalle(descarga)"></ng-md-icon> </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,34 @@
+<div class="tablaOpciones">
+   <section layout="row"  layout-align="start start" ng-app='seminarioUmg'>
+      <md-content class="" layout="column" >
+        <div class="lock-size" layout="row" layout-align="center center">
+          <md-fab-speed-dial md-open="opFab.abrir" md-direction="{{opFab.direction}}" ng-class="opFab.modo">
+            <md-fab-trigger>
+              <md-button aria-label="menu" class="md-fab md-warn">
+                  <ng-md-icon icon="menu"></ng-md-icon>
+              </md-button>
+            </md-fab-trigger>
+            <md-fab-actions ng-if="(!editEnable)">
+              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogoCrear()">
+                   <ng-md-icon icon="add"></ng-md-icon>
+              </md-button>
+            </md-fab-actions>
+            <md-fab-actions ng-if="(editEnable)">
+              <md-button aria-label="Crear" class="md-fab md-raised md-mini" ng-click="dialogoCrear()">
+                   <ng-md-icon icon="add"></ng-md-icon>
+              </md-button>
+              <md-button aria-label="Editar" class="md-fab md-raised md-mini" ng-click="dialogoEditar()">
+                  <ng-md-icon icon="create"></ng-md-icon>
+              </md-button>
+              <md-button aria-label="Permisos" class="md-fab md-raised md-mini" ng-if="(isUsuario)" ng-click="dialogoPermisos()">
+                  <ng-md-icon icon="lock_outline"></ng-md-icon>
+              </md-button>
+              <md-button aria-label="Borrar" class="md-fab md-raised md-mini" ng-click="dialogoEliminar()">
+                   <ng-md-icon icon="delete"></ng-md-icon>
+              </md-button>
+            </md-fab-actions>
+          </md-fab-speed-dial>
+        </div>
+     </md-content>
+    </section>
+</div>
